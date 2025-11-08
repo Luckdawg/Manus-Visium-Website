@@ -11,10 +11,10 @@ export default function AICapabilities() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              How TruContext <span className="text-primary">AI Works</span>
+              Agentic AI: <span className="text-primary">Autonomous Intelligence</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Machine learning embedded in every layer of analysis and visualization, transforming raw data into predictive intelligence
+              TruContext features autonomous AI agents that continuously analyze threats, recommend actions, and automate workflows. Our agentic AI capabilities transform raw data into predictive intelligence without human intervention.
             </p>
             <Link href="/demo">
               <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -29,9 +29,9 @@ export default function AICapabilities() {
       <section className="py-20 bg-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">AI at the Core</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Agentic AI: The Next Evolution</h2>
             <p className="text-xl text-gray-600">
-              Unlike platforms where AI is merely an add-on feature, TruContext has machine learning embedded in every layer of analysis and visualization. This sophisticated integration enables contextual differentiation that moves organizations from reactive alert management to proactive threat prevention.
+              Unlike platforms where AI is merely an add-on feature, TruContext features autonomous AI agents embedded in every layer of analysis and visualization. These intelligent agents work independently to analyze threats, identify patterns, and execute response workflows automatically. This agentic AI approach enables contextual differentiation that moves organizations from reactive alert management to proactive threat prevention, positioning Visium Analytics as a leader in AI-driven cybersecurity solutions.
             </p>
           </div>
 
@@ -182,6 +182,48 @@ export default function AICapabilities() {
                     </h3>
                     <p className="text-lg text-gray-700">
                       This critical User Experience (UX) benefit allows users to query their security posture or operations using plain English, with the AI providing precise answers and visual representations. Instead of learning complex query languages or navigating through multiple dashboards, analysts can simply ask questions like "Show me all failed login attempts from external IPs in the last 24 hours" and receive instant, actionable results with visual context.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* AI-Powered Icon Generation */}
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <div className="grid lg:grid-cols-12 gap-6 items-start">
+                  <div className="lg:col-span-2">
+                    <div className="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center">
+                      <Zap className="h-8 w-8 text-secondary" />
+                    </div>
+                  </div>
+                  <div className="lg:col-span-10">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      AI-Powered Icon Generation
+                    </h3>
+                    <p className="text-lg text-gray-700">
+                      TruContext features a sophisticated dual API system with Recraft.ai as primary and Gemini as fallback for automated icon generation and asset management. This PostgreSQL-powered icon mapping system with Cloudinary integration enables dynamic visualization of network assets with preview and approval workflows. The system automatically generates contextually appropriate icons for new assets, maintaining visual consistency across the platform.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Autonomous AI Agents */}
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <div className="grid lg:grid-cols-12 gap-6 items-start">
+                  <div className="lg:col-span-2">
+                    <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Brain className="h-8 w-8 text-primary" />
+                    </div>
+                  </div>
+                  <div className="lg:col-span-10">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      Autonomous AI Agents
+                    </h3>
+                    <p className="text-lg text-gray-700">
+                      TruContext's agentic AI capabilities include autonomous agents that work independently to analyze threats, execute response workflows, and make intelligent decisions without human intervention. These AI agents continuously monitor your environment, correlate data across multiple sources, and proactively identify emerging threats. The agents learn from each interaction, becoming more effective over time and adapting to your organization's unique threat landscape.
                     </p>
                   </div>
                 </div>

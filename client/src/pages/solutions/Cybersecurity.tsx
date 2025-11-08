@@ -14,7 +14,7 @@ export default function Cybersecurity() {
               Cybersecurity & <span className="text-primary">Threat Intelligence</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Transform your security operations with AI-powered threat detection, correlation, and predictive intelligence
+              Transform your security operations with agentic AI-powered threat detection, dual database architecture (Neo4j + PostgreSQL), and autonomous response capabilities
             </p>
             <Link href="/demo">
               <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -67,7 +67,7 @@ export default function Cybersecurity() {
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">The TruContext Solution</h2>
             <p className="text-xl text-gray-600">
-              TruContext correlates security data from SIEM, EDR, firewalls, and other feeds to visualize and predict attack chains, utilizing the MITRE ATT&CK framework for threat-informed defense.
+              TruContext's agentic AI agents autonomously correlate security data from SIEM, EDR, firewalls, and other feeds using our dual database architecture to visualize and predict attack chains in real-time, utilizing the MITRE ATT&CK framework for threat-informed defense.
             </p>
           </div>
 
@@ -76,10 +76,10 @@ export default function Cybersecurity() {
               <CardContent className="p-8">
                 <Shield className="h-12 w-12 text-primary mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Automated Threat Correlation
+                  Agentic AI Threat Correlation
                 </h3>
                 <p className="text-gray-700">
-                  Automatically correlate threat indicators across all security tools, linking disparate events to expose complete attack chains. Reduce investigation time from days to seconds with AI-powered analysis.
+                  Autonomous AI agents correlate threat indicators across all security tools using Neo4j graph database, linking disparate events to expose complete attack chains. Reduce investigation time from days to seconds with agentic AI-powered analysis and PostgreSQL-backed persistence.
                 </p>
               </CardContent>
             </Card>
@@ -88,10 +88,10 @@ export default function Cybersecurity() {
               <CardContent className="p-8">
                 <Network className="h-12 w-12 text-secondary mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  MITRE ATT&CK Mapping
+                  AI-Powered MITRE ATT&CK Mapping
                 </h3>
                 <p className="text-gray-700">
-                  Map detected threats to MITRE ATT&CK tactics, techniques, and procedures (TTPs) for threat-informed defense. Understand adversary behavior and prioritize response based on attack progression.
+                  Agentic AI automatically maps detected threats to MITRE ATT&CK tactics, techniques, and procedures (TTPs) for threat-informed defense. Autonomous agents understand adversary behavior and prioritize response based on attack progression without human intervention.
                 </p>
               </CardContent>
             </Card>

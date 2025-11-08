@@ -18,7 +18,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer">
-              <img src="/visium_logo.webp" alt="Visium Analytics" className="h-10" />
+              <img src="/visium_analytics_logo.png" alt="Visium Analytics" className="h-12" />
             </div>
           </Link>
 

@@ -26,12 +26,12 @@ export default function Home() {
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                Transform Data Into <span className="text-primary">Actionable Intelligence</span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
-                TruContext simplifies cyber analytics, improves security posture, and protects mission critical assets for the Enterprise
-              </p>
+            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+              Agentic AI-Powered <span className="text-primary">Intelligence Platform</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8">
+              TruContext is the leader in agentic AI-driven cybersecurity solutions, featuring autonomous AI agents that continuously analyze threats and automate workflows. Our dual database architecture (Neo4j + PostgreSQL) fuses cyber, physical, and operational data to provide unmatched context for enterprise security, smart cities, and critical infrastructure protection.
+            </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/demo">
                   <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">

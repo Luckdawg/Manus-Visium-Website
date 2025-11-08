@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <img src="/visium_logo.webp" alt="Visium Analytics" className="h-10 mb-4 brightness-0 invert" />
+            <img src="/visium_analytics_logo.png" alt="Visium Analytics" className="h-12 mb-4" />
             <p className="text-sm mb-4">
               AI-powered intelligence platform for cybersecurity and operational intelligence across multiple industries.
             </p>

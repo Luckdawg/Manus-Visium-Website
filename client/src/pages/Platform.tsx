@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { Shield, Network, Cloud, Database, Zap, Lock } from "lucide-react";
+import { Shield, Network, Cloud, Database, Zap, Lock, Brain, Cpu } from "lucide-react";
 
 export default function Platform() {
   return (
@@ -14,7 +14,7 @@ export default function Platform() {
               The TruContext <span className="text-primary">Platform</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              AI-powered intelligence platform that transforms data into actionable insights across cyber, physical, and operational domains
+              Agentic AI-powered intelligence platform with dual database architecture that transforms data into actionable insights across cyber, physical, and operational domains
             </p>
             <Link href="/demo">
               <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -31,14 +31,32 @@ export default function Platform() {
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Multi-Layered Graph Database Technology
+                Enterprise-Grade Dual Database Architecture
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                TruContext is built on a patented scalable multi-layered graph database that processes billions of events with joins and aggregations in real-time. This revolutionary architecture provides unmatched context and performance that conventional platforms cannot match.
+                TruContext is built on a revolutionary dual database architecture combining Neo4j graph database for real-time network relationships with PostgreSQL for persistent storage and analytics. This patented scalable multi-layered approach processes billions of events with joins and aggregations in real-time, providing unmatched context and performance that conventional platforms cannot match.
               </p>
               <p className="text-lg text-gray-600 mb-6">
-                Enhanced from MITRE Corporation's CyGraph platform, originally developed for US Army Cyber Command, TruContext brings defense-grade intelligence capabilities to enterprise organizations.
+                Enhanced from MITRE Corporation's CyGraph platform, originally developed for US Army Cyber Command, TruContext brings defense-grade intelligence capabilities to enterprise organizations with automatic synchronization and zero data loss.
               </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex items-center space-x-2">
+                  <Database className="h-6 w-6 text-primary" />
+                  <span className="font-semibold">Neo4j Graph DB</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Database className="h-6 w-6 text-secondary" />
+                  <span className="font-semibold">PostgreSQL</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Zap className="h-6 w-6 text-primary" />
+                  <span className="font-semibold">Real-time Sync</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Shield className="h-6 w-6 text-secondary" />
+                  <span className="font-semibold">Zero Data Loss</span>
+                </div>
+              </div>
             </div>
             <div>
               <img 
@@ -49,6 +67,51 @@ export default function Platform() {
             </div>
           </div>
 
+          {/* Agentic AI Section */}
+          <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-12 mb-20">
+            <div className="text-center mb-12">
+              <Brain className="h-16 w-16 text-primary mx-auto mb-4" />
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Agentic AI at the Core
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                TruContext features autonomous AI agents that continuously analyze threats, recommend actions, and automate workflows without human intervention. Our agentic AI capabilities set us apart as a leader in AI-driven cybersecurity solutions.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card className="border-2 border-primary/20">
+                <CardContent className="p-6">
+                  <Cpu className="h-10 w-10 text-primary mb-4" />
+                  <h3 className="text-lg font-bold mb-2">AI Agents</h3>
+                  <p className="text-gray-600">
+                    Autonomous agents that analyze threats, identify patterns, and execute response workflows automatically
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-secondary/20">
+                <CardContent className="p-6">
+                  <Brain className="h-10 w-10 text-secondary mb-4" />
+                  <h3 className="text-lg font-bold mb-2">AI Dashboards</h3>
+                  <p className="text-gray-600">
+                    Intelligent dashboards that adapt to user roles and automatically surface critical insights
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-primary/20">
+                <CardContent className="p-6">
+                  <Zap className="h-10 w-10 text-primary mb-4" />
+                  <h3 className="text-lg font-bold mb-2">AI Icon Generation</h3>
+                  <p className="text-gray-600">
+                    Dual API system with Recraft.ai and Gemini for automated icon generation and asset management
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
           {/* Key Features */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <Card className="border-t-4 border-t-primary">
@@ -56,7 +119,7 @@ export default function Platform() {
                 <Database className="h-12 w-12 text-primary mb-4" />
                 <h3 className="text-xl font-bold mb-3">Real-Time Processing</h3>
                 <p className="text-gray-600">
-                  Process billions of events in real-time with advanced joins, aggregations, and complex queries across multiple data sources
+                  Process billions of events in real-time with advanced joins, aggregations, and complex queries across multiple data sources using our dual database architecture
                 </p>
               </CardContent>
             </Card>
@@ -64,9 +127,9 @@ export default function Platform() {
             <Card className="border-t-4 border-t-secondary">
               <CardContent className="p-6">
                 <Network className="h-12 w-12 text-secondary mb-4" />
-                <h3 className="text-xl font-bold mb-3">Multi-Domain Intelligence</h3>
+                <h3 className="text-xl font-bold mb-3">Advanced Graph Analytics</h3>
                 <p className="text-gray-600">
-                  Unified intelligence across cyber, physical, and operational domains for comprehensive situational awareness
+                  Interactive network graphs with multiple layout algorithms (Cola, ELK, Klay) and dynamic styling based on threat levels and relationships
                 </p>
               </CardContent>
             </Card>
@@ -76,7 +139,37 @@ export default function Platform() {
                 <Zap className="h-12 w-12 text-primary mb-4" />
                 <h3 className="text-xl font-bold mb-3">Kafka Ecosystem</h3>
                 <p className="text-gray-600">
-                  Incorporates rapid high throughput and scalable processing via the Kafka ecosystem for enterprise-scale deployments
+                  Incorporates rapid high throughput and scalable processing via the Kafka ecosystem for enterprise-scale deployments with live data synchronization
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-t-4 border-t-secondary">
+              <CardContent className="p-6">
+                <Cloud className="h-12 w-12 text-secondary mb-4" />
+                <h3 className="text-xl font-bold mb-3">Geospatial Intelligence</h3>
+                <p className="text-gray-600">
+                  Persistent geographic coordinate assignment with dual database storage, real-time map updates, and continuous integration capabilities
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-t-4 border-t-primary">
+              <CardContent className="p-6">
+                <Shield className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold mb-3">Threat Path Analysis</h3>
+                <p className="text-gray-600">
+                  Comprehensive attack chain visualization and analysis with MITRE ATT&CK integration for threat-informed defense strategies
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-t-4 border-t-secondary">
+              <CardContent className="p-6">
+                <Brain className="h-12 w-12 text-secondary mb-4" />
+                <h3 className="text-xl font-bold mb-3">Multi-View Dashboards</h3>
+                <p className="text-gray-600">
+                  Tailored dashboard views for Executive, SOC, Threat Analysis, Geographic Map, AI Agents, and AI-driven insights
                 </p>
               </CardContent>
             </Card>
@@ -145,7 +238,7 @@ export default function Platform() {
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Explore Platform Capabilities</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Discover how TruContext's AI-powered features and video intelligence transform your operations
+            Discover how TruContext's agentic AI-powered features and video intelligence transform your operations
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/platform/ai-capabilities">
