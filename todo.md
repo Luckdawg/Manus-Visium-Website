@@ -87,3 +87,12 @@
 - [x] Enhance cybersecurity pages with threat analysis details
 - [x] Update imagery and iconography to reflect latest innovations
 - [x] Position Visium as leader in agentic AI-driven cybersecurity
+
+## Calculator Tools
+- [x] Create pricing calculator page with tiered pricing model
+- [x] Implement volume discount logic ($1/node declining with scale)
+- [x] Add $10,000 minimum monthly fee
+- [x] Create ROI calculator for cybersecurity improvements
+- [x] Add interactive sliders and real-time calculations
+- [x] Display projected savings and metrics
+- [x] Add routes for calculator pages

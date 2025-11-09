@@ -200,6 +200,12 @@ const Navigation = () => {
                 Partners
               </Button>
             </Link>
+
+            <Link href="/pricing">
+              <Button variant="ghost" className="text-gray-700 hover:text-primary">
+                Pricing
+              </Button>
+            </Link>
           </div>
 
           {/* CTA Button */}
