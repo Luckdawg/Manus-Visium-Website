@@ -96,3 +96,10 @@
 - [x] Add interactive sliders and real-time calculations
 - [x] Display projected savings and metrics
 - [x] Add routes for calculator pages
+
+## Leadership & Partners Update
+- [x] Gather leadership bios from existing website
+- [x] Create Leadership Team page with Mark Lucky, Tom Grbelja, Paul Favata
+- [x] Gather technology partner information and logos
+- [x] Update Partners page with technology partners section
+- [x] Add partner logos to public folder
