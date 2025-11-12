@@ -155,8 +155,8 @@ const Navigation = () => {
                   <Link href="/resources/videos">
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Videos & Webinars</div>
                   </Link>
-                  <Link href="/resources/blog">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Blog</div>
+                  <Link href="/blog">
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Blog & Insights</div>
                   </Link>
                 </div>
               )}

@@ -103,3 +103,10 @@
 - [x] Gather technology partner information and logos
 - [x] Update Partners page with technology partners section
 - [x] Add partner logos to public folder
+
+## Resources/Blog Page
+- [x] Gather CEO Corner blog content from existing website
+- [x] Create resources/blog landing page
+- [x] Add blog post cards with excerpts
+- [x] Add route for blog page
+- [x] Update navigation with Resources link

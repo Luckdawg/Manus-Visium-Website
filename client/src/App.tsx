@@ -25,6 +25,7 @@ import Contact from "./pages/company/Contact";
 import Partners from "./pages/Partners";
 import Pricing from "./pages/Pricing";
 import ROICalculator from "./pages/ROICalculator";
+import Blog from "./pages/Blog";
 
 function Router() {
   return (
@@ -48,6 +49,8 @@ function Router() {
       <Route path={"/partners"} component={Partners} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/roi-calculator"} component={ROICalculator} />
+      <Route path={"/blog"} component={Blog} />
+      <Route path={"/resources"} component={Blog} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
