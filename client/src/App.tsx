@@ -48,7 +48,7 @@ function Router() {
       <Route path={"/company/contact"} component={Contact} />
       <Route path={"/partners"} component={Partners} />
       <Route path={"/pricing"} component={Pricing} />
-      <Route path={"/roi-calculator"} component={ROICalculator} />
+      <Route path="/why/roi" component={ROICalculator} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/resources"} component={Blog} />
       <Route path={"/404"} component={NotFound} />

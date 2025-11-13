@@ -273,7 +273,7 @@ export default function Pricing() {
               <p className="text-lg mb-6 opacity-90">
                 Calculate how much you can save with TruContext's agentic AI-powered threat detection
               </p>
-              <Link href="/roi-calculator">
+              <Link href="/why/roi">
                 <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
                   Calculate ROI
                 </Button>

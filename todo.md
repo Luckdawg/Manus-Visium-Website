@@ -110,3 +110,8 @@
 - [x] Add blog post cards with excerpts
 - [x] Add route for blog page
 - [x] Update navigation with Resources link
+
+## Page Reorganization
+- [x] Move ROI Calculator from /roi-calculator to /why/roi
+- [x] Update App.tsx routes
+- [x] Update navigation links
