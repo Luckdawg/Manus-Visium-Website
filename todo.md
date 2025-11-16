@@ -115,3 +115,9 @@
 - [x] Move ROI Calculator from /roi-calculator to /why/roi
 - [x] Update App.tsx routes
 - [x] Update navigation links
+
+## News & Press Page
+- [x] Search for Visium Technologies news stories and press releases
+- [x] Create News & Press page with chronological news links
+- [x] Add route for news page
+- [x] Update navigation
