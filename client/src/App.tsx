@@ -26,6 +26,7 @@ import Contact from "./pages/company/Contact";
 import Partners from "./pages/Partners";
 import Pricing from "./pages/Pricing";
 import ROICalculator from "./pages/ROICalculator";
+import PlatformAdvantages from "./pages/why/PlatformAdvantages";
 import Blog from "./pages/Blog";
 
 function Router() {
@@ -51,6 +52,7 @@ function Router() {
       <Route path={"/partners"} component={Partners} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path="/why/roi" component={ROICalculator} />
+      <Route path="/why/advantages" component={PlatformAdvantages} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/resources"} component={Blog} />
       <Route path={"/404"} component={NotFound} />
