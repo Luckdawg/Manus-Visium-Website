@@ -59,6 +59,9 @@ const Navigation = () => {
                   <Link href="/platform/security">
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Security & Compliance</div>
                   </Link>
+                  <Link href="/platform/architecture">
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Platform Architecture</div>
+                  </Link>
                 </div>
               )}
             </div>
@@ -126,7 +129,20 @@ const Navigation = () => {
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Customer Success Stories</div>
                   </Link>
                   <Link href="/why/roi">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">ROI & Business Value</div>
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">ROI Calculator</div>
+                  </Link>
+                  <Link href="/why/comparison">
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">vs Traditional SIEM</div>
+                  </Link>
+                  <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase mt-2">Case Studies</div>
+                  <Link href="/case-studies/energy-grid">
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Energy Grid</div>
+                  </Link>
+                  <Link href="/case-studies/intelligent-transportation">
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Intelligent Transportation</div>
+                  </Link>
+                  <Link href="/case-studies/public-safety">
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Public Safety</div>
                   </Link>
                 </div>
               )}

@@ -27,6 +27,11 @@ import Partners from "./pages/Partners";
 import Pricing from "./pages/Pricing";
 import ROICalculator from "./pages/ROICalculator";
 import PlatformAdvantages from "./pages/why/PlatformAdvantages";
+import EnergyGrid from "./pages/case-studies/EnergyGrid";
+import IntelligentTransportation from "./pages/case-studies/IntelligentTransportation";
+import PublicSafety from "./pages/case-studies/PublicSafety";
+import Architecture from "./pages/Architecture";
+import Comparison from "./pages/Comparison";
 import Blog from "./pages/Blog";
 
 function Router() {
@@ -53,6 +58,11 @@ function Router() {
       <Route path={"/pricing"} component={Pricing} />
       <Route path="/why/roi" component={ROICalculator} />
       <Route path="/why/advantages" component={PlatformAdvantages} />
+      <Route path="/case-studies/energy-grid" component={EnergyGrid} />
+      <Route path="/case-studies/intelligent-transportation" component={IntelligentTransportation} />
+      <Route path="/case-studies/public-safety" component={PublicSafety} />
+      <Route path="/platform/architecture" component={Architecture} />
+      <Route path="/why/comparison" component={Comparison} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/resources"} component={Blog} />
       <Route path={"/404"} component={NotFound} />
