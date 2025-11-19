@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import Tour, { TourStep } from "@/components/Tour";
+import TourButton from "@/components/TourButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { 
@@ -19,10 +21,51 @@ import {
 } from "lucide-react";
 
 export default function Home() {
+  const tourSteps: TourStep[] = [
+    {
+      target: ".hero-section",
+      title: "Welcome to TruContext!",
+      content: "Discover how our agentic AI-powered platform transforms cybersecurity and intelligence operations with autonomous agents and dual database architecture.",
+      placement: "bottom"
+    },
+    {
+      target: ".trucontext-overview",
+      title: "TruContext Platform Overview",
+      content: "Learn how TruContext fuses cyber, physical, and operational data using MITRE ATT&CK framework and advanced graph analytics to provide unmatched context.",
+      placement: "top"
+    },
+    {
+      target: ".platform-differentiators",
+      title: "Why TruContext?",
+      content: "Explore our six core advantages including MITRE heritage, patented technology, agentic AI, and defense-grade provenance that set us apart.",
+      placement: "top"
+    },
+    {
+      target: ".key-capabilities",
+      title: "Key Capabilities",
+      content: "Discover our powerful features: real-time threat detection, advanced graph analytics, video intelligence, and supply chain security.",
+      placement: "top"
+    },
+    {
+      target: ".industry-solutions",
+      title: "Industry Solutions",
+      content: "See how TruContext serves 8 vertical markets from cybersecurity to smart cities, each with proven ROI and measurable outcomes.",
+      placement: "top"
+    },
+    {
+      target: ".cta-section",
+      title: "Ready to Get Started?",
+      content: "Schedule a consultation to see how TruContext can transform your cybersecurity operations with agentic AI and dual database architecture.",
+      placement: "top"
+    }
+  ];
+
   return (
     <div className="min-h-screen">
+      <Tour steps={tourSteps} tourId="homepage" />
+      <TourButton tourId="homepage" label="Take Tour" />
       {/* Hero Section */}
-      <section className="gradient-hero dot-pattern py-20 lg:py-32">
+      <section className="hero-section gradient-hero dot-pattern py-20 lg:py-32">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -57,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* TruContext Overview */}
-      <section className="py-20 bg-white">
+      <section className="trucontext-overview py-20 bg-white">
         <div className="container">
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">AT A GLANCE</p>
@@ -147,7 +190,7 @@ export default function Home() {
       </section>
 
       {/* Platform Differentiators */}
-      <section className="py-20 gradient-purple-blue">
+      <section className="platform-differentiators py-20 gradient-purple-blue">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why TruContext</h2>
@@ -233,7 +276,7 @@ export default function Home() {
       </section>
 
       {/* Key Capabilities */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white relative overflow-hidden">
+      <section className="key-capabilities py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
@@ -317,7 +360,7 @@ export default function Home() {
       </section>
 
       {/* Industry Solutions */}
-      <section className="py-20 bg-white">
+      <section className="industry-solutions py-20 bg-white">
         <div className="container">
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">USE CASES</p>
@@ -438,7 +481,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="cta-section py-20 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Data Intelligence?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

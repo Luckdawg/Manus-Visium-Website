@@ -1,13 +1,44 @@
 import { Button } from "@/components/ui/button";
+import Tour, { TourStep } from "@/components/Tour";
+import TourButton from "@/components/TourButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Shield, Network, Cloud, Database, Zap, Lock, Brain, Cpu } from "lucide-react";
 
 export default function Platform() {
+  const tourSteps: TourStep[] = [
+    {
+      target: ".platform-hero",
+      title: "TruContext Platform Overview",
+      content: "Explore our agentic AI-powered intelligence platform with dual database architecture that delivers unmatched performance and capabilities.",
+      placement: "bottom"
+    },
+    {
+      target: ".dual-database",
+      title: "Dual Database Architecture",
+      content: "Our patented architecture combines Neo4j graph database for real-time relationships with PostgreSQL for persistent analytics—delivering 4x faster query performance.",
+      placement: "top"
+    },
+    {
+      target: ".agentic-ai",
+      title: "Agentic AI Capabilities",
+      content: "Autonomous AI agents plan and execute complex workflows without human intervention, from icon generation to multi-step threat investigations.",
+      placement: "top"
+    },
+    {
+      target: ".platform-features",
+      title: "Core Platform Features",
+      content: "Discover our comprehensive feature set including real-time processing, advanced analytics, video intelligence, and enterprise security.",
+      placement: "top"
+    }
+  ];
+
   return (
     <div className="min-h-screen">
+      <Tour steps={tourSteps} tourId="platform" />
+      <TourButton tourId="platform" label="Platform Tour" />
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="platform-hero gradient-hero py-20">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -26,7 +57,7 @@ export default function Platform() {
       </section>
 
       {/* Platform Overview */}
-      <section className="py-20 bg-white">
+      <section className="dual-database py-20 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
             <div>
@@ -68,7 +99,7 @@ export default function Platform() {
           </div>
 
           {/* Agentic AI Section */}
-          <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-12 mb-20">
+          <div className="agentic-ai bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-12 mb-20">
             <div className="text-center mb-12">
               <Brain className="h-16 w-16 text-primary mx-auto mb-4" />
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -113,7 +144,7 @@ export default function Platform() {
           </div>
 
           {/* Key Features */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="platform-features grid md:grid-cols-3 gap-8 mb-16">
             <Card className="border-t-4 border-t-primary">
               <CardContent className="p-6">
                 <Database className="h-12 w-12 text-primary mb-4" />
