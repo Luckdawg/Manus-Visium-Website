@@ -55,7 +55,7 @@ export default function Partners() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <Handshake className="h-16 w-16 text-primary mx-auto mb-6" />
@@ -70,9 +70,9 @@ export default function Partners() {
       </section>
 
       {/* Partner Program Overview */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Partner Program</h2>
             <p className="text-xl text-gray-600 mb-8">
               Visium partners with organizations that offer complementary expertise, skills, technology solutions, and services. Our partnership distinguishes your business, builds your network, connects you with new prospects, and gives you incomparable access to one of the most exciting movements in enterprise software.
@@ -124,7 +124,7 @@ export default function Partners() {
       </section>
 
       {/* Our Partners Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Partners</h2>
@@ -133,7 +133,7 @@ export default function Partners() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {technologyPartners.map((partner, index) => (
               <Card key={index} className="hover:shadow-xl transition-all hover:-translate-y-1">
                 <CardContent className="p-6">
@@ -154,7 +154,7 @@ export default function Partners() {
       </section>
 
       {/* We Make Great Products Better Together */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
@@ -183,7 +183,7 @@ export default function Partners() {
       </section>
 
       {/* Partner Benefits */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-purple-50">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-purple-50">
         <div className="container max-w-5xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Partner Benefits</h2>
@@ -281,7 +281,7 @@ export default function Partners() {
       </section>
 
       {/* Purchasing Contract Vehicles */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Purchasing Contract Vehicles</h2>
@@ -316,7 +316,7 @@ export default function Partners() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Partner with Visium?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

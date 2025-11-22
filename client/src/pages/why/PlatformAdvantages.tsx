@@ -172,7 +172,7 @@ export default function PlatformAdvantages() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
@@ -189,9 +189,9 @@ export default function PlatformAdvantages() {
       </section>
 
       {/* Core Advantages Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Six Core Architectural Advantages
             </h2>
@@ -200,7 +200,7 @@ export default function PlatformAdvantages() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {coreAdvantages.map((advantage, index) => (
               <Card key={index} className="group hover:shadow-2xl transition-all border-2 border-transparent hover:border-primary/20">
                 <CardContent className="p-8">
@@ -221,9 +221,9 @@ export default function PlatformAdvantages() {
       </section>
 
       {/* Key Differentiators */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Strategic Differentiators
             </h2>
@@ -232,7 +232,7 @@ export default function PlatformAdvantages() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {keyDifferentiators.map((diff, index) => (
               <Card key={index} className="bg-white hover:shadow-2xl transition-shadow">
                 <CardContent className="p-8 text-center">
@@ -247,9 +247,9 @@ export default function PlatformAdvantages() {
       </section>
 
       {/* Challenge-Solution Matrix */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-6xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Smart City Challenges & TruContext Solutions
             </h2>
@@ -288,9 +288,9 @@ export default function PlatformAdvantages() {
       </section>
 
       {/* Application Domains */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 to-blue-50">
+      <section className="py-12 bg-gradient-to-br from-purple-50 to-blue-50">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Application Domains
             </h2>
@@ -316,7 +316,7 @@ export default function PlatformAdvantages() {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                         <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -355,7 +355,7 @@ export default function PlatformAdvantages() {
       </section>
 
       {/* Value Proposition */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <Card className="bg-gradient-to-br from-primary to-secondary text-white">
             <CardContent className="p-12">
@@ -368,7 +368,7 @@ export default function PlatformAdvantages() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6">
                   <h3 className="text-xl font-bold mb-4">Core Value Proposition</h3>
                   <ul className="space-y-3">
@@ -413,7 +413,7 @@ export default function PlatformAdvantages() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
             Ready to Transform Your Urban Intelligence?

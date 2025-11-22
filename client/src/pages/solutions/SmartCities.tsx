@@ -7,7 +7,7 @@ export default function SmartCities() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -26,7 +26,7 @@ export default function SmartCities() {
       </section>
 
       {/* Challenge Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">The Challenge</h2>
@@ -38,7 +38,7 @@ export default function SmartCities() {
       </section>
 
       {/* Solution Section */}
-      <section className="py-20 gradient-purple-blue">
+      <section className="py-12 gradient-purple-blue">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">The TruContext Solution</h2>
@@ -47,7 +47,7 @@ export default function SmartCities() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <div className="grid lg:grid-cols-2 gap-6 mb-12">
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-8">
                 <Building2 className="h-12 w-12 text-primary mb-4" />
@@ -134,10 +134,10 @@ export default function SmartCities() {
       </section>
 
       {/* Benefits */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Key Benefits</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
                 <Users className="h-16 w-16 text-primary mx-auto mb-4" />
@@ -172,7 +172,7 @@ export default function SmartCities() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Build Your Smart City Platform</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

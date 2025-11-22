@@ -199,7 +199,7 @@ export default function Architecture() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl">
             <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
@@ -228,7 +228,7 @@ export default function Architecture() {
       </section>
 
       {/* Interactive Architecture Diagram */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-6xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-4 text-center">Interactive Architecture Diagram</h2>
           <p className="text-lg text-gray-600 mb-12 text-center max-w-3xl mx-auto">
@@ -296,7 +296,7 @@ export default function Architecture() {
       </section>
 
       {/* Key Architectural Advantages */}
-      <section className="py-20 bg-gradient-to-br from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="container max-w-6xl">
           <h2 className="text-4xl font-bold mb-4 text-center">Architectural Advantages</h2>
           <p className="text-xl opacity-90 mb-12 text-center max-w-3xl mx-auto">
@@ -320,11 +320,11 @@ export default function Architecture() {
       </section>
 
       {/* Technical Specifications */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Technical Specifications</h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             <Card>
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-primary mb-6">Performance Metrics</h3>
@@ -401,7 +401,7 @@ export default function Architecture() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
             Ready to Experience the Architecture?

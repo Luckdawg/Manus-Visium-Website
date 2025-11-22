@@ -196,7 +196,7 @@ export default function Comparison() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl">
             <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
@@ -225,10 +225,10 @@ export default function Comparison() {
       </section>
 
       {/* Key Differentiators */}
-      <section className="py-20 bg-gradient-to-br from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="container max-w-6xl">
           <h2 className="text-4xl font-bold mb-12 text-center">Key Differentiators</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {keyDifferentiators.map((diff, index) => {
               const Icon = diff.icon;
               return (
@@ -248,7 +248,7 @@ export default function Comparison() {
       </section>
 
       {/* Feature Comparison Table */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-6xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Feature-by-Feature Comparison</h2>
           
@@ -321,11 +321,11 @@ export default function Comparison() {
       </section>
 
       {/* Performance Metrics */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Performance Comparison</h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             <Card>
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-primary mb-6">TruContext Performance</h3>
@@ -386,12 +386,12 @@ export default function Comparison() {
       </section>
 
       {/* ROI Comparison */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Return on Investment</h2>
           <Card className="bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-200">
             <CardContent className="p-10">
-              <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
                   <div className="text-5xl font-bold text-primary mb-2">340%</div>
                   <div className="text-lg text-gray-700">Average ROI</div>
@@ -443,7 +443,7 @@ export default function Comparison() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">
             See the Difference for Yourself

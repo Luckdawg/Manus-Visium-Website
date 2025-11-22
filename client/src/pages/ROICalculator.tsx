@@ -108,7 +108,7 @@ export default function ROICalculator() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <TrendingUp className="h-16 w-16 text-primary mx-auto mb-6" />
@@ -123,9 +123,9 @@ export default function ROICalculator() {
       </section>
 
       {/* Calculator Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <div className="grid lg:grid-cols-2 gap-6 mb-12">
             {/* Input Section */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Your Current Metrics</h2>
@@ -475,7 +475,7 @@ export default function ROICalculator() {
       </section>
 
       {/* Methodology */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container max-w-4xl">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Calculation Methodology</h2>
           <Card>

@@ -22,7 +22,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -35,7 +35,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-3 gap-12 mb-12">
             <Card>

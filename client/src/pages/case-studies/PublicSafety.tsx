@@ -50,7 +50,7 @@ export default function PublicSafetyCaseStudy() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl">
             <Badge className="mb-6 bg-purple-500/10 text-purple-700 border-purple-500/20">
@@ -82,7 +82,7 @@ export default function PublicSafetyCaseStudy() {
       </section>
 
       {/* Challenge Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8">The Challenge</h2>
           <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200">
@@ -140,7 +140,7 @@ export default function PublicSafetyCaseStudy() {
       </section>
 
       {/* Solution Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+      <section className="py-12 bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8">The TruContext Solution</h2>
           <div className="space-y-6">
@@ -190,7 +190,7 @@ export default function PublicSafetyCaseStudy() {
       </section>
 
       {/* Implementation Timeline */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8">Implementation Timeline</h2>
           <div className="space-y-6">
@@ -225,7 +225,7 @@ export default function PublicSafetyCaseStudy() {
       </section>
 
       {/* Results Section */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-teal-50">
+      <section className="py-12 bg-gradient-to-br from-green-50 to-teal-50">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Quantified Results</h2>
           <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -256,7 +256,7 @@ export default function PublicSafetyCaseStudy() {
           <Card className="bg-gradient-to-br from-primary to-secondary text-white">
             <CardContent className="p-10">
               <h3 className="text-3xl font-bold mb-6 text-center">Additional Outcomes</h3>
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="text-5xl font-bold mb-2">82/100</div>
                   <div className="text-lg opacity-90">Community Trust Score</div>
@@ -279,7 +279,7 @@ export default function PublicSafetyCaseStudy() {
       </section>
 
       {/* Ethical Transparency Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8">Ethical Transparency & Accountability</h2>
           <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-primary/20">
@@ -287,7 +287,7 @@ export default function PublicSafetyCaseStudy() {
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
                 In the ethically sensitive area of predictive policing, TruContext provides a critical advantage: architectural transparency. Analysis derived from a knowledge graph, unlike some proprietary "black box" AI algorithms, is based on structurally visible, traceable relationships. The graph explicitly maps the nodes (e.g., individuals or locations) and the edges (relationships or past crimes) used in the analysis.
               </p>
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="font-bold text-gray-900 mb-4">Transparency Features:</h3>
                   <ul className="space-y-3">
@@ -337,7 +337,7 @@ export default function PublicSafetyCaseStudy() {
       </section>
 
       {/* Testimonial */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-purple-50">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-purple-50">
         <div className="container max-w-4xl">
           <Card className="bg-white border-2 border-primary/20">
             <CardContent className="p-12">
@@ -361,7 +361,7 @@ export default function PublicSafetyCaseStudy() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">
             Ready to Transform Your Public Safety Operations?

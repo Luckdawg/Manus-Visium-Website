@@ -83,7 +83,7 @@ export default function Blog() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <BookOpen className="h-16 w-16 text-primary mx-auto mb-6" />
@@ -127,9 +127,9 @@ export default function Blog() {
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPosts.map((post, index) => (
               <Card key={index} className="hover:shadow-2xl transition-all hover:-translate-y-2 group overflow-hidden">
                 <CardContent className="p-0">
@@ -172,7 +172,7 @@ export default function Blog() {
       </section>
 
       {/* Newsletter Subscription */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-3xl">
           <Card className="bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20">
             <CardContent className="p-8 text-center">
@@ -199,7 +199,7 @@ export default function Blog() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Cybersecurity?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

@@ -38,7 +38,7 @@ export default function Platform() {
       <Tour steps={tourSteps} tourId="platform" />
       <TourButton tourId="platform" label="Platform Tour" />
       {/* Hero Section */}
-      <section className="platform-hero gradient-hero py-20">
+      <section className="platform-hero gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -57,9 +57,9 @@ export default function Platform() {
       </section>
 
       {/* Platform Overview */}
-      <section className="dual-database py-20 bg-white">
+      <section className="dual-database py-12 bg-white">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
                 Enterprise-Grade Dual Database Architecture
@@ -99,7 +99,7 @@ export default function Platform() {
           </div>
 
           {/* Agentic AI Section */}
-          <div className="agentic-ai bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-12 mb-20">
+          <div className="agentic-ai bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 mb-12">
             <div className="text-center mb-12">
               <Brain className="h-16 w-16 text-primary mx-auto mb-4" />
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -144,7 +144,7 @@ export default function Platform() {
           </div>
 
           {/* Key Features */}
-          <div className="platform-features grid md:grid-cols-3 gap-8 mb-16">
+          <div className="platform-features grid md:grid-cols-3 gap-6 mb-10">
             <Card className="border-t-4 border-t-primary">
               <CardContent className="p-6">
                 <Database className="h-12 w-12 text-primary mb-4" />
@@ -207,7 +207,7 @@ export default function Platform() {
           </div>
 
           {/* MITRE Heritage */}
-          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-12 mb-16">
+          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 mb-10">
             <div className="max-w-3xl mx-auto text-center">
               <Shield className="h-16 w-16 text-primary mx-auto mb-6" />
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -265,7 +265,7 @@ export default function Platform() {
       </section>
 
       {/* Platform Components CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Explore Platform Capabilities</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

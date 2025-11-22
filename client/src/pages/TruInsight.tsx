@@ -7,7 +7,7 @@ export default function TruInsight() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
@@ -29,9 +29,9 @@ export default function TruInsight() {
       </section>
 
       {/* Overview */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Overview</h2>
             <p className="text-xl text-gray-600">
               Tru-InSight™ positions itself as the extension of TruContext's AI capabilities into physical security and video surveillance, converting existing camera infrastructure into intelligent, predictive systems without necessitating costly hardware replacement.
@@ -84,11 +84,11 @@ export default function TruInsight() {
       </section>
 
       {/* Key Capabilities */}
-      <section className="py-20 gradient-purple-blue">
+      <section className="py-12 gradient-purple-blue">
         <div className="container">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Key Capabilities</h2>
           
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-8">
                 <AlertTriangle className="h-12 w-12 text-primary mb-4" />
@@ -141,7 +141,7 @@ export default function TruInsight() {
       </section>
 
       {/* IREX.AI Integration */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <Card className="border-2 border-primary">
@@ -184,7 +184,7 @@ export default function TruInsight() {
       </section>
 
       {/* Industry Applications */}
-      <section className="py-20 gradient-purple-blue">
+      <section className="py-12 gradient-purple-blue">
         <div className="container">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Industry Applications</h2>
           
@@ -265,7 +265,7 @@ export default function TruInsight() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Transform Your Video Surveillance</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

@@ -49,7 +49,7 @@ export default function IntelligentTransportationCaseStudy() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl">
             <Badge className="mb-6 bg-blue-500/10 text-blue-700 border-blue-500/20">
@@ -81,7 +81,7 @@ export default function IntelligentTransportationCaseStudy() {
       </section>
 
       {/* Challenge Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8">The Challenge</h2>
           <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200">
@@ -139,7 +139,7 @@ export default function IntelligentTransportationCaseStudy() {
       </section>
 
       {/* Solution Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50">
+      <section className="py-12 bg-gradient-to-br from-blue-50 to-cyan-50">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8">The TruContext Solution</h2>
           <div className="space-y-6">
@@ -189,7 +189,7 @@ export default function IntelligentTransportationCaseStudy() {
       </section>
 
       {/* Implementation Timeline */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8">Implementation Timeline</h2>
           <div className="space-y-6">
@@ -224,7 +224,7 @@ export default function IntelligentTransportationCaseStudy() {
       </section>
 
       {/* Results Section */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-teal-50">
+      <section className="py-12 bg-gradient-to-br from-green-50 to-teal-50">
         <div className="container max-w-5xl">
           <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Quantified Results</h2>
           <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -255,7 +255,7 @@ export default function IntelligentTransportationCaseStudy() {
           <Card className="bg-gradient-to-br from-primary to-secondary text-white">
             <CardContent className="p-10">
               <h3 className="text-3xl font-bold mb-6 text-center">Additional Outcomes</h3>
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="text-5xl font-bold mb-2">87/100</div>
                   <div className="text-lg opacity-90">Citizen Satisfaction</div>
@@ -278,7 +278,7 @@ export default function IntelligentTransportationCaseStudy() {
       </section>
 
       {/* Testimonial */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-4xl">
           <Card className="bg-gradient-to-br from-gray-50 to-blue-50 border-2 border-primary/20">
             <CardContent className="p-12">
@@ -302,7 +302,7 @@ export default function IntelligentTransportationCaseStudy() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">
             Ready to Transform Your Transportation Network?

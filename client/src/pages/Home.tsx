@@ -65,7 +65,7 @@ export default function Home() {
       <Tour steps={tourSteps} tourId="homepage" />
       <TourButton tourId="homepage" label="Take Tour" />
       {/* Hero Section */}
-      <section className="hero-section gradient-hero dot-pattern py-20 lg:py-32">
+      <section className="hero-section gradient-hero dot-pattern py-12 lg:py-20">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -100,9 +100,9 @@ export default function Home() {
       </section>
 
       {/* TruContext Overview */}
-      <section className="trucontext-overview py-20 bg-white">
+      <section className="trucontext-overview py-12 bg-white">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">AT A GLANCE</p>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Gain Actionable Business Intelligence with <span className="text-secondary">TruContext™</span>
@@ -112,7 +112,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
             <Card className="border-l-4 border-l-primary">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-3">
@@ -190,9 +190,9 @@ export default function Home() {
       </section>
 
       {/* Platform Differentiators */}
-      <section className="platform-differentiators py-20 gradient-purple-blue">
+      <section className="platform-differentiators py-12 gradient-purple-blue">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why TruContext</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               The only AI-powered platform that shows you what happened, why it matters, what's connected, and what's likely to happen next
@@ -276,14 +276,14 @@ export default function Home() {
       </section>
 
       {/* Key Capabilities */}
-      <section className="key-capabilities py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white relative overflow-hidden">
+      <section className="key-capabilities py-12 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
           }}></div>
         </div>
         <div className="container relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-4">TruContext Capabilities</h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               TruContext gives analysts the power to analyze threats in real time to quickly isolate incidents, accelerate root cause analysis, and perform advanced modeling
@@ -339,9 +339,9 @@ export default function Home() {
       </section>
 
       {/* MITRE ATT&CK */}
-      <section className="py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 text-white">
+      <section className="py-12 bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 text-white">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <img 
               src="/mitre_attack_logo.webp" 
               alt="MITRE ATT&CK" 
@@ -360,9 +360,9 @@ export default function Home() {
       </section>
 
       {/* Industry Solutions */}
-      <section className="industry-solutions py-20 bg-white">
+      <section className="industry-solutions py-12 bg-white">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">USE CASES</p>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Making Sense of Complex Connected Data
@@ -481,7 +481,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="cta-section py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Data Intelligence?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

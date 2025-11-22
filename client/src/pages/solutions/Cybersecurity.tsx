@@ -26,9 +26,9 @@ export default function Cybersecurity() {
       </section>
 
       {/* Challenge Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className="max-w-3xl mx-auto text-center mb-8">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">The Challenge</h2>
             <p className="text-xl text-gray-600">
               Security teams are overwhelmed by alert fatigue, struggling to correlate threats across disparate tools, and spending days investigating incidents that should take minutes. Traditional SIEM platforms show you what happened, but lack the context to understand why it matters or what's likely to happen next.
@@ -62,16 +62,16 @@ export default function Cybersecurity() {
       </section>
 
       {/* Solution Section */}
-      <section className="py-20 gradient-purple-blue">
+      <section className="py-12 gradient-purple-blue">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className="max-w-3xl mx-auto text-center mb-8">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">The TruContext Solution</h2>
             <p className="text-xl text-gray-600">
               TruContext's agentic AI agents autonomously correlate security data from SIEM, EDR, firewalls, and other feeds using our dual database architecture to visualize and predict attack chains in real-time, utilizing the MITRE ATT&CK framework for threat-informed defense.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <div className="grid lg:grid-cols-2 gap-6 mb-12">
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-8">
                 <Shield className="h-12 w-12 text-primary mb-4" />
@@ -158,10 +158,10 @@ export default function Cybersecurity() {
       </section>
 
       {/* ROI Metrics */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Proven ROI & Metrics</h2>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
             <Card className="text-center border-t-4 border-t-primary">
               <CardContent className="p-8">
                 <div className="text-6xl font-bold text-primary mb-2">75%</div>
@@ -202,7 +202,7 @@ export default function Cybersecurity() {
       </section>
 
       {/* Customer Story */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+      <section className="py-12 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <Shield className="h-16 w-16 text-primary mx-auto mb-6" />
@@ -219,7 +219,7 @@ export default function Cybersecurity() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Security Operations?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

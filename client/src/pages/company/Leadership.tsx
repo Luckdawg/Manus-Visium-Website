@@ -40,7 +40,7 @@ export default function Leadership() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <Users className="h-16 w-16 text-primary mx-auto mb-6" />
@@ -55,13 +55,13 @@ export default function Leadership() {
       </section>
 
       {/* Leadership Team */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-6xl">
           <div className="space-y-16">
             {leaders.map((leader, index) => (
               <Card key={index} className="overflow-hidden border-2 border-gray-100 hover:border-primary/30 transition-all">
                 <CardContent className="p-0">
-                  <div className={`grid lg:grid-cols-3 gap-8 ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
+                  <div className={`grid lg:grid-cols-3 gap-6 ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
                     {/* Image */}
                     <div className={`${index % 2 === 1 ? 'lg:col-start-3' : ''} bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center p-12`}>
                       <div className="text-center">
@@ -100,7 +100,7 @@ export default function Leadership() {
       </section>
 
       {/* Company Values */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container max-w-5xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Leadership Philosophy</h2>
@@ -109,7 +109,7 @@ export default function Leadership() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             <Card className="text-center hover:shadow-xl transition-shadow">
               <CardContent className="p-8">
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -150,7 +150,7 @@ export default function Leadership() {
       </section>
 
       {/* Join Our Team CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Join Our Growing Team</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

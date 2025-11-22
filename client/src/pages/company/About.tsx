@@ -6,7 +6,7 @@ import { Shield, Users, TrendingUp } from "lucide-react";
 export default function About() {
   return (
     <div className="min-h-screen">
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -19,7 +19,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
@@ -31,7 +31,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
+          <div className="grid md:grid-cols-3 gap-6 mt-16">
             <Card className="text-center">
               <CardContent className="p-8">
                 <Shield className="h-16 w-16 text-primary mx-auto mb-4" />
@@ -65,7 +65,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Join Our Team</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

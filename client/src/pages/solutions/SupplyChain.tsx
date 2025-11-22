@@ -6,7 +6,7 @@ import { CheckCircle2 } from "lucide-react";
 export default function SupplyChain() {
   return (
     <div className="min-h-screen">
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -24,7 +24,7 @@ export default function SupplyChain() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Comprehensive Solution</h2>
@@ -58,7 +58,7 @@ export default function SupplyChain() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

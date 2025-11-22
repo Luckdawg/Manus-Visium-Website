@@ -7,7 +7,7 @@ export default function AICapabilities() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -26,16 +26,16 @@ export default function AICapabilities() {
       </section>
 
       {/* AI at the Core */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Agentic AI: The Next Evolution</h2>
             <p className="text-xl text-gray-600">
               Unlike platforms where AI is merely an add-on feature, TruContext features autonomous AI agents embedded in every layer of analysis and visualization. These intelligent agents work independently to analyze threats, identify patterns, and execute response workflows automatically. This agentic AI approach enables contextual differentiation that moves organizations from reactive alert management to proactive threat prevention, positioning Visium Analytics as a leader in AI-driven cybersecurity solutions.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-10">
             <div>
               <h3 className="text-3xl font-bold text-gray-900 mb-6">
                 From Reactive to Predictive
@@ -78,7 +78,7 @@ export default function AICapabilities() {
       </section>
 
       {/* Core AI Capabilities */}
-      <section className="py-20 gradient-purple-blue">
+      <section className="py-12 gradient-purple-blue">
         <div className="container">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Core AI Capabilities</h2>
           
@@ -234,10 +234,10 @@ export default function AICapabilities() {
       </section>
 
       {/* Key Metrics */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Proven Results</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             <Card className="text-center border-t-4 border-t-primary">
               <CardContent className="p-8">
                 <div className="text-5xl font-bold text-primary mb-2">75%</div>
@@ -266,7 +266,7 @@ export default function AICapabilities() {
       </section>
 
       {/* MITRE ATT&CK Integration */}
-      <section className="py-20 bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 text-white">
+      <section className="py-12 bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 text-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <img 
@@ -288,7 +288,7 @@ export default function AICapabilities() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Experience AI-Powered Intelligence</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

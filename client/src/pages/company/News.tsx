@@ -98,7 +98,7 @@ export default function News() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <Newspaper className="h-16 w-16 text-primary mx-auto mb-6" />
@@ -131,7 +131,7 @@ export default function News() {
       </section>
 
       {/* News Grid */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container max-w-5xl">
           <div className="space-y-6">
             {filteredNews.map((story, index) => (
@@ -187,7 +187,7 @@ export default function News() {
       </section>
 
       {/* Subscribe Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-3xl">
           <Card className="bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20">
             <CardContent className="p-8 text-center">
@@ -217,7 +217,7 @@ export default function News() {
       </section>
 
       {/* Additional Resources */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container max-w-5xl">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Additional Resources</h2>
           <div className="grid md:grid-cols-3 gap-6">

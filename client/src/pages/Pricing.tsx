@@ -67,7 +67,7 @@ export default function Pricing() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
+      <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <Calculator className="h-16 w-16 text-primary mx-auto mb-6" />
@@ -82,7 +82,7 @@ export default function Pricing() {
       </section>
 
       {/* Pricing Calculator */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Calculate Your Pricing</h2>
@@ -284,7 +284,7 @@ export default function Pricing() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container max-w-4xl">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Pricing FAQs</h2>
           <div className="space-y-6">
@@ -328,7 +328,7 @@ export default function Pricing() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
