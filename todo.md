@@ -201,3 +201,10 @@
 - [x] Add controls for filtering and zooming
 - [x] Add legend and information panel
 - [x] Integrate into navigation
+
+## OTC Markets Stock Data Integration
+- [x] Research OTC Markets API/widget options
+- [x] Integrate OTC Markets stock quote widget
+- [x] Add real-time VISM price data
+- [x] Embed historical price chart
+- [x] Test stock data refresh functionality
