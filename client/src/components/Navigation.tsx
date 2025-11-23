@@ -174,6 +174,9 @@ const Navigation = () => {
                   <Link href="/blog">
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Blog & Insights</div>
                   </Link>
+                  <Link href="/graph-demo">
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer border-t border-gray-100 font-semibold text-primary">🎯 Interactive Graph Demo</div>
+                  </Link>
                 </div>
               )}
             </div>

@@ -191,3 +191,13 @@
 - [x] Add key financial metrics
 - [x] Add investor resources section
 - [x] Add route and navigation link
+
+## Interactive Graph Visualization Demo
+- [x] Create interactive graph visualization component
+- [x] Add sample threat/asset/relationship data
+- [x] Implement node exploration and selection
+- [x] Add relationship visualization with labels
+- [x] Create demo page with graph visualization
+- [x] Add controls for filtering and zooming
+- [x] Add legend and information panel
+- [x] Integrate into navigation
