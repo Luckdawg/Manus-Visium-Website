@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
+import CountUp from "@/components/CountUp";
 import { Building2, Video, AlertTriangle, TrendingUp, Users, CheckCircle2 } from "lucide-react";
 
 export default function SmartCities() {

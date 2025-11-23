@@ -15,6 +15,7 @@ import {
   Users,
   Navigation
 } from "lucide-react";
+import CountUp from "@/components/CountUp";
 
 export default function IntelligentTransportationCaseStudy() {
   const metrics = [
@@ -257,12 +258,12 @@ export default function IntelligentTransportationCaseStudy() {
               <h3 className="text-3xl font-bold mb-6 text-center">Additional Outcomes</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-5xl font-bold mb-2">87/100</div>
+                  <div className="text-5xl font-bold mb-2"><CountUp end={87} />/100</div>
                   <div className="text-lg opacity-90">Citizen Satisfaction</div>
                   <div className="text-sm opacity-75">(up from 61/100)</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-5xl font-bold mb-2">92%</div>
+                  <div className="text-5xl font-bold mb-2"><CountUp end={92} suffix="%" /></div>
                   <div className="text-lg opacity-90">Incident Detection Accuracy</div>
                   <div className="text-sm opacity-75">(AI-powered automation)</div>
                 </div>

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Shield, AlertTriangle, Network, TrendingDown, Clock, CheckCircle2 } from "lucide-react";
+import CountUp from "@/components/CountUp";
 
 export default function Cybersecurity() {
   return (
@@ -164,7 +165,7 @@ export default function Cybersecurity() {
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <Card className="text-center border-t-4 border-t-primary">
               <CardContent className="p-8">
-                <div className="text-6xl font-bold text-primary mb-2">75%</div>
+                <div className="text-6xl font-bold text-primary mb-2"><CountUp end={75} suffix="%" /></div>
                 <p className="text-xl font-semibold text-gray-900 mb-2">Reduction in MTTD</p>
                 <p className="text-gray-600">Mean Time to Detect threats cut by three-quarters</p>
               </CardContent>
@@ -172,7 +173,7 @@ export default function Cybersecurity() {
 
             <Card className="text-center border-t-4 border-t-secondary">
               <CardContent className="p-8">
-                <div className="text-6xl font-bold text-secondary mb-2">60%</div>
+                <div className="text-6xl font-bold text-secondary mb-2"><CountUp end={60} suffix="%" /></div>
                 <p className="text-xl font-semibold text-gray-900 mb-2">Faster Incident Response</p>
                 <p className="text-gray-600">Reduce investigation and response time by more than half</p>
               </CardContent>
@@ -180,7 +181,7 @@ export default function Cybersecurity() {
 
             <Card className="text-center border-t-4 border-t-primary">
               <CardContent className="p-8">
-                <div className="text-6xl font-bold text-primary mb-2">90%</div>
+                <div className="text-6xl font-bold text-primary mb-2"><CountUp end={90} suffix="%" /></div>
                 <p className="text-xl font-semibold text-gray-900 mb-2">Reduction in False Positives</p>
                 <p className="text-gray-600">Eliminate alert fatigue and focus on real threats</p>
               </CardContent>

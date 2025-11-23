@@ -174,3 +174,12 @@
 - [x] Adjust hero section padding
 - [x] Optimize company pages spacing
 - [x] Review and adjust container max-widths
+
+## Animated Statistics Counter
+- [x] Create reusable CountUp component with scroll trigger
+- [x] Add intersection observer for scroll detection
+- [x] Implement smooth count-up animation
+- [x] Integrate counters on homepage metrics
+- [x] Add counters to solution pages (75% MTTD, 90% false positives)
+- [x] Add counters to ROI calculator results
+- [x] Add counters to case study pages

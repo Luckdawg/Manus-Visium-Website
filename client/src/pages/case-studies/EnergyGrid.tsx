@@ -15,6 +15,7 @@ import {
   MapPin,
   Users
 } from "lucide-react";
+import CountUp from "@/components/CountUp";
 
 export default function EnergyGridCaseStudy() {
   const metrics = [
@@ -257,17 +258,17 @@ export default function EnergyGridCaseStudy() {
               <h3 className="text-3xl font-bold mb-6 text-center">Additional Outcomes</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-5xl font-bold mb-2">94/100</div>
+                  <div className="text-5xl font-bold mb-2"><CountUp end={94} />/100</div>
                   <div className="text-lg opacity-90">Customer Satisfaction</div>
                   <div className="text-sm opacity-75">(up from 68/100)</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-5xl font-bold mb-2">99.97%</div>
+                  <div className="text-5xl font-bold mb-2"><CountUp end={99.97} decimals={2} suffix="%" /></div>
                   <div className="text-lg opacity-90">Grid Uptime</div>
                   <div className="text-sm opacity-75">(up from 99.82%)</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-5xl font-bold mb-2">100%</div>
+                  <div className="text-5xl font-bold mb-2"><CountUp end={100} suffix="%" /></div>
                   <div className="text-lg opacity-90">NERC CIP Compliance</div>
                   <div className="text-sm opacity-75">(full regulatory adherence)</div>
                 </div>
