@@ -183,3 +183,11 @@
 - [x] Add counters to solution pages (75% MTTD, 90% false positives)
 - [x] Add counters to ROI calculator results
 - [x] Add counters to case study pages
+
+## Investor Relations Page
+- [x] Create Investor Relations page
+- [x] Add real-time stock price for VISM (OTCQB)
+- [x] Integrate stock price chart/graph
+- [x] Add key financial metrics
+- [x] Add investor resources section
+- [x] Add route and navigation link

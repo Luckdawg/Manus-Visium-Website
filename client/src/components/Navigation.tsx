@@ -204,6 +204,9 @@ const Navigation = () => {
                   <Link href="/company/news">
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">News & Press</div>
                   </Link>
+                  <Link href="/company/investors">
+                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Investor Relations</div>
+                  </Link>
                   <Link href="/company/contact">
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Contact</div>
                   </Link>
