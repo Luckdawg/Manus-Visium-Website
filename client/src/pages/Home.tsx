@@ -65,11 +65,11 @@ export default function Home() {
       <Tour steps={tourSteps} tourId="homepage" />
       <TourButton tourId="homepage" label="Take Tour" />
       {/* Hero Section */}
-      <section className="hero-section gradient-hero dot-pattern py-12 lg:py-20">
+      <section className="hero-section gradient-hero dot-pattern py-12 lg:py-12 md:py-20">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               Agentic AI-Powered <span className="text-primary">Intelligence Platform</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
@@ -104,7 +104,7 @@ export default function Home() {
         <div className="container">
           <div className="text-center mb-8">
             <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">AT A GLANCE</p>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
               Gain Actionable Business Intelligence with <span className="text-secondary">TruContext™</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -112,7 +112,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="grid md:grid-cols-1 md:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             <Card className="border-l-4 border-l-primary">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-3">
@@ -193,13 +193,13 @@ export default function Home() {
       <section className="platform-differentiators py-12 gradient-purple-blue">
         <div className="container">
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why TruContext</h2>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Why TruContext</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               The only AI-powered platform that shows you what happened, why it matters, what's connected, and what's likely to happen next
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
@@ -284,13 +284,13 @@ export default function Home() {
         </div>
         <div className="container relative z-10">
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold mb-4">TruContext Capabilities</h2>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">TruContext Capabilities</h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               TruContext gives analysts the power to analyze threats in real time to quickly isolate incidents, accelerate root cause analysis, and perform advanced modeling
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid md:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all">
               <CardContent className="p-6 text-center">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -364,7 +364,7 @@ export default function Home() {
         <div className="container">
           <div className="text-center mb-10">
             <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">USE CASES</p>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
               Making Sense of Complex Connected Data
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto">
@@ -372,7 +372,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link href="/solutions/cybersecurity">
               <Card className="hover:shadow-xl transition-all cursor-pointer h-full border-2 border-transparent hover:border-primary">
                 <CardContent className="p-6 text-center">
@@ -483,7 +483,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="cta-section py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Data Intelligence?</h2>
+          <h2 className="text-2xl md:text-4xl font-bold mb-6">Ready to Transform Your Data Intelligence?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             See how TruContext can help your organization gain actionable insights within 30 days
           </p>

@@ -41,7 +41,7 @@ export default function Platform() {
       <section className="platform-hero gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
               The TruContext <span className="text-primary">Platform</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
@@ -59,9 +59,9 @@ export default function Platform() {
       {/* Platform Overview */}
       <section className="dual-database py-12 bg-white">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+          <div className="grid lg:grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-6">
                 Enterprise-Grade Dual Database Architecture
               </h2>
               <p className="text-lg text-gray-600 mb-6">
@@ -70,7 +70,7 @@ export default function Platform() {
               <p className="text-lg text-gray-600 mb-6">
                 Enhanced from MITRE Corporation's CyGraph platform, originally developed for US Army Cyber Command, TruContext brings defense-grade intelligence capabilities to enterprise organizations with automatic synchronization and zero data loss.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-center space-x-2">
                   <Database className="h-6 w-6 text-primary" />
                   <span className="font-semibold">Neo4j Graph DB</span>
@@ -102,7 +102,7 @@ export default function Platform() {
           <div className="agentic-ai bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 mb-12">
             <div className="text-center mb-12">
               <Brain className="h-16 w-16 text-primary mx-auto mb-4" />
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
                 Agentic AI at the Core
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -110,7 +110,7 @@ export default function Platform() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-1 md:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Card className="border-2 border-primary/20">
                 <CardContent className="p-6">
                   <Cpu className="h-10 w-10 text-primary mb-4" />
@@ -144,7 +144,7 @@ export default function Platform() {
           </div>
 
           {/* Key Features */}
-          <div className="platform-features grid md:grid-cols-3 gap-6 mb-10">
+          <div className="platform-features grid md:grid-cols-1 md:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
             <Card className="border-t-4 border-t-primary">
               <CardContent className="p-6">
                 <Database className="h-12 w-12 text-primary mb-4" />
@@ -229,7 +229,7 @@ export default function Platform() {
           {/* Deployment Options */}
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Flexible Deployment Options</h2>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-1 md:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Card className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
                   <Cloud className="h-12 w-12 text-primary mx-auto mb-4" />
@@ -267,7 +267,7 @@ export default function Platform() {
       {/* Platform Components CTA */}
       <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
-          <h2 className="text-4xl font-bold mb-6">Explore Platform Capabilities</h2>
+          <h2 className="text-2xl md:text-4xl font-bold mb-6">Explore Platform Capabilities</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Discover how TruContext's agentic AI-powered features and video intelligence transform your operations
           </p>

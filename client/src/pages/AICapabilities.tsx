@@ -10,7 +10,7 @@ export default function AICapabilities() {
       <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
               Agentic AI: <span className="text-primary">Autonomous Intelligence</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
@@ -29,13 +29,13 @@ export default function AICapabilities() {
       <section className="py-12 bg-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Agentic AI: The Next Evolution</h2>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-6">Agentic AI: The Next Evolution</h2>
             <p className="text-xl text-gray-600">
               Unlike platforms where AI is merely an add-on feature, TruContext features autonomous AI agents embedded in every layer of analysis and visualization. These intelligent agents work independently to analyze threats, identify patterns, and execute response workflows automatically. This agentic AI approach enables contextual differentiation that moves organizations from reactive alert management to proactive threat prevention, positioning Visium Analytics as a leader in AI-driven cybersecurity solutions.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-10">
+          <div className="grid lg:grid-cols-1 md:grid-cols-2 gap-12 items-center mb-10">
             <div>
               <h3 className="text-3xl font-bold text-gray-900 mb-6">
                 From Reactive to Predictive
@@ -80,7 +80,7 @@ export default function AICapabilities() {
       {/* Core AI Capabilities */}
       <section className="py-12 gradient-purple-blue">
         <div className="container">
-          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Core AI Capabilities</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Core AI Capabilities</h2>
           
           <div className="space-y-8">
             {/* Machine Learning & Pattern Recognition */}
@@ -236,11 +236,11 @@ export default function AICapabilities() {
       {/* Key Metrics */}
       <section className="py-12 bg-white">
         <div className="container">
-          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Proven Results</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Proven Results</h2>
+          <div className="grid md:grid-cols-1 md:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="text-center border-t-4 border-t-primary">
               <CardContent className="p-8">
-                <div className="text-5xl font-bold text-primary mb-2">75%</div>
+                <div className="text-3xl md:text-5xl font-bold text-primary mb-2">75%</div>
                 <p className="text-lg font-semibold text-gray-900 mb-2">Reduction in MTTD</p>
                 <p className="text-gray-600">Mean Time to Detect threats dramatically reduced</p>
               </CardContent>
@@ -248,7 +248,7 @@ export default function AICapabilities() {
 
             <Card className="text-center border-t-4 border-t-secondary">
               <CardContent className="p-8">
-                <div className="text-5xl font-bold text-secondary mb-2">60%</div>
+                <div className="text-3xl md:text-5xl font-bold text-secondary mb-2">60%</div>
                 <p className="text-lg font-semibold text-gray-900 mb-2">Faster Response</p>
                 <p className="text-gray-600">Incident response time cut by more than half</p>
               </CardContent>
@@ -256,7 +256,7 @@ export default function AICapabilities() {
 
             <Card className="text-center border-t-4 border-t-primary">
               <CardContent className="p-8">
-                <div className="text-5xl font-bold text-primary mb-2">90%</div>
+                <div className="text-3xl md:text-5xl font-bold text-primary mb-2">90%</div>
                 <p className="text-lg font-semibold text-gray-900 mb-2">Fewer False Positives</p>
                 <p className="text-gray-600">Reduction in alert fatigue and wasted investigation time</p>
               </CardContent>
@@ -290,7 +290,7 @@ export default function AICapabilities() {
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
-          <h2 className="text-4xl font-bold mb-6">Experience AI-Powered Intelligence</h2>
+          <h2 className="text-2xl md:text-4xl font-bold mb-6">Experience AI-Powered Intelligence</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             See how TruContext's AI capabilities can transform your security operations
           </p>

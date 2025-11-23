@@ -71,7 +71,7 @@ export default function Pricing() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <Calculator className="h-16 w-16 text-primary mx-auto mb-6" />
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
               Transparent <span className="text-primary">Pricing</span>
             </h1>
             <p className="text-xl text-gray-600">
@@ -85,7 +85,7 @@ export default function Pricing() {
       <section className="py-12 bg-white">
         <div className="container max-w-5xl">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Calculate Your Pricing</h2>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Calculate Your Pricing</h2>
             <p className="text-xl text-gray-600">
               Adjust the slider or enter your node count to see your custom pricing
             </p>
@@ -120,7 +120,7 @@ export default function Pricing() {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="grid md:grid-cols-1 md:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-6 text-center">
                   <DollarSign className="h-8 w-8 text-primary mx-auto mb-2" />
                   <div className="text-sm text-gray-600 mb-1">Effective Price Per Node</div>
@@ -155,7 +155,7 @@ export default function Pricing() {
 
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
                 <h3 className="font-semibold text-gray-900 mb-3">Volume Discount Tiers Applied:</h3>
-                <div className="grid md:grid-cols-2 gap-3 text-sm">
+                <div className="grid md:grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
                     <span>First 10,000 nodes: <strong>$1.00/node</strong></span>
@@ -199,7 +199,7 @@ export default function Pricing() {
           {/* What's Included */}
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What's Included</h2>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-1 md:grid-cols-2 gap-6">
               <Card>
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Platform Features</h3>
@@ -330,7 +330,7 @@ export default function Pricing() {
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
+          <h2 className="text-2xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Schedule a consultation to discuss your specific needs and get a custom quote
           </p>

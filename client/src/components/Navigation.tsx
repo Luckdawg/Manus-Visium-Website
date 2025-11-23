@@ -22,6 +22,15 @@ const Navigation = () => {
             </div>
           </Link>
 
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             <Link href="/">
@@ -238,37 +247,30 @@ const Navigation = () => {
               </Button>
             </Link>
           </div>
-
-          {/* Mobile menu button */}
-          <button
-            className="lg:hidden p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-2">
-              <Link href="/">
-                <Button variant="ghost" className="w-full justify-start">Home</Button>
+          <div className="lg:hidden py-4 border-t border-gray-200 max-h-[80vh] overflow-y-auto">
+            <div className="flex flex-col space-y-1">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="ghost" className="w-full justify-start text-base py-3">Home</Button>
               </Link>
               
               <div>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between"
+                  className="w-full justify-between text-base py-3"
                   onClick={() => toggleDropdown("platform-mobile")}
                 >
-                  Platform <ChevronDown className="h-4 w-4" />
+                  Platform <ChevronDown className={`h-4 w-4 transition-transform ${openDropdown === "platform-mobile" ? "rotate-180" : ""}`} />
                 </Button>
                 {openDropdown === "platform-mobile" && (
-                  <div className="pl-4 mt-2 space-y-2">
-                    <Link href="/platform"><div className="py-2">Overview</div></Link>
-                    <Link href="/platform/ai-capabilities"><div className="py-2">AI Capabilities</div></Link>
-                    <Link href="/platform/tru-insight"><div className="py-2">Tru-InSight™</div></Link>
+                  <div className="pl-4 mt-1 space-y-1 bg-gray-50 rounded-lg py-2">
+                    <Link href="/platform" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Overview</div></Link>
+                    <Link href="/platform/ai-capabilities" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">AI Capabilities</div></Link>
+                    <Link href="/platform/tru-insight" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Tru-InSight™</div></Link>
+                    <Link href="/platform/architecture" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Architecture</div></Link>
                   </div>
                 )}
               </div>
@@ -276,22 +278,84 @@ const Navigation = () => {
               <div>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between"
+                  className="w-full justify-between text-base py-3"
                   onClick={() => toggleDropdown("solutions-mobile")}
                 >
-                  Solutions <ChevronDown className="h-4 w-4" />
+                  Solutions <ChevronDown className={`h-4 w-4 transition-transform ${openDropdown === "solutions-mobile" ? "rotate-180" : ""}`} />
                 </Button>
                 {openDropdown === "solutions-mobile" && (
-                  <div className="pl-4 mt-2 space-y-2">
-                    <Link href="/solutions/cybersecurity"><div className="py-2">Cybersecurity</div></Link>
-                    <Link href="/solutions/smart-cities"><div className="py-2">Smart Cities</div></Link>
-                    <Link href="/solutions/healthcare"><div className="py-2">Healthcare</div></Link>
+                  <div className="pl-4 mt-1 space-y-1 bg-gray-50 rounded-lg py-2">
+                    <Link href="/solutions/cybersecurity" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Cybersecurity</div></Link>
+                    <Link href="/solutions/smart-cities" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Smart Cities</div></Link>
+                    <Link href="/solutions/critical-infrastructure" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Critical Infrastructure</div></Link>
+                    <Link href="/solutions/healthcare" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Healthcare</div></Link>
+                    <Link href="/solutions/financial-services" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Financial Services</div></Link>
                   </div>
                 )}
               </div>
 
-              <Link href="/demo">
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white mt-4">
+              <div>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-between text-base py-3"
+                  onClick={() => toggleDropdown("why-mobile")}
+                >
+                  Why TruContext <ChevronDown className={`h-4 w-4 transition-transform ${openDropdown === "why-mobile" ? "rotate-180" : ""}`} />
+                </Button>
+                {openDropdown === "why-mobile" && (
+                  <div className="pl-4 mt-1 space-y-1 bg-gray-50 rounded-lg py-2">
+                    <Link href="/why/advantages" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Platform Advantages</div></Link>
+                    <Link href="/why/roi" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">ROI Calculator</div></Link>
+                    <Link href="/comparison" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Competitive Comparison</div></Link>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-between text-base py-3"
+                  onClick={() => toggleDropdown("resources-mobile")}
+                >
+                  Resources <ChevronDown className={`h-4 w-4 transition-transform ${openDropdown === "resources-mobile" ? "rotate-180" : ""}`} />
+                </Button>
+                {openDropdown === "resources-mobile" && (
+                  <div className="pl-4 mt-1 space-y-1 bg-gray-50 rounded-lg py-2">
+                    <Link href="/blog" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Blog & Insights</div></Link>
+                    <Link href="/graph-demo" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Interactive Demo</div></Link>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-between text-base py-3"
+                  onClick={() => toggleDropdown("company-mobile")}
+                >
+                  Company <ChevronDown className={`h-4 w-4 transition-transform ${openDropdown === "company-mobile" ? "rotate-180" : ""}`} />
+                </Button>
+                {openDropdown === "company-mobile" && (
+                  <div className="pl-4 mt-1 space-y-1 bg-gray-50 rounded-lg py-2">
+                    <Link href="/company/about" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">About Visium</div></Link>
+                    <Link href="/company/leadership" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Leadership Team</div></Link>
+                    <Link href="/company/news" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">News & Press</div></Link>
+                    <Link href="/company/investors" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Investor Relations</div></Link>
+                    <Link href="/company/contact" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Contact</div></Link>
+                  </div>
+                )}
+              </div>
+
+              <Link href="/partners" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="ghost" className="w-full justify-start text-base py-3">Partners</Button>
+              </Link>
+
+              <Link href="/pricing" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="ghost" className="w-full justify-start text-base py-3">Pricing</Button>
+              </Link>
+
+              <Link href="/demo" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white mt-4 py-3 text-base">
                   Schedule a Demo
                 </Button>
               </Link>

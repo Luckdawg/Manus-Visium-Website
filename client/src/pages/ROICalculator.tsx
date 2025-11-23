@@ -112,7 +112,7 @@ export default function ROICalculator() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <TrendingUp className="h-16 w-16 text-primary mx-auto mb-6" />
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
               ROI <span className="text-primary">Calculator</span>
             </h1>
             <p className="text-xl text-gray-600">
@@ -125,7 +125,7 @@ export default function ROICalculator() {
       {/* Calculator Section */}
       <section className="py-12 bg-white">
         <div className="container max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-6 mb-12">
+          <div className="grid lg:grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {/* Input Section */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Your Current Metrics</h2>
@@ -284,7 +284,7 @@ export default function ROICalculator() {
                 <CardContent className="p-8 text-center">
                   <DollarSign className="h-12 w-12 mx-auto mb-3" />
                   <div className="text-sm opacity-90 mb-2">Total Annual Savings</div>
-                  <div className="text-5xl font-bold mb-2">
+                  <div className="text-3xl md:text-5xl font-bold mb-2">
                     {formatCurrency(calculations.savings.total)}
                   </div>
                   <div className="text-sm opacity-90">
