@@ -135,9 +135,17 @@ export default function InvestorRelations() {
                     <div className="text-2xl font-bold text-gray-900">VISM</div>
                     <div className="text-xs text-gray-500">OTCQB</div>
                   </div>
-                  <Badge variant={stockData.change >= 0 ? "default" : "destructive"} className="text-sm">
-                    {stockData.loading ? "Loading..." : "Live"}
-                  </Badge>
+                  <div className="flex flex-col items-end gap-2">
+                    <Badge variant={stockData.change >= 0 ? "default" : "destructive"} className="text-sm">
+                      {stockData.loading ? "Loading..." : "Live"}
+                    </Badge>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href="https://www.google.com/finance/quote/VISM:OTCMKTS" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs">
+                        <ExternalLink className="h-3 w-3" />
+                        Google Finance
+                      </a>
+                    </Button>
+                  </div>
                 </div>
 
                 {stockData.loading ? (
@@ -231,7 +239,7 @@ export default function InvestorRelations() {
                 />
               </div>
               <div className="mt-4 text-center text-sm text-gray-500">
-                Live data provided by <a href="https://www.otcmarkets.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">OTC Markets</a>
+                Stock data auto-refreshes every 15 minutes • <a href="https://www.google.com/finance/quote/VISM:OTCMKTS" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Verify on Google Finance</a> • <a href="https://www.otcmarkets.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">OTC Markets</a>
               </div>
             </CardContent>
           </Card>

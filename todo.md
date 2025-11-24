@@ -258,3 +258,9 @@
 - [x] Add Visium Technologies logo to About page
 - [x] Add subsidiary explanation: "Visium Analytics is a subsidiary of Visium Technologies"
 - [x] Test all updates in browser
+
+## Investor Relations Stock Data Refresh Fix (Nov 24, 2025)
+- [x] Investigate why stock data is not refreshing from Google Finance
+- [x] Implement proper Google Finance data fetching with CORS proxy
+- [x] Verify 15-minute auto-refresh functionality
+- [x] Test data updates and display
