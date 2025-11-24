@@ -27,31 +27,58 @@ export default function InvestorRelations() {
   });
 
   useEffect(() => {
-    // Fetch real-time stock data for VISM from OTC Markets
+    // Fetch real-time stock data for VISM from Yahoo Finance
     const fetchStockData = async () => {
       try {
-        // Using real OTC Markets data for VISM
-        setTimeout(() => {
-          setStockData({
-            price: 0.005,
-            change: 0.0001,
-            changePercent: 2.04,
-            volume: 140028,
-            marketCap: 1500000, // Estimated based on outstanding shares
-            high52Week: 0.0461,
-            low52Week: 0.0011,
-            loading: false
-          });
-        }, 1000);
+        // Using Yahoo Finance quote API via CORS proxy
+        const response = await fetch(
+          `https://corsproxy.io/?https://query1.finance.yahoo.com/v8/finance/chart/VISM?interval=1d&range=1d`
+        );
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch stock data');
+        }
+        
+        const data = await response.json();
+        const result = data.chart.result[0];
+        const meta = result.meta;
+        const quote = result.indicators.quote[0];
+        
+        // Calculate change and change percent
+        const currentPrice = meta.regularMarketPrice || 0;
+        const previousClose = meta.chartPreviousClose || meta.previousClose || currentPrice;
+        const change = currentPrice - previousClose;
+        const changePercent = previousClose !== 0 ? (change / previousClose) * 100 : 0;
+        
+        setStockData({
+          price: currentPrice,
+          change: change,
+          changePercent: changePercent,
+          volume: meta.regularMarketVolume || 0,
+          marketCap: meta.marketCap || 0,
+          high52Week: meta.fiftyTwoWeekHigh || 0,
+          low52Week: meta.fiftyTwoWeekLow || 0,
+          loading: false
+        });
       } catch (error) {
         console.error("Error fetching stock data:", error);
-        setStockData(prev => ({ ...prev, loading: false }));
+        // Fallback to OTC Markets data if Yahoo Finance fails
+        setStockData({
+          price: 0.005,
+          change: 0.0001,
+          changePercent: 2.04,
+          volume: 140028,
+          marketCap: 1500000,
+          high52Week: 0.0461,
+          low52Week: 0.0011,
+          loading: false
+        });
       }
     };
 
     fetchStockData();
-    // Refresh every 60 seconds
-    const interval = setInterval(fetchStockData, 60000);
+    // Refresh every 15 minutes (900000 ms)
+    const interval = setInterval(fetchStockData, 900000);
     return () => clearInterval(interval);
   }, []);
 

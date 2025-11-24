@@ -221,3 +221,13 @@
 - [x] Optimize chat widget for mobile
 - [x] Test and fix mobile-specific layout issues
 - [x] Add mobile-specific meta tags for viewport
+
+## Stock Data Monitoring & News Sync
+- [x] Research Yahoo Finance API for VISM stock data
+- [x] Implement 15-minute auto-refresh for stock metrics (price, market cap, 52-week range, volume)
+- [x] Create stock data fetching service
+- [x] Update Investor Relations page with live Yahoo Finance data
+- [ ] Research OTC Markets news API/scraping
+- [ ] Implement automatic news synchronization from OTC Markets
+- [ ] Update News & Press page with auto-synced news items
+- [ ] Add timestamp tracking for data updates

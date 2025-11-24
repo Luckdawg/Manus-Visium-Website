@@ -186,6 +186,46 @@ export default function News() {
         </div>
       </section>
 
+      {/* OTC Markets Live News Feed */}
+      <section className="py-12 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div className="container max-w-5xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Official News Feed from <span className="text-primary">OTC Markets</span>
+            </h2>
+            <p className="text-lg text-gray-600 mb-6">
+              Access real-time updates, press releases, and regulatory filings for VISM stock directly from OTC Markets
+            </p>
+          </div>
+          <Card className="border-2 border-primary/20">
+            <CardContent className="p-12 text-center">
+              <div className="bg-gradient-to-br from-primary to-secondary text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <ExternalLink className="h-10 w-10" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                View Latest VISM News on OTC Markets
+              </h3>
+              <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+                Get the most up-to-date news, press releases, and company announcements for Visium Technologies (VISM) directly from the official OTC Markets platform. News updates automatically as new releases are published.
+              </p>
+              <a
+                href="https://www.otcmarkets.com/stock/VISM/news"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" className="text-lg px-8">
+                  <ExternalLink className="h-5 w-5 mr-2" />
+                  Open OTC Markets News Feed
+                </Button>
+              </a>
+              <p className="text-sm text-gray-500 mt-6">
+                Opens in new window • Updates automatically • Includes all regulatory filings
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Subscribe Section */}
       <section className="py-12 bg-white">
         <div className="container max-w-3xl">
