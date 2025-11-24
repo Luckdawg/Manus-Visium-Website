@@ -28,59 +28,18 @@ export default function InvestorRelations() {
   });
 
   useEffect(() => {
-    // Fetch real-time stock data for VISM from Yahoo Finance
-    const fetchStockData = async () => {
-      try {
-        // Using Yahoo Finance quote API via CORS proxy
-        const response = await fetch(
-          `https://corsproxy.io/?https://query1.finance.yahoo.com/v8/finance/chart/VISM?interval=1d&range=1d`
-        );
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch stock data');
-        }
-        
-        const data = await response.json();
-        const result = data.chart.result[0];
-        const meta = result.meta;
-        const quote = result.indicators.quote[0];
-        
-        // Calculate change and change percent
-        const currentPrice = meta.regularMarketPrice || 0;
-        const previousClose = meta.chartPreviousClose || meta.previousClose || currentPrice;
-        const change = currentPrice - previousClose;
-        const changePercent = previousClose !== 0 ? (change / previousClose) * 100 : 0;
-        
-        setStockData({
-          price: currentPrice,
-          change: change,
-          changePercent: changePercent,
-          volume: meta.regularMarketVolume || 0,
-          marketCap: meta.marketCap || 0,
-          high52Week: meta.fiftyTwoWeekHigh || 0,
-          low52Week: meta.fiftyTwoWeekLow || 0,
-          loading: false
-        });
-      } catch (error) {
-        console.error("Error fetching stock data:", error);
-        // Fallback to Google Finance data (Nov 24, 2025)
-        setStockData({
-          price: 0.0062,
-          change: 0.0012,
-          changePercent: 23.00,
-          volume: 478610,
-          marketCap: 2090000,
-          high52Week: 0.046,
-          low52Week: 0.0011,
-          loading: false
-        });
-      }
-    };
-
-    fetchStockData();
-    // Refresh every 15 minutes (900000 ms)
-    const interval = setInterval(fetchStockData, 900000);
-    return () => clearInterval(interval);
+    // Use static stock data from Google Finance (Nov 24, 2025)
+    // For live updates, investors should visit Google Finance or OTC Markets directly
+    setStockData({
+      price: 0.0062,
+      change: 0.0012,
+      changePercent: 23.00,
+      volume: 478610,
+      marketCap: 2090000,
+      high52Week: 0.046,
+      low52Week: 0.0011,
+      loading: false
+    });
   }, []);
 
   const financialHighlights = [
@@ -138,7 +97,7 @@ export default function InvestorRelations() {
                   </div>
                   <div className="flex flex-col items-end gap-2">
                     <Badge variant={stockData.change >= 0 ? "default" : "destructive"} className="text-sm">
-                      {stockData.loading ? "Loading..." : "Live"}
+                      {stockData.loading ? "Loading..." : "Nov 24, 2025"}
                     </Badge>
                     <Button variant="outline" size="sm" asChild>
                       <a href="https://www.google.com/finance/quote/VISM:OTCMKTS" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs">
@@ -166,14 +125,7 @@ export default function InvestorRelations() {
                       </div>
                     </div>
                     <div className="text-sm text-gray-500">
-                      As of {new Date().toLocaleString('en-US', { 
-                        month: 'short', 
-                        day: 'numeric', 
-                        year: 'numeric',
-                        hour: 'numeric',
-                        minute: '2-digit',
-                        timeZoneName: 'short'
-                      })}
+                      As of Nov 24, 2025, 9:30 AM EST
                     </div>
 
                     <div className="mt-6 pt-6 border-t border-gray-200">
@@ -213,41 +165,13 @@ export default function InvestorRelations() {
             </div>
           </div>
 
-          {/* Stock Chart Embed */}
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold text-gray-900">Real-Time Stock Quote & Chart</h3>
-                <a 
-                  href="https://www.otcmarkets.com/stock/VISM/quote" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm"
-                >
-                  View Full Quote <ExternalLink className="h-4 w-4" />
-                </a>
-              </div>
-              <div className="bg-gray-50 rounded-lg overflow-hidden">
-                {/* OTC Markets Quote Widget */}
-                <iframe 
-                  src="https://www.otcmarkets.com/stock/VISM/quote" 
-                  width="100%" 
-                  height="600" 
-                  frameBorder="0"
-                  scrolling="yes"
-                  className="w-full"
-                  title="VISM Stock Quote from OTC Markets"
-                />
-              </div>
-              <div className="mt-4 text-center text-sm text-gray-500">
-                Stock data auto-refreshes every 15 minutes • <a href="https://www.google.com/finance/quote/VISM:OTCMKTS" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Verify on Google Finance</a> • <a href="https://www.otcmarkets.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">OTC Markets</a>
-              </div>
-            </CardContent>
-          </Card>
-          
           {/* Historical Price Chart */}
           <div className="mt-8">
             <StockChart />
+          </div>
+          
+          <div className="mt-6 text-center text-sm text-gray-500">
+            For live stock quotes and real-time updates, visit <a href="https://www.google.com/finance/quote/VISM:OTCMKTS" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">Google Finance</a> or <a href="https://www.otcmarkets.com/stock/VISM/quote" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">OTC Markets</a>
           </div>
         </div>
       </section>

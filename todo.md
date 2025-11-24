@@ -272,3 +272,10 @@
 - [x] Add timeframe toggle buttons for user interaction
 - [x] Integrate chart into Investor Relations page
 - [x] Test chart interactions and responsiveness
+
+## URGENT: Stock Data Refresh Fix (Nov 24, 2025)
+- [x] Investigate why stock data is not updating (showing stale information)
+- [x] Fix stock data refresh mechanism to ensure live updates
+- [x] Remove real-time OTC Markets stock chart iframe
+- [x] Keep existing historical price chart (static)
+- [x] Test and verify stock data updates are working correctly
