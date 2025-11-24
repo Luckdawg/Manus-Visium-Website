@@ -16,6 +16,17 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent(formData.subject);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    
+    window.location.href = `mailto:info@visiumtechnologies.com?subject=${subject}&body=${body}`;
+    
     toast.success("Thank you! We'll get back to you soon.");
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
@@ -50,7 +61,7 @@ export default function Contact() {
               <CardContent className="p-6 text-center">
                 <Phone className="h-12 w-12 text-secondary mx-auto mb-4" />
                 <h3 className="text-lg font-bold mb-2">Phone</h3>
-                <p className="text-gray-600">+1 (555) 123-4567</p>
+                <p className="text-gray-600">+1 (703) 273-0383</p>
               </CardContent>
             </Card>
 

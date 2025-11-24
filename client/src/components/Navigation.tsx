@@ -62,12 +62,7 @@ const Navigation = () => {
                   <Link href="/platform/tru-insight">
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Tru-InSight™ Video Intelligence</div>
                   </Link>
-                  <Link href="/platform/technology">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Technology & Integrations</div>
-                  </Link>
-                  <Link href="/platform/security">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Security & Compliance</div>
-                  </Link>
+
                   <Link href="/platform/architecture">
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Platform Architecture</div>
                   </Link>
@@ -134,9 +129,7 @@ const Navigation = () => {
                   <Link href="/why/advantages">
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Platform Advantages</div>
                   </Link>
-                  <Link href="/why/success-stories">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Customer Success Stories</div>
-                  </Link>
+
                   <Link href="/why/roi">
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">ROI Calculator</div>
                   </Link>
@@ -171,12 +164,7 @@ const Navigation = () => {
                   className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-2"
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <Link href="/resources/documentation">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Documentation</div>
-                  </Link>
-                  <Link href="/resources/whitepapers">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Whitepapers & eBooks</div>
-                  </Link>
+
                   <Link href="/resources/videos">
                     <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Videos & Webinars</div>
                   </Link>

@@ -323,8 +323,8 @@ export default function InvestorRelations() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 mb-2">Phone</div>
-                  <a href="tel:+1-555-VISIUM-IR" className="text-primary hover:underline">
-                    +1 (555) VISIUM-IR
+                  <a href="tel:+1-703-273-0383" className="text-primary hover:underline">
+                    +1 (703) 273-0383
                   </a>
                 </div>
               </div>

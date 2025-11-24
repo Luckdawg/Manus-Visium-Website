@@ -162,10 +162,20 @@ export default function ChatWidget() {
 
   const handleLeadSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Create mailto link with lead information
+    const subject = encodeURIComponent('Demo Request from Chat Widget - ' + leadInfo.company);
+    const body = encodeURIComponent(
+      `Name: ${leadInfo.name}\n` +
+      `Email: ${leadInfo.email}\n` +
+      `Company: ${leadInfo.company}\n\n` +
+      `Source: Chat Widget Demo Request`
+    );
+    
+    window.location.href = `mailto:info@visiumtechnologies.com?subject=${subject}&body=${body}`;
+    
     setShowLeadForm(false);
     addBotMessage(`Thank you, ${leadInfo.name}! I've recorded your information. Our team will reach out to ${leadInfo.email} within 24 hours to schedule your personalized TruContext demo. In the meantime, feel free to ask me any questions!`);
-    // Here you would typically send the lead info to your CRM/backend
-    console.log("Lead captured:", leadInfo);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

@@ -231,3 +231,14 @@
 - [ ] Implement automatic news synchronization from OTC Markets
 - [ ] Update News & Press page with auto-synced news items
 - [ ] Add timestamp tracking for data updates
+
+## Website Configuration Updates (Nov 24, 2025)
+- [x] Route all contact forms to info@visiumtechnologies.com (Demo request, Contact page, all other forms)
+- [x] Update company phone number to +1 (703) 273-0383 across all pages
+- [x] Remove "Technology & Integrations" from Platform menu
+- [x] Remove "Security & Compliance" from Platform menu
+- [x] Remove "Customer Success Stories" from Why TruContext menu
+- [x] Remove "Documentation" from Resources menu
+- [x] Remove "White Papers & eBooks" from Resources menu
+- [x] Test all contact form functionality
+

@@ -16,6 +16,19 @@ export default function Demo() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent('Demo Request from ' + formData.company);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Company: ${formData.company}\n` +
+      `Phone: ${formData.phone}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    
+    window.location.href = `mailto:info@visiumtechnologies.com?subject=${subject}&body=${body}`;
+    
     toast.success("Thank you! We'll contact you shortly to schedule your demo.");
     setFormData({ name: "", email: "", company: "", phone: "", message: "" });
   };
@@ -84,7 +97,7 @@ export default function Demo() {
                   <Input
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+1 (703) 273-0383"
                   />
                 </div>
 
