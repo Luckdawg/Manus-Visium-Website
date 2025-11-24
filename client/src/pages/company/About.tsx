@@ -9,6 +9,14 @@ export default function About() {
       <section className="gradient-hero py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
+            {/* Visium Technologies Logo */}
+            <div className="mb-8">
+              <img 
+                src="/visium-tech-logo.25183d7a.png" 
+                alt="Visium Technologies" 
+                className="h-24 mx-auto"
+              />
+            </div>
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
               About <span className="text-primary">Visium Technologies</span>
             </h1>
@@ -22,6 +30,16 @@ export default function About() {
       <section className="py-12 bg-white">
         <div className="container">
           <div className="max-w-3xl mx-auto">
+            {/* Subsidiary Relationship */}
+            <div className="bg-blue-50 border-l-4 border-primary p-6 mb-8 rounded-r-lg">
+              <p className="text-lg font-semibold text-gray-900 mb-2">
+                Visium Analytics is a subsidiary of Visium Technologies
+              </p>
+              <p className="text-gray-700">
+                Together, we deliver cutting-edge intelligence solutions that combine advanced analytics with enterprise-grade security and scalability.
+              </p>
+            </div>
+
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
             <p className="text-lg text-gray-700 mb-6">
               Visium Technologies is dedicated to empowering organizations with AI-powered intelligence platforms that transform complex data into actionable insights. Our TruContext platform brings defense-grade capabilities to enterprise cybersecurity, smart cities, and critical infrastructure protection.

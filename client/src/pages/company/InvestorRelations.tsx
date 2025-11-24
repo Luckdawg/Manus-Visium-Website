@@ -62,14 +62,14 @@ export default function InvestorRelations() {
         });
       } catch (error) {
         console.error("Error fetching stock data:", error);
-        // Fallback to OTC Markets data if Yahoo Finance fails
+        // Fallback to Google Finance data (Nov 24, 2025)
         setStockData({
-          price: 0.005,
-          change: 0.0001,
-          changePercent: 2.04,
-          volume: 140028,
-          marketCap: 1500000,
-          high52Week: 0.0461,
+          price: 0.0062,
+          change: 0.0012,
+          changePercent: 23.00,
+          volume: 478610,
+          marketCap: 2090000,
+          high52Week: 0.046,
           low52Week: 0.0011,
           loading: false
         });

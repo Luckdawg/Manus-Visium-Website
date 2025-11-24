@@ -48,50 +48,51 @@ export default function Tour({ steps, tourId, onComplete, onSkip }: TourProps) {
       // Find target element and calculate position
       const targetElement = document.querySelector(step.target);
       if (targetElement) {
-        const rect = targetElement.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
         // Add highlight class
         targetElement.classList.add("tour-highlight");
 
         // Scroll element into view
         targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
 
-        // Calculate tooltip position based on placement
-        let top = 0;
-        let left = 0;
+        // Wait for scroll to complete before calculating position
+        setTimeout(() => {
+          const rect = targetElement.getBoundingClientRect();
+          
+          // Calculate tooltip position based on placement (using viewport coordinates for fixed positioning)
+          let top = 0;
+          let left = 0;
 
-        const placement = step.placement || "bottom";
-        const tooltipWidth = 400;
-        const tooltipHeight = 200; // Approximate
+          const placement = step.placement || "bottom";
+          const tooltipWidth = 400;
+          const tooltipHeight = 200; // Approximate
 
-        switch (placement) {
-          case "top":
-            top = rect.top + scrollTop - tooltipHeight - 20;
-            left = rect.left + scrollLeft + rect.width / 2 - tooltipWidth / 2;
-            break;
-          case "bottom":
-            top = rect.bottom + scrollTop + 20;
-            left = rect.left + scrollLeft + rect.width / 2 - tooltipWidth / 2;
-            break;
-          case "left":
-            top = rect.top + scrollTop + rect.height / 2 - tooltipHeight / 2;
-            left = rect.left + scrollLeft - tooltipWidth - 20;
-            break;
-          case "right":
-            top = rect.top + scrollTop + rect.height / 2 - tooltipHeight / 2;
-            left = rect.right + scrollLeft + 20;
-            break;
-        }
+          switch (placement) {
+            case "top":
+              top = rect.top - tooltipHeight - 20;
+              left = rect.left + rect.width / 2 - tooltipWidth / 2;
+              break;
+            case "bottom":
+              top = rect.bottom + 20;
+              left = rect.left + rect.width / 2 - tooltipWidth / 2;
+              break;
+            case "left":
+              top = rect.top + rect.height / 2 - tooltipHeight / 2;
+              left = rect.left - tooltipWidth - 20;
+              break;
+            case "right":
+              top = rect.top + rect.height / 2 - tooltipHeight / 2;
+              left = rect.right + 20;
+              break;
+          }
 
-        // Ensure tooltip stays within viewport
-        const maxLeft = window.innerWidth - tooltipWidth - 20;
-        const maxTop = window.innerHeight + scrollTop - tooltipHeight - 20;
-        left = Math.max(20, Math.min(left, maxLeft));
-        top = Math.max(scrollTop + 20, Math.min(top, maxTop));
+          // Ensure tooltip stays within viewport
+          const maxLeft = window.innerWidth - tooltipWidth - 20;
+          const maxTop = window.innerHeight - tooltipHeight - 20;
+          left = Math.max(20, Math.min(left, maxLeft));
+          top = Math.max(20, Math.min(top, maxTop));
 
-        setPosition({ top, left });
+          setPosition({ top, left });
+        }, 500);
 
         // Cleanup previous highlights
         return () => {

@@ -249,3 +249,12 @@
 - [x] Add mock data for demo purposes
 - [x] Test all graph interactions in browser
 
+
+## Website Updates - Multiple Pages (Nov 24, 2025)
+- [x] Fix interactive walkthrough positioning to remain visible throughout flow
+- [x] Fix walkthrough disappearing after first prompt
+- [x] Update Investor Relations stock data from Google Finance (https://www.google.com/finance/quote/VISM:OTCMKTS)
+- [x] Create professional Careers page with upbeat message encouraging visitors to check back
+- [x] Add Visium Technologies logo to About page
+- [x] Add subsidiary explanation: "Visium Analytics is a subsidiary of Visium Technologies"
+- [x] Test all updates in browser

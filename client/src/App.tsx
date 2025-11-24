@@ -24,6 +24,7 @@ import About from "./pages/company/About";
 import Leadership from "./pages/company/Leadership";
 import News from "./pages/company/News";
 import InvestorRelations from "./pages/company/InvestorRelations";
+import Careers from "./pages/company/Careers";
 import GraphDemo from "./pages/GraphDemo";
 import Contact from "./pages/company/Contact";
 import Partners from "./pages/Partners";
@@ -57,6 +58,7 @@ function Router() {
       <Route path={"/company/leadership"} component={Leadership} />
        <Route path="/company/news" component={News} />
       <Route path="/company/investors" component={InvestorRelations} />
+      <Route path="/company/careers" component={Careers} />
       <Route path="/graph-demo" component={GraphDemo} />
       <Route path={"/company/contact"} component={Contact} />
       <Route path={"/partners"} component={Partners} />
