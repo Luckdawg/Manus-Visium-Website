@@ -264,3 +264,11 @@
 - [x] Implement proper Google Finance data fetching with CORS proxy
 - [x] Verify 15-minute auto-refresh functionality
 - [x] Test data updates and display
+
+## Historical Price Chart Implementation (Nov 24, 2025)
+- [x] Design interactive chart component with timeframe selection (1M, 3M, 6M, 1Y, All)
+- [x] Generate mock historical stock data for demonstration
+- [x] Implement chart using Recharts library with price and volume indicators
+- [x] Add timeframe toggle buttons for user interaction
+- [x] Integrate chart into Investor Relations page
+- [x] Test chart interactions and responsiveness

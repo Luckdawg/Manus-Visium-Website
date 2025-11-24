@@ -13,6 +13,7 @@ import {
   ExternalLink
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import StockChart from "@/components/StockChart";
 
 export default function InvestorRelations() {
   const [stockData, setStockData] = useState({
@@ -243,6 +244,11 @@ export default function InvestorRelations() {
               </div>
             </CardContent>
           </Card>
+          
+          {/* Historical Price Chart */}
+          <div className="mt-8">
+            <StockChart />
+          </div>
         </div>
       </section>
 
