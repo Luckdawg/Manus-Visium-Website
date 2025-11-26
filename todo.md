@@ -279,3 +279,12 @@
 - [x] Remove real-time OTC Markets stock chart iframe
 - [x] Keep existing historical price chart (static)
 - [x] Test and verify stock data updates are working correctly
+
+## Backend Upgrade & Google Finance Auto-Refresh (Nov 25, 2025)
+- [x] Upgrade project from web-static to web-db-user template (adds backend server)
+- [x] Create backend API endpoint to fetch Google Finance stock data
+- [x] Implement server-side scraping or API integration for reliable data fetching
+- [x] Add 15-minute auto-refresh mechanism on frontend
+- [x] Update Investor Relations page to use backend API
+- [x] Remove right-side data squares (Market Cap, 52-Week High, 52-Week Low, Avg Volume) - moved to main card
+- [x] Test auto-refresh functionality and verify data updates every 15 minutes

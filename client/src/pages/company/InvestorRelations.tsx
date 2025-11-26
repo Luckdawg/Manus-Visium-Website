@@ -13,41 +13,24 @@ import {
   ExternalLink
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { trpc } from "@/lib/trpc";
 import StockChart from "@/components/StockChart";
 
 export default function InvestorRelations() {
-  const [stockData, setStockData] = useState({
-    price: 0,
-    change: 0,
-    changePercent: 0,
-    volume: 0,
-    marketCap: 0,
-    high52Week: 0,
-    low52Week: 0,
-    loading: true
-  });
+  // Fetch stock data from backend API with auto-refresh every 15 minutes
+  const { data: stockData, isLoading, refetch } = trpc.stock.getVISMData.useQuery(
+    undefined,
+    {
+      refetchInterval: 15 * 60 * 1000, // 15 minutes in milliseconds
+      refetchIntervalInBackground: true,
+      staleTime: 5 * 60 * 1000, // Consider data stale after 5 minutes
+    }
+  );
 
-  useEffect(() => {
-    // Use static stock data from Google Finance (Nov 24, 2025)
-    // For live updates, investors should visit Google Finance or OTC Markets directly
-    setStockData({
-      price: 0.0062,
-      change: 0.0012,
-      changePercent: 23.00,
-      volume: 478610,
-      marketCap: 2090000,
-      high52Week: 0.046,
-      low52Week: 0.0011,
-      loading: false
-    });
-  }, []);
+  // Format market cap for display
+  const formattedMarketCap = stockData?.marketCap || "$2.1M";
 
-  const financialHighlights = [
-    { label: "Market Cap", value: "$15.0M", icon: Building2 },
-    { label: "52-Week High", value: "$0.68", icon: TrendingUp },
-    { label: "52-Week Low", value: "$0.22", icon: BarChart3 },
-    { label: "Avg Volume", value: "125K", icon: Users }
-  ];
+  // Financial highlights removed as requested - data now shown in main stock card
 
   const secFilings = [
     { type: "10-K", description: "Annual Report 2024", date: "March 31, 2025", url: "#" },
@@ -85,9 +68,9 @@ export default function InvestorRelations() {
         <div className="container max-w-6xl">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Stock Quote</h2>
           
-          <div className="grid lg:grid-cols-3 gap-6 mb-8">
+          <div className="grid lg:grid-cols-1 gap-6 mb-8">
             {/* Current Price Card */}
-            <Card className="lg:col-span-2 border-2 border-primary">
+            <Card className="border-2 border-primary">
               <CardContent className="p-8">
                 <div className="flex items-start justify-between mb-6">
                   <div>
@@ -96,8 +79,8 @@ export default function InvestorRelations() {
                     <div className="text-xs text-gray-500">OTCQB</div>
                   </div>
                   <div className="flex flex-col items-end gap-2">
-                    <Badge variant={stockData.change >= 0 ? "default" : "destructive"} className="text-sm">
-                      {stockData.loading ? "Loading..." : "Nov 24, 2025"}
+                    <Badge variant={isLoading ? "secondary" : "default"} className="text-sm">
+                      {isLoading ? "Loading..." : "Live"}
                     </Badge>
                     <Button variant="outline" size="sm" asChild>
                       <a href="https://www.google.com/finance/quote/VISM:OTCMKTS" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs">
@@ -108,7 +91,7 @@ export default function InvestorRelations() {
                   </div>
                 </div>
 
-                {stockData.loading ? (
+                {isLoading ? (
                   <div className="animate-pulse">
                     <div className="h-16 bg-gray-200 rounded mb-4"></div>
                     <div className="h-8 bg-gray-200 rounded w-1/2"></div>
@@ -117,26 +100,41 @@ export default function InvestorRelations() {
                   <>
                     <div className="flex items-baseline gap-4 mb-2">
                       <div className="text-6xl font-bold text-gray-900">
-                        ${stockData.price.toFixed(4)}
+                        ${stockData?.price.toFixed(4) || "0.0000"}
                       </div>
-                      <div className={`text-2xl font-semibold ${stockData.change >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                        {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(4)}
-                        ({stockData.changePercent >= 0 ? '+' : ''}{stockData.changePercent.toFixed(2)}%)
+                      <div className={`text-2xl font-semibold ${(stockData?.change || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        {(stockData?.change || 0) >= 0 ? '+' : ''}{stockData?.change.toFixed(4) || "0.0000"}
+                        ({(stockData?.changePercent || 0) >= 0 ? '+' : ''}{stockData?.changePercent.toFixed(2) || "0.00"}%)
                       </div>
                     </div>
                     <div className="text-sm text-gray-500">
-                      As of Nov 24, 2025, 9:30 AM EST
+                      {stockData?.timestamp ? new Date(stockData.timestamp).toLocaleString('en-US', { 
+                        month: 'short', 
+                        day: 'numeric', 
+                        year: 'numeric', 
+                        hour: 'numeric', 
+                        minute: '2-digit',
+                        timeZoneName: 'short'
+                      }) : "Loading..."}
                     </div>
 
                     <div className="mt-6 pt-6 border-t border-gray-200">
-                      <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                         <div>
                           <div className="text-gray-600">Volume</div>
-                          <div className="font-semibold text-gray-900">{stockData.volume.toLocaleString()}</div>
+                          <div className="font-semibold text-gray-900">{stockData?.volume.toLocaleString() || "N/A"}</div>
                         </div>
                         <div>
                           <div className="text-gray-600">Market Cap</div>
-                          <div className="font-semibold text-gray-900">${(stockData.marketCap / 1000000).toFixed(1)}M</div>
+                          <div className="font-semibold text-gray-900">{formattedMarketCap}</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600">52-Week High</div>
+                          <div className="font-semibold text-gray-900">${stockData?.high52Week.toFixed(4) || "0.0000"}</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600">52-Week Low</div>
+                          <div className="font-semibold text-gray-900">${stockData?.low52Week.toFixed(4) || "0.0000"}</div>
                         </div>
                       </div>
                     </div>
@@ -144,25 +142,6 @@ export default function InvestorRelations() {
                 )}
               </CardContent>
             </Card>
-
-            {/* Quick Stats */}
-            <div className="space-y-4">
-              {financialHighlights.map((item, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-primary/10 rounded-lg">
-                        <item.icon className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <div className="text-xs text-gray-600">{item.label}</div>
-                        <div className="text-lg font-bold text-gray-900">{item.value}</div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </div>
 
           {/* Historical Price Chart */}
