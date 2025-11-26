@@ -364,3 +364,11 @@
 - [x] Create comprehensive architecture whitepaper (10 sections, 8,000+ words)
 - [x] Link whitepaper to download button
 - [x] Test whitepaper download functionality
+
+## Lead Capture Form for Whitepaper Download (Nov 26, 2025)
+- [x] Create lead capture dialog component with form fields (name, email, company)
+- [x] Add form validation for required fields and email format
+- [x] Integrate form with whitepaper download button on Architecture page
+- [x] Store lead data in database for analytics and follow-up
+- [x] Test complete lead capture and download flow
+- [x] Add success message after form submission

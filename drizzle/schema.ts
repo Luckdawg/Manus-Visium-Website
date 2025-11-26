@@ -25,4 +25,17 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
+// Whitepaper leads table for tracking downloads
+export const whitepaperLeads = mysqlTable("whitepaper_leads", {
+  id: int("id").autoincrement().primaryKey(),
+  name: text("name").notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  company: text("company").notNull(),
+  resource: varchar("resource", { length: 255 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type WhitepaperLead = typeof whitepaperLeads.$inferSelect;
+export type NewWhitepaperLead = typeof whitepaperLeads.$inferInsert;
+
 // TODO: Add your tables here

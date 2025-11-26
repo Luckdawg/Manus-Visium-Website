@@ -1,4 +1,5 @@
 import { useState } from "react";
+import WhitepaperDownloadDialog from "@/components/WhitepaperDownloadDialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,7 @@ import {
 
 export default function Architecture() {
   const [activeComponent, setActiveComponent] = useState<string | null>(null);
+  const [showDownloadDialog, setShowDownloadDialog] = useState(false);
 
   const architectureComponents = [
     {
@@ -218,11 +220,13 @@ export default function Architecture() {
                   Schedule Technical Deep Dive
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" asChild>
-                <a href="/TruContext_Architecture_Whitepaper.pdf" download="TruContext_Architecture_Whitepaper.pdf">
-                  <Download className="h-5 w-5 mr-2" />
-                  Download Architecture Whitepaper
-                </a>
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={() => setShowDownloadDialog(true)}
+              >
+                <Download className="h-5 w-5 mr-2" />
+                Download Architecture Whitepaper
               </Button>
             </div>
           </div>
@@ -425,6 +429,12 @@ export default function Architecture() {
           </div>
         </div>
       </section>
+
+      {/* Lead Capture Dialog */}
+      <WhitepaperDownloadDialog
+        open={showDownloadDialog}
+        onOpenChange={setShowDownloadDialog}
+      />
     </div>
   );
 }
