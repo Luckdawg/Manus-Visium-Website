@@ -142,7 +142,7 @@ export default function Careers() {
                   <Button 
                     size="lg" 
                     className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-white px-8"
-                    onClick={() => window.location.href = 'mailto:careers@visiumtechnologies.com?subject=Career Inquiry'}
+                    onClick={() => window.location.href = 'mailto:info@visiumtechnologies.com?subject=Career Inquiry - Resume Submission'}
                   >
                     <Mail className="h-5 w-5 mr-2" />
                     Email Us Your Resume

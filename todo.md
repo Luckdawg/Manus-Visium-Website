@@ -329,3 +329,8 @@
 ## Homepage Paragraph Update (Nov 26, 2025)
 - [x] Update opening paragraph to include "data analytics and" before "cybersecurity solutions"
 - [x] Verify exact text matches user requirements
+
+## Careers Page Email Button Update (Nov 26, 2025)
+- [x] Update "Email Us Your Resume" button to link to info@visiumtechnologies.com
+- [x] Ensure mailto link is properly formatted with subject line
+- [x] Test email button functionality
