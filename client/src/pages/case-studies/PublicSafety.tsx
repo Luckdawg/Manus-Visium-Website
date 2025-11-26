@@ -56,26 +56,26 @@ export default function PublicSafetyCaseStudy() {
           <div className="max-w-4xl">
             <Badge className="mb-6 bg-purple-500/10 text-purple-700 border-purple-500/20">
               <Shield className="h-4 w-4 mr-2" />
-              Public Safety Case Study
+              Public Safety Use Case
             </Badge>
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
               Metro Police Department: <span className="text-primary">Predictive Policing & Threat Intelligence</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              How a major metropolitan police department deployed TruContext to achieve 50% improvement in crime prevention, 78% reduction in false positives, and ethical transparency in predictive policing through graph analytics, cyber-physical threat correlation, and MITRE ATT&CK integration.
+              Explore how a major metropolitan police department could deploy TruContext to potentially achieve 50% improvement in crime prevention, 78% reduction in false positives, and ethical transparency in predictive policing through graph analytics, cyber-physical threat correlation, and MITRE ATT&CK integration.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-primary" />
-                <span><strong>Location:</strong> Major East Coast Metropolitan Area</span>
+                <span><strong>Scenario:</strong> Major East Coast Metropolitan Area</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-5 w-5 text-primary" />
-                <span><strong>Coverage:</strong> 3.2M residents, 12 precincts</span>
+                <span><strong>Potential Coverage:</strong> 3.2M residents, 12 precincts</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5 text-primary" />
-                <span><strong>Deployment:</strong> Q1 2023 - Q3 2024</span>
+                <span><strong>Estimated Timeline:</strong> 35-week deployment</span>
               </div>
             </div>
           </div>
@@ -89,48 +89,48 @@ export default function PublicSafetyCaseStudy() {
           <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200">
             <CardContent className="p-10">
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                The Metro Police Department served 3.2 million residents across 12 precincts but lacked the analytical tools to proactively identify intervention targets or understand criminal network relationships. Traditional systems couldn't correlate cyber threats with physical infrastructure vulnerabilities, leaving critical city operations exposed to cascading cyber-physical failures. With a 41% false positive rate, officers were overwhelmed with alerts while real threats went undetected.
+                Metropolitan police departments often serve millions of residents across multiple precincts but may lack the analytical tools to proactively identify intervention targets or understand criminal network relationships. Traditional systems typically cannot correlate cyber threats with physical infrastructure vulnerabilities, potentially leaving critical city operations exposed to cascading cyber-physical failures. High false positive rates can overwhelm officers with alerts while real threats go undetected.
               </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-3">Operational Challenges:</h3>
+                  <h3 className="font-bold text-gray-900 mb-3">Common Operational Challenges:</h3>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>No visibility into criminal network relationships</span>
+                      <span>Limited visibility into criminal network relationships</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Cyber threats disconnected from physical infrastructure</span>
+                      <span>Disconnected cyber and physical threat intelligence systems</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>41% false positive rate overwhelming officers</span>
+                      <span>Reactive policing with limited predictive capabilities</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>No ethical transparency in predictive algorithms</span>
+                      <span>High false positive rates overwhelming investigative resources</span>
                     </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-3">Business Impact:</h3>
+                  <h3 className="font-bold text-gray-900 mb-3">Potential Impact:</h3>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Crime prevention rate: only 52%</span>
+                      <span>Declining public safety and community trust</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Community trust score: 58/100</span>
+                      <span>Missed opportunities for crime prevention</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Reactive response to cyber-physical threats</span>
+                      <span>Critical infrastructure vulnerable to cyber-physical attacks</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Concerns about algorithmic bias and accountability</span>
+                      <span>Resource inefficiency from investigating false leads</span>
                     </li>
                   </ul>
                 </div>
@@ -141,9 +141,9 @@ export default function PublicSafetyCaseStudy() {
       </section>
 
       {/* Solution Section */}
-      <section className="py-12 bg-gradient-to-br from-purple-50 to-pink-50">
+      <section className="py-12 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">The TruContext Solution</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">How TruContext Could Transform Public Safety</h2>
           <div className="space-y-6">
             {technicalComponents.map((component, index) => (
               <Card key={index} className="bg-white hover:shadow-xl transition-shadow">
@@ -164,25 +164,25 @@ export default function PublicSafetyCaseStudy() {
 
           <Card className="mt-8 bg-gradient-to-br from-primary to-secondary text-white">
             <CardContent className="p-10">
-              <h3 className="text-2xl font-bold mb-4">Graph Analytics for Predictive Policing</h3>
+              <h3 className="text-2xl font-bold mb-4">Ethical Predictive Policing with Transparency</h3>
               <p className="text-lg opacity-90 leading-relaxed mb-6">
-                TruContext's graph database architecture is uniquely positioned for predictive policing applications. Co-offending Network Analysis links individuals who have committed crimes together, while Link Prediction identifies emerging criminal network relationships. The platform fuses historical crime data with infrastructure data—such as mapping crime hot spots against broken windows or graffiti—to prioritize high-risk areas for intervention. Unlike "black box" AI algorithms, TruContext's knowledge graph provides structurally visible, traceable relationships with full audit trails, fulfilling the ethical mandate for clarity in data-driven governance.
+                TruContext's graph analytics would enable ethical predictive policing by modeling co-offending networks, identifying intervention targets, and providing full audit trail transparency. The system would correlate cyber threats (CVE/CVSS vulnerabilities) with physical infrastructure to detect cascading failure risks before they materialize, while maintaining explainability and accountability in all AI-driven recommendations.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-4">
                   <Network className="h-8 w-8 mb-2" />
-                  <div className="font-bold mb-1">Co-Offending Analysis</div>
-                  <div className="text-sm opacity-90">Graph analytics reveal criminal network relationships</div>
+                  <div className="font-bold mb-1">Network Analysis</div>
+                  <div className="text-sm opacity-90">Graph analytics reveal co-offending patterns and criminal networks</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-lg p-4">
-                  <AlertTriangle className="h-8 w-8 mb-2" />
-                  <div className="font-bold mb-1">Cyber-Physical Threats</div>
-                  <div className="text-sm opacity-90">CVE/CVSS correlation with physical infrastructure</div>
+                  <Shield className="h-8 w-8 mb-2" />
+                  <div className="font-bold mb-1">Cyber-Physical Correlation</div>
+                  <div className="text-sm opacity-90">MITRE ATT&CK integration maps threats to infrastructure</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-lg p-4">
                   <Eye className="h-8 w-8 mb-2" />
                   <div className="font-bold mb-1">Ethical Transparency</div>
-                  <div className="text-sm opacity-90">Audit trails and explainable AI for accountability</div>
+                  <div className="text-sm opacity-90">Full audit trails ensure accountability and explainability</div>
                 </div>
               </div>
             </CardContent>
@@ -193,7 +193,7 @@ export default function PublicSafetyCaseStudy() {
       {/* Implementation Timeline */}
       <section className="py-12 bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">Implementation Timeline</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">Potential Implementation Roadmap</h2>
           <div className="space-y-6">
             {timeline.map((phase, index) => (
               <Card key={index} className="hover:shadow-xl transition-shadow border-l-4 border-primary">
@@ -228,50 +228,53 @@ export default function PublicSafetyCaseStudy() {
       {/* Results Section */}
       <section className="py-12 bg-gradient-to-br from-green-50 to-teal-50">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Quantified Results</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">Projected Outcomes</h2>
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {metrics.map((metric, index) => (
               <Card key={index} className="bg-white hover:shadow-xl transition-shadow">
                 <CardContent className="p-8">
-                  <h3 className="text-lg font-semibold text-gray-600 mb-4">{metric.label}</h3>
-                  <div className="flex items-end justify-between mb-3">
+                  <div className="text-sm font-semibold text-primary mb-2">{metric.label}</div>
+                  <div className="flex items-baseline gap-4 mb-4">
                     <div>
-                      <div className="text-sm text-gray-500">Before</div>
+                      <div className="text-xs text-gray-500 mb-1">Current</div>
                       <div className="text-2xl font-bold text-gray-400">{metric.before}</div>
                     </div>
-                    <ArrowRight className="h-8 w-8 text-primary" />
+                    <ArrowRight className="h-6 w-6 text-primary flex-shrink-0" />
                     <div>
-                      <div className="text-sm text-gray-500">After</div>
-                      <div className="text-2xl font-bold text-primary">{metric.after}</div>
+                      <div className="text-xs text-gray-500 mb-1">With TruContext</div>
+                      <div className="text-3xl font-bold text-green-600">{metric.after}</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 text-green-600 font-bold">
-                    <TrendingDown className="h-5 w-5" />
-                    <span>{metric.improvement}</span>
-                  </div>
+                  <Badge className="bg-green-500/10 text-green-700 border-green-500/20">
+                    <TrendingDown className="h-4 w-4 mr-1" />
+                    {metric.improvement}
+                  </Badge>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <Card className="bg-gradient-to-br from-primary to-secondary text-white">
+          <Card className="bg-white border-2 border-green-200">
             <CardContent className="p-10">
-              <h3 className="text-3xl font-bold mb-6 text-center">Additional Outcomes</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="text-5xl font-bold mb-2"><CountUp end={82} />/100</div>
-                  <div className="text-lg opacity-90">Community Trust Score</div>
-                  <div className="text-sm opacity-75">(up from 58/100)</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Potential Value Delivered</h3>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div>
+                  <div className="text-4xl font-bold text-primary mb-2">
+                    <CountUp end={50} duration={2} />%
+                  </div>
+                  <div className="text-gray-700">Improvement in crime prevention effectiveness</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-5xl font-bold mb-2"><CountUp end={94} suffix="%" /></div>
-                  <div className="text-lg opacity-90">Threat Detection Accuracy</div>
-                  <div className="text-sm opacity-75">(cyber-physical correlation)</div>
+                <div>
+                  <div className="text-4xl font-bold text-primary mb-2">
+                    <CountUp end={78} duration={2} />%
+                  </div>
+                  <div className="text-gray-700">Reduction in false positive alerts</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-5xl font-bold mb-2">Zero</div>
-                  <div className="text-lg opacity-90">Cascading Failures</div>
-                  <div className="text-sm opacity-75">(prevented in 18 months)</div>
+                <div>
+                  <div className="text-4xl font-bold text-primary mb-2">
+                    <CountUp end={46} duration={2} />%
+                  </div>
+                  <div className="text-gray-700">Faster incident response time</div>
                 </div>
               </div>
             </CardContent>
@@ -279,107 +282,74 @@ export default function PublicSafetyCaseStudy() {
         </div>
       </section>
 
-      {/* Ethical Transparency Section */}
+      {/* Key Capabilities Section */}
       <section className="py-12 bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">Ethical Transparency & Accountability</h2>
-          <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-primary/20">
-            <CardContent className="p-10">
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                In the ethically sensitive area of predictive policing, TruContext provides a critical advantage: architectural transparency. Analysis derived from a knowledge graph, unlike some proprietary "black box" AI algorithms, is based on structurally visible, traceable relationships. The graph explicitly maps the nodes (e.g., individuals or locations) and the edges (relationships or past crimes) used in the analysis.
-              </p>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-4">Transparency Features:</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2 text-gray-700">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>Full audit trails with geolocation and timestamps</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-gray-700">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>Code Editor/Cypher query language for data structure examination</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-gray-700">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>Explainable AI vs. "black box" algorithms</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-gray-700">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>Approval trails for all decisions impacting operations</span>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-4">Accountability Measures:</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2 text-gray-700">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>Regular ethical compliance audits</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-gray-700">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>Community oversight board access to analysis methodology</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-gray-700">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>Bias detection and mitigation protocols</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-gray-700">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>Public reporting on prediction accuracy and fairness metrics</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">How TruContext Would Enable These Outcomes</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <Network className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Criminal Network Analysis</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Graph analytics would model co-offending relationships and predict future criminal associations through link prediction algorithms, enabling proactive intervention while maintaining full audit trail transparency for ethical accountability.
+                </p>
+              </CardContent>
+            </Card>
 
-      {/* Testimonial */}
-      <section className="py-12 bg-gradient-to-br from-gray-50 to-purple-50">
-        <div className="container max-w-4xl">
-          <Card className="bg-white border-2 border-primary/20">
-            <CardContent className="p-12">
-              <div className="text-6xl text-primary mb-6">"</div>
-              <p className="text-2xl text-gray-800 leading-relaxed mb-8 italic">
-                TruContext has transformed how we approach public safety. The ability to see criminal network relationships in the graph visualization helps us understand patterns we never could before. But what really matters is the transparency—we can show the community exactly how predictions are made, which has rebuilt trust. The cyber-physical threat correlation has prevented two major infrastructure attacks in the past year alone.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-                <div>
-                  <div className="font-bold text-gray-900">Chief Jennifer Martinez</div>
-                  <div className="text-gray-600">Chief of Police</div>
-                  <div className="text-gray-500">Metro Police Department</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <Shield className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Cyber-Physical Threat Detection</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  MITRE ATT&CK integration would correlate CVE/CVSS vulnerabilities with physical infrastructure, identifying cascading failure risks before they materialize and enabling real-time threat isolation to protect critical city operations.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <AlertTriangle className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Intelligent Alert Filtering</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Machine learning models would dramatically reduce false positives by correlating multiple data sources and historical patterns, allowing officers to focus investigative resources on genuine threats rather than chasing false leads.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <Eye className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Ethical AI with Explainability</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Every AI-driven recommendation would include full audit trails and explainability, ensuring transparency, accountability, and compliance with ethical policing standards while maintaining community trust.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-br from-primary to-secondary text-white">
-        <div className="container text-center">
-          <h2 className="text-4xl font-bold mb-6">
-            Ready to Transform Your Public Safety Operations?
-          </h2>
-          <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Discover how TruContext can deliver similar results for your law enforcement and security operations
+        <div className="container max-w-4xl text-center">
+          <h2 className="text-4xl font-bold mb-6">Ready to Transform Public Safety Operations?</h2>
+          <p className="text-xl opacity-90 mb-8 leading-relaxed">
+            Discover how TruContext could help your department achieve similar outcomes through ethical predictive policing, cyber-physical threat correlation, and transparent AI-driven analytics.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/demo">
-              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
-                Schedule Consultation
+              <Button size="lg" variant="secondary" className="gap-2">
+                Schedule a Demo
+                <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-              <Download className="h-5 w-5 mr-2" />
-              Download Case Study PDF
-            </Button>
+            <Link href="/why/roi">
+              <Button size="lg" variant="outline" className="gap-2 bg-white/10 hover:bg-white/20 text-white border-white/30">
+                <Download className="h-5 w-5" />
+                Calculate Your ROI
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

@@ -55,26 +55,26 @@ export default function IntelligentTransportationCaseStudy() {
           <div className="max-w-4xl">
             <Badge className="mb-6 bg-blue-500/10 text-blue-700 border-blue-500/20">
               <Car className="h-4 w-4 mr-2" />
-              Intelligent Transportation Case Study
+              Intelligent Transportation Use Case
             </Badge>
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
               Smart City Transit Authority: <span className="text-primary">Adaptive Traffic Intelligence</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              How a major metropolitan transit authority deployed TruContext with Tru-InSight video AI to achieve 61% faster incident clearance, 55% congestion reduction, and $2.1M in annual infrastructure maintenance savings through spatio-temporal analytics and autonomous traffic management.
+              Explore how a major metropolitan transit authority could deploy TruContext with Tru-InSight video AI to potentially achieve 61% faster incident clearance, 55% congestion reduction, and $2.1M in annual infrastructure maintenance savings through spatio-temporal analytics and autonomous traffic management.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-primary" />
-                <span><strong>Location:</strong> Major West Coast Metropolitan Area</span>
+                <span><strong>Scenario:</strong> Major West Coast Metropolitan Area</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-5 w-5 text-primary" />
-                <span><strong>Coverage:</strong> 1.8M residents, 180-mile network</span>
+                <span><strong>Potential Coverage:</strong> 1.8M residents, 180-mile network</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5 text-primary" />
-                <span><strong>Deployment:</strong> Q3 2023 - Q2 2024</span>
+                <span><strong>Estimated Timeline:</strong> 32-week deployment</span>
               </div>
             </div>
           </div>
@@ -88,48 +88,48 @@ export default function IntelligentTransportationCaseStudy() {
           <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200">
             <CardContent className="p-10">
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                The Smart City Transit Authority managed a complex 180-mile transportation network serving 1.8 million residents, but legacy systems couldn't correlate data from 1,200 traffic cameras, 3,500 sensors, and mobile GPS reports. Traffic incidents took an average of 28 minutes to clear, and reactive maintenance was costing $4.2M annually while infrastructure continued to deteriorate.
+                Smart city transit authorities often manage complex transportation networks serving millions of residents, but legacy systems typically cannot correlate data from thousands of traffic cameras, sensors, and mobile GPS reports. Traffic incidents can take 30+ minutes to clear, and reactive maintenance often costs millions annually while infrastructure continues to deteriorate.
               </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-3">Operational Challenges:</h3>
+                  <h3 className="font-bold text-gray-900 mb-3">Common Operational Challenges:</h3>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Manual video review consuming 40+ analyst hours daily</span>
+                      <span>Manual video review consuming dozens of analyst hours daily</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>No temporal correlation between sensor readings and incidents</span>
+                      <span>Siloed data preventing holistic traffic pattern understanding</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Reactive traffic light timing (no predictive optimization)</span>
+                      <span>Reactive incident response increasing congestion duration</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Disconnected field service workflows causing delays</span>
+                      <span>Infrastructure failures discovered only after breakdowns occur</span>
                     </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-3">Business Impact:</h3>
+                  <h3 className="font-bold text-gray-900 mb-3">Potential Business Impact:</h3>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>$18M annual economic loss from congestion</span>
+                      <span>Millions in annual costs from traffic congestion</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Citizen satisfaction: 61/100</span>
+                      <span>Declining public satisfaction with transit services</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Emergency vehicle delays impacting public safety</span>
+                      <span>Emergency response delays affecting public safety</span>
                     </li>
                     <li className="flex items-start gap-2 text-gray-700">
                       <ArrowRight className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <span>Aging infrastructure with no predictive maintenance</span>
+                      <span>Escalating maintenance costs from reactive repairs</span>
                     </li>
                   </ul>
                 </div>
@@ -140,9 +140,9 @@ export default function IntelligentTransportationCaseStudy() {
       </section>
 
       {/* Solution Section */}
-      <section className="py-12 bg-gradient-to-br from-blue-50 to-cyan-50">
+      <section className="py-12 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">The TruContext Solution</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">How TruContext Could Transform Traffic Management</h2>
           <div className="space-y-6">
             {technicalComponents.map((component, index) => (
               <Card key={index} className="bg-white hover:shadow-xl transition-shadow">
@@ -163,25 +163,25 @@ export default function IntelligentTransportationCaseStudy() {
 
           <Card className="mt-8 bg-gradient-to-br from-primary to-secondary text-white">
             <CardContent className="p-10">
-              <h3 className="text-2xl font-bold mb-4">Tru-InSight Video Intelligence</h3>
+              <h3 className="text-2xl font-bold mb-4">Tru-InSight Video AI Integration</h3>
               <p className="text-lg opacity-90 leading-relaxed mb-6">
-                TruContext's Tru-InSight agentic AI autonomously analyzes 1,200 traffic camera feeds in real-time, performing face recognition, license plate detection, and behavioral analytics. AI agents iteratively plan multi-step investigations—such as tracing event chains across cameras—and automate preemptive alerts for urban threats like erratic driving, unauthorized access, or crowd anomalies. The TruTime feature sequences events along the transportation network with precise timing, enabling rapid incident investigation and root cause analysis.
+                TruContext's Tru-InSight video AI agents would continuously analyze traffic camera feeds to detect incidents, identify congestion patterns, and recognize behavioral anomalies in real-time. The graph-based architecture would correlate video insights with sensor data, weather conditions, and historical patterns to enable predictive traffic management and autonomous incident response.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-4">
                   <Camera className="h-8 w-8 mb-2" />
-                  <div className="font-bold mb-1">Autonomous Video AI</div>
-                  <div className="text-sm opacity-90">Real-time behavioral anomaly detection across 1,200 cameras</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur rounded-lg p-4">
-                  <Clock className="h-8 w-8 mb-2" />
-                  <div className="font-bold mb-1">TruTime Sequencing</div>
-                  <div className="text-sm opacity-90">Temporal correlation of sensor readings and camera events</div>
+                  <div className="font-bold mb-1">Video Analytics</div>
+                  <div className="text-sm opacity-90">AI agents analyze 1,200+ camera feeds for incident detection</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur rounded-lg p-4">
                   <Navigation className="h-8 w-8 mb-2" />
-                  <div className="font-bold mb-1">Graph Pathfinding</div>
-                  <div className="text-sm opacity-90">Rapid pathfinding for traffic light optimization and rerouting</div>
+                  <div className="font-bold mb-1">Spatio-Temporal Correlation</div>
+                  <div className="text-sm opacity-90">TruTime sequences events across the transportation network</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur rounded-lg p-4">
+                  <Car className="h-8 w-8 mb-2" />
+                  <div className="font-bold mb-1">Autonomous Response</div>
+                  <div className="text-sm opacity-90">Automated traffic light adjustments and rerouting</div>
                 </div>
               </div>
             </CardContent>
@@ -192,7 +192,7 @@ export default function IntelligentTransportationCaseStudy() {
       {/* Implementation Timeline */}
       <section className="py-12 bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">Implementation Timeline</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">Potential Implementation Roadmap</h2>
           <div className="space-y-6">
             {timeline.map((phase, index) => (
               <Card key={index} className="hover:shadow-xl transition-shadow border-l-4 border-primary">
@@ -227,50 +227,53 @@ export default function IntelligentTransportationCaseStudy() {
       {/* Results Section */}
       <section className="py-12 bg-gradient-to-br from-green-50 to-teal-50">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Quantified Results</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">Projected Outcomes</h2>
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {metrics.map((metric, index) => (
               <Card key={index} className="bg-white hover:shadow-xl transition-shadow">
                 <CardContent className="p-8">
-                  <h3 className="text-lg font-semibold text-gray-600 mb-4">{metric.label}</h3>
-                  <div className="flex items-end justify-between mb-3">
+                  <div className="text-sm font-semibold text-primary mb-2">{metric.label}</div>
+                  <div className="flex items-baseline gap-4 mb-4">
                     <div>
-                      <div className="text-sm text-gray-500">Before</div>
+                      <div className="text-xs text-gray-500 mb-1">Current</div>
                       <div className="text-2xl font-bold text-gray-400">{metric.before}</div>
                     </div>
-                    <ArrowRight className="h-8 w-8 text-primary" />
+                    <ArrowRight className="h-6 w-6 text-primary flex-shrink-0" />
                     <div>
-                      <div className="text-sm text-gray-500">After</div>
-                      <div className="text-2xl font-bold text-primary">{metric.after}</div>
+                      <div className="text-xs text-gray-500 mb-1">With TruContext</div>
+                      <div className="text-3xl font-bold text-green-600">{metric.after}</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 text-green-600 font-bold">
-                    <TrendingDown className="h-5 w-5" />
-                    <span>{metric.improvement}</span>
-                  </div>
+                  <Badge className="bg-green-500/10 text-green-700 border-green-500/20">
+                    <TrendingDown className="h-4 w-4 mr-1" />
+                    {metric.improvement}
+                  </Badge>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <Card className="bg-gradient-to-br from-primary to-secondary text-white">
+          <Card className="bg-white border-2 border-green-200">
             <CardContent className="p-10">
-              <h3 className="text-3xl font-bold mb-6 text-center">Additional Outcomes</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="text-5xl font-bold mb-2"><CountUp end={87} />/100</div>
-                  <div className="text-lg opacity-90">Citizen Satisfaction</div>
-                  <div className="text-sm opacity-75">(up from 61/100)</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Potential Value Delivered</h3>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div>
+                  <div className="text-4xl font-bold text-primary mb-2">
+                    <CountUp end={61} duration={2} />%
+                  </div>
+                  <div className="text-gray-700">Faster incident clearance through AI-powered detection</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-5xl font-bold mb-2"><CountUp end={92} suffix="%" /></div>
-                  <div className="text-lg opacity-90">Incident Detection Accuracy</div>
-                  <div className="text-sm opacity-75">(AI-powered automation)</div>
+                <div>
+                  <div className="text-4xl font-bold text-primary mb-2">
+                    <CountUp end={55} duration={2} />%
+                  </div>
+                  <div className="text-gray-700">Reduction in peak-hour traffic congestion</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-5xl font-bold mb-2">$8.5M</div>
-                  <div className="text-lg opacity-90">Annual Economic Benefit</div>
-                  <div className="text-sm opacity-75">(reduced congestion costs)</div>
+                <div>
+                  <div className="text-4xl font-bold text-primary mb-2">
+                    $<CountUp end={2.1} decimals={1} duration={2} />M
+                  </div>
+                  <div className="text-gray-700">Estimated annual infrastructure maintenance savings</div>
                 </div>
               </div>
             </CardContent>
@@ -278,49 +281,74 @@ export default function IntelligentTransportationCaseStudy() {
         </div>
       </section>
 
-      {/* Testimonial */}
+      {/* Key Capabilities Section */}
       <section className="py-12 bg-white">
-        <div className="container max-w-4xl">
-          <Card className="bg-gradient-to-br from-gray-50 to-blue-50 border-2 border-primary/20">
-            <CardContent className="p-12">
-              <div className="text-6xl text-primary mb-6">"</div>
-              <p className="text-2xl text-gray-800 leading-relaxed mb-8 italic">
-                Tru-InSight's video AI agents have revolutionized our traffic operations. What used to take our analysts hours to investigate now happens automatically in minutes. The system detected an erratic driver last month and alerted police before a potential accident—that's the kind of proactive intelligence that saves lives. The ROI has been extraordinary.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-                <div>
-                  <div className="font-bold text-gray-900">Michael Rodriguez</div>
-                  <div className="text-gray-600">Director of Transportation Operations</div>
-                  <div className="text-gray-500">Smart City Transit Authority</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="container max-w-5xl">
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">How TruContext Would Enable These Outcomes</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <Camera className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Intelligent Video Analysis</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Tru-InSight AI agents would continuously monitor traffic camera feeds, automatically detecting incidents, identifying congestion patterns, and recognizing behavioral anomalies—eliminating the need for manual video review.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <Navigation className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Predictive Congestion Modeling</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  The graph-based architecture would model the entire transportation network, enabling machine learning algorithms to predict congestion before it occurs and recommend proactive traffic light adjustments.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <Car className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Autonomous Incident Response</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  When incidents are detected, Tru-AI agents could automatically dispatch field services, adjust traffic signals to reroute vehicles, and notify emergency responders—reducing clearance time from hours to minutes.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-xl transition-shadow">
+              <CardContent className="p-8">
+                <Clock className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Predictive Maintenance</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  TruTime's temporal correlation would identify infrastructure degradation patterns before failures occur, enabling proactive maintenance that could reduce costs by 50% compared to reactive repairs.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-br from-primary to-secondary text-white">
-        <div className="container text-center">
-          <h2 className="text-4xl font-bold mb-6">
-            Ready to Transform Your Transportation Network?
-          </h2>
-          <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Discover how TruContext can deliver similar results for your intelligent transportation systems
+        <div className="container max-w-4xl text-center">
+          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Transportation Network?</h2>
+          <p className="text-xl opacity-90 mb-8 leading-relaxed">
+            Discover how TruContext could help your transit authority achieve similar outcomes through intelligent video analytics, predictive congestion modeling, and autonomous incident response.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/demo">
-              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
-                Schedule Consultation
+              <Button size="lg" variant="secondary" className="gap-2">
+                Schedule a Demo
+                <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-              <Download className="h-5 w-5 mr-2" />
-              Download Case Study PDF
-            </Button>
+            <Link href="/why/roi">
+              <Button size="lg" variant="outline" className="gap-2 bg-white/10 hover:bg-white/20 text-white border-white/30">
+                <Download className="h-5 w-5" />
+                Calculate Your ROI
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

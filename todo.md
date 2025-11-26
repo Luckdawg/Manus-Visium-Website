@@ -306,3 +306,11 @@
 - [x] Explain data sources for industry benchmarks and cost estimates
 - [x] Add constraints and considerations section (limitations, variability factors)
 - [x] Test ROI page and verify methodology section displays correctly
+
+## Case Study Pages Rewrite (Nov 26, 2025)
+- [x] Rewrite Energy Grid case study from completed project to potential use case
+- [x] Rewrite Intelligent Transportation case study from completed project to potential use case
+- [x] Rewrite Public Safety case study from completed project to potential use case
+- [x] Change language from past tense to future/conditional tense throughout
+- [x] Emphasize "could be applied", "would deliver", "may enable" instead of "was", "achieved", "resulted"
+- [x] Test all three case study pages and verify messaging shift
