@@ -2,6 +2,7 @@ import { z } from "zod";
 import { publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
 import { whitepaperLeads } from "../drizzle/schema";
+import { notifyOwner } from "./_core/notification";
 
 export const leadsRouter = router({
   submitWhitepaperLead: publicProcedure
@@ -29,6 +30,34 @@ export const leadsRouter = router({
             resource: input.resource,
           })
           .$returningId();
+
+        // Send notification email to sales team
+        const timestamp = new Date().toLocaleString('en-US', {
+          timeZone: 'America/New_York',
+          dateStyle: 'full',
+          timeStyle: 'long'
+        });
+
+        const notificationSent = await notifyOwner({
+          title: `New Whitepaper Lead: ${input.company}`,
+          content: `A new lead has downloaded the TruContext Architecture Whitepaper.
+
+**Lead Details:**
+- **Name:** ${input.name}
+- **Email:** ${input.email}
+- **Company:** ${input.company}
+- **Resource:** ${input.resource}
+- **Timestamp:** ${timestamp}
+- **Lead ID:** ${lead.id}
+
+Please follow up with this prospect at info@visiumtechnologies.com or call +1 (703) 273-0383.
+
+This lead has shown high intent by downloading technical documentation and should be prioritized for sales outreach.`
+        });
+
+        if (!notificationSent) {
+          console.warn(`Failed to send notification for lead ${lead.id}`);
+        }
 
         return {
           success: true,
