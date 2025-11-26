@@ -35,7 +35,7 @@ import EnergyGrid from "./pages/case-studies/EnergyGrid";
 import IntelligentTransportation from "./pages/case-studies/IntelligentTransportation";
 import PublicSafety from "./pages/case-studies/PublicSafety";
 import Architecture from "./pages/Architecture";
-import Comparison from "./pages/Comparison";
+import Comparison from "./pages/why/Comparison";
 import Blog from "./pages/Blog";
 
 function Router() {
