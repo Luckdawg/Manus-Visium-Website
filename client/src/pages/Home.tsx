@@ -78,7 +78,7 @@ export default function Home() {
               Agentic AI-Powered <span className="text-primary">Intelligence Platform</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              TruContext is the leader in agentic AI-driven cybersecurity solutions, featuring autonomous AI agents that continuously analyze threats and automate workflows. Our dual database architecture (Neo4j + PostgreSQL) fuses cyber, physical, and operational data to provide unmatched context for enterprise security, smart cities, and critical infrastructure protection.
+              Visium's TruContext is the leader in agentic AI-driven data analytics and cybersecurity solutions, featuring autonomous AI agents that continuously analyze threats and automate workflows. Our dual database architecture (Neo4j + PostgreSQL) fuses cyber, physical, and operational data to provide unmatched context for enterprise security, smart cities, and critical infrastructure protection.
             </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/demo">
