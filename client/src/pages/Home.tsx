@@ -184,11 +184,18 @@ export default function Home() {
             </Card>
           </div>
 
-          <div className="text-center">
+          <div className="text-center space-y-6">
+              {/* Visium Technologies Logo */}
+              <img 
+                src="/visium-tech-logo.png" 
+                alt="Visium Technologies" 
+                className="mx-auto h-16 sm:h-20 md:h-24 object-contain"
+              />
+              {/* TruContext Logo */}
               <img 
                 src="/trucontext_logo.webp" 
                 alt="TruContext" 
-                className="h-12 sm:h-14 md:h-16 mb-6 object-contain"
+                className="mx-auto h-12 sm:h-14 md:h-16 object-contain"
               />
           </div>
         </div>

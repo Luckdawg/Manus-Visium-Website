@@ -320,3 +320,8 @@
 - [x] Fix share price information to ensure it updates correctly
 - [x] Verify data is fetching from correct Nasdaq source
 - [x] Test that price updates are working in real-time
+
+## Homepage Updates (Nov 26, 2025)
+- [x] Replace opening paragraph with new agentic AI-driven cybersecurity text
+- [x] Add Visium Technologies logo above or next to existing Visium Analytics logo
+- [x] Test homepage to verify changes display correctly
