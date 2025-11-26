@@ -297,3 +297,12 @@
 - [x] Ensure responsive image scaling for mobile, tablet, and desktop
 - [x] Verify all images have proper aspect ratios and no distortion
 - [x] Test graphics display on all major pages
+
+## ROI Calculator Methodology Documentation (Nov 26, 2025)
+- [x] Review current ROI Calculator implementation and formulas
+- [x] Create comprehensive methodology section explaining calculation approach
+- [x] Document all formulas used in ROI calculations with clear explanations
+- [x] List key assumptions (labor costs, time savings, risk reduction percentages)
+- [x] Explain data sources for industry benchmarks and cost estimates
+- [x] Add constraints and considerations section (limitations, variability factors)
+- [x] Test ROI page and verify methodology section displays correctly
