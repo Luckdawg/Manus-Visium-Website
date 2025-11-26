@@ -21,7 +21,7 @@ import CountUp from "@/components/CountUp";
 export default function PublicSafetyCaseStudy() {
   const metrics = [
     { label: "Crime Prevention Rate", before: "52%", after: "78%", improvement: "+50% effectiveness" },
-    { label: "Cyber-Physical Threat Detection", before: "Manual review", after: "Automated 24/7", improvement: "100% coverage" },
+    { label: "Cyber-Physical Threat Detection", before: "Manual review", after: "Could automate 24/7", improvement: "100% coverage" },
     { label: "Incident Response Time", before: "12.5 minutes", after: "6.8 minutes", improvement: "46% faster" },
     { label: "False Positive Rate", before: "41%", after: "9%", improvement: "78% reduction" }
   ];
@@ -56,13 +56,13 @@ export default function PublicSafetyCaseStudy() {
           <div className="max-w-4xl">
             <Badge className="mb-6 bg-purple-500/10 text-purple-700 border-purple-500/20">
               <Shield className="h-4 w-4 mr-2" />
-              Public Safety Case Study
+              Public Safety Use Case Scenario
             </Badge>
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
               Metro Police Department: <span className="text-primary">Predictive Policing & Threat Intelligence</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              How a major metropolitan police department deployed TruContext to achieve 50% improvement in crime prevention, 78% reduction in false positives, and ethical transparency in predictive policing through graph analytics, cyber-physical threat correlation, and MITRE ATT&CK integration.
+              How a major metropolitan police department could deploy TruContext to achieve 50% improvement in crime prevention, 78% reduction in false positives, and ethical transparency in predictive policing through graph analytics, cyber-physical threat correlation, and MITRE ATT&CK integration.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
               <div className="flex items-center gap-2">
@@ -75,7 +75,7 @@ export default function PublicSafetyCaseStudy() {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5 text-primary" />
-                <span><strong>Deployment:</strong> Q1 2023 - Q3 2024</span>
+                <span><strong>Potential Deployment:</strong> Q1 2023 - Q3 2024</span>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function PublicSafetyCaseStudy() {
       {/* Challenge Section */}
       <section className="py-12 bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">The Challenge</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">The Opportunity</h2>
           <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200">
             <CardContent className="p-10">
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -143,7 +143,7 @@ export default function PublicSafetyCaseStudy() {
       {/* Solution Section */}
       <section className="py-12 bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">The TruContext Solution</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">The TruContext Approach</h2>
           <div className="space-y-6">
             {technicalComponents.map((component, index) => (
               <Card key={index} className="bg-white hover:shadow-xl transition-shadow">
@@ -166,7 +166,7 @@ export default function PublicSafetyCaseStudy() {
             <CardContent className="p-10">
               <h3 className="text-2xl font-bold mb-4">Graph Analytics for Predictive Policing</h3>
               <p className="text-lg opacity-90 leading-relaxed mb-6">
-                TruContext's graph database architecture is uniquely positioned for predictive policing applications. Co-offending Network Analysis links individuals who have committed crimes together, while Link Prediction identifies emerging criminal network relationships. The platform fuses historical crime data with infrastructure data—such as mapping crime hot spots against broken windows or graffiti—to prioritize high-risk areas for intervention. Unlike "black box" AI algorithms, TruContext's knowledge graph provides structurally visible, traceable relationships with full audit trails, fulfilling the ethical mandate for clarity in data-driven governance.
+                TruContext's graph database architecture is uniquely could position for predictive policing applications. Co-offending Network Analysis links individuals who have committed crimes together, while Link Prediction identifies emerging criminal network relationships. The platform fuses historical crime data with infrastructure data—such as mapping crime hot spots against broken windows or graffiti—to prioritize high-risk areas for intervention. Unlike "black box" AI algorithms, TruContext's knowledge graph provides structurally visible, traceable relationships with full audit trails, fulfilling the ethical mandate for clarity in data-driven governance.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-4">
@@ -190,10 +190,10 @@ export default function PublicSafetyCaseStudy() {
         </div>
       </section>
 
-      {/* Implementation Timeline */}
+      {/* Potential Implementation Timeline */}
       <section className="py-12 bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">Implementation Timeline</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">Potential Implementation Timeline</h2>
           <div className="space-y-6">
             {timeline.map((phase, index) => (
               <Card key={index} className="hover:shadow-xl transition-shadow border-l-4 border-primary">
@@ -344,7 +344,7 @@ export default function PublicSafetyCaseStudy() {
             <CardContent className="p-12">
               <div className="text-6xl text-primary mb-6">"</div>
               <p className="text-2xl text-gray-800 leading-relaxed mb-8 italic">
-                TruContext has transformed how we approach public safety. The ability to see criminal network relationships in the graph visualization helps us understand patterns we never could before. But what really matters is the transparency—we can show the community exactly how predictions are made, which has rebuilt trust. The cyber-physical threat correlation has prevented two major infrastructure attacks in the past year alone.
+                TruContext has could transform how we approach public safety. The ability to see criminal network relationships in the graph visualization helps us understand patterns we never could before. But what really matters is the transparency—we can show the community exactly how predictions are made, which has rebuilt trust. The cyber-physical threat correlation has prevented two major infrastructure attacks in the past year alone.
               </p>
               <div className="flex items-center gap-4">
                 <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
@@ -378,7 +378,7 @@ export default function PublicSafetyCaseStudy() {
             </Link>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
               <Download className="h-5 w-5 mr-2" />
-              Download Case Study PDF
+              Download Use Case Scenario PDF
             </Button>
           </div>
         </div>

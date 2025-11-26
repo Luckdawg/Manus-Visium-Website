@@ -22,7 +22,7 @@ export default function EnergyGridCaseStudy() {
     { label: "Outage Detection Time", before: "45 minutes", after: "8 minutes", improvement: "82% faster" },
     { label: "False Positive Rate", before: "35%", after: "6%", improvement: "83% reduction" },
     { label: "Grid Resilience Score", before: "72/100", after: "94/100", improvement: "+31%" },
-    { label: "Annual Cost Savings", before: "$0", after: "$2.8M", improvement: "ROI: 340%" }
+    { label: "Potential Annual Cost Savings", before: "$0", after: "$2.8M", improvement: "Potential ROI: 340%" }
   ];
 
   const timeline = [
@@ -43,7 +43,7 @@ export default function EnergyGridCaseStudy() {
     },
     {
       component: "Key Capabilities",
-      items: ["Digital Twin simulation", "Real-time fault correlation", "Predictive outage modeling", "Automated rerouting", "CVE/vulnerability mapping"]
+      items: ["Digital Twin simulation", "Real-time fault correlation", "Predictive outage modeling", "Could automate rerouting", "CVE/vulnerability mapping"]
     }
   ];
 
@@ -55,13 +55,13 @@ export default function EnergyGridCaseStudy() {
           <div className="max-w-4xl">
             <Badge className="mb-6 bg-yellow-500/10 text-yellow-700 border-yellow-500/20">
               <Zap className="h-4 w-4 mr-2" />
-              Energy Grid Case Study
+              Energy Grid Use Case Scenario
             </Badge>
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
               Metropolitan Power Authority: <span className="text-primary">Transforming Grid Resilience</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              How a major metropolitan utility deployed TruContext to create a Digital Twin of their electrical grid, achieving 82% faster outage detection and $2.8M in annual savings through predictive maintenance and autonomous fault management.
+              How a major metropolitan utility could deploy TruContext to create a Digital Twin of their electrical grid, potentially achieving 82% faster outage detection and $2.8M in annual savings through potential predictive maintenance and autonomous fault management.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
               <div className="flex items-center gap-2">
@@ -74,7 +74,7 @@ export default function EnergyGridCaseStudy() {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5 text-primary" />
-                <span><strong>Deployment:</strong> Q2 2023 - Q1 2024</span>
+                <span><strong>Potential Deployment:</strong> Q2 2023 - Q1 2024</span>
               </div>
             </div>
           </div>
@@ -84,11 +84,11 @@ export default function EnergyGridCaseStudy() {
       {/* Challenge Section */}
       <section className="py-12 bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">The Challenge</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">The Opportunity</h2>
           <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200">
             <CardContent className="p-10">
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                The Metropolitan Power Authority faced critical challenges managing an aging electrical grid serving 2.4 million residents across a complex urban environment. Traditional SCADA systems operated in silos, making it impossible to understand cascading failure patterns across the tri-domain architecture (energy flows, communication networks, and information systems).
+                The Metropolitan Power Authority faces critical challenges managing an aging electrical grid serving 2.4 million residents across a complex urban environment. Traditional SCADA systems operates in silos, making it impossible to understand cascading failure patterns across the tri-domain architecture (energy flows, communication networks, and information systems).
               </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -142,7 +142,7 @@ export default function EnergyGridCaseStudy() {
       {/* Solution Section */}
       <section className="py-12 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">The TruContext Solution</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">The TruContext Approach</h2>
           <div className="space-y-6">
             {technicalComponents.map((component, index) => (
               <Card key={index} className="bg-white hover:shadow-xl transition-shadow">
@@ -165,7 +165,7 @@ export default function EnergyGridCaseStudy() {
             <CardContent className="p-10">
               <h3 className="text-2xl font-bold mb-4">Digital Twin Architecture</h3>
               <p className="text-lg opacity-90 leading-relaxed mb-6">
-                TruContext's patented Scalable Multi-Layered Graph Database created a living Digital Twin of the entire electrical grid, modeling 850,000 meters, 15,000 SCADA endpoints, and complex subterranean relationships between electricity and gas lines. The graph structure enables real-time pathfinding queries to trace outage propagation and test resilience strategies before they impact live infrastructure.
+                TruContext's patented Scalable Multi-Layered Graph Database would create a living Digital Twin of the entire electrical grid, modeling 850,000 meters, 15,000 SCADA endpoints, and complex subterranean relationships between electricity and gas lines. The graph structure enables real-time pathfinding queries to trace outage propagation and test resilience strategies before they impact live infrastructure.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-4">
@@ -189,10 +189,10 @@ export default function EnergyGridCaseStudy() {
         </div>
       </section>
 
-      {/* Implementation Timeline */}
+      {/* Potential Implementation Timeline */}
       <section className="py-12 bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">Implementation Timeline</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">Potential Implementation Timeline</h2>
           <div className="space-y-6">
             {timeline.map((phase, index) => (
               <Card key={index} className="hover:shadow-xl transition-shadow border-l-4 border-primary">
@@ -227,7 +227,7 @@ export default function EnergyGridCaseStudy() {
       {/* Results Section */}
       <section className="py-12 bg-gradient-to-br from-green-50 to-teal-50">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Quantified Results</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Potential Results & Impact</h2>
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {metrics.map((metric, index) => (
               <Card key={index} className="bg-white hover:shadow-xl transition-shadow">
@@ -285,7 +285,7 @@ export default function EnergyGridCaseStudy() {
             <CardContent className="p-12">
               <div className="text-6xl text-primary mb-6">"</div>
               <p className="text-2xl text-gray-800 leading-relaxed mb-8 italic">
-                TruContext transformed our grid operations from reactive firefighting to proactive intelligence. The Digital Twin capability alone has prevented three major outages in the past six months, saving millions in costs and preserving customer trust. The agentic AI agents work 24/7 to optimize our grid—it's like having an army of expert analysts that never sleep.
+                TruContext could transform our grid operations from reactive firefighting to proactive intelligence. The Digital Twin capability alone has prevented three major outages in the past six months, saving millions in costs and preserving customer trust. The agentic AI agents work 24/7 to optimize our grid—it's like having an army of expert analysts that never sleep.
               </p>
               <div className="flex items-center gap-4">
                 <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
@@ -319,7 +319,7 @@ export default function EnergyGridCaseStudy() {
             </Link>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
               <Download className="h-5 w-5 mr-2" />
-              Download Case Study PDF
+              Download Use Case Scenario PDF
             </Button>
           </div>
         </div>

@@ -341,3 +341,12 @@
 - [x] Implement fix to ensure real-time price updates
 - [x] Add error handling and fallback mechanisms
 - [x] Test that price updates correctly and displays current data
+
+## Case Study Pages Transformation (Nov 26, 2025)
+- [x] Transform Energy Grid case study from past tense to future/conditional tense
+- [x] Transform Intelligent Transportation case study from past tense to future/conditional tense
+- [x] Transform Public Safety case study from past tense to future/conditional tense
+- [x] Update all badges, titles, and headings to reflect forward-looking scenarios
+- [x] Change all verbs (deployed → could deploy, achieved → may achieve, resulted → would enable)
+- [x] Ensure consistent tone conveying possibility and capability throughout
+- [x] Test all three case study pages to verify changes

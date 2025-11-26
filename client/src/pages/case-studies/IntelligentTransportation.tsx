@@ -39,7 +39,7 @@ export default function IntelligentTransportationCaseStudy() {
     },
     {
       component: "TruContext Integration",
-      items: ["Graph pathfinding (transportation network)", "TruTime temporal sequencing", "Tru-InSight video AI agents", "Automated workflow dispatching", "Supply chain optimization", "Real-time anomaly detection"]
+      items: ["Graph pathfinding (transportation network)", "TruTime temporal sequencing", "Tru-InSight video AI agents", "Could automate workflow dispatching", "Supply chain optimization", "Real-time anomaly detection"]
     },
     {
       component: "Key Capabilities",
@@ -55,13 +55,13 @@ export default function IntelligentTransportationCaseStudy() {
           <div className="max-w-4xl">
             <Badge className="mb-6 bg-blue-500/10 text-blue-700 border-blue-500/20">
               <Car className="h-4 w-4 mr-2" />
-              Intelligent Transportation Case Study
+              Intelligent Transportation Use Case Scenario
             </Badge>
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
               Smart City Transit Authority: <span className="text-primary">Adaptive Traffic Intelligence</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              How a major metropolitan transit authority deployed TruContext with Tru-InSight video AI to achieve 61% faster incident clearance, 55% congestion reduction, and $2.1M in annual infrastructure maintenance savings through spatio-temporal analytics and autonomous traffic management.
+              How a major metropolitan transit authority could deploy TruContext with Tru-InSight video AI to achieve 61% faster incident clearance, 55% congestion reduction, and $2.1M in annual infrastructure maintenance savings through spatio-temporal analytics and autonomous traffic management.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
               <div className="flex items-center gap-2">
@@ -74,7 +74,7 @@ export default function IntelligentTransportationCaseStudy() {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5 text-primary" />
-                <span><strong>Deployment:</strong> Q3 2023 - Q2 2024</span>
+                <span><strong>Potential Deployment:</strong> Q3 2023 - Q2 2024</span>
               </div>
             </div>
           </div>
@@ -84,11 +84,11 @@ export default function IntelligentTransportationCaseStudy() {
       {/* Challenge Section */}
       <section className="py-12 bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">The Challenge</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">The Opportunity</h2>
           <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200">
             <CardContent className="p-10">
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                The Smart City Transit Authority managed a complex 180-mile transportation network serving 1.8 million residents, but legacy systems couldn't correlate data from 1,200 traffic cameras, 3,500 sensors, and mobile GPS reports. Traffic incidents took an average of 28 minutes to clear, and reactive maintenance was costing $4.2M annually while infrastructure continued to deteriorate.
+                The Smart City Transit Authority could manage a complex 180-mile transportation network serving 1.8 million residents, but legacy systems couldn't correlate data from 1,200 traffic cameras, 3,500 sensors, and mobile GPS reports. Traffic incidents took an average of 28 minutes to clear, and reactive maintenance was costing $4.2M annually while infrastructure continued to deteriorate.
               </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -142,7 +142,7 @@ export default function IntelligentTransportationCaseStudy() {
       {/* Solution Section */}
       <section className="py-12 bg-gradient-to-br from-blue-50 to-cyan-50">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">The TruContext Solution</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">The TruContext Approach</h2>
           <div className="space-y-6">
             {technicalComponents.map((component, index) => (
               <Card key={index} className="bg-white hover:shadow-xl transition-shadow">
@@ -189,10 +189,10 @@ export default function IntelligentTransportationCaseStudy() {
         </div>
       </section>
 
-      {/* Implementation Timeline */}
+      {/* Potential Implementation Timeline */}
       <section className="py-12 bg-white">
         <div className="container max-w-5xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">Implementation Timeline</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">Potential Implementation Timeline</h2>
           <div className="space-y-6">
             {timeline.map((phase, index) => (
               <Card key={index} className="hover:shadow-xl transition-shadow border-l-4 border-primary">
@@ -270,7 +270,7 @@ export default function IntelligentTransportationCaseStudy() {
                 <div className="text-center">
                   <div className="text-5xl font-bold mb-2">$8.5M</div>
                   <div className="text-lg opacity-90">Annual Economic Benefit</div>
-                  <div className="text-sm opacity-75">(reduced congestion costs)</div>
+                  <div className="text-sm opacity-75">(could reduce congestion costs)</div>
                 </div>
               </div>
             </CardContent>
@@ -285,7 +285,7 @@ export default function IntelligentTransportationCaseStudy() {
             <CardContent className="p-12">
               <div className="text-6xl text-primary mb-6">"</div>
               <p className="text-2xl text-gray-800 leading-relaxed mb-8 italic">
-                Tru-InSight's video AI agents have revolutionized our traffic operations. What used to take our analysts hours to investigate now happens automatically in minutes. The system detected an erratic driver last month and alerted police before a potential accident—that's the kind of proactive intelligence that saves lives. The ROI has been extraordinary.
+                Tru-InSight's video AI agents have revolutionized our traffic operations. What used to take our analysts hours to investigate now happens automatically in minutes. The system could detect an erratic driver last month and alerted police before a potential accident—that's the kind of proactive intelligence that saves lives. The ROI has been extraordinary.
               </p>
               <div className="flex items-center gap-4">
                 <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
@@ -319,7 +319,7 @@ export default function IntelligentTransportationCaseStudy() {
             </Link>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
               <Download className="h-5 w-5 mr-2" />
-              Download Case Study PDF
+              Download Use Case Scenario PDF
             </Button>
           </div>
         </div>
