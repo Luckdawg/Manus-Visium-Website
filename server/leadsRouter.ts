@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { whitepaperLeads } from "../drizzle/schema";
+import { whitepaperLeads, emailCampaigns } from "../drizzle/schema";
 import { notifyOwner } from "./_core/notification";
 
 export const leadsRouter = router({
@@ -58,6 +58,29 @@ This lead has shown high intent by downloading technical documentation and shoul
         if (!notificationSent) {
           console.warn(`Failed to send notification for lead ${lead.id}`);
         }
+
+        // Schedule drip campaign emails (Day 1, Day 3, Day 7)
+        const now = new Date();
+        const campaignSchedule = [
+          { stage: "day1" as const, daysDelay: 1 },
+          { stage: "day3" as const, daysDelay: 3 },
+          { stage: "day7" as const, daysDelay: 7 },
+        ];
+
+        for (const { stage, daysDelay } of campaignSchedule) {
+          const scheduledDate = new Date(now);
+          scheduledDate.setDate(scheduledDate.getDate() + daysDelay);
+          scheduledDate.setHours(10, 0, 0, 0); // Schedule for 10 AM EST
+
+          await db.insert(emailCampaigns).values({
+            leadId: lead.id,
+            campaignStage: stage,
+            scheduledFor: scheduledDate,
+            status: "pending",
+          });
+        }
+
+        console.log(`Scheduled 3 drip campaign emails for lead ${lead.id}`);
 
         return {
           success: true,

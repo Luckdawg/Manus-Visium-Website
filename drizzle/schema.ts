@@ -38,4 +38,18 @@ export const whitepaperLeads = mysqlTable("whitepaper_leads", {
 export type WhitepaperLead = typeof whitepaperLeads.$inferSelect;
 export type NewWhitepaperLead = typeof whitepaperLeads.$inferInsert;
 
+// Email drip campaign tracking table
+export const emailCampaigns = mysqlTable("email_campaigns", {
+  id: int("id").autoincrement().primaryKey(),
+  leadId: int("leadId").notNull(), // References whitepaper_leads.id
+  campaignStage: mysqlEnum("campaignStage", ["day1", "day3", "day7"]).notNull(),
+  scheduledFor: timestamp("scheduledFor").notNull(),
+  sentAt: timestamp("sentAt"),
+  status: mysqlEnum("status", ["pending", "sent", "failed"]).default("pending").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type EmailCampaign = typeof emailCampaigns.$inferSelect;
+export type NewEmailCampaign = typeof emailCampaigns.$inferInsert;
+
 // TODO: Add your tables here
