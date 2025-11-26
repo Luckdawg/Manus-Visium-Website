@@ -3,7 +3,7 @@ import { z } from "zod";
 
 /**
  * Stock data router for fetching real-time VISM stock information
- * from Google Finance
+ * from Yahoo Finance API
  */
 
 interface StockData {
@@ -17,16 +17,19 @@ interface StockData {
   timestamp: string;
 }
 
+interface HistoricalDataPoint {
+  date: string;
+  price: number;
+}
+
 /**
- * Fetch VISM stock data from Google Finance
- * Since Google Finance doesn't provide a public API, we'll use
- * a fallback approach with Yahoo Finance API via CORS proxy
+ * Fetch VISM stock data from Yahoo Finance
  */
 async function fetchStockData(): Promise<StockData> {
   try {
-    // Try Yahoo Finance API first (more reliable for OTC stocks)
+    // Use Yahoo Finance API for OTC stocks
     const response = await fetch(
-      "https://corsproxy.io/?https://query1.finance.yahoo.com/v8/finance/chart/VISM?interval=1d&range=1d"
+      "https://query1.finance.yahoo.com/v8/finance/chart/VISM?interval=1d&range=1d"
     );
     
     if (!response.ok) {
@@ -36,10 +39,9 @@ async function fetchStockData(): Promise<StockData> {
     const data = await response.json();
     const quote = data.chart.result[0];
     const meta = quote.meta;
-    const indicators = quote.indicators.quote[0];
 
-    const currentPrice = meta.regularMarketPrice || 0.0062;
-    const previousClose = meta.chartPreviousClose || 0.005;
+    const currentPrice = meta.regularMarketPrice || 0.0054;
+    const previousClose = meta.chartPreviousClose || 0.0057;
     const change = currentPrice - previousClose;
     const changePercent = (change / previousClose) * 100;
 
@@ -47,26 +49,72 @@ async function fetchStockData(): Promise<StockData> {
       price: currentPrice,
       change: parseFloat(change.toFixed(4)),
       changePercent: parseFloat(changePercent.toFixed(2)),
-      volume: meta.regularMarketVolume || 478610,
+      volume: meta.regularMarketVolume || 18105,
       marketCap: "$2.1M",
-      high52Week: 0.046,
-      low52Week: 0.0011,
+      high52Week: meta.fiftyTwoWeekHigh || 0.046,
+      low52Week: meta.fiftyTwoWeekLow || 0.0011,
       timestamp: new Date().toISOString(),
     };
   } catch (error) {
     console.error("[Stock API] Failed to fetch from Yahoo Finance:", error);
     
-    // Fallback to static Google Finance data
+    // Fallback to last known data from Nasdaq
     return {
-      price: 0.0062,
-      change: 0.0012,
-      changePercent: 23.0,
-      volume: 478610,
+      price: 0.0054,
+      change: -0.0003,
+      changePercent: -5.26,
+      volume: 18105,
       marketCap: "$2.1M",
       high52Week: 0.046,
       low52Week: 0.0011,
       timestamp: new Date().toISOString(),
     };
+  }
+}
+
+/**
+ * Fetch historical stock data from Yahoo Finance
+ */
+async function fetchHistoricalData(timeframe: string): Promise<HistoricalDataPoint[]> {
+  try {
+    // Map timeframe to Yahoo Finance range parameter
+    const rangeMap: Record<string, string> = {
+      "1M": "1mo",
+      "3M": "3mo",
+      "6M": "6mo",
+      "1Y": "1y",
+      "ALL": "5y", // Yahoo Finance max is typically 5 years for free tier
+    };
+    
+    const range = rangeMap[timeframe] || "6mo";
+    
+    const response = await fetch(
+      `https://query1.finance.yahoo.com/v8/finance/chart/VISM?interval=1d&range=${range}`
+    );
+    
+    if (!response.ok) {
+      throw new Error(`Yahoo Finance API failed: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const quote = data.chart.result[0];
+    const timestamps = quote.timestamp || [];
+    const closePrices = quote.indicators.quote[0].close || [];
+
+    const historicalData: HistoricalDataPoint[] = timestamps.map((timestamp: number, index: number) => {
+      const date = new Date(timestamp * 1000);
+      return {
+        date: date.toISOString().split('T')[0],
+        price: parseFloat((closePrices[index] || 0).toFixed(4)),
+      };
+    }).filter((point: HistoricalDataPoint) => point.price > 0); // Filter out invalid data points
+
+    return historicalData;
+  } catch (error) {
+    console.error("[Stock API] Failed to fetch historical data:", error);
+    
+    // Return empty array on error - frontend will show "No data available"
+    return [];
   }
 }
 
@@ -81,7 +129,7 @@ export const stockRouter = router({
 
   /**
    * Get historical stock data for charting
-   * Returns mock data for now - can be enhanced with real API later
+   * Fetches real data from Yahoo Finance API
    */
   getHistoricalData: publicProcedure
     .input(
@@ -90,37 +138,8 @@ export const stockRouter = router({
       })
     )
     .query(async ({ input }) => {
-      // For now, return the existing mock data structure
-      // This can be enhanced later to fetch real historical data
       const { timeframe } = input;
-      
-      // Generate mock historical data based on timeframe
-      const now = new Date();
-      const dataPoints: Array<{ date: string; price: number; volume: number }> = [];
-      
-      let daysBack = 30;
-      if (timeframe === "3M") daysBack = 90;
-      else if (timeframe === "6M") daysBack = 180;
-      else if (timeframe === "1Y") daysBack = 365;
-      else if (timeframe === "ALL") daysBack = 730;
-      
-      for (let i = daysBack; i >= 0; i--) {
-        const date = new Date(now);
-        date.setDate(date.getDate() - i);
-        
-        // Generate realistic-looking price data
-        const basePrice = 0.0033;
-        const trend = (daysBack - i) / daysBack * 0.003;
-        const noise = (Math.random() - 0.5) * 0.001;
-        const price = basePrice + trend + noise;
-        
-        dataPoints.push({
-          date: date.toISOString().split("T")[0],
-          price: parseFloat(price.toFixed(4)),
-          volume: Math.floor(Math.random() * 500000) + 100000,
-        });
-      }
-      
-      return dataPoints;
+      const historicalData = await fetchHistoricalData(timeframe);
+      return historicalData;
     }),
 });

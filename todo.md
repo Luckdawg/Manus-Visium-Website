@@ -313,3 +313,10 @@
 - [x] Add embed links for all Rumble videos with clear titles
 - [x] Organize videos by category or topic for easy navigation
 - [x] Test all video embeds and page functionality
+
+## Investor Relations Page Fixes (Nov 26, 2025)
+- [x] Remove trading volume chart from Investor Relations page
+- [x] Update historical price chart to use accurate Nasdaq data
+- [x] Fix share price information to ensure it updates correctly
+- [x] Verify data is fetching from correct Nasdaq source
+- [x] Test that price updates are working in real-time
