@@ -3,7 +3,7 @@ import { z } from "zod";
 
 /**
  * Stock data router for fetching real-time VISM stock information
- * from Yahoo Finance API
+ * with caching and rate limit handling
  */
 
 interface StockData {
@@ -22,44 +22,85 @@ interface HistoricalDataPoint {
   price: number;
 }
 
+// Cache for stock data to avoid hitting rate limits
+let stockDataCache: { data: StockData; timestamp: number } | null = null;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+// Cache for historical data
+const historicalDataCache: Map<string, { data: HistoricalDataPoint[]; timestamp: number }> = new Map();
+const HISTORICAL_CACHE_DURATION = 15 * 60 * 1000; // 15 minutes
+
 /**
- * Fetch VISM stock data from Yahoo Finance
+ * Fetch VISM stock data from Yahoo Finance with caching
  */
 async function fetchStockData(): Promise<StockData> {
+  // Check cache first
+  if (stockDataCache && Date.now() - stockDataCache.timestamp < CACHE_DURATION) {
+    console.log("[Stock API] Returning cached data");
+    return stockDataCache.data;
+  }
+
   try {
     // Use Yahoo Finance API for OTC stocks
     const response = await fetch(
-      "https://query1.finance.yahoo.com/v8/finance/chart/VISM?interval=1d&range=1d"
+      "https://query1.finance.yahoo.com/v8/finance/chart/VISM?interval=1d&range=1d",
+      {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        },
+      }
     );
     
     if (!response.ok) {
-      throw new Error(`Yahoo Finance API failed: ${response.status}`);
+      throw new Error(`Yahoo Finance API failed: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();
+    
+    // Check if we got valid data
+    if (!data.chart || !data.chart.result || data.chart.result.length === 0) {
+      throw new Error("Invalid response from Yahoo Finance");
+    }
+
     const quote = data.chart.result[0];
     const meta = quote.meta;
 
-    const currentPrice = meta.regularMarketPrice || 0.0054;
-    const previousClose = meta.chartPreviousClose || 0.0057;
+    const currentPrice = meta.regularMarketPrice || meta.previousClose || 0.0054;
+    const previousClose = meta.chartPreviousClose || meta.previousClose || 0.0057;
     const change = currentPrice - previousClose;
     const changePercent = (change / previousClose) * 100;
 
-    return {
-      price: currentPrice,
+    const stockData: StockData = {
+      price: parseFloat(currentPrice.toFixed(4)),
       change: parseFloat(change.toFixed(4)),
       changePercent: parseFloat(changePercent.toFixed(2)),
-      volume: meta.regularMarketVolume || 18105,
+      volume: meta.regularMarketVolume || 0,
       marketCap: "$2.1M",
       high52Week: meta.fiftyTwoWeekHigh || 0.046,
       low52Week: meta.fiftyTwoWeekLow || 0.0011,
       timestamp: new Date().toISOString(),
     };
+
+    // Update cache
+    stockDataCache = {
+      data: stockData,
+      timestamp: Date.now(),
+    };
+
+    console.log("[Stock API] Fetched fresh data from Yahoo Finance:", stockData.price);
+    return stockData;
   } catch (error) {
     console.error("[Stock API] Failed to fetch from Yahoo Finance:", error);
     
-    // Fallback to last known data from Nasdaq
-    return {
+    // If we have cached data (even if expired), return it
+    if (stockDataCache) {
+      console.log("[Stock API] Returning expired cache due to API error");
+      return stockDataCache.data;
+    }
+    
+    // Last resort: return fallback data
+    console.log("[Stock API] Using fallback data");
+    const fallbackData: StockData = {
       price: 0.0054,
       change: -0.0003,
       changePercent: -5.26,
@@ -69,13 +110,28 @@ async function fetchStockData(): Promise<StockData> {
       low52Week: 0.0011,
       timestamp: new Date().toISOString(),
     };
+    
+    // Cache fallback data to avoid repeated API failures
+    stockDataCache = {
+      data: fallbackData,
+      timestamp: Date.now(),
+    };
+    
+    return fallbackData;
   }
 }
 
 /**
- * Fetch historical stock data from Yahoo Finance
+ * Fetch historical stock data from Yahoo Finance with caching
  */
 async function fetchHistoricalData(timeframe: string): Promise<HistoricalDataPoint[]> {
+  // Check cache first
+  const cached = historicalDataCache.get(timeframe);
+  if (cached && Date.now() - cached.timestamp < HISTORICAL_CACHE_DURATION) {
+    console.log(`[Stock API] Returning cached historical data for ${timeframe}`);
+    return cached.data;
+  }
+
   try {
     // Map timeframe to Yahoo Finance range parameter
     const rangeMap: Record<string, string> = {
@@ -83,13 +139,18 @@ async function fetchHistoricalData(timeframe: string): Promise<HistoricalDataPoi
       "3M": "3mo",
       "6M": "6mo",
       "1Y": "1y",
-      "ALL": "5y", // Yahoo Finance max is typically 5 years for free tier
+      "ALL": "5y",
     };
     
     const range = rangeMap[timeframe] || "6mo";
     
     const response = await fetch(
-      `https://query1.finance.yahoo.com/v8/finance/chart/VISM?interval=1d&range=${range}`
+      `https://query1.finance.yahoo.com/v8/finance/chart/VISM?interval=1d&range=${range}`,
+      {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        },
+      }
     );
     
     if (!response.ok) {
@@ -97,6 +158,11 @@ async function fetchHistoricalData(timeframe: string): Promise<HistoricalDataPoi
     }
 
     const data = await response.json();
+    
+    if (!data.chart || !data.chart.result || data.chart.result.length === 0) {
+      throw new Error("Invalid response from Yahoo Finance");
+    }
+
     const quote = data.chart.result[0];
     const timestamps = quote.timestamp || [];
     const closePrices = quote.indicators.quote[0].close || [];
@@ -107,20 +173,34 @@ async function fetchHistoricalData(timeframe: string): Promise<HistoricalDataPoi
         date: date.toISOString().split('T')[0],
         price: parseFloat((closePrices[index] || 0).toFixed(4)),
       };
-    }).filter((point: HistoricalDataPoint) => point.price > 0); // Filter out invalid data points
+    }).filter((point: HistoricalDataPoint) => point.price > 0);
 
+    // Update cache
+    historicalDataCache.set(timeframe, {
+      data: historicalData,
+      timestamp: Date.now(),
+    });
+
+    console.log(`[Stock API] Fetched fresh historical data for ${timeframe}: ${historicalData.length} points`);
     return historicalData;
   } catch (error) {
     console.error("[Stock API] Failed to fetch historical data:", error);
     
-    // Return empty array on error - frontend will show "No data available"
+    // Check if we have cached data (even if expired)
+    const cached = historicalDataCache.get(timeframe);
+    if (cached) {
+      console.log(`[Stock API] Returning expired cache for ${timeframe} due to API error`);
+      return cached.data;
+    }
+    
+    // Return empty array on error
     return [];
   }
 }
 
 export const stockRouter = router({
   /**
-   * Get current VISM stock data
+   * Get current VISM stock data with caching
    */
   getVISMData: publicProcedure.query(async () => {
     const data = await fetchStockData();
@@ -128,8 +208,7 @@ export const stockRouter = router({
   }),
 
   /**
-   * Get historical stock data for charting
-   * Fetches real data from Yahoo Finance API
+   * Get historical stock data for charting with caching
    */
   getHistoricalData: publicProcedure
     .input(

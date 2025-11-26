@@ -334,3 +334,10 @@
 - [x] Update "Email Us Your Resume" button to link to info@visiumtechnologies.com
 - [x] Ensure mailto link is properly formatted with subject line
 - [x] Test email button functionality
+
+## Stock Price Update Fix (Nov 26, 2025)
+- [x] Investigate why stock price is not updating on Investor Relations page
+- [x] Check API endpoint and data fetching logic
+- [x] Implement fix to ensure real-time price updates
+- [x] Add error handling and fallback mechanisms
+- [x] Test that price updates correctly and displays current data

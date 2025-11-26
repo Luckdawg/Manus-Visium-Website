@@ -14,11 +14,12 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { trpc } from "@/lib/trpc";
+import { RefreshCw } from "lucide-react";
 import StockChart from "@/components/StockChart";
 
 export default function InvestorRelations() {
   // Fetch stock data from backend API with auto-refresh every 15 minutes
-  const { data: stockData, isLoading, refetch } = trpc.stock.getVISMData.useQuery(
+  const { data: stockData, isLoading, refetch, isFetching } = trpc.stock.getVISMData.useQuery(
     undefined,
     {
       refetchInterval: 15 * 60 * 1000, // 15 minutes in milliseconds
@@ -26,6 +27,33 @@ export default function InvestorRelations() {
       staleTime: 5 * 60 * 1000, // Consider data stale after 5 minutes
     }
   );
+
+  // Calculate data age
+  const [dataAge, setDataAge] = useState<string>("");
+  
+  useEffect(() => {
+    if (!stockData?.timestamp) return;
+    
+    const updateAge = () => {
+      const now = new Date().getTime();
+      const dataTime = new Date(stockData.timestamp).getTime();
+      const diffMinutes = Math.floor((now - dataTime) / (1000 * 60));
+      
+      if (diffMinutes < 1) {
+        setDataAge("Just now");
+      } else if (diffMinutes < 60) {
+        setDataAge(`${diffMinutes} min ago`);
+      } else {
+        const hours = Math.floor(diffMinutes / 60);
+        setDataAge(`${hours} hour${hours > 1 ? 's' : ''} ago`);
+      }
+    };
+    
+    updateAge();
+    const interval = setInterval(updateAge, 60000); // Update every minute
+    
+    return () => clearInterval(interval);
+  }, [stockData?.timestamp]);
 
   // Format market cap for display
   const formattedMarketCap = stockData?.marketCap || "$2.1M";
@@ -79,9 +107,20 @@ export default function InvestorRelations() {
                     <div className="text-xs text-gray-500">OTCQB</div>
                   </div>
                   <div className="flex flex-col items-end gap-2">
-                    <Badge variant={isLoading ? "secondary" : "default"} className="text-sm">
-                      {isLoading ? "Loading..." : "Live"}
-                    </Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge variant={isLoading || isFetching ? "secondary" : "default"} className="text-sm">
+                        {isLoading || isFetching ? "Updating..." : "Live"}
+                      </Badge>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={() => refetch()}
+                        disabled={isFetching}
+                        className="h-8 w-8 p-0"
+                      >
+                        <RefreshCw className={`h-4 w-4 ${isFetching ? 'animate-spin' : ''}`} />
+                      </Button>
+                    </div>
                     <Button variant="outline" size="sm" asChild>
                       <a href="https://www.google.com/finance/quote/VISM:OTCMKTS" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs">
                         <ExternalLink className="h-3 w-3" />
@@ -108,14 +147,23 @@ export default function InvestorRelations() {
                       </div>
                     </div>
                     <div className="text-sm text-gray-500">
-                      {stockData?.timestamp ? new Date(stockData.timestamp).toLocaleString('en-US', { 
-                        month: 'short', 
-                        day: 'numeric', 
-                        year: 'numeric', 
-                        hour: 'numeric', 
-                        minute: '2-digit',
-                        timeZoneName: 'short'
-                      }) : "Loading..."}
+                      {stockData?.timestamp ? (
+                        <div className="flex items-center gap-2">
+                          <span>
+                            {new Date(stockData.timestamp).toLocaleString('en-US', { 
+                              month: 'short', 
+                              day: 'numeric', 
+                              year: 'numeric', 
+                              hour: 'numeric', 
+                              minute: '2-digit',
+                              timeZoneName: 'short'
+                            })}
+                          </span>
+                          {dataAge && (
+                            <span className="text-xs text-gray-400">({dataAge})</span>
+                          )}
+                        </div>
+                      ) : "Loading..."}
                     </div>
 
                     <div className="mt-6 pt-6 border-t border-gray-200">
