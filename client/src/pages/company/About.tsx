@@ -14,7 +14,7 @@ export default function About() {
               <img 
                 src="/visium-tech-logo.25183d7a.png" 
                 alt="Visium Technologies" 
-                className="h-24 mx-auto"
+                className="h-16 sm:h-20 md:h-24 mx-auto object-contain"
               />
             </div>
             <h1 className="text-5xl font-bold text-gray-900 mb-6">

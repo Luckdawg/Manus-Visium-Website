@@ -288,3 +288,12 @@
 - [x] Update Investor Relations page to use backend API
 - [x] Remove right-side data squares (Market Cap, 52-Week High, 52-Week Low, Avg Volume) - moved to main card
 - [x] Test auto-refresh functionality and verify data updates every 15 minutes
+
+## Graphics Review & Optimization (Nov 26, 2025)
+- [x] Audit all pages for graphics issues (oversized, undersized, distorted, misaligned)
+- [x] Fix Visium Technologies logo sizing and alignment on About page
+- [x] Review and optimize all hero section images across pages
+- [x] Check icon sizing and consistency throughout the site
+- [x] Ensure responsive image scaling for mobile, tablet, and desktop
+- [x] Verify all images have proper aspect ratios and no distortion
+- [x] Test graphics display on all major pages

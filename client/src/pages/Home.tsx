@@ -97,7 +97,7 @@ export default function Home() {
               <img 
                 src="/hero_illustration.webp" 
                 alt="TruContext Platform" 
-                className="w-full h-auto rounded-lg shadow-2xl"
+                className="w-full h-auto rounded-lg shadow-2xl object-cover max-h-[500px] md:max-h-[600px]"
               />
             </div>
           </div>
@@ -185,11 +185,11 @@ export default function Home() {
           </div>
 
           <div className="text-center">
-            <img 
-              src="/trucontext_logo.webp" 
-              alt="TruContext" 
-              className="mx-auto h-16 mb-8"
-            />
+              <img 
+                src="/trucontext_logo.webp" 
+                alt="TruContext" 
+                className="h-12 sm:h-14 md:h-16 mb-6 object-contain"
+              />
           </div>
         </div>
       </section>
@@ -337,7 +337,7 @@ export default function Home() {
             <img 
               src="/nist_framework_graphic.webp" 
               alt="NIST Framework" 
-              className="max-w-md w-full h-auto rounded-lg"
+              className="max-w-xs sm:max-w-md w-full h-auto rounded-lg object-contain"
             />
           </div>
         </div>
@@ -350,7 +350,7 @@ export default function Home() {
             <img 
               src="/mitre_attack_logo.webp" 
               alt="MITRE ATT&CK" 
-              className="mx-auto h-20 mb-6"
+              className="mx-auto h-16 sm:h-20 md:h-24 mb-6 object-contain"
             />
             <p className="text-xl text-blue-100 max-w-4xl mx-auto">
               TruContext™ applies MITRE's ATT&CK framework — a globally-accessible catalog of adversarial tactics, techniques, and procedures (TTPs). Visium leverages the framework to employ an effective, threat-informed defense.
