@@ -218,9 +218,11 @@ export default function Architecture() {
                   Schedule Technical Deep Dive
                 </Button>
               </Link>
-              <Button size="lg" variant="outline">
-                <Download className="h-5 w-5 mr-2" />
-                Download Architecture Whitepaper
+              <Button size="lg" variant="outline" asChild>
+                <a href="/TruContext_Architecture_Whitepaper.pdf" download="TruContext_Architecture_Whitepaper.pdf">
+                  <Download className="h-5 w-5 mr-2" />
+                  Download Architecture Whitepaper
+                </a>
               </Button>
             </div>
           </div>
