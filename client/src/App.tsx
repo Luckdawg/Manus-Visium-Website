@@ -38,6 +38,10 @@ import Architecture from "./pages/Architecture";
 import Comparison from "./pages/why/Comparison";
 import Blog from "./pages/Blog";
 import Videos from "./pages/resources/Videos";
+import AdminDashboard from "./pages/admin/Dashboard";
+import AdminUsers from "./pages/admin/Users";
+import AdminSecurity from "./pages/admin/Security";
+import AdminLogin from "./pages/admin/Login";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -75,6 +79,10 @@ function Router() {
       <Route path={"/blog"} component={Blog} />
       <Route path={"/resources"} component={Blog} />
       <Route path={"/resources/videos"} component={Videos} />
+      <Route path={"/admin/login"} component={AdminLogin} />
+      <Route path={"/admin"} component={AdminDashboard} />
+      <Route path={"/admin/users"} component={AdminUsers} />
+      <Route path={"/admin/security"} component={AdminSecurity} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
