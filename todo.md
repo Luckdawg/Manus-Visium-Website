@@ -306,3 +306,10 @@
 - [x] Explain data sources for industry benchmarks and cost estimates
 - [x] Add constraints and considerations section (limitations, variability factors)
 - [x] Test ROI page and verify methodology section displays correctly
+
+## Videos & Webinars Page Update (Nov 26, 2025)
+- [x] Browse TruContext Rumble channel to gather all available videos
+- [x] Create or update Videos & Webinars page with organized video sections
+- [x] Add embed links for all Rumble videos with clear titles
+- [x] Organize videos by category or topic for easy navigation
+- [x] Test all video embeds and page functionality

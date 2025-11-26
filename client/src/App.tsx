@@ -37,6 +37,7 @@ import PublicSafety from "./pages/case-studies/PublicSafety";
 import Architecture from "./pages/Architecture";
 import Comparison from "./pages/why/Comparison";
 import Blog from "./pages/Blog";
+import Videos from "./pages/resources/Videos";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -73,6 +74,7 @@ function Router() {
       <Route path="/why/comparison" component={Comparison} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/resources"} component={Blog} />
+      <Route path={"/resources/videos"} component={Videos} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

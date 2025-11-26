@@ -309,6 +309,7 @@ const Navigation = () => {
                 </Button>
                 {openDropdown === "resources-mobile" && (
                   <div className="pl-4 mt-1 space-y-1 bg-gray-50 rounded-lg py-2">
+                    <Link href="/resources/videos" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Videos & Webinars</div></Link>
                     <Link href="/blog" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Blog & Insights</div></Link>
                     <Link href="/graph-demo" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Interactive Demo</div></Link>
                   </div>
