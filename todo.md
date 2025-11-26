@@ -350,3 +350,10 @@
 - [x] Change all verbs (deployed → could deploy, achieved → may achieve, resulted → would enable)
 - [x] Ensure consistent tone conveying possibility and capability throughout
 - [x] Test all three case study pages to verify changes
+
+## Video Links Verification (Nov 26, 2025)
+- [x] Check all video links on Videos page for accuracy
+- [x] Identify any broken or incorrect video URLs (found 11 broken links)
+- [x] Fix all broken or incorrect links (updated 15 URLs with correct Rumble links)
+- [x] Test each video link to ensure it directs to correct Rumble video
+- [x] Verify all 16 videos are properly linked

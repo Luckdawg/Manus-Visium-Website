@@ -21,28 +21,28 @@ export default function Videos() {
     },
     {
       title: "TruContext™ ELI and Law Enforcement",
-      url: "https://rumble.com/v1ca1u3-trucontext-eli-and-law-enforcement.html",
+      url: "https://rumble.com/v1c5agd-trucontext-eli-and-law-enforcement.html",
       duration: "2:20",
       views: "458",
       description: "See how TruContext serves law enforcement and emergency response teams."
     },
     {
       title: "Logistics, Ports and Supply Chain",
-      url: "https://rumble.com/v1ca1t7-logistics-ports-and-supply-chain.html",
+      url: "https://rumble.com/v1c50iv-logistics-ports-and-supply-chain.html",
       duration: "2:09",
       views: "712",
       description: "TruContext solutions for logistics, port operations, and supply chain management."
     },
     {
       title: "TruContext Fraud Detection & Anti-Money Laundering",
-      url: "https://rumble.com/v1ca1sv-trucontext-fraud-detection-and-anti-money-laundering.html",
+      url: "https://rumble.com/v1bkf91-trucontext-fraud-detection-and-anti-money-laundering.html",
       duration: "1:54",
       views: "470",
       description: "Advanced fraud detection and AML capabilities powered by graph analytics."
     },
     {
       title: "TruContext Cyber Security",
-      url: "https://rumble.com/v1ca1s3-trucontext-cyber-security.html",
+      url: "https://rumble.com/v1a0kkj-trucontext-cyber-security.html",
       duration: "3:11",
       views: "716",
       description: "Comprehensive cybersecurity threat detection and response with TruContext."
@@ -52,49 +52,49 @@ export default function Videos() {
   const demoVideos: Video[] = [
     {
       title: "Visium TruContext Intro",
-      url: "https://rumble.com/v1ca1r7-visium-trucontext-intro.html",
+      url: "https://rumble.com/vws489-visium-trucontext-intro.html",
       duration: "2:33",
       views: "21",
       description: "Introduction to the TruContext platform and its core capabilities."
     },
     {
       title: "Visium Analytics TruContext Dashboard Demo",
-      url: "https://rumble.com/v1ca1p3-visium-analytics-trucontext-dashboard-demo.html",
+      url: "https://rumble.com/vr6p3h-trucontext-dashboard-demo.html",
       duration: "6:58",
       views: "1.39K",
       description: "Comprehensive walkthrough of the TruContext dashboard interface and features."
     },
     {
       title: "Visium Analytics TruContext Search Demo",
-      url: "https://rumble.com/v1ca1of-visium-analytics-trucontext-search-demo.html",
+      url: "https://rumble.com/vr6y6d-visium-trucontext-search-demo.html",
       duration: "1:59",
       views: "1.36K",
       description: "Powerful search capabilities across your connected data ecosystem."
     },
     {
       title: "Visium Analytics TruContext TruTime Demo",
-      url: "https://rumble.com/v1ca1nj-visium-analytics-trucontext-trutime-demo.html",
+      url: "https://rumble.com/vr75rz-visium-analytics-trucontext-trutime-demo.html",
       duration: "1:30",
       views: "1.32K",
       description: "Time-based analysis and temporal correlation features."
     },
     {
       title: "Visium TruContext Cyber Triage Demo",
-      url: "https://rumble.com/v1ca1mj-visium-trucontext-cyber-triage-demo.html",
+      url: "https://rumble.com/vr78pt-visium-trucontext-cyber-triage-demo.html",
       duration: "7:54",
       views: "1.3K",
       description: "Step-by-step demonstration of cyber incident triage and investigation workflow."
     },
     {
       title: "Transform Your Raw Data with TruContext™",
-      url: "https://rumble.com/vfj8ih-transform-your-raw-data-with-trucontext.html",
+      url: "https://rumble.com/vyx3gp-transform-your-raw-data-with-trucontext.html",
       duration: "0:10",
       views: "4",
       description: "Quick overview of TruContext's data transformation capabilities."
     },
     {
       title: "Cygraph Introduction",
-      url: "https://rumble.com/vcwn85-cygraph-introduction.html",
+      url: "https://rumble.com/vech3l-cygraph-introduction.html",
       duration: "2:33",
       views: "33.1K",
       description: "Introduction to Cygraph, the graph database technology powering TruContext."
@@ -104,14 +104,14 @@ export default function Videos() {
   const interviewVideos: Video[] = [
     {
       title: "Benzinga Interviews CEO Mark Lucky",
-      url: "https://rumble.com/v1ca1qb-benzinga-interviewed-our-ceo-mark-lucky.html",
+      url: "https://rumble.com/v157efu-benzinga-interviewed-our-ceo-mark-lucky-to-highlight-trucontext-and-our-tec.html",
       duration: "8:28",
       views: "17",
       description: "CEO Mark Lucky discusses Visium Technologies' vision and TruContext platform."
     },
     {
       title: "Benzinga Interviews Solomon Adote, Director + Chief Security Officer",
-      url: "https://rumble.com/v1ca1qz-benzinga-interviews-solomon-adote.html",
+      url: "https://rumble.com/v17x36i-benzinga-interviews-solomon-adote-director-chief-security-officer-for-the-s.html",
       duration: "8:57",
       views: "10",
       description: "CSO Solomon Adote shares insights on cybersecurity and TruContext capabilities."
@@ -121,14 +121,14 @@ export default function Videos() {
   const webinarVideos: Video[] = [
     {
       title: "Visium Carahsoft Webinar - February 22, 2022",
-      url: "https://rumble.com/v1ca1lj-visium-carahsoft-webinar-22-feb-2022.html",
+      url: "https://rumble.com/vvoj0j-visium-carahsoft-webinar-22-feb-2022.html",
       duration: "59:41",
       views: "1.1K",
       description: "Full webinar covering TruContext platform features and use cases."
     },
     {
       title: "Visium Carahsoft Webinar 4K",
-      url: "https://rumble.com/v1ca1kn-visium-carahsoft-webinar-4k-1.html",
+      url: "https://rumble.com/vvt1m3-visium-carahsoft-webinar-4k-1.html",
       duration: "59:41",
       views: "28",
       description: "High-quality recording of TruContext platform demonstration and Q&A."
