@@ -24,7 +24,6 @@ const Footer = () => {
               <li><Link href="/platform/ai-capabilities"><span className="hover:text-white cursor-pointer">AI Capabilities</span></Link></li>
               <li><Link href="/platform/tru-insight"><span className="hover:text-white cursor-pointer">Tru-InSight™</span></Link></li>
               <li><Link href="/platform/architecture"><span className="hover:text-white cursor-pointer">Platform Architecture</span></Link></li>
-              <li><Link href="/company/investors"><span className="hover:text-white cursor-pointer">Investor Relations</span></Link></li>
             </ul>
           </div>
 
@@ -48,6 +47,7 @@ const Footer = () => {
               <li><Link href="/company/leadership"><span className="hover:text-white cursor-pointer">Leadership</span></Link></li>
               <li><Link href="/company/careers"><span className="hover:text-white cursor-pointer">Careers</span></Link></li>
               <li><Link href="/company/news"><span className="hover:text-white cursor-pointer">News</span></Link></li>
+              <li><Link href="/company/investors"><span className="hover:text-white cursor-pointer">Investor Relations</span></Link></li>
               <li><Link href="/company/contact"><span className="hover:text-white cursor-pointer">Contact</span></Link></li>
               <li><Link href="/partners"><span className="hover:text-white cursor-pointer">Partners</span></Link></li>
             </ul>

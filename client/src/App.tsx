@@ -5,6 +5,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ChatWidget from "./components/ChatWidget";
 import ScrollToTop from "./components/ScrollToTop";
+import CookieConsent from "./components/CookieConsent";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
@@ -107,6 +108,7 @@ function App() {
             <Footer />
           </div>
           <ChatWidget />
+          <CookieConsent />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

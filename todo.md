@@ -485,3 +485,13 @@
 - [x] Add "Investor Relations" link to footer
 - [x] Verify all new links are functional
 - [x] Test footer on multiple pages
+
+## Footer Reorganization & Cookie Consent Banner (Nov 28, 2025)
+- [x] Move "Investor Relations" link from Platform column to Company column in footer
+- [x] Create cookie consent banner component
+- [x] Add cookie preferences storage (localStorage)
+- [x] Implement Accept/Decline/Customize options
+- [x] Add link to Privacy Policy in banner
+- [x] Integrate banner into App.tsx
+- [x] Test banner display and functionality
+- [x] Verify banner respects user preferences on return visits
