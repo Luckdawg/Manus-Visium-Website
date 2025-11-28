@@ -24,6 +24,11 @@ const CookieConsent = () => {
       marketing: true,
       timestamp: new Date().toISOString()
     }));
+    // Trigger storage event for analytics to pick up consent change
+    window.dispatchEvent(new StorageEvent("storage", {
+      key: "cookieConsent",
+      newValue: localStorage.getItem("cookieConsent"),
+    }));
     setShowBanner(false);
   };
 
@@ -34,6 +39,11 @@ const CookieConsent = () => {
       marketing: false,
       timestamp: new Date().toISOString()
     }));
+    // Trigger storage event for analytics to pick up consent change
+    window.dispatchEvent(new StorageEvent("storage", {
+      key: "cookieConsent",
+      newValue: localStorage.getItem("cookieConsent"),
+    }));
     setShowBanner(false);
   };
 
@@ -42,6 +52,11 @@ const CookieConsent = () => {
       necessary: true,
       ...preferences,
       timestamp: new Date().toISOString()
+    }));
+    // Trigger storage event for analytics to pick up consent change
+    window.dispatchEvent(new StorageEvent("storage", {
+      key: "cookieConsent",
+      newValue: localStorage.getItem("cookieConsent"),
     }));
     setShowBanner(false);
   };
@@ -64,7 +79,7 @@ const CookieConsent = () => {
                 <p className="text-sm text-gray-600 mb-4">
                   We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. 
                   By clicking "Accept All", you consent to our use of cookies. You can manage your preferences or learn more in our{" "}
-                  <Link href="/privacy">
+                  <Link href="/legal/privacy">
                     <span className="text-primary hover:underline cursor-pointer font-medium">Privacy Policy</span>
                   </Link>.
                 </p>

@@ -1,5 +1,8 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { useEffect } from "react";
+import { useLocation } from "wouter";
+import { trackPageView } from "@/lib/analytics";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -26,6 +29,9 @@ import About from "./pages/company/About";
 import Leadership from "./pages/company/Leadership";
 import News from "./pages/company/News";
 import InvestorRelations from "./pages/company/InvestorRelations";
+import AdminLeadsDashboard from "./pages/AdminLeadsDashboard";
+import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
+import TermsOfService from "./pages/legal/TermsOfService";
 import Careers from "./pages/company/Careers";
 import GraphDemo from "./pages/GraphDemo";
 import Contact from "./pages/company/Contact";
@@ -46,6 +52,13 @@ import AdminSecurity from "./pages/admin/Security";
 import AdminLogin from "./pages/admin/Login";
 
 function Router() {
+  const [location] = useLocation();
+
+  // Track page views on route changes (respects cookie consent)
+  useEffect(() => {
+    trackPageView();
+  }, [location]);
+
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
@@ -66,6 +79,9 @@ function Router() {
       <Route path={"/company/leadership"} component={Leadership} />
        <Route path="/company/news" component={News} />
       <Route path="/company/investors" component={InvestorRelations} />
+      <Route path="/admin/leads" component={AdminLeadsDashboard} />
+      <Route path="/legal/privacy" component={PrivacyPolicy} />
+      <Route path="/legal/terms" component={TermsOfService} />
       <Route path="/company/investor-relations" component={InvestorRelations} />
       <Route path="/company/careers" component={Careers} />
       <Route path="/graph-demo" component={GraphDemo} />

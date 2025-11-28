@@ -57,8 +57,8 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
           <p>&copy; {new Date().getFullYear()} Visium Technologies. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy"><span className="hover:text-white cursor-pointer">Privacy Policy</span></Link>
-            <Link href="/terms"><span className="hover:text-white cursor-pointer">Terms of Service</span></Link>
+            <Link href="/legal/privacy"><span className="hover:text-white cursor-pointer">Privacy Policy</span></Link>
+            <Link href="/legal/terms"><span className="hover:text-white cursor-pointer">Terms of Service</span></Link>
           </div>
         </div>
       </div>

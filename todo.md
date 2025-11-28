@@ -495,3 +495,42 @@
 - [x] Integrate banner into App.tsx
 - [x] Test banner display and functionality
 - [x] Verify banner respects user preferences on return visits
+
+## Admin Leads Dashboard (Nov 28, 2025)
+- [x] Create admin leads dashboard page at /admin/leads
+- [ ] Add authentication/access control for admin area
+- [x] Display whitepaper download leads in sortable table
+- [x] Display newsletter subscribers in sortable table
+- [x] Show email campaign status and tracking
+- [x] Implement lead scoring system
+- [x] Add filtering capabilities (date range, status, source)
+- [x] Add search functionality
+- [x] Implement CSV export for all lead data
+- [ ] Add pagination for large datasets
+- [x] Create dashboard statistics/metrics cards
+- [ ] Test all dashboard features
+
+## Privacy Policy & Terms of Service (Nov 28, 2025)
+- [x] Create Privacy Policy page at /legal/privacy
+- [x] Document data collection practices
+- [x] Explain cookie usage and types
+- [x] Detail user rights (access, deletion, opt-out)
+- [x] Add contact information for privacy inquiries
+- [x] Create Terms of Service page at /legal/terms
+- [x] Define service usage terms and conditions
+- [x] Add intellectual property rights section
+- [x] Include limitation of liability clauses
+- [x] Add dispute resolution procedures
+- [x] Update footer with links to legal pages
+- [x] Update cookie consent banner to link to Privacy Policy
+
+## Privacy-Focused Analytics Integration (Nov 28, 2025)
+- [x] Research privacy-focused analytics options (Plausible, Fathom, or Google Analytics with privacy settings)
+- [x] Integrate analytics tracking code
+- [x] Implement cookie consent integration (only track after user accepts)
+- [x] Add analytics opt-out functionality
+- [x] Track key metrics (page views, user sessions, conversion events)
+- [ ] Set up goal tracking for demo requests and whitepaper downloads
+- [ ] Configure analytics dashboard access
+- [ ] Test analytics tracking with different cookie consent scenarios
+- [ ] Document analytics implementation for compliance

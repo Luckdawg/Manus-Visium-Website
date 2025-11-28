@@ -7,6 +7,24 @@ import { eq } from "drizzle-orm";
 import { notifyOwner } from "./_core/notification";
 
 export const newsletterRouter = router({
+  // Get all newsletter subscribers for admin dashboard
+  getAll: publicProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) {
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Database not available",
+      });
+    }
+
+    const subscribers = await db
+      .select()
+      .from(newsletterSubscribers)
+      .orderBy(newsletterSubscribers.subscribedAt);
+
+    return subscribers;
+  }),
+
   // Subscribe to newsletter
   subscribe: publicProcedure
     .input(

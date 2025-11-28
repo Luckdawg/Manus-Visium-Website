@@ -5,6 +5,21 @@ import { whitepaperLeads, emailCampaigns } from "../drizzle/schema";
 import { notifyOwner } from "./_core/notification";
 
 export const leadsRouter = router({
+  // Get all whitepaper leads for admin dashboard
+  getAll: publicProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) {
+      throw new Error("Database not available");
+    }
+
+    const leads = await db
+      .select()
+      .from(whitepaperLeads)
+      .orderBy(whitepaperLeads.createdAt);
+
+    return leads;
+  }),
+
   submitWhitepaperLead: publicProcedure
     .input(
       z.object({
