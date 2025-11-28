@@ -450,3 +450,12 @@
 - [x] Improve color transitions on hover
 - [x] Add smooth transition effects
 - [x] Test hover effects on all buttons
+
+## Social Media Feeds Widget (Nov 28, 2025)
+- [x] Research Twitter/X embed options (official widget vs custom implementation)
+- [x] Research LinkedIn embed options
+- [x] Create Twitter/X feed component
+- [x] Create LinkedIn feed component
+- [x] Add feeds section to Careers page
+- [x] Style feeds to match site design
+- [x] Test feed loading and responsiveness

@@ -12,6 +12,8 @@ import {
   Mail
 } from "lucide-react";
 import { Facebook, Linkedin, Youtube, Instagram } from "lucide-react";
+import TwitterFeed from "@/components/TwitterFeed";
+import LinkedInFeed from "@/components/LinkedInFeed";
 
 export default function Careers() {
   return (
@@ -235,8 +237,60 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* Areas of Interest */}
+      {/* Social Media Feeds */}
       <section className="py-16 bg-white">
+        <div className="container">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Stay Updated</h2>
+            <p className="text-lg text-gray-600 text-center mb-12">
+              Follow our latest news, job postings, and company updates on social media
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Twitter/X Feed */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center">
+                    <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold">X (Twitter)</h3>
+                    <p className="text-sm text-gray-500">@VisiumAnalytics</p>
+                  </div>
+                </div>
+                <Card className="border-2">
+                  <CardContent className="p-4">
+                    <TwitterFeed username="VisiumAnalytics" height={500} />
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* LinkedIn Feed */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <Linkedin className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold">LinkedIn</h3>
+                    <p className="text-sm text-gray-500">Visium Technologies, Inc.</p>
+                  </div>
+                </div>
+                <Card className="border-2">
+                  <CardContent className="p-4">
+                    <LinkedInFeed companyId="visium-technologies-inc" height={500} />
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Areas of Interest */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
