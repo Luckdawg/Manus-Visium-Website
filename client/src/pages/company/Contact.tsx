@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { useState } from "react";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Linkedin, Youtube, Instagram } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -74,10 +74,78 @@ export default function Contact() {
             </Card>
           </div>
 
-          <div className="max-w-2xl mx-auto">
-            <Card>
-              <CardContent className="p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
+          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Left Column - Follow Us Section */}
+            <div className="space-y-6">
+              <Card>
+                <CardContent className="p-8">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Follow Us</h2>
+                  <p className="text-gray-600 mb-6">
+                    Stay connected with Visium Technologies on social media for company updates, career opportunities, and industry insights
+                  </p>
+                  
+                  <div className="flex flex-col gap-3">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-2 border-gray-800 hover:bg-gray-800 hover:text-white transition-all duration-300 w-full justify-start"
+                      onClick={() => window.open('https://x.com/VisiumAnalytics', '_blank')}
+                    >
+                      <svg className="h-5 w-5 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                      </svg>
+                      X (Twitter)
+                    </Button>
+
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-2 border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 w-full justify-start"
+                      onClick={() => window.open('https://www.linkedin.com/company/visium-technologies-inc', '_blank')}
+                    >
+                      <Linkedin className="h-5 w-5 mr-3" />
+                      LinkedIn
+                    </Button>
+
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-2 border-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300 w-full justify-start"
+                      onClick={() => window.open('https://www.facebook.com/VisiumTech', '_blank')}
+                    >
+                      <Facebook className="h-5 w-5 mr-3" />
+                      Facebook
+                    </Button>
+
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-2 border-red-600 hover:bg-red-600 hover:text-white transition-all duration-300 w-full justify-start"
+                      onClick={() => window.open('https://www.youtube.com/@visiumanalytics874', '_blank')}
+                    >
+                      <Youtube className="h-5 w-5 mr-3" />
+                      YouTube
+                    </Button>
+
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-2 border-pink-600 hover:bg-pink-600 hover:text-white transition-all duration-300 w-full justify-start"
+                      onClick={() => window.open('https://www.instagram.com/visiumtech/', '_blank')}
+                    >
+                      <Instagram className="h-5 w-5 mr-3" />
+                      Instagram
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Right Column - Contact Form */}
+            <div>
+              <Card>
+                <CardContent className="p-8">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-900 mb-2">
@@ -131,6 +199,7 @@ export default function Contact() {
                 </form>
               </CardContent>
             </Card>
+            </div>
           </div>
         </div>
       </section>
