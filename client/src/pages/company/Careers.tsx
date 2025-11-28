@@ -11,6 +11,7 @@ import {
   Zap,
   Mail
 } from "lucide-react";
+import { Facebook, Linkedin, Youtube, Instagram } from "lucide-react";
 
 export default function Careers() {
   return (
@@ -164,6 +165,72 @@ export default function Careers() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Follow Us Section */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 to-blue-50">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Follow Us</h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Stay connected with Visium Technologies on social media for company updates, career opportunities, and industry insights
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-gray-800 hover:bg-gray-800 hover:text-white transition-all px-8"
+                onClick={() => window.open('https://x.com/VisiumAnalytics', '_blank')}
+              >
+                <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                X (Twitter)
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-blue-600 hover:bg-blue-600 hover:text-white transition-all px-8"
+                onClick={() => window.open('https://www.linkedin.com/company/visium-technologies-inc', '_blank')}
+              >
+                <Linkedin className="h-5 w-5 mr-2" />
+                LinkedIn
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-blue-500 hover:bg-blue-500 hover:text-white transition-all px-8"
+                onClick={() => window.open('https://www.facebook.com/VisiumTech', '_blank')}
+              >
+                <Facebook className="h-5 w-5 mr-2" />
+                Facebook
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-red-600 hover:bg-red-600 hover:text-white transition-all px-8"
+                onClick={() => window.open('https://www.youtube.com/@visiumanalytics874', '_blank')}
+              >
+                <Youtube className="h-5 w-5 mr-2" />
+                YouTube
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-pink-600 hover:bg-pink-600 hover:text-white transition-all px-8"
+                onClick={() => window.open('https://www.instagram.com/visiumtech/', '_blank')}
+              >
+                <Instagram className="h-5 w-5 mr-2" />
+                Instagram
+              </Button>
+            </div>
           </div>
         </div>
       </section>

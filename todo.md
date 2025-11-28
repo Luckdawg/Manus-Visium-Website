@@ -436,3 +436,11 @@
 - [x] Update Investor Relations page to display real filing data
 - [x] Add admin interface to manually add/edit filings if needed
 - [x] Test SEC filings display and auto-update functionality
+
+## Social Media Buttons on Careers Page (Nov 28, 2025)
+- [x] Add "Follow Us" section to Careers page
+- [x] Create social media button component with icons
+- [x] Add links for X, LinkedIn, Facebook, YouTube, Instagram
+- [x] Style buttons consistently with site design
+- [x] Place prominently on Careers page
+- [x] Test all social media links
