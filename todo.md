@@ -444,3 +444,9 @@
 - [x] Style buttons consistently with site design
 - [x] Place prominently on Careers page
 - [x] Test all social media links
+
+## Enhanced Hover Effects for Social Media Buttons (Nov 28, 2025)
+- [x] Add scale-up animation on hover
+- [x] Improve color transitions on hover
+- [x] Add smooth transition effects
+- [x] Test hover effects on all buttons

@@ -182,7 +182,7 @@ export default function Careers() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-gray-800 hover:bg-gray-800 hover:text-white transition-all px-8"
+                className="border-2 border-gray-800 hover:bg-gray-800 hover:text-white hover:scale-110 hover:shadow-lg transition-all duration-300 px-8"
                 onClick={() => window.open('https://x.com/VisiumAnalytics', '_blank')}
               >
                 <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
@@ -194,7 +194,7 @@ export default function Careers() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-blue-600 hover:bg-blue-600 hover:text-white transition-all px-8"
+                className="border-2 border-blue-600 hover:bg-blue-600 hover:text-white hover:scale-110 hover:shadow-lg transition-all duration-300 px-8"
                 onClick={() => window.open('https://www.linkedin.com/company/visium-technologies-inc', '_blank')}
               >
                 <Linkedin className="h-5 w-5 mr-2" />
@@ -204,7 +204,7 @@ export default function Careers() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-blue-500 hover:bg-blue-500 hover:text-white transition-all px-8"
+                className="border-2 border-blue-500 hover:bg-blue-500 hover:text-white hover:scale-110 hover:shadow-lg transition-all duration-300 px-8"
                 onClick={() => window.open('https://www.facebook.com/VisiumTech', '_blank')}
               >
                 <Facebook className="h-5 w-5 mr-2" />
@@ -214,7 +214,7 @@ export default function Careers() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-red-600 hover:bg-red-600 hover:text-white transition-all px-8"
+                className="border-2 border-red-600 hover:bg-red-600 hover:text-white hover:scale-110 hover:shadow-lg transition-all duration-300 px-8"
                 onClick={() => window.open('https://www.youtube.com/@visiumanalytics874', '_blank')}
               >
                 <Youtube className="h-5 w-5 mr-2" />
@@ -224,7 +224,7 @@ export default function Careers() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-pink-600 hover:bg-pink-600 hover:text-white transition-all px-8"
+                className="border-2 border-pink-600 hover:bg-pink-600 hover:text-white hover:scale-110 hover:shadow-lg transition-all duration-300 px-8"
                 onClick={() => window.open('https://www.instagram.com/visiumtech/', '_blank')}
               >
                 <Instagram className="h-5 w-5 mr-2" />
