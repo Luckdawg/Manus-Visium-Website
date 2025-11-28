@@ -476,3 +476,12 @@
 - [x] Locate "Explore Technology & Integrations" button on AI Capabilities page
 - [x] Remove the button from the page
 - [x] Test AI Capabilities page after removal
+
+## Footer Navigation Update (Nov 28, 2025)
+- [x] Locate Footer component
+- [x] Remove "Technology" link from footer
+- [x] Remove "Security" link from footer
+- [x] Add "Platform Architecture" link to footer
+- [x] Add "Investor Relations" link to footer
+- [x] Verify all new links are functional
+- [x] Test footer on multiple pages

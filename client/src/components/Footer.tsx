@@ -23,8 +23,8 @@ const Footer = () => {
               <li><Link href="/platform"><span className="hover:text-white cursor-pointer">Overview</span></Link></li>
               <li><Link href="/platform/ai-capabilities"><span className="hover:text-white cursor-pointer">AI Capabilities</span></Link></li>
               <li><Link href="/platform/tru-insight"><span className="hover:text-white cursor-pointer">Tru-InSight™</span></Link></li>
-              <li><Link href="/platform/technology"><span className="hover:text-white cursor-pointer">Technology</span></Link></li>
-              <li><Link href="/platform/security"><span className="hover:text-white cursor-pointer">Security</span></Link></li>
+              <li><Link href="/platform/architecture"><span className="hover:text-white cursor-pointer">Platform Architecture</span></Link></li>
+              <li><Link href="/company/investors"><span className="hover:text-white cursor-pointer">Investor Relations</span></Link></li>
             </ul>
           </div>
 
