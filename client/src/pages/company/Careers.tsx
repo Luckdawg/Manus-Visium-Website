@@ -150,14 +150,6 @@ export default function Careers() {
                     <Mail className="h-5 w-5 mr-2" />
                     Email Us Your Resume
                   </Button>
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8"
-                    onClick={() => window.location.href = 'https://www.linkedin.com/company/visium-technologies'}
-                  >
-                    Follow Us on LinkedIn
-                  </Button>
                 </div>
 
                 <div className="mt-8 pt-8 border-t border-gray-200">

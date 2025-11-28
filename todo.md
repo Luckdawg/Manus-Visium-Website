@@ -459,3 +459,8 @@
 - [x] Add feeds section to Careers page
 - [x] Style feeds to match site design
 - [x] Test feed loading and responsiveness
+
+## Remove Duplicate LinkedIn Button (Nov 28, 2025)
+- [x] Locate first "Follow Us on LinkedIn" button on Careers page
+- [x] Remove the duplicate button
+- [x] Test Careers page after removal
