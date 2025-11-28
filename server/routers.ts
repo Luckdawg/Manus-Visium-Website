@@ -9,6 +9,7 @@ import { twoFactorRouter } from "./twoFactorRouter";
 import { cmsRouter } from "./cmsRouter";
 import { authRouter } from "./authRouter";
 import { newsletterRouter } from "./newsletterRouter";
+import { secFilingsRouter } from "./secFilingsRouter";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -42,6 +43,9 @@ export const appRouter = router({
 
   // Newsletter subscription API
   newsletter: newsletterRouter,
+
+  // SEC filings API for investor relations
+  secFilings: secFilingsRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({

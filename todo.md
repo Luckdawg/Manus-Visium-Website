@@ -427,3 +427,12 @@
 - [x] Implement email validation and duplicate prevention
 - [x] Add confirmation message after successful signup
 - [x] Test newsletter subscription flow
+
+## SEC Filings Update (Nov 28, 2025)
+- [x] Research actual SEC filing history for Visium Technologies (VISM)
+- [x] Create database schema for SEC filings storage
+- [x] Build API endpoint to fetch SEC filings from SEC EDGAR
+- [x] Implement automated sync system to check for new filings
+- [x] Update Investor Relations page to display real filing data
+- [x] Add admin interface to manually add/edit filings if needed
+- [x] Test SEC filings display and auto-update functionality

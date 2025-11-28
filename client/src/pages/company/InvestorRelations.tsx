@@ -61,12 +61,13 @@ export default function InvestorRelations() {
 
   // Financial highlights removed as requested - data now shown in main stock card
 
-  const secFilings = [
-    { type: "10-K", description: "Annual Report 2024", date: "March 31, 2025", url: "#" },
-    { type: "10-Q", description: "Quarterly Report Q4 2024", date: "February 15, 2025", url: "#" },
-    { type: "8-K", description: "Current Report - Peru Partnership", date: "January 10, 2025", url: "#" },
-    { type: "10-Q", description: "Quarterly Report Q3 2024", date: "November 15, 2024", url: "#" }
-  ];
+  // Fetch real SEC filings from database
+  const { data: secFilingsData, isLoading: isLoadingFilings } = trpc.secFilings.getRecent.useQuery({ limit: 20 });
+  
+  // Format date for display
+  const formatDate = (date: Date | string) => {
+    return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  };
 
   const investorResources = [
     { title: "Investor Presentation", description: "Q1 2025 Earnings Presentation", icon: FileText },
@@ -208,32 +209,48 @@ export default function InvestorRelations() {
       <section className="py-12 bg-gray-50">
         <div className="container max-w-6xl">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">SEC Filings</h2>
-          <div className="space-y-4">
-            {secFilings.map((filing, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <Badge className="bg-primary/10 text-primary border-primary/20">
-                        {filing.type}
-                      </Badge>
-                      <div>
-                        <div className="font-semibold text-gray-900">{filing.description}</div>
-                        <div className="text-sm text-gray-600 flex items-center gap-2 mt-1">
-                          <Calendar className="h-4 w-4" />
-                          {filing.date}
+          {isLoadingFilings ? (
+            <div className="text-center py-12">
+              <RefreshCw className="h-8 w-8 animate-spin text-primary mx-auto mb-4" />
+              <p className="text-gray-600">Loading SEC filings...</p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {secFilingsData?.map((filing) => (
+                <Card key={filing.id} className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <Badge className="bg-primary/10 text-primary border-primary/20">
+                          {filing.filingType}
+                        </Badge>
+                        <div>
+                          <div className="font-semibold text-gray-900">{filing.description}</div>
+                          <div className="text-sm text-gray-600 flex items-center gap-2 mt-1">
+                            <Calendar className="h-4 w-4" />
+                            {formatDate(filing.filingDate)}
+                          </div>
+                          {filing.size && (
+                            <div className="text-xs text-gray-500 mt-1">
+                              Accession: {filing.accessionNumber} | Size: {filing.size}
+                            </div>
+                          )}
                         </div>
                       </div>
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => window.open(filing.documentUrl || `https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001082733&type=${filing.filingType}&dateb=&owner=exclude&count=100`, '_blank')}
+                      >
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        View on SEC
+                      </Button>
                     </div>
-                    <Button variant="outline" size="sm">
-                      <Download className="h-4 w-4 mr-2" />
-                      Download
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
           <div className="mt-6 text-center">
             <a 
               href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=VISM" 

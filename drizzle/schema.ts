@@ -116,4 +116,21 @@ export const newsletterSubscribers = mysqlTable("newsletter_subscribers", {
 export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
 export type NewNewsletterSubscriber = typeof newsletterSubscribers.$inferInsert;
 
+// SEC filings table for tracking company regulatory filings
+export const secFilings = mysqlTable("sec_filings", {
+  id: int("id").autoincrement().primaryKey(),
+  filingType: varchar("filingType", { length: 20 }).notNull(), // 10-K, 10-Q, 8-K, etc.
+  filingDate: timestamp("filingDate").notNull(),
+  accessionNumber: varchar("accessionNumber", { length: 50 }).notNull().unique(),
+  fileNumber: varchar("fileNumber", { length: 20 }),
+  description: text("description"),
+  documentUrl: text("documentUrl"),
+  size: varchar("size", { length: 20 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SecFiling = typeof secFilings.$inferSelect;
+export type NewSecFiling = typeof secFilings.$inferInsert;
+
 // TODO: Add your tables here
