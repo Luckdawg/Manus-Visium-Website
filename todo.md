@@ -410,3 +410,20 @@
 - [x] Build user-friendly navigation for CMS
 - [x] Test all CMS functionality
 - [x] Test security measures and permissions
+
+## Video Background Hero Section (Nov 27, 2025)
+- [x] Source or generate video content showing graph visualization or threat detection
+- [x] Optimize video for web (format, size, compression)
+- [x] Implement video background component with autoplay and loop
+- [x] Add fallback image for browsers that don't support video
+- [x] Ensure video doesn't impact page load performance
+- [x] Test video background on different devices and browsers
+
+## Email Newsletter Signup for Investors (Nov 27, 2025)
+- [x] Create newsletter_subscribers database table
+- [x] Build newsletter subscription API endpoint
+- [x] Create newsletter signup form component
+- [x] Add form to Investor Relations page
+- [x] Implement email validation and duplicate prevention
+- [x] Add confirmation message after successful signup
+- [x] Test newsletter subscription flow

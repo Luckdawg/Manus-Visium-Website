@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { RefreshCw } from "lucide-react";
 import StockChart from "@/components/StockChart";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function InvestorRelations() {
   // Fetch stock data from backend API with auto-refresh every 15 minutes
@@ -266,6 +267,41 @@ export default function InvestorRelations() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Signup */}
+      <section className="py-12 bg-white">
+        <div className="container max-w-4xl">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Stay Updated</h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Subscribe to receive automated alerts about SEC filings, press releases, quarterly earnings announcements, and other important investor updates.
+              </p>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <FileText className="h-5 w-5 text-primary mt-0.5" />
+                  <span>SEC filing notifications</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Calendar className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Quarterly earnings announcements</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <TrendingUp className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Press releases and company news</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <NewsletterSignup
+                subscribedTo="investor_alerts"
+                title="Investor Alerts"
+                description="Get notified about important shareholder updates"
+              />
+            </div>
           </div>
         </div>
       </section>

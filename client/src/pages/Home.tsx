@@ -1,5 +1,6 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
+import AnimatedGraphBackground from "@/components/AnimatedGraphBackground";
 import Tour, { TourStep } from "@/components/Tour";
 import TourButton from "@/components/TourButton";
 import { Card, CardContent } from "@/components/ui/card";
@@ -70,34 +71,46 @@ export default function Home() {
       <Tour steps={tourSteps} tourId="homepage" />
       <TourButton tourId="homepage" label="Take Tour" />
       {/* Hero Section */}
-      <section className="hero-section gradient-hero dot-pattern py-12 lg:py-12 md:py-20">
-        <div className="container">
-          <div className="grid lg:grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-            <h1 className="text-3xl md:text-5xl lg:text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+      <section className="hero-section relative overflow-hidden py-20 lg:py-32">
+        {/* Animated Graph Background */}
+        <AnimatedGraphBackground className="opacity-20" nodeCount={60} connectionDistance={180} speed={0.4} />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-primary/5 to-white/90" />
+        
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
               Agentic AI-Powered <span className="text-primary">Intelligence Platform</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Visium's TruContext is the leader in agentic AI-driven data analytics and cybersecurity solutions, featuring autonomous AI agents that continuously analyze threats and automate workflows. Our dual database architecture (Neo4j + PostgreSQL) fuses cyber, physical, and operational data to provide unmatched context for enterprise security, smart cities, and critical infrastructure protection.
             </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/demo">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                    Schedule a Consultation
-                  </Button>
-                </Link>
-                <Link href="/platform">
-                  <Button size="lg" variant="outline">
-                    Explore Platform
-                  </Button>
-                </Link>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/demo">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+                  Schedule a Consultation
+                </Button>
+              </Link>
+              <Link href="/platform">
+                <Button size="lg" variant="outline">
+                  Explore Platform
+                </Button>
+              </Link>
             </div>
-            <div className="relative">
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Visualization */}
+      <section className="py-12 bg-gray-50">
+        <div className="container">
+          <div className="relative max-w-5xl mx-auto">
+            <div className="relative bg-white rounded-2xl shadow-2xl overflow-hidden">
               <img 
                 src="/hero_illustration.webp" 
                 alt="TruContext Platform" 
-                className="w-full h-auto rounded-lg shadow-2xl object-cover max-h-[500px] md:max-h-[600px]"
+                className="w-full h-auto object-cover"
               />
             </div>
           </div>

@@ -100,4 +100,20 @@ export const auditLogs = mysqlTable("audit_logs", {
 export type AuditLog = typeof auditLogs.$inferSelect;
 export type NewAuditLog = typeof auditLogs.$inferInsert;
 
+// Newsletter subscribers table for investor alerts
+export const newsletterSubscribers = mysqlTable("newsletter_subscribers", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  name: text("name"),
+  subscribedTo: mysqlEnum("subscribedTo", ["investor_alerts", "general_news", "product_updates"]).default("investor_alerts").notNull(),
+  status: mysqlEnum("status", ["active", "unsubscribed"]).default("active").notNull(),
+  subscribedAt: timestamp("subscribedAt").defaultNow().notNull(),
+  unsubscribedAt: timestamp("unsubscribedAt"),
+  verificationToken: varchar("verificationToken", { length: 64 }),
+  verified: int("verified").default(0).notNull(), // 0 = not verified, 1 = verified
+});
+
+export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+export type NewNewsletterSubscriber = typeof newsletterSubscribers.$inferInsert;
+
 // TODO: Add your tables here

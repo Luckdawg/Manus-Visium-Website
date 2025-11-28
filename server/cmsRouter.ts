@@ -108,7 +108,7 @@ export const cmsRouter = router({
       z.object({
         pageKey: z.string(),
         title: z.string(),
-        content: z.record(z.any()), // JSON object with editable sections
+        content: z.record(z.string(), z.any()), // JSON object with editable sections
       })
     )
     .mutation(async ({ input, ctx }) => {
