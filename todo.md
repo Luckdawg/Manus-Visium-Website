@@ -464,3 +464,10 @@
 - [x] Locate first "Follow Us on LinkedIn" button on Careers page
 - [x] Remove the duplicate button
 - [x] Test Careers page after removal
+
+## Fix Link Scroll Behavior (Nov 28, 2025)
+- [x] Audit all navigation links across the website
+- [x] Implement scroll-to-top on route changes
+- [x] Fix anchor links to scroll to correct sections
+- [x] Test all internal navigation links
+- [x] Test all external links open in new tabs
