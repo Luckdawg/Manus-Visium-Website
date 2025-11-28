@@ -471,3 +471,8 @@
 - [x] Fix anchor links to scroll to correct sections
 - [x] Test all internal navigation links
 - [x] Test all external links open in new tabs
+
+## Remove Technology & Integrations Button (Nov 28, 2025)
+- [x] Locate "Explore Technology & Integrations" button on AI Capabilities page
+- [x] Remove the button from the page
+- [x] Test AI Capabilities page after removal

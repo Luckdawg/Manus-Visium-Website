@@ -278,11 +278,7 @@ export default function AICapabilities() {
             <p className="text-xl text-blue-100 mb-8">
               TruContext integrates the MITRE ATT&CK framework for threat-informed defense, mapping detected threats to known adversarial tactics, techniques, and procedures (TTPs) to provide context and guide response strategies.
             </p>
-            <Link href="/platform/technology">
-              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
-                Explore Technology & Integrations
-              </Button>
-            </Link>
+
           </div>
         </div>
       </section>
