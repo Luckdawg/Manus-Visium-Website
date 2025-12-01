@@ -99,53 +99,86 @@ export default function Leadership() {
         </div>
       </section>
 
-      {/* Company Values */}
-      <section className="py-12 bg-gradient-to-br from-gray-50 to-blue-50">
+      {/* Leadership Philosophy */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container max-w-5xl">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Leadership Philosophy</h2>
-            <p className="text-xl text-gray-600">
-              Guided by experience, driven by innovation, committed to excellence
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Our Leadership Philosophy – Leading with Intelligence, Integrity, and Impact
+            </h2>
+            <p className="text-2xl text-primary font-semibold mb-8">
+              Shaping the Future of Intelligent and Secure Innovation
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="text-center hover:shadow-xl transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl font-bold text-primary">20+</span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Years of Experience</h3>
-                <p className="text-gray-600">
-                  Decades of combined expertise in finance, technology, and cybersecurity
-                </p>
-              </CardContent>
-            </Card>
+          <Card className="border-2 border-primary/20">
+            <CardContent className="p-10">
+              <p className="text-lg text-gray-700 leading-relaxed mb-8">
+                We lead with a vision to redefine what's possible in a world powered by data, autonomous intelligence, and trust. Our philosophy is rooted in bold thinking and unwavering responsibility—because leadership in technology means more than progress; it means shaping a future that is ethical, secure, and transformative.
+              </p>
 
-            <Card className="text-center hover:shadow-xl transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl font-bold text-secondary">$160M+</span>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Guiding Principles:</h3>
+              
+              <div className="space-y-6 mb-8">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2"></div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Data-Driven Vision:</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      Harness the power of analytics to illuminate insights and drive decisions that create lasting impact.
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Capital Raised</h3>
-                <p className="text-gray-600">
-                  Proven track record of securing funding and driving growth
-                </p>
-              </CardContent>
-            </Card>
 
-            <Card className="text-center hover:shadow-xl transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl font-bold text-primary">100%</span>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2"></div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Responsible AI Leadership:</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      Champion agentic AI that empowers people, augments human potential, and operates with transparency and fairness.
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Committed to Innovation</h3>
-                <p className="text-gray-600">
-                  Dedicated to advancing agentic AI-powered cybersecurity solutions
+
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2"></div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Cybersecurity as a Foundation:</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      Trust is non-negotiable. Lead with uncompromising security to protect what matters most—our customers, partners, and communities.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2"></div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Innovation with Purpose:</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      Every breakthrough must serve a greater good, advancing technology while safeguarding humanity.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2"></div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Collaboration for Impact:</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      The future is built together—through partnerships, diversity of thought, and shared ambition.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t-2 border-primary/20 pt-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission in Action:</h3>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  To inspire confidence in a digital-first world, we lead by example—creating intelligent solutions that anticipate tomorrow's challenges and deliver transformative outcomes today.
                 </p>
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
