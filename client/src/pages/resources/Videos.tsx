@@ -8,7 +8,22 @@ interface Video {
   duration: string;
   views: string;
   description?: string;
+  thumbnail?: string;
 }
+
+// Helper function to extract Rumble video ID and generate thumbnail URL
+// Rumble thumbnails are hosted on their CDN, but the URLs are complex
+// For now, we'll use a generic approach that attempts common patterns
+const getRumbleThumbnail = (url: string): string => {
+  // Extract video ID (e.g., v1ca1ux from https://rumble.com/v1ca1ux-trucontext-onboarding.html)
+  const match = url.match(/rumble\.com\/(v[\w]+)/);
+  if (match && match[1]) {
+    const videoId = match[1];
+    // Rumble's embed thumbnail pattern - this may not always work but is worth trying
+    return `https://rumble.com/${videoId}.jpg`;
+  }
+  return ''; // fallback to gradient if no match
+};
 
 export default function Videos() {
   const industryVideos: Video[] = [
@@ -135,14 +150,47 @@ export default function Videos() {
     }
   ];
 
-  const VideoCard = ({ video }: { video: Video }) => (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-      <div className="aspect-video bg-gradient-to-br from-blue-900 to-purple-900 relative flex items-center justify-center">
-        <Play className="w-16 h-16 text-white opacity-80" />
-        <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-          {video.duration}
+  const VideoCard = ({ video }: { video: Video }) => {
+    const thumbnailUrl = video.thumbnail;
+    
+    return (
+      <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+        <div className="aspect-video bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 relative flex items-center justify-center group overflow-hidden">
+          {thumbnailUrl ? (
+            <>
+              <img 
+                src={thumbnailUrl} 
+                alt={video.title}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Fallback to gradient with title if image fails to load
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                <Play className="w-16 h-16 text-white opacity-90" />
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Decorative background pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-4 left-4 w-32 h-32 border-2 border-white rounded-full"></div>
+                <div className="absolute bottom-4 right-4 w-24 h-24 border-2 border-white rounded-full"></div>
+              </div>
+              {/* Video title overlay */}
+              <div className="absolute inset-0 p-6 flex flex-col items-center justify-center text-center">
+                <h4 className="text-white font-semibold text-lg mb-4 line-clamp-3">{video.title}</h4>
+                <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 group-hover:bg-white/30 transition-colors">
+                  <Play className="w-12 h-12 text-white" />
+                </div>
+              </div>
+            </>
+          )}
+          <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+            {video.duration}
+          </div>
         </div>
-      </div>
       <div className="p-4 sm:p-6">
         <h3 className="text-base sm:text-lg font-semibold mb-2 text-gray-900 line-clamp-2">
           {video.title}
@@ -162,7 +210,8 @@ export default function Videos() {
         </div>
       </div>
     </Card>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen">
