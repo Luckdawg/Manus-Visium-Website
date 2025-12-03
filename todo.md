@@ -633,3 +633,12 @@
 - [x] Test animations on different scroll speeds
 - [x] Verify animations work on mobile devices
 - [x] Ensure animations respect reduced motion preferences
+
+## Parallax Scrolling Effect (Dec 2, 2025)
+- [x] Create useParallax hook for scroll-based transformations
+- [x] Apply parallax effect to hero illustration in AT A GLANCE section
+- [x] Implement subtle vertical movement based on scroll position
+- [x] Ensure parallax respects reduced motion preferences
+- [x] Test parallax effect on different scroll speeds
+- [x] Verify performance on mobile devices
+- [x] Adjust parallax intensity for optimal visual effect

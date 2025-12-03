@@ -1,5 +1,6 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useParallax } from "@/hooks/useParallax";
 import { Button } from "@/components/ui/button";
 import AnimatedGraphBackground from "@/components/AnimatedGraphBackground";
 import Tour, { TourStep } from "@/components/Tour";
@@ -32,6 +33,9 @@ export default function Home() {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
   const { ref: featuresRef, isVisible: featuresVisible } = useScrollAnimation({ threshold: 0.1 });
   const { ref: graphicRef, isVisible: graphicVisible } = useScrollAnimation({ threshold: 0.2 });
+  
+  // Parallax effect for hero illustration
+  const { ref: parallaxRef, offset: parallaxOffset } = useParallax({ speed: 0.15, direction: 'up' });
 
   const tourSteps: TourStep[] = [
     {
@@ -232,11 +236,17 @@ export default function Home() {
             >
               <div className="relative max-w-md w-full">
                 <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
-                  <img 
-                    src="/hero_illustration.webp" 
-                    alt="TruContext Platform" 
-                    className="w-full h-auto object-cover"
-                  />
+                  <div 
+                    ref={parallaxRef}
+                    style={{ transform: `translateY(${parallaxOffset}px)` }}
+                    className="transition-transform duration-100 ease-out"
+                  >
+                    <img 
+                      src="/hero_illustration.webp" 
+                      alt="TruContext Platform" 
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
