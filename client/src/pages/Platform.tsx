@@ -4,6 +4,7 @@ import TourButton from "@/components/TourButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Shield, Network, Cloud, Database, Zap, Lock, Brain, Cpu } from "lucide-react";
+import FollowUs from "@/components/FollowUs";
 
 export default function Platform() {
   const tourSteps: TourStep[] = [
@@ -263,6 +264,9 @@ export default function Platform() {
           </div>
         </div>
       </section>
+
+      {/* Follow Us Section */}
+      <FollowUs />
 
       {/* Platform Components CTA */}
       <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">

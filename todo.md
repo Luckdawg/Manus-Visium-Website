@@ -642,3 +642,13 @@
 - [x] Test parallax effect on different scroll speeds
 - [x] Verify performance on mobile devices
 - [x] Adjust parallax intensity for optimal visual effect
+
+## Follow Us Social Media Section Integration (Dec 3, 2025)
+- [x] Extract Follow Us section from Contact page
+- [x] Create reusable FollowUs component in /client/src/components/
+- [x] Integrate Follow Us into Home page before footer (after CTA section)
+- [x] Integrate Follow Us into About page after mission section
+- [x] Integrate Follow Us into Platform page before footer
+- [x] Ensure consistent styling across all four pages
+- [x] Test responsive behavior on desktop and mobile
+- [x] Verify all social media links work correctly

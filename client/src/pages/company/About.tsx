@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Shield, Users, TrendingUp } from "lucide-react";
+import FollowUs from "@/components/FollowUs";
 
 export default function About() {
   return (
@@ -82,6 +83,9 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Follow Us Section */}
+      <FollowUs />
 
       <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">

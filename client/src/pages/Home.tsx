@@ -1,6 +1,7 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
+import FollowUs from "@/components/FollowUs";
 import { Button } from "@/components/ui/button";
 import AnimatedGraphBackground from "@/components/AnimatedGraphBackground";
 import Tour, { TourStep } from "@/components/Tour";
@@ -581,6 +582,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Follow Us Section */}
+      <FollowUs />
     </div>
   );
 }
