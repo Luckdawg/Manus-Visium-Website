@@ -296,7 +296,7 @@ export default function Careers() {
                   <ul className="space-y-2 text-gray-600">
                     <li>• Full-Stack Developers (React, Node.js, TypeScript)</li>
                     <li>• AI/ML Engineers (Graph Neural Networks, LLMs)</li>
-                    <li>• Backend Engineers (Neo4j, PostgreSQL, Kafka)</li>
+                    <li>• Backend Engineers (graph database, relational database, Kafka)</li>
                     <li>• DevOps Engineers (Kubernetes, AWS, CI/CD)</li>
                   </ul>
                 </CardContent>

@@ -560,3 +560,31 @@
 - [x] Add video preview thumbnails with titles and decorative elements
 - [x] Ensure thumbnails display correctly
 - [x] Test video playback functionality
+
+## Site-Wide Updates (Dec 1, 2025)
+
+### Database Terminology Updates
+- [ ] Replace all "Neo4j" references with "graph database" or "graph data engine"
+- [ ] Replace all "Postgres" or "PostgreSQL" references with "relational database" or "SQL database"
+- [ ] Search and update across all pages and components
+
+### UI/UX Adjustments
+- [ ] Disable "Take Tour" feature site-wide
+- [ ] Change navigation menu hover text color to white
+- [ ] Test navigation hover visibility
+
+### Partners Page
+- [ ] Add Datadog logo to partners section
+- [ ] Ensure logo styling is consistent with existing partners
+
+### Platform Page
+- [ ] Remove "Powered by MITRE" tagline
+- [ ] Verify page layout after removal
+
+## Site-Wide Updates (Dec 2, 2025)
+- [x] Replace all Neo4j references with "graph database"
+- [x] Replace all PostgreSQL/Postgres references with "relational database"
+- [x] Disable "Take Tour" feature site-wide
+- [x] Update navigation hover text color to white with primary background
+- [x] Add Datadog logo to Partners page
+- [x] Keep MITRE content as is (per user request)

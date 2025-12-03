@@ -202,7 +202,7 @@ export default function AICapabilities() {
                       AI-Powered Icon Generation
                     </h3>
                     <p className="text-lg text-gray-700">
-                      TruContext features a sophisticated dual API system with Recraft.ai as primary and Gemini as fallback for automated icon generation and asset management. This PostgreSQL-powered icon mapping system with Cloudinary integration enables dynamic visualization of network assets with preview and approval workflows. The system automatically generates contextually appropriate icons for new assets, maintaining visual consistency across the platform.
+                      TruContext features a sophisticated dual API system with Recraft.ai as primary and Gemini as fallback for automated icon generation and asset management. This relational database-powered icon mapping system with Cloudinary integration enables dynamic visualization of network assets with preview and approval workflows. The system automatically generates contextually appropriate icons for new assets, maintaining visual consistency across the platform.
                     </p>
                   </div>
                 </div>

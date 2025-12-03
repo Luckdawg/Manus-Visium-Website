@@ -30,14 +30,14 @@ export default function Comparison() {
     {
       category: "architecture",
       feature: "Graph Database Architecture",
-      trucontext: { status: "full", detail: "Patented Scalable Multi-Layered Graph Database (Neo4j)" },
+      trucontext: { status: "full", detail: "Patented Scalable Multi-Layered Graph Database (graph database)" },
       traditional: { status: "none", detail: "Relational databases only" },
       advantage: "20 QPS pathfinding vs 5 QPS traditional - 4x faster relationship queries"
     },
     {
       category: "architecture",
       feature: "Dual Database Persistence",
-      trucontext: { status: "full", detail: "Neo4j (relationships) + PostgreSQL (time-series)" },
+      trucontext: { status: "full", detail: "graph database (relationships) + relational database (time-series)" },
       traditional: { status: "partial", detail: "Single database architecture" },
       advantage: "Best-of-both-worlds: relationship intelligence + time-series efficiency"
     },

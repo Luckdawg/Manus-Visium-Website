@@ -15,7 +15,7 @@ export default function Cybersecurity() {
               Cybersecurity & <span className="text-primary">Threat Intelligence</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Transform your security operations with agentic AI-powered threat detection, dual database architecture (Neo4j + PostgreSQL), and autonomous response capabilities
+              Transform your security operations with agentic AI-powered threat detection, dual database architecture (graph database + relational database), and autonomous response capabilities
             </p>
             <Link href="/demo">
               <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -80,7 +80,7 @@ export default function Cybersecurity() {
                   Agentic AI Threat Correlation
                 </h3>
                 <p className="text-gray-700">
-                  Autonomous AI agents correlate threat indicators across all security tools using Neo4j graph database, linking disparate events to expose complete attack chains. Reduce investigation time from days to seconds with agentic AI-powered analysis and PostgreSQL-backed persistence.
+                  Autonomous AI agents correlate threat indicators across all security tools using graph database, linking disparate events to expose complete attack chains. Reduce investigation time from days to seconds with agentic AI-powered analysis and relational database-backed persistence.
                 </p>
               </CardContent>
             </Card>

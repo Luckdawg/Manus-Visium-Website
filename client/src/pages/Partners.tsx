@@ -7,7 +7,7 @@ export default function Partners() {
   const technologyPartners = [
     {
       name: "Datadog",
-      logo: "/partner_datadog.webp",
+      logo: "/datadog-logo.avif",
       description: "Essential monitoring and security platform for cloud-scale applications"
     },
     {

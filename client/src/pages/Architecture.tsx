@@ -57,8 +57,8 @@ export default function Architecture() {
       technical: "Kafka serves as the central nervous system, enabling real-time data flow between all platform components with millisecond latency"
     },
     {
-      id: "neo4j",
-      title: "Neo4j Graph Database",
+      id: "graph-db",
+      title: "Graph Database",
       icon: Network,
       color: "from-green-500 to-teal-500",
       description: "Patented Scalable Multi-Layered Graph Database",
@@ -68,25 +68,25 @@ export default function Architecture() {
         "3D utility network representation",
         "Co-offending network analysis",
         "Link prediction algorithms",
-        "Cypher query language for transparency"
+        "Native graph query language for transparency"
       ],
-      technical: "Neo4j's native graph storage enables complex relationship traversals in milliseconds, critical for real-time threat correlation and cascading failure analysis"
+      technical: "Native graph storage enables complex relationship traversals in milliseconds, critical for real-time threat correlation and cascading failure analysis"
     },
     {
-      id: "postgresql",
-      title: "PostgreSQL Time-Series DB",
+      id: "relational-db",
+      title: "Relational Database",
       icon: Database,
       color: "from-orange-500 to-red-500",
       description: "Persistent time-series data storage",
       details: [
         "High-performance relational storage",
-        "Time-series optimization with TimescaleDB",
+        "Time-series optimization",
         "Historical trend analysis",
         "Audit trail persistence",
         "ACID compliance for data integrity",
         "Efficient aggregation queries"
       ],
-      technical: "Dual database architecture combines Neo4j's relationship intelligence with PostgreSQL's time-series efficiency for complete analytical coverage"
+      technical: "Dual database architecture combines graph database's relationship intelligence with relational database's time-series efficiency for complete analytical coverage"
     },
     {
       id: "tru-ai",
@@ -156,19 +156,19 @@ export default function Architecture() {
 
   const dataFlow = [
     { from: "Data Sources", to: "Kafka Ecosystem", label: "Real-time ingestion" },
-    { from: "Kafka Ecosystem", to: "Neo4j Graph DB", label: "Relationship modeling" },
-    { from: "Kafka Ecosystem", to: "PostgreSQL", label: "Time-series storage" },
-    { from: "Neo4j Graph DB", to: "Tru-AI Engine", label: "Graph analytics" },
-    { from: "PostgreSQL", to: "TruTime", label: "Temporal sequencing" },
+    { from: "Kafka Ecosystem", to: "Graph Database", label: "Relationship modeling" },
+    { from: "Kafka Ecosystem", to: "Relational DB", label: "Time-series storage" },
+    { from: "Graph Database", to: "Tru-AI Engine", label: "Graph analytics" },
+    { from: "Relational DB", to: "TruTime", label: "Temporal sequencing" },
     { from: "Tru-AI Engine", to: "Dashboards", label: "AI insights" },
     { from: "TruTime", to: "Dashboards", label: "Contextualized events" },
-    { from: "Tru-InSight", to: "Neo4j Graph DB", label: "Video event correlation" }
+    { from: "Tru-InSight", to: "Graph Database", label: "Video event correlation" }
   ];
 
   const keyAdvantages = [
     {
       title: "Dual Database Architecture",
-      description: "Neo4j for relationship intelligence + PostgreSQL for time-series efficiency delivers complete analytical coverage",
+      description: "Graph database for relationship intelligence + relational database for time-series efficiency delivers complete analytical coverage",
       metric: "20 QPS pathfinding vs 5 QPS traditional"
     },
     {
@@ -212,7 +212,7 @@ export default function Architecture() {
               TruContext <span className="text-primary">Platform Architecture</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Explore the patented Scalable Multi-Layered Graph Database architecture that powers TruContext's industry-leading performance. Our dual database design combines Neo4j's relationship intelligence with PostgreSQL's time-series efficiency, orchestrated by Kafka event streaming and enhanced by agentic AI automation.
+              Explore the patented Scalable Multi-Layered Graph Database architecture that powers TruContext's industry-leading performance. Our dual database design combines graph database's relationship intelligence with relational database's time-series efficiency, orchestrated by Kafka event streaming and enhanced by agentic AI automation.
             </p>
             <div className="flex gap-4">
               <Link href="/demo">

@@ -16,7 +16,7 @@ export default function Platform() {
     {
       target: ".dual-database",
       title: "Dual Database Architecture",
-      content: "Our patented architecture combines Neo4j graph database for real-time relationships with PostgreSQL for persistent analytics—delivering 4x faster query performance.",
+      content: "Our patented architecture combines graph database for real-time relationships with relational database for persistent analytics—delivering 4x faster query performance.",
       placement: "top"
     },
     {
@@ -65,7 +65,7 @@ export default function Platform() {
                 Enterprise-Grade Dual Database Architecture
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                TruContext is built on a revolutionary dual database architecture combining Neo4j graph database for real-time network relationships with PostgreSQL for persistent storage and analytics. This patented scalable multi-layered approach processes billions of events with joins and aggregations in real-time, providing unmatched context and performance that conventional platforms cannot match.
+                TruContext is built on a revolutionary dual database architecture combining graph database for real-time network relationships with relational database for persistent storage and analytics. This patented scalable multi-layered approach processes billions of events with joins and aggregations in real-time, providing unmatched context and performance that conventional platforms cannot match.
               </p>
               <p className="text-lg text-gray-600 mb-6">
                 Enhanced from MITRE Corporation's CyGraph platform, originally developed for US Army Cyber Command, TruContext brings defense-grade intelligence capabilities to enterprise organizations with automatic synchronization and zero data loss.
@@ -73,11 +73,11 @@ export default function Platform() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-center space-x-2">
                   <Database className="h-6 w-6 text-primary" />
-                  <span className="font-semibold">Neo4j Graph DB</span>
+                  <span className="font-semibold">graph database Graph DB</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Database className="h-6 w-6 text-secondary" />
-                  <span className="font-semibold">PostgreSQL</span>
+                  <span className="font-semibold">relational database</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Zap className="h-6 w-6 text-primary" />

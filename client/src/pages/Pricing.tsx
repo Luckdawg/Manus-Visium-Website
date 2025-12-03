@@ -210,7 +210,7 @@ export default function Pricing() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Dual database architecture (Neo4j + PostgreSQL)</span>
+                      <span>Dual database architecture (graph database + relational database)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />

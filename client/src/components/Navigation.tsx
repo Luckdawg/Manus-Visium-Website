@@ -54,17 +54,17 @@ const Navigation = () => {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <Link href="/platform">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Overview</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Overview</div>
                   </Link>
                   <Link href="/platform/ai-capabilities">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">AI Capabilities</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">AI Capabilities</div>
                   </Link>
                   <Link href="/platform/tru-insight">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Tru-InSight™ Video Intelligence</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Tru-InSight™ Video Intelligence</div>
                   </Link>
 
                   <Link href="/platform/architecture">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Platform Architecture</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Platform Architecture</div>
                   </Link>
                 </div>
               )}
@@ -85,28 +85,28 @@ const Navigation = () => {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <Link href="/solutions/cybersecurity">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Cybersecurity & Threat Intelligence</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Cybersecurity & Threat Intelligence</div>
                   </Link>
                   <Link href="/solutions/smart-cities">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Smart Cities & Public Safety</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Smart Cities & Public Safety</div>
                   </Link>
                   <Link href="/solutions/critical-infrastructure">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Critical Infrastructure Protection</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Critical Infrastructure Protection</div>
                   </Link>
                   <Link href="/solutions/healthcare">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Healthcare Analytics</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Healthcare Analytics</div>
                   </Link>
                   <Link href="/solutions/financial-services">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Financial Services & Fraud Detection</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Financial Services & Fraud Detection</div>
                   </Link>
                   <Link href="/solutions/supply-chain">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Supply Chain & Logistics</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Supply Chain & Logistics</div>
                   </Link>
                   <Link href="/solutions/telecommunications">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Telecommunications Network Operations</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Telecommunications Network Operations</div>
                   </Link>
                   <Link href="/solutions/manufacturing">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Manufacturing & Industrial Operations</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Manufacturing & Industrial Operations</div>
                   </Link>
                 </div>
               )}
@@ -127,24 +127,24 @@ const Navigation = () => {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <Link href="/why/advantages">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Platform Advantages</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Platform Advantages</div>
                   </Link>
 
                   <Link href="/why/roi">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">ROI Calculator</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">ROI Calculator</div>
                   </Link>
                   <Link href="/why/comparison">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">vs Traditional SIEM</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">vs Traditional SIEM</div>
                   </Link>
                   <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase mt-2">Case Studies</div>
                   <Link href="/case-studies/energy-grid">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Energy Grid</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Energy Grid</div>
                   </Link>
                   <Link href="/case-studies/intelligent-transportation">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Intelligent Transportation</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Intelligent Transportation</div>
                   </Link>
                   <Link href="/case-studies/public-safety">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Public Safety</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Public Safety</div>
                   </Link>
                 </div>
               )}
@@ -166,13 +166,13 @@ const Navigation = () => {
                 >
 
                   <Link href="/resources/videos">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Videos & Webinars</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Videos & Webinars</div>
                   </Link>
                   <Link href="/blog">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Blog & Insights</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Blog & Insights</div>
                   </Link>
                   <Link href="/graph-demo">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer border-t border-gray-100 font-semibold text-primary">🎯 Interactive Graph Demo</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors border-t border-gray-100 font-semibold text-primary">🎯 Interactive Graph Demo</div>
                   </Link>
                 </div>
               )}
@@ -193,22 +193,22 @@ const Navigation = () => {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <Link href="/company/about">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">About Visium</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">About Visium</div>
                   </Link>
                   <Link href="/company/leadership">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Leadership Team</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Leadership Team</div>
                   </Link>
                   <Link href="/company/careers">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Careers</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Careers</div>
                   </Link>
                   <Link href="/company/news">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">News & Press</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">News & Press</div>
                   </Link>
                   <Link href="/company/investors">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Investor Relations</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Investor Relations</div>
                   </Link>
                   <Link href="/company/contact">
-                    <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">Contact</div>
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Contact</div>
                   </Link>
                 </div>
               )}

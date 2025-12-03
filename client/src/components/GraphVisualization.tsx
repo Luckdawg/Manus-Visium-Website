@@ -72,7 +72,7 @@ export default function GraphVisualization() {
   // Fixed node positions for reliable layout
   const nodes: GraphNode[] = [
     { id: "web-server", label: "Web Server", type: "asset", risk: "high", x: 550, y: 350, description: "Apache 2.4.52 web server hosting customer portal", ip: "192.168.1.100", status: "Active", lastSeen: "2 minutes ago" },
-    { id: "database", label: "Database", type: "asset", risk: "medium", x: 550, y: 500, description: "PostgreSQL 14.5 primary database", ip: "10.0.2.50", status: "Active", lastSeen: "1 minute ago" },
+    { id: "database", label: "Database", type: "asset", risk: "medium", x: 550, y: 500, description: "relational database 14.5 primary database", ip: "10.0.2.50", status: "Active", lastSeen: "1 minute ago" },
     { id: "firewall", label: "Firewall", type: "asset", risk: "low", x: 400, y: 500, description: "Cisco ASA 5525-X next-gen firewall", ip: "192.168.1.1", status: "Active", lastSeen: "30 seconds ago" },
     { id: "cve-2024-001", label: "CVE-2024-001", type: "vulnerability", risk: "high", x: 350, y: 450, description: "Remote code execution vulnerability in Apache HTTP Server", status: "Unpatched", lastSeen: "Detected 3 hours ago" },
     { id: "sql-injection", label: "SQL Injection", type: "threat", risk: "high", x: 300, y: 500, description: "Active SQL injection attack attempts detected", status: "Blocked", lastSeen: "15 minutes ago" },
@@ -87,15 +87,15 @@ export default function GraphVisualization() {
 
   const edges: GraphEdge[] = [
     { source: "cve-2024-001", target: "web-server", label: "exploits", type: "exploits", description: "Vulnerability allows remote code execution on web server", protocol: "HTTP", port: 443, traffic: "15 MB/day", timestamp: "2024-11-24 07:30:00" },
-    { source: "sql-injection", target: "database", label: "targets", type: "exploits", description: "Malicious SQL queries attempting data exfiltration", protocol: "PostgreSQL", port: 5432, traffic: "250 requests/hour", timestamp: "2024-11-24 09:45:00" },
+    { source: "sql-injection", target: "database", label: "targets", type: "exploits", description: "Malicious SQL queries attempting data exfiltration", protocol: "relational database", port: 5432, traffic: "250 requests/hour", timestamp: "2024-11-24 09:45:00" },
     { source: "ddos", target: "web-server", label: "attacks", type: "exploits", description: "Volumetric DDoS attack overwhelming server resources", protocol: "TCP/UDP", port: 80, traffic: "2.5 GB/hour", timestamp: "2024-11-24 09:00:00" },
-    { source: "web-server", target: "database", label: "queries", type: "connects", description: "Normal database queries for application data", protocol: "PostgreSQL", port: 5432, traffic: "500 MB/day", timestamp: "Active" },
+    { source: "web-server", target: "database", label: "queries", type: "connects", description: "Normal database queries for application data", protocol: "relational database", port: 5432, traffic: "500 MB/day", timestamp: "Active" },
     { source: "firewall", target: "web-server", label: "protects", type: "protects", description: "Firewall rules filtering inbound traffic", protocol: "Stateful inspection", port: 443, traffic: "Monitored", timestamp: "Active" },
     { source: "admin-user", target: "web-server", label: "manages", type: "accesses", description: "Administrative SSH access for server management", protocol: "SSH", port: 22, traffic: "10 sessions/day", timestamp: "2024-11-24 10:05:00" },
     { source: "web-server", target: "dmz", label: "resides in", type: "connects", description: "Web server deployed in DMZ network segment", protocol: "N/A", traffic: "N/A", timestamp: "Permanent" },
     { source: "database", target: "internal-net", label: "resides in", type: "connects", description: "Database isolated in internal network", protocol: "N/A", traffic: "N/A", timestamp: "Permanent" },
     { source: "firewall", target: "dmz", label: "secures", type: "protects", description: "Firewall protecting DMZ perimeter", protocol: "Stateful inspection", traffic: "All traffic", timestamp: "Active" },
-    { source: "api-server", target: "database", label: "queries", type: "connects", description: "API backend querying database for REST endpoints", protocol: "PostgreSQL", port: 5432, traffic: "1.2 GB/day", timestamp: "Active" },
+    { source: "api-server", target: "database", label: "queries", type: "connects", description: "API backend querying database for REST endpoints", protocol: "relational database", port: 5432, traffic: "1.2 GB/day", timestamp: "Active" },
     { source: "auth-service", target: "admin-user", label: "authenticates", type: "protects", description: "OAuth 2.0 token validation for admin access", protocol: "HTTPS", port: 443, traffic: "50 requests/day", timestamp: "2024-11-24 10:05:00" },
     { source: "xss-vuln", target: "api-server", label: "exploits", type: "exploits", description: "XSS payload injection in API response headers", protocol: "HTTP", port: 8080, traffic: "5 attempts/day", timestamp: "2024-11-22 14:20:00" },
     { source: "api-server", target: "dmz", label: "resides in", type: "connects", description: "API server deployed in DMZ for external access", protocol: "N/A", traffic: "N/A", timestamp: "Permanent" }

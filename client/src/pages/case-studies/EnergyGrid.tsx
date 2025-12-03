@@ -39,7 +39,7 @@ export default function EnergyGridCaseStudy() {
     },
     {
       component: "TruContext Integration",
-      items: ["Neo4j graph database (3D utility network)", "PostgreSQL (time-series data)", "Kafka ecosystem (event streaming)", "Tru-AI agents (fault prediction)", "TruTime (temporal correlation)"]
+      items: ["graph database (3D utility network)", "relational database (time-series data)", "Kafka ecosystem (event streaming)", "Tru-AI agents (fault prediction)", "TruTime (temporal correlation)"]
     },
     {
       component: "Key Capabilities",
