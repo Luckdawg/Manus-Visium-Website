@@ -34,7 +34,7 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             <Link href="/">
-              <Button variant="ghost" className="text-gray-700 hover:text-primary">
+              <Button variant="ghost" className="text-gray-700 hover:text-white hover:bg-primary">
                 Home
               </Button>
             </Link>
@@ -43,7 +43,7 @@ const Navigation = () => {
             <div className="relative group">
               <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-primary"
+                className="text-gray-700 hover:text-white hover:bg-primary"
                 onMouseEnter={() => setOpenDropdown("platform")}
               >
                 Platform <ChevronDown className="ml-1 h-4 w-4" />
@@ -74,7 +74,7 @@ const Navigation = () => {
             <div className="relative group">
               <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-primary"
+                className="text-gray-700 hover:text-white hover:bg-primary"
                 onMouseEnter={() => setOpenDropdown("solutions")}
               >
                 Solutions <ChevronDown className="ml-1 h-4 w-4" />
@@ -116,7 +116,7 @@ const Navigation = () => {
             <div className="relative group">
               <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-primary"
+                className="text-gray-700 hover:text-white hover:bg-primary"
                 onMouseEnter={() => setOpenDropdown("why")}
               >
                 Why TruContext <ChevronDown className="ml-1 h-4 w-4" />
@@ -154,7 +154,7 @@ const Navigation = () => {
             <div className="relative group">
               <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-primary"
+                className="text-gray-700 hover:text-white hover:bg-primary"
                 onMouseEnter={() => setOpenDropdown("resources")}
               >
                 Resources <ChevronDown className="ml-1 h-4 w-4" />
@@ -182,7 +182,7 @@ const Navigation = () => {
             <div className="relative group">
               <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-primary"
+                className="text-gray-700 hover:text-white hover:bg-primary"
                 onMouseEnter={() => setOpenDropdown("company")}
               >
                 Company <ChevronDown className="ml-1 h-4 w-4" />
@@ -215,13 +215,13 @@ const Navigation = () => {
             </div>
 
             <Link href="/partners">
-              <Button variant="ghost" className="text-gray-700 hover:text-primary">
+              <Button variant="ghost" className="text-gray-700 hover:text-white hover:bg-primary">
                 Partners
               </Button>
             </Link>
 
             <Link href="/pricing">
-              <Button variant="ghost" className="text-gray-700 hover:text-primary">
+              <Button variant="ghost" className="text-gray-700 hover:text-white hover:bg-primary">
                 Pricing
               </Button>
             </Link>
