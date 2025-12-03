@@ -662,3 +662,12 @@
 - [x] Reduce excessive vertical spacing in navigation areas
 - [x] Test responsive behavior after spacing changes
 - [x] Verify readability and functionality maintained
+
+## Consistent Logo Placement Across Pages (Dec 3, 2025)
+- [x] Add upper-left logo to Home page hero section
+- [x] Add upper-left logo to Leadership page
+- [x] Add upper-left logo to Careers page
+- [x] Add upper-left logo to News page
+- [x] Ensure consistent logo sizing across all pages (h-12/h-14/h-16)
+- [x] Verify logo positioning and spacing matches About page
+- [x] Test responsive behavior on all updated pages

@@ -91,6 +91,14 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-primary/5 to-white/90" />
         
         <div className="container relative z-10">
+          {/* Visium Technologies Logo - Upper Left */}
+          <div className="mb-6">
+            <img 
+              src="/visium-technologies-logo-new.png" 
+              alt="Visium Technologies" 
+              className="h-12 sm:h-14 md:h-16 object-contain"
+            />
+          </div>
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
               Agentic AI-Powered <span className="text-primary">Intelligence Platform</span>

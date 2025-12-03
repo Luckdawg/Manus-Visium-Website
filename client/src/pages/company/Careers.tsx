@@ -19,8 +19,16 @@ export default function Careers() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/10 via-blue-50 to-purple-50 py-20">
+      <section className="bg-gradient-to-br from-primary/10 via-blue-50 to-purple-50 py-12">
         <div className="container">
+          {/* Visium Technologies Logo - Upper Left */}
+          <div className="mb-6">
+            <img 
+              src="/visium-technologies-logo-new.png" 
+              alt="Visium Technologies" 
+              className="h-12 sm:h-14 md:h-16 object-contain"
+            />
+          </div>
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Briefcase className="h-4 w-4" />

@@ -40,8 +40,16 @@ export default function Leadership() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-hero py-12">
+      <section className="gradient-hero py-8">
         <div className="container">
+          {/* Visium Technologies Logo - Upper Left */}
+          <div className="mb-6">
+            <img 
+              src="/visium-technologies-logo-new.png" 
+              alt="Visium Technologies" 
+              className="h-12 sm:h-14 md:h-16 object-contain"
+            />
+          </div>
           <div className="max-w-4xl mx-auto text-center">
             <Users className="h-16 w-16 text-primary mx-auto mb-6" />
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
