@@ -103,99 +103,72 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Platform Visualization */}
-      <section className="py-12 bg-gray-50">
+      {/* AT A GLANCE - Two Column Layout */}
+      <section className="trucontext-overview py-12 bg-gray-50">
         <div className="container">
-          <div className="relative max-w-5xl mx-auto">
-            <div className="relative bg-white rounded-2xl shadow-2xl overflow-hidden">
-              <img 
-                src="/hero_illustration.webp" 
-                alt="TruContext Platform" 
-                className="w-full h-auto object-cover"
-              />
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Column - AT A GLANCE Information */}
+            <div className="space-y-6">
+              <div>
+                <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">AT A GLANCE</p>
+                <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
+                  Gain Actionable Business Intelligence with <span className="text-secondary">TruContext™</span>
+                </h2>
+                <p className="text-lg text-gray-600">
+                  TruContext is a big data analytics graphing platform that has the ability to process streams of events with joins, aggregations, and more.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-gray-700">
+                    Enhanced commercialized version of <strong>MITRE's CyGraph</strong> cyber tool
+                  </p>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <CheckCircle2 className="h-6 w-6 text-secondary flex-shrink-0 mt-1" />
+                  <p className="text-gray-700">
+                    The only <strong>Patented Scalable Multi-Layered Graph Database Solution</strong> for Cybersecurity
+                  </p>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-gray-700">
+                    Designed for use within the <strong>DoD, Army Cyber Command</strong>
+                  </p>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <CheckCircle2 className="h-6 w-6 text-secondary flex-shrink-0 mt-1" />
+                  <p className="text-gray-700">
+                    Incorporates the rapid high throughput and scalable processing of data via the <strong>Kafka Ecosystem</strong>
+                  </p>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-gray-700">
+                    Has the power to connect to <strong>hundreds of event sources and billions of event sinks</strong>
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* TruContext Overview */}
-      <section className="trucontext-overview py-12 bg-white">
-        <div className="container">
-          <div className="text-center mb-8">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">AT A GLANCE</p>
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
-              Gain Actionable Business Intelligence with <span className="text-secondary">TruContext™</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              TruContext is a big data analytics graphing platform that has the ability to process streams of events with joins, aggregations, and more.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-1 md:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <Card className="border-l-4 border-l-primary">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="text-gray-700">
-                      Enhanced commercialized version of <strong>MITRE's CyGraph</strong> cyber tool
-                    </p>
-                  </div>
+            {/* Right Column - Graphic (downsized and right-justified) */}
+            <div className="flex justify-end">
+              <div className="relative max-w-md w-full">
+                <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
+                  <img 
+                    src="/hero_illustration.webp" 
+                    alt="TruContext Platform" 
+                    className="w-full h-auto object-cover"
+                  />
                 </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-l-4 border-l-secondary">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-6 w-6 text-secondary flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="text-gray-700">
-                      The only <strong>Patented Scalable Multi-Layered Graph Database Solution</strong> for Cybersecurity
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-l-4 border-l-primary">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="text-gray-700">
-                      Designed for use within the <strong>DoD, Army Cyber Command</strong>
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-l-4 border-l-secondary">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-6 w-6 text-secondary flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="text-gray-700">
-                      Incorporates the rapid high throughput and scalable processing of data via the <strong>Kafka Ecosystem</strong>
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-l-4 border-l-primary md:col-span-2">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="text-gray-700">
-                      Has the power to connect to <strong>hundreds of event sources and billions of event sinks</strong>
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
 
           <div className="text-center space-y-6">

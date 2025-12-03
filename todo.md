@@ -603,3 +603,14 @@
 - [x] Test logo responsiveness on desktop
 - [x] Remove legacy logo files
 - [x] Verify visual consistency across all pages
+
+## Homepage Layout Modification (Dec 2, 2025)
+- [x] Copy AT A GLANCE graphic to public directory
+- [x] Identify first graphic/image on homepage
+- [x] Create two-column container (Flexbox or Grid)
+- [x] Add AT A GLANCE information section to left column
+- [x] Place graphic in right column, downsized and right-justified
+- [x] Test layout responsiveness on mobile devices
+- [x] Test layout responsiveness on tablet devices
+- [x] Test layout responsiveness on desktop
+- [x] Verify visual balance and spacing
