@@ -7,28 +7,28 @@ import FollowUs from "@/components/FollowUs";
 export default function About() {
   return (
     <div className="min-h-screen">
-      <section className="gradient-hero py-12">
+      <section className="gradient-hero py-8">
         <div className="container">
+          {/* Visium Technologies Logo - Upper Left */}
+          <div className="mb-6">
+            <img 
+              src="/visium-technologies-logo-new.png" 
+              alt="Visium Technologies" 
+              className="h-12 sm:h-14 md:h-16 object-contain"
+            />
+          </div>
           <div className="max-w-4xl mx-auto text-center">
-            {/* Visium Technologies Logo */}
-            <div className="mb-8">
-              <img 
-                src="/visium-technologies-logo-new.png" 
-                alt="Visium Technologies" 
-                className="h-16 sm:h-20 md:h-24 mx-auto object-contain"
-              />
-            </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               About <span className="text-primary">Visium Technologies</span>
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg md:text-xl text-gray-600">
               Transforming data into actionable intelligence for enterprises worldwide
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-12 bg-white">
+      <section className="py-8 bg-white">
         <div className="container">
           <div className="max-w-3xl mx-auto">
             {/* Subsidiary Relationship */}
@@ -50,7 +50,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
+          <div className="grid md:grid-cols-3 gap-6 mt-10">
             <Card className="text-center">
               <CardContent className="p-8">
                 <Shield className="h-16 w-16 text-primary mx-auto mb-4" />
@@ -87,7 +87,7 @@ export default function About() {
       {/* Follow Us Section */}
       <FollowUs />
 
-      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-8 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6">Join Our Team</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

@@ -39,7 +39,7 @@ export default function Platform() {
       <Tour steps={tourSteps} tourId="platform" />
       <TourButton tourId="platform" label="Platform Tour" />
       {/* Hero Section */}
-      <section className="platform-hero gradient-hero py-12">
+      <section className="platform-hero gradient-hero py-8">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -58,7 +58,7 @@ export default function Platform() {
       </section>
 
       {/* Platform Overview */}
-      <section className="dual-database py-12 bg-white">
+      <section className="dual-database py-8 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
             <div>
@@ -269,7 +269,7 @@ export default function Platform() {
       <FollowUs />
 
       {/* Platform Components CTA */}
-      <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-8 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">
           <h2 className="text-2xl md:text-4xl font-bold mb-6">Explore Platform Capabilities</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">

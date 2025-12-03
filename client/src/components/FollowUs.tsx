@@ -4,10 +4,10 @@ import { Facebook, Linkedin, Youtube, Instagram } from "lucide-react";
 
 export default function FollowUs() {
   return (
-    <section className="py-12 bg-white">
+    <section className="py-8 bg-white">
       <div className="container">
         <Card className="max-w-4xl mx-auto">
-          <CardContent className="p-8">
+          <CardContent className="p-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Follow Us</h2>
             <p className="text-gray-600 mb-6 text-center">
               Stay connected with Visium Technologies on social media for company updates, career opportunities, and industry insights
