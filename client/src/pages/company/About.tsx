@@ -12,7 +12,7 @@ export default function About() {
             {/* Visium Technologies Logo */}
             <div className="mb-8">
               <img 
-                src="/visium-tech-logo.25183d7a.png" 
+                src="/visium-technologies-logo-new.png" 
                 alt="Visium Technologies" 
                 className="h-16 sm:h-20 md:h-24 mx-auto object-contain"
               />

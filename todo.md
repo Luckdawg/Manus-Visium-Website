@@ -588,3 +588,18 @@
 - [x] Update navigation hover text color to white with primary background
 - [x] Add Datadog logo to Partners page
 - [x] Keep MITRE content as is (per user request)
+
+## Logo Replacement (Dec 2, 2025)
+- [x] Copy new Visium Analytics logo to public directory
+- [x] Copy new Visium Technologies logo to public directory
+- [x] Find all logo references in header/navigation
+- [x] Find all logo references in footer
+- [x] Find all logo references on individual pages (About, etc.)
+- [x] Replace all logo paths with new logo files
+- [x] Test logo display on light backgrounds
+- [x] Test logo display on dark backgrounds
+- [x] Test logo responsiveness on mobile devices
+- [x] Test logo responsiveness on tablet devices
+- [x] Test logo responsiveness on desktop
+- [x] Remove legacy logo files
+- [x] Verify visual consistency across all pages

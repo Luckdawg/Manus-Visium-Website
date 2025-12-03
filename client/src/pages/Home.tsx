@@ -201,7 +201,7 @@ export default function Home() {
           <div className="text-center space-y-6">
               {/* Visium Technologies Logo */}
               <img 
-                src="/visium-tech-logo.png" 
+                src="/visium-technologies-logo-new.png" 
                 alt="Visium Technologies" 
                 className="mx-auto h-16 sm:h-20 md:h-24 object-contain"
               />
