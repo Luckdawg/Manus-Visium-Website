@@ -119,40 +119,90 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-gray-700">
-                    Enhanced commercialized version of <strong>MITRE's CyGraph</strong> cyber tool
-                  </p>
+              <div className="space-y-3">
+                {/* Feature 1 - MITRE CyGraph */}
+                <div className="group relative p-4 rounded-lg border border-gray-200 bg-white hover:bg-primary/5 hover:border-primary hover:shadow-md transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="flex-1">
+                      <p className="text-gray-700 font-medium">
+                        Enhanced commercialized version of <strong>MITRE's CyGraph</strong> cyber tool
+                      </p>
+                      <div className="max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-500 ease-in-out">
+                        <p className="text-sm text-gray-600 mt-2 pt-2 border-t border-gray-200">
+                          Originally developed for US Army Cyber Command, TruContext builds upon MITRE's proven CyGraph technology, bringing military-grade threat intelligence capabilities to enterprise cybersecurity operations.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-6 w-6 text-secondary flex-shrink-0 mt-1" />
-                  <p className="text-gray-700">
-                    The only <strong>Patented Scalable Multi-Layered Graph Database Solution</strong> for Cybersecurity
-                  </p>
+                {/* Feature 2 - Patented Technology */}
+                <div className="group relative p-4 rounded-lg border border-gray-200 bg-white hover:bg-secondary/5 hover:border-secondary hover:shadow-md transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle2 className="h-6 w-6 text-secondary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="flex-1">
+                      <p className="text-gray-700 font-medium">
+                        The only <strong>Patented Scalable Multi-Layered Graph Database Solution</strong> for Cybersecurity
+                      </p>
+                      <div className="max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-500 ease-in-out">
+                        <p className="text-sm text-gray-600 mt-2 pt-2 border-t border-gray-200">
+                          Our proprietary multi-layered graph architecture processes billions of events in real-time, enabling unprecedented scalability and performance for complex threat detection and analysis across enterprise networks.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-gray-700">
-                    Designed for use within the <strong>DoD, Army Cyber Command</strong>
-                  </p>
+                {/* Feature 3 - DoD Heritage */}
+                <div className="group relative p-4 rounded-lg border border-gray-200 bg-white hover:bg-primary/5 hover:border-primary hover:shadow-md transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="flex-1">
+                      <p className="text-gray-700 font-medium">
+                        Designed for use within the <strong>DoD, Army Cyber Command</strong>
+                      </p>
+                      <div className="max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-500 ease-in-out">
+                        <p className="text-sm text-gray-600 mt-2 pt-2 border-t border-gray-200">
+                          Battle-tested in the most demanding defense environments, TruContext meets the rigorous security and performance standards required by Department of Defense operations and critical infrastructure protection.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-6 w-6 text-secondary flex-shrink-0 mt-1" />
-                  <p className="text-gray-700">
-                    Incorporates the rapid high throughput and scalable processing of data via the <strong>Kafka Ecosystem</strong>
-                  </p>
+                {/* Feature 4 - Kafka Ecosystem */}
+                <div className="group relative p-4 rounded-lg border border-gray-200 bg-white hover:bg-secondary/5 hover:border-secondary hover:shadow-md transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle2 className="h-6 w-6 text-secondary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="flex-1">
+                      <p className="text-gray-700 font-medium">
+                        Incorporates the rapid high throughput and scalable processing of data via the <strong>Kafka Ecosystem</strong>
+                      </p>
+                      <div className="max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-500 ease-in-out">
+                        <p className="text-sm text-gray-600 mt-2 pt-2 border-t border-gray-200">
+                          Leveraging Apache Kafka's distributed streaming platform, TruContext ingests and processes massive data volumes with sub-second latency, ensuring real-time threat detection and immediate response capabilities.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-gray-700">
-                    Has the power to connect to <strong>hundreds of event sources and billions of event sinks</strong>
-                  </p>
+                {/* Feature 5 - Event Sources */}
+                <div className="group relative p-4 rounded-lg border border-gray-200 bg-white hover:bg-primary/5 hover:border-primary hover:shadow-md transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="flex-1">
+                      <p className="text-gray-700 font-medium">
+                        Has the power to connect to <strong>hundreds of event sources and billions of event sinks</strong>
+                      </p>
+                      <div className="max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-500 ease-in-out">
+                        <p className="text-sm text-gray-600 mt-2 pt-2 border-t border-gray-200">
+                          From network sensors and security tools to IoT devices and cloud services, TruContext seamlessly integrates with your entire technology stack, creating a unified intelligence platform that scales with your organization.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
