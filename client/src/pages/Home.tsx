@@ -1,4 +1,5 @@
 import { useAuth } from "@/_core/hooks/useAuth";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Button } from "@/components/ui/button";
 import AnimatedGraphBackground from "@/components/AnimatedGraphBackground";
 import Tour, { TourStep } from "@/components/Tour";
@@ -26,6 +27,11 @@ export default function Home() {
   // The userAuth hooks provides authentication state
   // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
   let { user, loading, error, isAuthenticated, logout } = useAuth();
+
+  // Scroll animations for AT A GLANCE section
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: featuresRef, isVisible: featuresVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: graphicRef, isVisible: graphicVisible } = useScrollAnimation({ threshold: 0.2 });
 
   const tourSteps: TourStep[] = [
     {
@@ -109,7 +115,12 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Column - AT A GLANCE Information */}
             <div className="space-y-6">
-              <div>
+              <div 
+                ref={headerRef}
+                className={`transition-all duration-1000 ${
+                  headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+              >
                 <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">AT A GLANCE</p>
                 <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
                   Gain Actionable Business Intelligence with <span className="text-secondary">TruContext™</span>
@@ -119,7 +130,12 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div 
+                ref={featuresRef}
+                className={`space-y-3 transition-all duration-1000 delay-300 ${
+                  featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+              >
                 {/* Feature 1 - MITRE CyGraph */}
                 <div className="group relative p-4 rounded-lg border border-gray-200 bg-white hover:bg-primary/5 hover:border-primary hover:shadow-md transition-all duration-300 cursor-pointer">
                   <div className="flex items-start space-x-3">
@@ -208,7 +224,12 @@ export default function Home() {
             </div>
 
             {/* Right Column - Graphic (downsized and right-justified) */}
-            <div className="flex justify-end">
+            <div 
+              ref={graphicRef}
+              className={`flex justify-end transition-all duration-1000 delay-500 ${
+                graphicVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+              }`}
+            >
               <div className="relative max-w-md w-full">
                 <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
                   <img 

@@ -623,3 +623,13 @@
 - [x] Test hover interactions on desktop
 - [x] Ensure accessibility for keyboard navigation
 - [x] Verify mobile touch interactions work properly
+
+## Scroll-Triggered Animations (Dec 2, 2025)
+- [x] Create IntersectionObserver hook for scroll detection
+- [x] Add fade-in animation to AT A GLANCE section header
+- [x] Add staggered fade-in animations to feature cards
+- [x] Add fade-in animation to right column graphic
+- [x] Implement smooth CSS transitions
+- [x] Test animations on different scroll speeds
+- [x] Verify animations work on mobile devices
+- [x] Ensure animations respect reduced motion preferences
