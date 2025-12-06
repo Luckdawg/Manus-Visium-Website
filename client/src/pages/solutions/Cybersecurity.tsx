@@ -203,22 +203,6 @@ export default function Cybersecurity() {
       </section>
 
       {/* Customer Story */}
-      <section className="py-12 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-        <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
-            <Shield className="h-16 w-16 text-primary mx-auto mb-6" />
-            <h2 className="text-3xl font-bold mb-6">Customer Success Story</h2>
-            <blockquote className="text-xl italic mb-6">
-              "TruContext transformed our security operations. We went from drowning in alerts to having clear, actionable intelligence. The MITRE ATT&CK integration gives us the context we need to prioritize threats and respond effectively."
-            </blockquote>
-            <div className="text-lg">
-              <p className="font-semibold">Apex Petroleum Corporation</p>
-              <p className="text-gray-300">Multi-year Cybersecurity Contract</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container text-center">

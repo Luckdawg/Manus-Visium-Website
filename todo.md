@@ -720,3 +720,9 @@
 - [x] Add margin-top spacing above logo
 - [x] Test visual separation on different screen sizes
 - [x] Verify changes on published website
+
+## Remove Customer Success Story from Cybersecurity Page (Dec 6, 2025)
+- [x] Locate Customer Success Story section on Cybersecurity solutions page
+- [x] Remove the entire section from the page
+- [x] Test page layout after removal
+- [x] Verify changes on published website
