@@ -705,3 +705,12 @@
 - [x] Remove quote boxes from Intelligent Transportation case study
 - [x] Test layout on all case study pages
 - [x] Verify changes on published website
+
+## Replace All TruContext Logos (Dec 6, 2025)
+- [x] Locate all TruContext logo files and references
+- [x] Copy new TruContext logo to public directory
+- [x] Replace logo references in Home page
+- [x] Replace logo references in Platform page
+- [x] Replace logo references in all other pages
+- [x] Test logo display across all pages
+- [x] Verify changes on published website
