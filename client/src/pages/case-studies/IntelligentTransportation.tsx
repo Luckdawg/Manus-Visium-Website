@@ -278,30 +278,6 @@ export default function IntelligentTransportationCaseStudy() {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="py-12 bg-white">
-        <div className="container max-w-4xl">
-          <Card className="bg-gradient-to-br from-gray-50 to-blue-50 border-2 border-primary/20">
-            <CardContent className="p-12">
-              <div className="text-6xl text-primary mb-6">"</div>
-              <p className="text-2xl text-gray-800 leading-relaxed mb-8 italic">
-                Tru-InSight's video AI agents have revolutionized our traffic operations. What used to take our analysts hours to investigate now happens automatically in minutes. The system could detect an erratic driver last month and alerted police before a potential accident—that's the kind of proactive intelligence that saves lives. The ROI has been extraordinary.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-                <div>
-                  <div className="font-bold text-gray-900">Michael Rodriguez</div>
-                  <div className="text-gray-600">Director of Transportation Operations</div>
-                  <div className="text-gray-500">Smart City Transit Authority</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="container text-center">

@@ -278,30 +278,6 @@ export default function EnergyGridCaseStudy() {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="py-12 bg-white">
-        <div className="container max-w-4xl">
-          <Card className="bg-gradient-to-br from-gray-50 to-blue-50 border-2 border-primary/20">
-            <CardContent className="p-12">
-              <div className="text-6xl text-primary mb-6">"</div>
-              <p className="text-2xl text-gray-800 leading-relaxed mb-8 italic">
-                TruContext could transform our grid operations from reactive firefighting to proactive intelligence. The Digital Twin capability alone has prevented three major outages in the past six months, saving millions in costs and preserving customer trust. The agentic AI agents work 24/7 to optimize our grid—it's like having an army of expert analysts that never sleep.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-                <div>
-                  <div className="font-bold text-gray-900">Dr. Sarah Chen</div>
-                  <div className="text-gray-600">Chief Technology Officer</div>
-                  <div className="text-gray-500">Metropolitan Power Authority</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="container text-center">

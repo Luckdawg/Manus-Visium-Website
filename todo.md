@@ -697,3 +697,11 @@
 - [x] Remove the logo element from after 2nd paragraph
 - [x] Test Platform page layout after removal
 - [x] Verify changes on published website
+
+## Remove Quote Boxes from Case Study Pages (Dec 6, 2025)
+- [x] Identify all case study pages with quote boxes
+- [x] Remove quote boxes from Energy Grid case study
+- [x] Remove quote boxes from Public Safety case study
+- [x] Remove quote boxes from Intelligent Transportation case study
+- [x] Test layout on all case study pages
+- [x] Verify changes on published website

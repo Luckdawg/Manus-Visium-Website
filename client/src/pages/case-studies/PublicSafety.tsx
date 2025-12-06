@@ -337,30 +337,6 @@ export default function PublicSafetyCaseStudy() {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="py-12 bg-gradient-to-br from-gray-50 to-purple-50">
-        <div className="container max-w-4xl">
-          <Card className="bg-white border-2 border-primary/20">
-            <CardContent className="p-12">
-              <div className="text-6xl text-primary mb-6">"</div>
-              <p className="text-2xl text-gray-800 leading-relaxed mb-8 italic">
-                TruContext has could transform how we approach public safety. The ability to see criminal network relationships in the graph visualization helps us understand patterns we never could before. But what really matters is the transparency—we can show the community exactly how predictions are made, which has rebuilt trust. The cyber-physical threat correlation has prevented two major infrastructure attacks in the past year alone.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-                <div>
-                  <div className="font-bold text-gray-900">Chief Jennifer Martinez</div>
-                  <div className="text-gray-600">Chief of Police</div>
-                  <div className="text-gray-500">Metro Police Department</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="container text-center">
