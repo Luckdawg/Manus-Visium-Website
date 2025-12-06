@@ -691,3 +691,9 @@
 - [x] Update favicon reference in index.html
 - [x] Test favicon appears correctly in browser tab
 - [x] Verify favicon on published website
+
+## Remove TruContext Logo from Platform Page (Dec 6, 2025)
+- [x] Locate large TruContext logo graphic on Platform page
+- [x] Remove the logo element from after 2nd paragraph
+- [x] Test Platform page layout after removal
+- [x] Verify changes on published website

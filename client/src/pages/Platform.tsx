@@ -90,13 +90,7 @@ export default function Platform() {
                 </div>
               </div>
             </div>
-            <div>
-              <img 
-                src="/trucontext_logo.webp" 
-                alt="TruContext Platform" 
-                className="w-full h-auto"
-              />
-            </div>
+
           </div>
 
           {/* Agentic AI Section */}
