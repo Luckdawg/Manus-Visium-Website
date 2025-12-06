@@ -679,3 +679,15 @@
 - [x] Test hover states across all navigation items
 - [x] Verify logo click functionality works from all pages
 - [x] Ensure responsive navigation maintains improvements
+
+## Remove Made with Manus Notice (Dec 3, 2025)
+- [ ] Locate "Made with Manus" button/notice in Footer component
+- [ ] Remove the element from Footer
+- [ ] Test footer appearance across multiple pages
+- [ ] Verify removal on published website
+
+## Replace Browser Tab Favicon (Dec 3, 2025)
+- [x] Copy Visium Technologies logo to public directory
+- [x] Update favicon reference in index.html
+- [x] Test favicon appears correctly in browser tab
+- [x] Verify favicon on published website
