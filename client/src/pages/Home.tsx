@@ -261,7 +261,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="text-center space-y-6">
+          <div className="text-center space-y-6 mt-12">
               {/* TruContext Logo */}
               <img 
                 src="/trucontext_logo.webp" 

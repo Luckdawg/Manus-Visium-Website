@@ -714,3 +714,9 @@
 - [x] Replace logo references in all other pages
 - [x] Test logo display across all pages
 - [x] Verify changes on published website
+
+## Add Spacing Above TruContext Logo (Dec 6, 2025)
+- [x] Locate TruContext logo section on Home page
+- [x] Add margin-top spacing above logo
+- [x] Test visual separation on different screen sizes
+- [x] Verify changes on published website
