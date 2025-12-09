@@ -7,6 +7,14 @@ import { Newspaper, Calendar, ExternalLink, TrendingUp } from "lucide-react";
 export default function News() {
   const newsStories = [
     {
+      date: "December 9, 2025",
+      title: "Visium Technologies Enters $1.3 Trillion AI Market with TruContext—The First Fully Transparent Agentic AI Platform",
+      excerpt: "Visium Technologies announces bold pivot and transformation into pure-play AI company, launching next generation of mission-critical intelligence. TruContext platform enhanced with Agentic AI capabilities eliminates hallucinations and delivers verifiable intelligence for defense, cybersecurity, and critical infrastructure.",
+      url: "https://www.otcmarkets.com/stock/VISM/news/Visium-Technologies-Enters-13-Trillion-AI-Market-with-TruContextThe-First-Fully-Transparent-Agentic-AI-Platform?id=503210",
+      source: "OTC Markets",
+      category: "Corporate News"
+    },
+    {
       date: "October 14, 2025",
       title: "Visium Technologies, Inc. Issues Letter to Shareholders",
       excerpt: "Strategic Contracts Establish Foundation for Expansion in High-Growth Emerging Markets Across South America and Africa. Visium Technologies highlights multi-year contracts and partnerships establishing foundation for growth in emerging markets.",

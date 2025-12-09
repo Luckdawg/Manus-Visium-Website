@@ -733,3 +733,10 @@
 - [x] Update Home page logo reference
 - [x] Test logo displays correctly on dev and published sites
 - [x] Clear browser cache if needed
+
+## Add Latest Press Release to News Page (Dec 9, 2025)
+- [x] Retrieve December 9, 2025 press release from OTC Markets
+- [x] Extract press release title, date, and content
+- [x] Update News page with new press release entry
+- [x] Test News page display and formatting
+- [x] Verify changes on published website
