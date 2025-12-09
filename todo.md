@@ -726,3 +726,10 @@
 - [x] Remove the entire section from the page
 - [x] Test page layout after removal
 - [x] Verify changes on published website
+
+## Update TruContext Logo with Cache-Busting (Dec 6, 2025)
+- [x] Verify current logo file is correct version
+- [x] Copy new logo with cache-busting filename
+- [x] Update Home page logo reference
+- [x] Test logo displays correctly on dev and published sites
+- [x] Clear browser cache if needed
