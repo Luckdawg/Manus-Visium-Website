@@ -7,6 +7,7 @@ import { BookOpen, Calendar, ArrowRight, Download } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { APP_LOGO } from "@/const";
+import BlogLeadCaptureDialog from "@/components/BlogLeadCaptureDialog";
 
 export default function Blog() {
   const blogPosts = [
@@ -70,6 +71,13 @@ export default function Blog() {
 
   const categories = ["All", "CEO Corner", "Cyber Security", "Smart Cities", "Healthcare"];
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [leadDialogOpen, setLeadDialogOpen] = useState(false);
+  const [selectedBlog, setSelectedBlog] = useState<{ title: string; pdfUrl: string } | null>(null);
+
+  const handleDownloadClick = (title: string, pdfUrl: string) => {
+    setSelectedBlog({ title, pdfUrl });
+    setLeadDialogOpen(true);
+  };
 
   const filteredPosts = selectedCategory === "All" 
     ? blogPosts 
@@ -158,12 +166,10 @@ export default function Blog() {
                     <Button 
                       variant="default" 
                       className="flex-1"
-                      asChild
+                      onClick={() => handleDownloadClick(post.title, post.pdfUrl)}
                     >
-                      <a href={post.pdfUrl} download>
-                        <Download className="h-4 w-4 mr-2" />
-                        Download PDF
-                      </a>
+                      <Download className="h-4 w-4 mr-2" />
+                      Download PDF
                     </Button>
                   </div>
                 </CardContent>
@@ -178,6 +184,16 @@ export default function Blog() {
           )}
         </div>
       </section>
+
+      {/* Lead Capture Dialog */}
+      {selectedBlog && (
+        <BlogLeadCaptureDialog
+          open={leadDialogOpen}
+          onOpenChange={setLeadDialogOpen}
+          blogTitle={selectedBlog.title}
+          pdfUrl={selectedBlog.pdfUrl}
+        />
+      )}
 
       <Footer />
     </div>

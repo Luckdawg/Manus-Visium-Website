@@ -133,4 +133,17 @@ export const secFilings = mysqlTable("sec_filings", {
 export type SecFiling = typeof secFilings.$inferSelect;
 export type NewSecFiling = typeof secFilings.$inferInsert;
 
+// Blog leads table for tracking blog PDF downloads
+export const blogLeads = mysqlTable("blog_leads", {
+  id: int("id").autoincrement().primaryKey(),
+  name: text("name").notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  company: text("company").notNull(),
+  blogTitle: varchar("blogTitle", { length: 500 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type BlogLead = typeof blogLeads.$inferSelect;
+export type NewBlogLead = typeof blogLeads.$inferInsert;
+
 // TODO: Add your tables here

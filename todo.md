@@ -767,3 +767,13 @@
 - [x] Set appropriate publication dates
 - [x] Test blog page display and PDF downloads
 - [x] Verify SEO metadata and formatting
+
+## Blog Lead Capture for PDF Downloads (Dec 17, 2025)
+- [x] Create lead capture dialog component with form fields (name, email, company)
+- [x] Add form validation for required fields and email format
+- [x] Create database schema for blog_leads table
+- [x] Create backend API endpoint for blog lead submission
+- [x] Implement email notification to info@visiumtechnologies.com when lead is captured
+- [x] Integrate lead capture dialog with all blog Download PDF buttons
+- [x] Test complete lead capture and download flow
+- [x] Verify email notifications are being sent correctly
