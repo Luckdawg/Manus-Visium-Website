@@ -740,3 +740,30 @@
 - [x] Update News page with new press release entry
 - [x] Test News page display and formatting
 - [x] Verify changes on published website
+
+## Replace Blog Content with 7 New Articles (Dec 9, 2025)
+- [ ] Examine current blog page structure
+- [ ] Extract content from all 7 PDF blog articles
+- [ ] Copy PDF files to public directory for download links
+- [ ] Delete all existing blog posts
+- [ ] Add new blog article: The Human Factor (Insider Threats)
+- [ ] Add new blog article: From Chaos to Clarity (Attack Surface)
+- [ ] Add new blog article: Beyond the Breach (Supply Chain Risk)
+- [ ] Add new blog article: Ransomware 2.0
+- [ ] Add new blog article: Reimagining Campus Security
+- [ ] Add new blog article: Securing Critical Infrastructure
+- [ ] Add new blog article: Securing The Connected City
+- [ ] Set appropriate publication dates and categories
+- [ ] Optimize SEO metadata for each article
+- [ ] Test blog page display and PDF download links
+- [ ] Verify changes on published website
+
+## Replace Blog Content with 7 New Articles (Dec 17, 2025)
+- [x] Delete all current blog posts from blog page
+- [x] Extract content from 7 PDF blog articles
+- [x] Copy PDF files to public directory for download links
+- [x] Update blog page with new articles and metadata
+- [x] Ensure category tags are properly assigned (Cyber Security, Smart Cities)
+- [x] Set appropriate publication dates
+- [x] Test blog page display and PDF downloads
+- [x] Verify SEO metadata and formatting
