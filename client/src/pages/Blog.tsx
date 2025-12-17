@@ -85,7 +85,6 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
       
       {/* Hero Section with Logo */}
       <section className="gradient-hero py-8 relative">

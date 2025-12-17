@@ -777,3 +777,6 @@
 - [x] Integrate lead capture dialog with all blog Download PDF buttons
 - [x] Test complete lead capture and download flow
 - [x] Verify email notifications are being sent correctly
+
+## Duplicate Navigation Menu Fix (Dec 17, 2025)
+- [x] Fix duplicate navigation menu banner appearing on blog page
