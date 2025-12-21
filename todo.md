@@ -783,3 +783,6 @@
 
 ## Google Analytics Integration (Dec 17, 2025)
 - [x] Add Google Analytics gtag.js to index.html head section
+
+## Leadership Page Update (Dec 17, 2025)
+- [x] Add Mark Lucky's headshot photo to leadership page

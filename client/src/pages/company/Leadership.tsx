@@ -13,7 +13,7 @@ export default function Leadership() {
         "He holds a CPA certification and earned his BA in Economics from UCLA. His career includes significant tenure at prestigious accounting firms KPMG and PricewaterhouseCoopers, where he developed deep expertise in financial management, corporate governance, and strategic planning.",
         "As CEO and CFO of Visium Analytics, Mark leads the company's vision to transform cybersecurity through innovative data visualization and agentic AI-powered intelligence platforms. His financial acumen and operational leadership have been instrumental in positioning Visium as a leader in the cybersecurity analytics space."
       ],
-      image: "/team_placeholder.png"
+      image: "/mark_lucky.jpg"
     },
     {
       name: "Tom Grbelja",
@@ -73,9 +73,17 @@ export default function Leadership() {
                     {/* Image */}
                     <div className={`${index % 2 === 1 ? 'lg:col-start-3' : ''} bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center p-12`}>
                       <div className="text-center">
-                        <div className="w-48 h-48 rounded-full bg-gradient-to-br from-primary to-secondary mx-auto mb-6 flex items-center justify-center">
-                          <Users className="h-24 w-24 text-white" />
-                        </div>
+                        {leader.image !== "/team_placeholder.png" ? (
+                          <img 
+                            src={leader.image} 
+                            alt={leader.name}
+                            className="w-48 h-48 rounded-full object-cover mx-auto mb-6 border-4 border-white shadow-lg"
+                          />
+                        ) : (
+                          <div className="w-48 h-48 rounded-full bg-gradient-to-br from-primary to-secondary mx-auto mb-6 flex items-center justify-center">
+                            <Users className="h-24 w-24 text-white" />
+                          </div>
+                        )}
                         <h3 className="text-2xl font-bold text-gray-900 mb-2">{leader.name}</h3>
                         <p className="text-lg text-primary font-semibold mb-4">{leader.title}</p>
                         <div className="flex justify-center gap-3">
