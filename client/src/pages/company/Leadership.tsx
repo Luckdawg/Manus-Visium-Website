@@ -23,7 +23,7 @@ export default function Leadership() {
         "He earned his BS in Accounting from Fairleigh Dickinson University and began his career at Coopers & Lybrand, one of the world's leading accounting firms. Throughout his career, Tom has served as CFO and Director for multiple public companies, providing critical financial leadership during periods of growth and transformation.",
         "As a Director at Visium Analytics, Tom provides invaluable guidance on financial strategy, compliance, and corporate governance, ensuring the company maintains the highest standards of fiscal responsibility while pursuing aggressive growth objectives in the cybersecurity market."
       ],
-      image: "/team_placeholder.png"
+      image: "/tom_grbelja.jpg"
     },
     {
       name: "Paul Favata",
@@ -33,7 +33,7 @@ export default function Leadership() {
         "As an experienced Public Company Executive and Director, Paul has held leadership positions across IT, Cloud Technology, and professional services sectors. His career spans multiple successful ventures where he has guided companies through critical growth phases, capital raises, and strategic transformations.",
         "At Visium Analytics, Paul provides strategic counsel on business development, market positioning, and growth strategies. His Wall Street experience and technology sector expertise help guide the company's approach to scaling operations, building strategic partnerships, and creating shareholder value in the rapidly evolving cybersecurity market."
       ],
-      image: "/team_placeholder.png"
+      image: "/paul_favata.jpg"
     }
   ];
 

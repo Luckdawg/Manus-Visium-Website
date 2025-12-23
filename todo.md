@@ -786,3 +786,7 @@
 
 ## Leadership Page Update (Dec 17, 2025)
 - [x] Add Mark Lucky's headshot photo to leadership page
+
+## Leadership Headshots Update (Dec 21, 2025)
+- [x] Add Tom Grbelja's headshot photo to leadership page
+- [x] Add Paul Favata's headshot photo to leadership page
