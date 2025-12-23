@@ -790,3 +790,9 @@
 ## Leadership Headshots Update (Dec 21, 2025)
 - [x] Add Tom Grbelja's headshot photo to leadership page
 - [x] Add Paul Favata's headshot photo to leadership page
+
+## Leadership Contact Links (Dec 23, 2025)
+- [x] Add Mark Lucky's LinkedIn profile link (https://www.linkedin.com/in/marklucky/)
+- [x] Add Mark Lucky's email address (MLucky@visiumtechnologies.com)
+- [x] Add Tom Grbelja's LinkedIn profile link (https://www.linkedin.com/in/thomas-grbelja-19176010/)
+- [x] Add Paul Favata's LinkedIn profile link (https://www.linkedin.com/in/favata66/)

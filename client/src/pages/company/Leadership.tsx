@@ -13,7 +13,9 @@ export default function Leadership() {
         "He holds a CPA certification and earned his BA in Economics from UCLA. His career includes significant tenure at prestigious accounting firms KPMG and PricewaterhouseCoopers, where he developed deep expertise in financial management, corporate governance, and strategic planning.",
         "As CEO and CFO of Visium Analytics, Mark leads the company's vision to transform cybersecurity through innovative data visualization and agentic AI-powered intelligence platforms. His financial acumen and operational leadership have been instrumental in positioning Visium as a leader in the cybersecurity analytics space."
       ],
-      image: "/mark_lucky.jpg"
+      image: "/mark_lucky.jpg",
+      linkedin: "https://www.linkedin.com/in/marklucky/",
+      email: "MLucky@visiumtechnologies.com"
     },
     {
       name: "Tom Grbelja",
@@ -23,7 +25,8 @@ export default function Leadership() {
         "He earned his BS in Accounting from Fairleigh Dickinson University and began his career at Coopers & Lybrand, one of the world's leading accounting firms. Throughout his career, Tom has served as CFO and Director for multiple public companies, providing critical financial leadership during periods of growth and transformation.",
         "As a Director at Visium Analytics, Tom provides invaluable guidance on financial strategy, compliance, and corporate governance, ensuring the company maintains the highest standards of fiscal responsibility while pursuing aggressive growth objectives in the cybersecurity market."
       ],
-      image: "/tom_grbelja.jpg"
+      image: "/tom_grbelja.jpg",
+      linkedin: "https://www.linkedin.com/in/thomas-grbelja-19176010/"
     },
     {
       name: "Paul Favata",
@@ -33,7 +36,8 @@ export default function Leadership() {
         "As an experienced Public Company Executive and Director, Paul has held leadership positions across IT, Cloud Technology, and professional services sectors. His career spans multiple successful ventures where he has guided companies through critical growth phases, capital raises, and strategic transformations.",
         "At Visium Analytics, Paul provides strategic counsel on business development, market positioning, and growth strategies. His Wall Street experience and technology sector expertise help guide the company's approach to scaling operations, building strategic partnerships, and creating shareholder value in the rapidly evolving cybersecurity market."
       ],
-      image: "/paul_favata.jpg"
+      image: "/paul_favata.jpg",
+      linkedin: "https://www.linkedin.com/in/favata66/"
     }
   ];
 
@@ -87,12 +91,30 @@ export default function Leadership() {
                         <h3 className="text-2xl font-bold text-gray-900 mb-2">{leader.name}</h3>
                         <p className="text-lg text-primary font-semibold mb-4">{leader.title}</p>
                         <div className="flex justify-center gap-3">
-                          <Button variant="outline" size="sm" className="rounded-full">
-                            <Linkedin className="h-4 w-4" />
-                          </Button>
-                          <Button variant="outline" size="sm" className="rounded-full">
-                            <Mail className="h-4 w-4" />
-                          </Button>
+                          {leader.linkedin && (
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="rounded-full"
+                              asChild
+                            >
+                              <a href={leader.linkedin} target="_blank" rel="noopener noreferrer">
+                                <Linkedin className="h-4 w-4" />
+                              </a>
+                            </Button>
+                          )}
+                          {leader.email && (
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="rounded-full"
+                              asChild
+                            >
+                              <a href={`mailto:${leader.email}`}>
+                                <Mail className="h-4 w-4" />
+                              </a>
+                            </Button>
+                          )}
                         </div>
                       </div>
                     </div>
