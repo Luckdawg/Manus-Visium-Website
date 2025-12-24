@@ -7,6 +7,14 @@ import { Newspaper, Calendar, ExternalLink, TrendingUp } from "lucide-react";
 export default function News() {
   const newsStories = [
     {
+      date: "December 23, 2025",
+      title: "Visium Technologies Announces Campus Security Initiative with IREX.AI to Advance Ethical, AI-Driven Public Safety",
+      excerpt: "Visium launches new Campus Security Initiative in partnership with IREX.AI, leveraging ELI™ (Ethical Layered Intelligence) framework to enhance campus safety while upholding transparency, civil liberties, and responsible AI governance. Initiative brings together Visium's TruContext™ platform and IREX.AI's real-time video analytics for higher-education environments.",
+      url: "https://www.otcmarkets.com/stock/VISM/news/Visium-Technologies-Announces-Campus-Security-Initiative-with-IREXAI-to-Advance-Ethical-AI-Driven-Public-Safety?id=504927",
+      source: "OTC Markets",
+      category: "Partnerships"
+    },
+    {
       date: "December 9, 2025",
       title: "Visium Technologies Enters $1.3 Trillion AI Market with TruContext—The First Fully Transparent Agentic AI Platform",
       excerpt: "Visium Technologies announces bold pivot and transformation into pure-play AI company, launching next generation of mission-critical intelligence. TruContext platform enhanced with Agentic AI capabilities eliminates hallucinations and delivers verifiable intelligence for defense, cybersecurity, and critical infrastructure.",

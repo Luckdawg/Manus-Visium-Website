@@ -796,3 +796,6 @@
 - [x] Add Mark Lucky's email address (MLucky@visiumtechnologies.com)
 - [x] Add Tom Grbelja's LinkedIn profile link (https://www.linkedin.com/in/thomas-grbelja-19176010/)
 - [x] Add Paul Favata's LinkedIn profile link (https://www.linkedin.com/in/favata66/)
+
+## Company News Update (Dec 23, 2025)
+- [x] Add latest news article about Campus Security Initiative with IREXAI from OTC Markets
