@@ -8,6 +8,8 @@ import Tour, { TourStep } from "@/components/Tour";
 import TourButton from "@/components/TourButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
+import { StructuredData } from "@/components/StructuredData";
+import { SEOHead } from "@/components/SEOHead";
 import { 
   Shield, 
   Eye, 
@@ -79,6 +81,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="Visium Technologies - TruContext Cybersecurity Analytics Platform | AI-Driven Threat Detection"
+        description="Leading agentic AI-powered cybersecurity analytics platform for real-time cyber threat detection. Graph-based security analytics, MITRE ATT&CK mapping, and threat hunting for enterprise security operations."
+        keywords="visium technologies, trucontext, cybersecurity analytics platform, cyber threat analytics, ai driven cyber analytics, graph-based security analytics, threat hunting platform, real time cyber threat detection, mitre att&ck security analytics, big data security analytics, machine learning threat detection"
+        canonicalUrl="https://www.visiumtechnologies.com/"
+      />
+      <StructuredData type="organization" data={{}} />
+      <StructuredData type="product" data={{}} />
       {/* Tour feature disabled */}
       {/* <Tour steps={tourSteps} tourId="homepage" /> */}
       {/* <TourButton tourId="homepage" label="Take Tour" /> */}
@@ -101,10 +111,10 @@ export default function Home() {
           </div>
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
-              Agentic AI-Powered <span className="text-primary">Intelligence Platform</span>
+              Agentic AI-Powered <span className="text-primary">Cybersecurity Analytics Platform</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Visium's TruContext is the leader in agentic AI-driven data analytics and cybersecurity solutions, featuring autonomous AI agents that continuously analyze threats and automate workflows. Our dual database architecture (graph database + relational database) fuses cyber, physical, and operational data to provide unmatched context for enterprise security, smart cities, and critical infrastructure protection.
+              Visium Technologies TruContext delivers real-time cyber threat detection through AI-driven security analytics. Our graph-based cybersecurity analytics platform combines big data security analytics with machine learning threat detection for enterprise threat hunting and security operations analytics.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/demo">
@@ -136,10 +146,10 @@ export default function Home() {
               >
                 <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">AT A GLANCE</p>
                 <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Gain Actionable Business Intelligence with <span className="text-secondary">TruContext™</span>
+                  <span className="text-secondary">TruContext™</span> Graph Analytics Platform for Cybersecurity
                 </h2>
                 <p className="text-lg text-gray-600">
-                  TruContext is a big data analytics graphing platform that has the ability to process streams of events with joins, aggregations, and more.
+                  TruContext cybersecurity analytics platform leverages graph data analytics and Kafka streaming security analytics to process billions of events in real-time, delivering actionable threat intelligence for security operations.
                 </p>
               </div>
 

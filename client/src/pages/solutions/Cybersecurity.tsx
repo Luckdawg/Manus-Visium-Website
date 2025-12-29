@@ -12,10 +12,10 @@ export default function Cybersecurity() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Cybersecurity & <span className="text-primary">Threat Intelligence</span>
+              Cybersecurity Analytics Platform for <span className="text-primary">Threat Hunting</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Transform your security operations with agentic AI-powered threat detection, dual database architecture (graph database + relational database), and autonomous response capabilities
+              Advanced cyber threat analytics and security operations analytics with MITRE ATT&CK threat-informed defense. Real-time cyber threat detection powered by AI-driven security analytics and graph-based threat hunting platform.
             </p>
             <Link href="/demo">
               <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -66,9 +66,9 @@ export default function Cybersecurity() {
       <section className="py-12 gradient-purple-blue">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-8">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">The TruContext Solution</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">MITRE ATT&CK Security Analytics Solution</h2>
             <p className="text-xl text-gray-600">
-              TruContext's agentic AI agents autonomously correlate security data from SIEM, EDR, firewalls, and other feeds using our dual database architecture to visualize and predict attack chains in real-time, utilizing the MITRE ATT&CK framework for threat-informed defense.
+              TruContext cybersecurity analytics platform delivers real-time situational awareness security through graph-based security analytics. Our threat hunting platform provides root cause analysis for cyber attacks, MITRE ATT&CK security analytics, and NIST cybersecurity framework analytics for comprehensive security operations.
             </p>
           </div>
 
