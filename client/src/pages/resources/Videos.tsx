@@ -28,6 +28,13 @@ const getRumbleThumbnail = (url: string): string => {
 export default function Videos() {
   const industryVideos: Video[] = [
     {
+      title: "Insider Threats",
+      url: "https://www.youtube.com/shorts/7aar2CnxpKo",
+      duration: "0:45",
+      views: "1.5K",
+      description: "Detect and prevent insider threats with TruContext's advanced behavioral analytics and anomaly detection."
+    },
+    {
       title: "Smart Cities",
       url: "https://youtube.com/shorts/m9YQl1QfhKo?si=Sj2x-Fwauj7iPUXl",
       duration: "0:58",

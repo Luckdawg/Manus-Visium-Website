@@ -819,3 +819,6 @@
 
 ## Video Duration Badges (Jan 7, 2026)
 - [x] Add duration badges to all video cards on Videos page
+
+## Insider Threats Video Addition (Jan 7, 2026)
+- [x] Add Insider Threats YouTube video to Resources Videos page
