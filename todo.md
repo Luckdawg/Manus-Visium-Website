@@ -813,3 +813,6 @@
 - [x] Add Smart Cities YouTube video to Resources Videos page
 - [x] Add Campus Security YouTube video to Resources Videos page
 - [x] Add Year End 2025 Recap YouTube video to Resources Videos page
+
+## Video Card Hyperlinks (Jan 7, 2026)
+- [x] Add clickable hyperlinks to video thumbnail cards on Videos page

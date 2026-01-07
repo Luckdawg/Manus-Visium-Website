@@ -175,7 +175,8 @@ export default function Videos() {
     const thumbnailUrl = video.thumbnail;
     
     return (
-      <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+      <a href={video.url} target="_blank" rel="noopener noreferrer" className="block">
+        <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
         <div className="aspect-video bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 relative flex items-center justify-center group overflow-hidden">
           {thumbnailUrl ? (
             <>
@@ -230,7 +231,8 @@ export default function Videos() {
           </a>
         </div>
       </div>
-    </Card>
+        </Card>
+      </a>
     );
   };
 
