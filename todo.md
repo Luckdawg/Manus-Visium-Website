@@ -816,3 +816,6 @@
 
 ## Video Card Hyperlinks (Jan 7, 2026)
 - [x] Add clickable hyperlinks to video thumbnail cards on Videos page
+
+## Video Duration Badges (Jan 7, 2026)
+- [x] Add duration badges to all video cards on Videos page
