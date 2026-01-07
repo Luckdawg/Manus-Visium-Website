@@ -808,3 +808,8 @@
 - [x] Add structured data (JSON-LD) for organization and products
 - [x] Create sitemap.xml for search engine crawling
 - [x] Optimize images with alt text containing relevant keywords
+
+## YouTube Videos Addition (Dec 24, 2025)
+- [x] Add Smart Cities YouTube video to Resources Videos page
+- [x] Add Campus Security YouTube video to Resources Videos page
+- [x] Add Year End 2025 Recap YouTube video to Resources Videos page

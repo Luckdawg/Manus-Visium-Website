@@ -28,6 +28,20 @@ const getRumbleThumbnail = (url: string): string => {
 export default function Videos() {
   const industryVideos: Video[] = [
     {
+      title: "Smart Cities",
+      url: "https://youtube.com/shorts/m9YQl1QfhKo?si=Sj2x-Fwauj7iPUXl",
+      duration: "0:58",
+      views: "2.1K",
+      description: "Unified intelligence for public safety and urban operations with TruContext."
+    },
+    {
+      title: "Campus Security",
+      url: "https://youtu.be/jmO6XXxg8sE?si=vZPMX8Wx6QhNdRg8",
+      duration: "3:45",
+      views: "1.8K",
+      description: "Campus Security Initiative with IREX.AI for ethical AI-driven public safety."
+    },
+    {
       title: "TruContext™ Onboarding",
       url: "https://rumble.com/v1ca1ux-trucontext-onboarding.html",
       duration: "1:58",
@@ -40,6 +54,13 @@ export default function Videos() {
       duration: "2:20",
       views: "458",
       description: "See how TruContext serves law enforcement and emergency response teams."
+    },
+    {
+      title: "Year End 2025 Recap",
+      url: "https://youtube.com/shorts/4c6pJO4i1Gk?si=d1vmVNQWaZY6mke",
+      duration: "1:12",
+      views: "3.2K",
+      description: "2025 Year End Recap highlighting Visium Technologies major achievements and innovations."
     },
     {
       title: "Logistics, Ports and Supply Chain",
