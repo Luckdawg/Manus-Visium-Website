@@ -822,3 +822,6 @@
 
 ## Insider Threats Video Addition (Jan 7, 2026)
 - [x] Add Insider Threats YouTube video to Resources Videos page
+
+## Zero Trust Network Access Video Addition (Jan 7, 2026)
+- [x] Add Zero Trust Network Access YouTube video to Resources Videos page

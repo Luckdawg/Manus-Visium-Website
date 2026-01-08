@@ -28,6 +28,13 @@ const getRumbleThumbnail = (url: string): string => {
 export default function Videos() {
   const industryVideos: Video[] = [
     {
+      title: "Zero Trust Network Access",
+      url: "https://youtube.com/shorts/4c6pJO4i1Gk?si=FT9FF6v_o9uuNoY8",
+      duration: "1:05",
+      views: "1.2K",
+      description: "Implement zero trust network access controls with TruContext's real-time threat detection and behavioral analytics."
+    },
+    {
       title: "Insider Threats",
       url: "https://www.youtube.com/shorts/7aar2CnxpKo",
       duration: "0:45",
