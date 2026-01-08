@@ -825,3 +825,6 @@
 
 ## Zero Trust Network Access Video Addition (Jan 7, 2026)
 - [x] Add Zero Trust Network Access YouTube video to Resources Videos page
+
+## Video Link Corrections (Jan 8, 2026)
+- [x] Correct video links for Campus Safety, Zero Trust, Insider Risks, 2025 In Review, and Smart City

@@ -28,29 +28,29 @@ const getRumbleThumbnail = (url: string): string => {
 export default function Videos() {
   const industryVideos: Video[] = [
     {
-      title: "Zero Trust Network Access",
-      url: "https://youtube.com/shorts/4c6pJO4i1Gk?si=FT9FF6v_o9uuNoY8",
+      title: "Zero Trust",
+      url: "https://youtu.be/zmRbldpqg04?si=ATWgKuz2gQWYF53T",
       duration: "1:05",
       views: "1.2K",
       description: "Implement zero trust network access controls with TruContext's real-time threat detection and behavioral analytics."
     },
     {
-      title: "Insider Threats",
-      url: "https://www.youtube.com/shorts/7aar2CnxpKo",
+      title: "Insider Risks",
+      url: "https://youtube.com/shorts/7aar2CnxpKo?si=_ryrOBQjI59saClo",
       duration: "0:45",
       views: "1.5K",
       description: "Detect and prevent insider threats with TruContext's advanced behavioral analytics and anomaly detection."
     },
     {
-      title: "Smart Cities",
-      url: "https://youtube.com/shorts/m9YQl1QfhKo?si=Sj2x-Fwauj7iPUXl",
+      title: "Smart City",
+      url: "https://youtube.com/shorts/m9YQl1QfhKo?si=5ep5ZeXGI03uttmS",
       duration: "0:58",
       views: "2.1K",
       description: "Unified intelligence for public safety and urban operations with TruContext."
     },
     {
-      title: "Campus Security",
-      url: "https://youtu.be/jmO6XXxg8sE?si=vZPMX8Wx6QhNdRg8",
+      title: "Campus Safety",
+      url: "https://youtube.com/shorts/4c6pJO4i1Gk?si=xIAMthLuVcmv9D6l",
       duration: "3:45",
       views: "1.8K",
       description: "Campus Security Initiative with IREX.AI for ethical AI-driven public safety."
@@ -70,8 +70,8 @@ export default function Videos() {
       description: "See how TruContext serves law enforcement and emergency response teams."
     },
     {
-      title: "Year End 2025 Recap",
-      url: "https://youtube.com/shorts/4c6pJO4i1Gk?si=d1vmVNQWaZY6mke",
+      title: "Visium 2025 In Review and AI's Future",
+      url: "https://youtu.be/jmO6XXxg8sE?si=WYiBOOZqfGX7v7vN",
       duration: "1:12",
       views: "3.2K",
       description: "2025 Year End Recap highlighting Visium Technologies major achievements and innovations."
