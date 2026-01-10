@@ -28,6 +28,13 @@ const getRumbleThumbnail = (url: string): string => {
 export default function Videos() {
   const industryVideos: Video[] = [
     {
+      title: "Intro to ELI - TruContext and IREX.AI",
+      url: "https://youtu.be/8VUUYBYiQ-E",
+      duration: "2:15",
+      views: "1.8K",
+      description: "Introduction to Ethical Layered Intelligence (ELI) framework combining TruContext and IREX.AI for advanced threat detection and public safety."
+    },
+    {
       title: "Zero Trust",
       url: "https://youtu.be/zmRbldpqg04?si=ATWgKuz2gQWYF53T",
       duration: "1:05",

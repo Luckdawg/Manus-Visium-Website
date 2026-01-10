@@ -828,3 +828,6 @@
 
 ## Video Link Corrections (Jan 8, 2026)
 - [x] Correct video links for Campus Safety, Zero Trust, Insider Risks, 2025 In Review, and Smart City
+
+## Intro to ELI Video Addition (Jan 8, 2026)
+- [x] Add Intro to ELI - TruContext and IREX.AI YouTube video to Resources Videos page
