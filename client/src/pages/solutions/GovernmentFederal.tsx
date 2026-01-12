@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { Shield, AlertCircle, TrendingUp, Lock, CheckCircle2, Building2 } from "lucide-react";
 import { SEOHead } from "@/components/SEOHead";
 import CountUp from "@/components/CountUp";
+import ComplianceBadge from "@/components/ComplianceBadge";
 
 export default function GovernmentFederal() {
   return (
@@ -361,6 +362,11 @@ export default function GovernmentFederal() {
             <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
               Government Compliance & Certifications
             </h2>
+
+            {/* Compliance Badge */}
+            <div className="flex justify-center mb-12">
+              <ComplianceBadge type="fedramp" size="large" showLabel={true} />
+            </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               <Card>
