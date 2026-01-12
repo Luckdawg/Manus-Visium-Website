@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { StructuredData } from "@/components/StructuredData";
 import { SEOHead } from "@/components/SEOHead";
+import ComplianceBadgeCarousel from "@/components/ComplianceBadgeCarousel";
 import { 
   Shield, 
   Eye, 
@@ -569,6 +570,30 @@ export default function Home() {
                 Learn More About TruContext Solutions <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Compliance & Trust Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="container">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">TRUSTED BY INDUSTRY</p>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
+              Enterprise-Grade Compliance & Certifications
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              TruContext is certified and compliant with industry-leading standards, ensuring your organization meets regulatory requirements across healthcare, financial services, and government sectors.
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <ComplianceBadgeCarousel 
+              autoRotate={true}
+              rotationInterval={5000}
+              showControls={true}
+              className="w-full max-w-2xl"
+            />
           </div>
         </div>
       </section>

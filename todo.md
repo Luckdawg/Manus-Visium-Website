@@ -859,3 +859,9 @@
 - [x] Integrate PCI-DSS badge on Financial Services Cybersecurity page
 - [x] Integrate FedRAMP badge on Government/Federal page
 - [x] Test badge display and responsiveness
+
+
+## Compliance Badge Carousel (Jan 12, 2026)
+- [x] Create ComplianceBadgeCarousel component with auto-rotation
+- [x] Integrate carousel on homepage
+- [x] Test carousel functionality and responsiveness
