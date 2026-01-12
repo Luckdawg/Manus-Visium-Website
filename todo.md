@@ -831,3 +831,10 @@
 
 ## Intro to ELI Video Addition (Jan 8, 2026)
 - [x] Add Intro to ELI - TruContext and IREX.AI YouTube video to Resources Videos page
+
+## Commercial Intent Keyword Optimization (Jan 10, 2026)
+- [x] Develop commercial keyword strategy and identify high-intent buyer keywords
+- [x] Optimize homepage with commercial intent keywords
+- [x] Optimize solution pages (Cybersecurity, Smart Cities, Critical Infrastructure) with commercial keywords
+- [x] Update meta tags and structured data for commercial intent
+- [x] Add commercial keyword content to key landing pages

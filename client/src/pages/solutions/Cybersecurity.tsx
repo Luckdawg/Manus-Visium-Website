@@ -12,10 +12,10 @@ export default function Cybersecurity() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Cybersecurity Analytics Platform for <span className="text-primary">Threat Hunting</span>
+              Enterprise <span className="text-primary">Threat Detection Platform</span> with Explainable AI
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Advanced cyber threat analytics and security operations analytics with MITRE ATT&CK threat-informed defense. Real-time cyber threat detection powered by AI-driven security analytics and graph-based threat hunting platform.
+              Graph-based threat detection and security operations analytics with MITRE ATT&CK threat-informed defense. Real-time cyber threat detection powered by explainable AI-driven security analytics. Enterprise-grade threat hunting platform for SOC automation and incident response.
             </p>
             <Link href="/demo">
               <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -32,7 +32,7 @@ export default function Cybersecurity() {
           <div className="max-w-3xl mx-auto text-center mb-8">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">The Challenge</h2>
             <p className="text-xl text-gray-600">
-              Security teams are overwhelmed by alert fatigue, struggling to correlate threats across disparate tools, and spending days investigating incidents that should take minutes. Traditional SIEM platforms show you what happened, but lack the context to understand why it matters or what's likely to happen next.
+              Enterprise security teams struggle with alert fatigue from traditional SIEM platforms, slow threat detection, and inability to correlate threats across disparate tools. Legacy cybersecurity analytics platforms lack explainability and context to understand attack chains. Organizations need a graph-based threat detection solution that provides real-time situational awareness and automated incident response.
             </p>
           </div>
 
@@ -66,9 +66,9 @@ export default function Cybersecurity() {
       <section className="py-12 gradient-purple-blue">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-8">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">MITRE ATT&CK Security Analytics Solution</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Enterprise Threat Detection & Security Analytics</h2>
             <p className="text-xl text-gray-600">
-              TruContext cybersecurity analytics platform delivers real-time situational awareness security through graph-based security analytics. Our threat hunting platform provides root cause analysis for cyber attacks, MITRE ATT&CK security analytics, and NIST cybersecurity framework analytics for comprehensive security operations.
+              TruContext is an explainable AI cybersecurity analytics platform delivering real-time threat detection through graph-based threat detection. Our enterprise threat detection platform provides root cause analysis for cyber attacks, MITRE ATT&CK threat-informed defense, NIST framework compliance, and SOC automation for comprehensive security operations center solutions.
             </p>
           </div>
 

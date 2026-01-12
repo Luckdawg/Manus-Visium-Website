@@ -12,10 +12,10 @@ export default function SmartCities() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Smart Cities & <span className="text-primary">Public Safety</span>
+              <span className="text-primary">Smart City Security Analytics</span> & Public Safety Platform
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Unified intelligence platform connecting video, IoT sensors, 911 systems, and traffic data for comprehensive urban management
+              Intelligent city security system connecting video intelligence, IoT sensors, 911 systems, and traffic data. Smart city threat detection platform providing real-time situational awareness and predictive analytics for urban operations and public safety.
             </p>
             <Link href="/demo">
               <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -32,7 +32,7 @@ export default function SmartCities() {
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">The Challenge</h2>
             <p className="text-xl text-gray-600">
-              Municipal systems operate in silos—police, fire, traffic management, and emergency services each have their own data sources with no unified view. This fragmentation delays response times, prevents predictive planning, and limits situational awareness during critical events.
+              Municipal systems operate in silos—police, fire, traffic management, and emergency services each have their own data sources with no unified view. Cities need an intelligent security analytics platform that integrates disparate data sources into a single smart city security analytics solution for real-time threat detection and predictive public safety operations.
             </p>
           </div>
         </div>
@@ -42,9 +42,9 @@ export default function SmartCities() {
       <section className="py-12 gradient-purple-blue">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">The TruContext Solution</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Smart City Security Analytics Solution</h2>
             <p className="text-xl text-gray-600">
-              A unified intelligence platform that connects video surveillance, IoT sensors, 911 systems, and traffic data to provide real-time situational awareness and predictive analytics for traffic optimization and incident prevention.
+              TruContext is an intelligent city security system that connects video intelligence, IoT sensors, 911 systems, and traffic data to provide real-time situational awareness and predictive analytics. Our smart city threat detection platform enables faster emergency response, traffic optimization, and incident prevention through advanced security analytics.
             </p>
           </div>
 
