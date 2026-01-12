@@ -44,6 +44,11 @@ import IntelligentTransportation from "./pages/case-studies/IntelligentTransport
 import PublicSafety from "./pages/case-studies/PublicSafety";
 import Architecture from "./pages/Architecture";
 import Comparison from "./pages/why/Comparison";
+import ComparisonSIEM from "./pages/why/ComparisonSIEM";
+import HealthcareCybersecurity from "./pages/solutions/HealthcareCybersecurity";
+import FinancialServicesCybersecurity from "./pages/solutions/FinancialServicesCybersecurity";
+import TelecomCybersecurity from "./pages/solutions/TelecomCybersecurity";
+import GovernmentFederal from "./pages/solutions/GovernmentFederal";
 import Blog from "./pages/Blog";
 import Videos from "./pages/resources/Videos";
 import AdminDashboard from "./pages/admin/Dashboard";
@@ -95,6 +100,11 @@ function Router() {
       <Route path="/case-studies/public-safety" component={PublicSafety} />
       <Route path="/platform/architecture" component={Architecture} />
       <Route path="/why/comparison" component={Comparison} />
+      <Route path="/why/comparison-siem" component={ComparisonSIEM} />
+      <Route path="/solutions/healthcare-cybersecurity" component={HealthcareCybersecurity} />
+      <Route path="/solutions/financial-services-cybersecurity" component={FinancialServicesCybersecurity} />
+      <Route path="/solutions/telecom-cybersecurity" component={TelecomCybersecurity} />
+      <Route path="/solutions/government-federal" component={GovernmentFederal} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/resources"} component={Blog} />
       <Route path={"/resources/videos"} component={Videos} />

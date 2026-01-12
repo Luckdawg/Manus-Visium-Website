@@ -108,6 +108,19 @@ const Navigation = () => {
                   <Link href="/solutions/manufacturing">
                     <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Manufacturing & Industrial Operations</div>
                   </Link>
+                  <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase mt-2">Vertical-Specific Solutions</div>
+                  <Link href="/solutions/healthcare-cybersecurity">
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Healthcare Cybersecurity</div>
+                  </Link>
+                  <Link href="/solutions/financial-services-cybersecurity">
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Financial Services Cybersecurity</div>
+                  </Link>
+                  <Link href="/solutions/telecom-cybersecurity">
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Telecom Cybersecurity</div>
+                  </Link>
+                  <Link href="/solutions/government-federal">
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Government & Federal</div>
+                  </Link>
                 </div>
               )}
             </div>
@@ -135,6 +148,9 @@ const Navigation = () => {
                   </Link>
                   <Link href="/why/comparison">
                     <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">vs Traditional SIEM</div>
+                  </Link>
+                  <Link href="/why/comparison-siem">
+                    <div className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer transition-colors">Graph-Based vs Legacy SIEM</div>
                   </Link>
                   <div className="px-4 py-1 text-xs font-semibold text-gray-500 uppercase mt-2">Case Studies</div>
                   <Link href="/case-studies/energy-grid">
@@ -278,6 +294,11 @@ const Navigation = () => {
                     <Link href="/solutions/critical-infrastructure" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Critical Infrastructure</div></Link>
                     <Link href="/solutions/healthcare" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Healthcare</div></Link>
                     <Link href="/solutions/financial-services" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Financial Services</div></Link>
+                    <div className="py-2 px-3 text-xs font-semibold text-gray-500 uppercase">Vertical-Specific</div>
+                    <Link href="/solutions/healthcare-cybersecurity" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Healthcare Cybersecurity</div></Link>
+                    <Link href="/solutions/financial-services-cybersecurity" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Financial Services Cybersecurity</div></Link>
+                    <Link href="/solutions/telecom-cybersecurity" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Telecom Cybersecurity</div></Link>
+                    <Link href="/solutions/government-federal" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Government & Federal</div></Link>
                   </div>
                 )}
               </div>
@@ -295,6 +316,7 @@ const Navigation = () => {
                     <Link href="/why/advantages" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Platform Advantages</div></Link>
                     <Link href="/why/roi" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">ROI Calculator</div></Link>
                     <Link href="/comparison" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Competitive Comparison</div></Link>
+                    <Link href="/why/comparison-siem" onClick={() => setMobileMenuOpen(false)}><div className="py-2 px-3 hover:bg-white rounded">Graph vs Legacy SIEM</div></Link>
                   </div>
                 )}
               </div>
