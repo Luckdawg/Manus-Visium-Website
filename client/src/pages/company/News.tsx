@@ -7,6 +7,14 @@ import { Newspaper, Calendar, ExternalLink, TrendingUp } from "lucide-react";
 export default function News() {
   const newsStories = [
     {
+      date: "January 26, 2026",
+      title: "Visium Technologies and IREX Advance Peru's National Security Infrastructure with 54,000-Camera AI-Powered Surveillance Network",
+      excerpt: "Visium Technologies (OTCBB:VISM) announced significant progress on deployment of the Ethical Layered Intelligence (ELI) platform in Peru, in partnership with IREX.AI. This initiative represents one of the largest unified surveillance deployments in Latin America, integrating up to 54,000 AI-enabled cameras into an eight-city unified command and control center, leveraging IREX's advanced video analytics with Visium's TruContext platform.",
+      url: "https://www.einpresswire.com/article/886606810/visium-technologies-and-irex-advance-peru-s-national-security-infrastructure-with-54-000-camera-ai-powered-surveillance-network-amid-escalating-crime",
+      source: "EIN Presswire",
+      category: "Partnerships"
+    },
+    {
       date: "December 23, 2025",
       title: "Visium Technologies Announces Campus Security Initiative with IREX.AI to Advance Ethical, AI-Driven Public Safety",
       excerpt: "Visium launches new Campus Security Initiative in partnership with IREX.AI, leveraging ELI™ (Ethical Layered Intelligence) framework to enhance campus safety while upholding transparency, civil liberties, and responsible AI governance. Initiative brings together Visium's TruContext™ platform and IREX.AI's real-time video analytics for higher-education environments.",
