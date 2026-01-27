@@ -865,3 +865,7 @@
 - [x] Create ComplianceBadgeCarousel component with auto-rotation
 - [x] Integrate carousel on homepage
 - [x] Test carousel functionality and responsiveness
+
+
+## YouTube Video Entry Addition (Jan 12, 2026)
+- [x] Add "Visium & IREX Peru AI Security with ELI" video to Resources Videos tab

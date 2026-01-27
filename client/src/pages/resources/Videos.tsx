@@ -28,6 +28,13 @@ const getRumbleThumbnail = (url: string): string => {
 export default function Videos() {
   const industryVideos: Video[] = [
     {
+      title: "Visium & IREX Peru AI Security with ELI",
+      url: "https://youtu.be/UNwTSzhhisA?si=s8fWzUet7_gROCRB",
+      duration: "0:00",
+      views: "0",
+      description: "Visium Technologies and IREX Peru demonstrate AI-powered security solutions using the Ethical Layered Intelligence (ELI) framework."
+    },
+    {
       title: "Intro to ELI - TruContext and IREX.AI",
       url: "https://youtu.be/8VUUYBYiQ-E",
       duration: "2:15",
