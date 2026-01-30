@@ -869,9 +869,3 @@
 
 ## YouTube Video Entry Addition (Jan 12, 2026)
 - [x] Add "Visium & IREX Peru AI Security with ELI" video to Resources Videos tab
-
-
-## Company News Page Update (Jan 27, 2026)
-- [x] Fetch latest news from OTC Markets disclosure
-- [x] Update News page with latest company news entry
-- [x] Ensure consistent look and feel throughout news page
