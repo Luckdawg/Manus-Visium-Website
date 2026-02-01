@@ -288,6 +288,32 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured Video Section */}
+      <section className="py-12 bg-white">
+        <div className="container">
+          <div className="text-center mb-8">
+            <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">FEATURED VIDEO</p>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">See TruContext in Action</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">Watch how TruContext delivers real-time threat detection and analysis capabilities</p>
+          </div>
+          
+          <div className="flex justify-center">
+            <div className="w-full max-w-4xl aspect-video rounded-lg overflow-hidden shadow-2xl">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/eKru13gMZv4?si=aYija-0_HAUJxQH_"
+                title="TruContext Platform Demo"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Platform Differentiators */}
       <section className="platform-differentiators py-8 gradient-purple-blue">
         <div className="container">
