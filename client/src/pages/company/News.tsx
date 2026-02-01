@@ -7,6 +7,14 @@ import { Newspaper, Calendar, ExternalLink, TrendingUp } from "lucide-react";
 export default function News() {
   const newsStories = [
     {
+      date: "January 30, 2026",
+      title: "Visium Technologies and IREX.AI to Host Webinar on Peru's 54,000-Camera AI Surveillance Network",
+      excerpt: "CEOs Calvin Yadav and Mark Lucky Will Discuss Landmark Deployment Addressing Latin American Security; Government-to-Government Regional Expansion Strategy",
+      url: "https://www.otcmarkets.com/stock/VISM/news/Visium-Technologies-and-IREXAI-to-Host-Webinar-on-Perus-54000-Camera-AI-Surveillance-Network?id=508740",
+      source: "EIN Presswire",
+      category: "Industry Events"
+    },
+    {
       date: "December 23, 2025",
       title: "Visium Technologies Announces Campus Security Initiative with IREX.AI to Advance Ethical, AI-Driven Public Safety",
       excerpt: "Visium launches new Campus Security Initiative in partnership with IREX.AI, leveraging ELI™ (Ethical Layered Intelligence) framework to enhance campus safety while upholding transparency, civil liberties, and responsible AI governance. Initiative brings together Visium's TruContext™ platform and IREX.AI's real-time video analytics for higher-education environments.",
