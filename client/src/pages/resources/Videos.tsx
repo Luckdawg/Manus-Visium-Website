@@ -28,6 +28,13 @@ const getRumbleThumbnail = (url: string): string => {
 export default function Videos() {
   const industryVideos: Video[] = [
     {
+      title: "TruContext Agentic AI for Cyber Defense",
+      url: "https://youtu.be/GmVOss9m2aU",
+      duration: "0:00",
+      views: "0",
+      description: "Discover how TruContext's agentic AI capabilities deliver autonomous threat detection and response for enterprise cybersecurity operations."
+    },
+    {
       title: "Visium & IREX Peru AI Security with ELI",
       url: "https://youtu.be/UNwTSzhhisA?si=s8fWzUet7_gROCRB",
       duration: "0:00",
