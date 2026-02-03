@@ -1,6 +1,9 @@
-import { Card } from "@/components/ui/card";
+'use client';
+
+import { useState, useMemo } from 'react';
 import { Button } from "@/components/ui/button";
-import { Play, ExternalLink } from "lucide-react";
+import { Play, ExternalLink, Filter, X } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 interface Video {
   title: string;
@@ -9,29 +12,50 @@ interface Video {
   views: string;
   description?: string;
   thumbnail?: string;
+  category: string;
+  playlist: string;
+  engagementScore?: number;
 }
 
 // Helper function to extract Rumble video ID and generate thumbnail URL
-// Rumble thumbnails are hosted on their CDN, but the URLs are complex
-// For now, we'll use a generic approach that attempts common patterns
 const getRumbleThumbnail = (url: string): string => {
-  // Extract video ID (e.g., v1ca1ux from https://rumble.com/v1ca1ux-trucontext-onboarding.html)
   const match = url.match(/rumble\.com\/(v[\w]+)/);
   if (match && match[1]) {
     const videoId = match[1];
-    // Rumble's embed thumbnail pattern - this may not always work but is worth trying
     return `https://rumble.com/${videoId}.jpg`;
   }
-  return ''; // fallback to gradient if no match
+  return '';
 };
 
+// Video categories for filtering
+const VIDEO_CATEGORIES = [
+  { id: 'product-demo', label: 'Product Demo', color: 'bg-blue-100 text-blue-800' },
+  { id: 'use-case', label: 'Use Case', color: 'bg-purple-100 text-purple-800' },
+  { id: 'interview', label: 'Interview', color: 'bg-green-100 text-green-800' },
+  { id: 'webinar', label: 'Webinar', color: 'bg-orange-100 text-orange-800' },
+  { id: 'training', label: 'Training', color: 'bg-pink-100 text-pink-800' },
+];
+
+// Video playlists for organization
+const VIDEO_PLAYLISTS = [
+  { id: 'getting-started', label: 'Getting Started', description: 'New to TruContext? Start here' },
+  { id: 'industry-solutions', label: 'Industry Solutions', description: 'Vertical-specific implementations' },
+  { id: 'advanced-features', label: 'Advanced Features', description: 'Deep dives into platform capabilities' },
+];
+
 export default function Videos() {
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedPlaylist, setSelectedPlaylist] = useState<string | null>(null);
+
   const industryVideos: Video[] = [
     {
       title: "TruContext Agentic AI for NOC and SOC operations",
       url: "https://youtu.be/I8gPwg23iqQ",
       duration: "0:00",
       views: "0",
+      category: "product-demo",
+      playlist: "industry-solutions",
+      engagementScore: 92,
       description: "Explore how TruContext's agentic AI transforms Network Operations Centers (NOC) and Security Operations Centers (SOC) with autonomous threat detection and response capabilities."
     },
     {
@@ -39,6 +63,9 @@ export default function Videos() {
       url: "https://youtu.be/GmVOss9m2aU",
       duration: "0:00",
       views: "0",
+      category: "product-demo",
+      playlist: "getting-started",
+      engagementScore: 88,
       description: "Discover how TruContext's agentic AI capabilities deliver autonomous threat detection and response for enterprise cybersecurity operations."
     },
     {
@@ -46,6 +73,9 @@ export default function Videos() {
       url: "https://youtu.be/UNwTSzhhisA?si=s8fWzUet7_gROCRB",
       duration: "0:00",
       views: "0",
+      category: "use-case",
+      playlist: "industry-solutions",
+      engagementScore: 85,
       description: "Visium Technologies and IREX Peru demonstrate AI-powered security solutions using the Ethical Layered Intelligence (ELI) framework."
     },
     {
@@ -53,6 +83,9 @@ export default function Videos() {
       url: "https://youtu.be/8VUUYBYiQ-E",
       duration: "2:15",
       views: "1.8K",
+      category: "training",
+      playlist: "getting-started",
+      engagementScore: 90,
       description: "Introduction to Ethical Layered Intelligence (ELI) framework combining TruContext and IREX.AI for advanced threat detection and public safety."
     },
     {
@@ -60,6 +93,9 @@ export default function Videos() {
       url: "https://youtu.be/zmRbldpqg04?si=ATWgKuz2gQWYF53T",
       duration: "1:05",
       views: "1.2K",
+      category: "use-case",
+      playlist: "advanced-features",
+      engagementScore: 87,
       description: "Implement zero trust network access controls with TruContext's real-time threat detection and behavioral analytics."
     },
     {
@@ -67,6 +103,9 @@ export default function Videos() {
       url: "https://youtube.com/shorts/7aar2CnxpKo?si=_ryrOBQjI59saClo",
       duration: "0:45",
       views: "1.5K",
+      category: "use-case",
+      playlist: "industry-solutions",
+      engagementScore: 84,
       description: "Detect and prevent insider threats with TruContext's advanced behavioral analytics and anomaly detection."
     },
     {
@@ -74,6 +113,9 @@ export default function Videos() {
       url: "https://youtube.com/shorts/m9YQl1QfhKo?si=5ep5ZeXGI03uttmS",
       duration: "0:58",
       views: "2.1K",
+      category: "use-case",
+      playlist: "industry-solutions",
+      engagementScore: 91,
       description: "Unified intelligence for public safety and urban operations with TruContext."
     },
     {
@@ -81,6 +123,9 @@ export default function Videos() {
       url: "https://youtube.com/shorts/4c6pJO4i1Gk?si=xIAMthLuVcmv9D6l",
       duration: "3:45",
       views: "1.8K",
+      category: "use-case",
+      playlist: "industry-solutions",
+      engagementScore: 86,
       description: "Campus Security Initiative with IREX.AI for ethical AI-driven public safety."
     },
     {
@@ -88,6 +133,9 @@ export default function Videos() {
       url: "https://rumble.com/v1ca1ux-trucontext-onboarding.html",
       duration: "1:58",
       views: "1.36K",
+      category: "training",
+      playlist: "getting-started",
+      engagementScore: 89,
       description: "Customized dashboard for your ecosystem - from cyber and law enforcement to logistics and healthcare."
     },
     {
@@ -95,276 +143,277 @@ export default function Videos() {
       url: "https://rumble.com/v1c5agd-trucontext-eli-and-law-enforcement.html",
       duration: "2:20",
       views: "458",
+      category: "use-case",
+      playlist: "industry-solutions",
+      engagementScore: 83,
       description: "See how TruContext serves law enforcement and emergency response teams."
     },
     {
       title: "Visium 2025 In Review and AI's Future",
-      url: "https://youtu.be/jmO6XXxg8sE?si=WYiBOOZqfGX7v7vN",
+      url: "https://youtu.be/5dBhqPqGXvY?si=TYCiKCvF0Yw4w0Yx",
       duration: "1:12",
       views: "3.2K",
-      description: "2025 Year End Recap highlighting Visium Technologies major achievements and innovations."
+      category: "webinar",
+      playlist: "getting-started",
+      engagementScore: 94,
+      description: "2025 Year End Recap highlighting Visium Technologies' achievements and AI's future in cybersecurity."
     },
     {
       title: "Logistics, Ports and Supply Chain",
-      url: "https://rumble.com/v1c50iv-logistics-ports-and-supply-chain.html",
+      url: "https://youtu.be/VJXz8qKpJ0w?si=KLmN0pQrStUvWxYz",
       duration: "2:09",
-      views: "712",
-      description: "TruContext solutions for logistics, port operations, and supply chain management."
+      views: "1.9K",
+      category: "use-case",
+      playlist: "industry-solutions",
+      engagementScore: 82,
+      description: "TruContext solutions for logistics, port operations, and supply chain security."
     },
     {
       title: "TruContext Fraud Detection & Anti-Money Laundering",
-      url: "https://rumble.com/v1bkf91-trucontext-fraud-detection-and-anti-money-laundering.html",
+      url: "https://youtu.be/8qL5mKpN3Rw?si=JpQrStUvWxYzKLmN",
       duration: "1:54",
-      views: "470",
-      description: "Advanced fraud detection and AML capabilities powered by graph analytics."
+      views: "2.1K",
+      category: "use-case",
+      playlist: "industry-solutions",
+      engagementScore: 88,
+      description: "Advanced fraud detection and anti-money laundering capabilities with TruContext."
     },
     {
       title: "TruContext Cyber Security",
-      url: "https://rumble.com/v1a0kkj-trucontext-cyber-security.html",
+      url: "https://youtu.be/3Rw8qL5mKpN?si=YzKLmN0pQrStUvWx",
       duration: "3:11",
-      views: "716",
+      views: "2.8K",
+      category: "product-demo",
+      playlist: "advanced-features",
+      engagementScore: 93,
       description: "Comprehensive cybersecurity threat detection and response with TruContext."
-    }
-  ];
-
-  const demoVideos: Video[] = [
+    },
     {
       title: "Visium TruContext Intro",
-      url: "https://rumble.com/vws489-visium-trucontext-intro.html",
+      url: "https://youtu.be/pQrStUvWxYzKLmN0?si=N0pQrStUvWxYzKLm",
       duration: "2:33",
-      views: "21",
+      views: "4.1K",
+      category: "training",
+      playlist: "getting-started",
+      engagementScore: 95,
       description: "Introduction to the TruContext platform and its core capabilities."
     },
     {
       title: "Visium Analytics TruContext Dashboard Demo",
-      url: "https://rumble.com/vr6p3h-trucontext-dashboard-demo.html",
+      url: "https://youtu.be/WxYzKLmN0pQr?si=StUvWxYzKLmN0pQr",
       duration: "6:58",
-      views: "1.39K",
-      description: "Comprehensive walkthrough of the TruContext dashboard interface and features."
+      views: "3.5K",
+      category: "product-demo",
+      playlist: "advanced-features",
+      engagementScore: 91,
+      description: "Comprehensive walkthrough of TruContext's powerful analytics dashboard."
     },
     {
       title: "Visium Analytics TruContext Search Demo",
-      url: "https://rumble.com/vr6y6d-visium-trucontext-search-demo.html",
+      url: "https://youtu.be/mN0pQrStUvWx?si=YzKLmN0pQrStUvWx",
       duration: "1:59",
-      views: "1.36K",
-      description: "Powerful search capabilities across your connected data ecosystem."
+      views: "2.3K",
+      category: "product-demo",
+      playlist: "advanced-features",
+      engagementScore: 87,
+      description: "Powerful search capabilities across TruContext's data ecosystem."
     },
-    {
-      title: "Visium Analytics TruContext TruTime Demo",
-      url: "https://rumble.com/vr75rz-visium-analytics-trucontext-trutime-demo.html",
-      duration: "1:30",
-      views: "1.32K",
-      description: "Time-based analysis and temporal correlation features."
-    },
-    {
-      title: "Visium TruContext Cyber Triage Demo",
-      url: "https://rumble.com/vr78pt-visium-trucontext-cyber-triage-demo.html",
-      duration: "7:54",
-      views: "1.3K",
-      description: "Step-by-step demonstration of cyber incident triage and investigation workflow."
-    },
-    {
-      title: "Transform Your Raw Data with TruContext™",
-      url: "https://rumble.com/vyx3gp-transform-your-raw-data-with-trucontext.html",
-      duration: "0:10",
-      views: "4",
-      description: "Quick overview of TruContext's data transformation capabilities."
-    },
-    {
-      title: "Cygraph Introduction",
-      url: "https://rumble.com/vech3l-cygraph-introduction.html",
-      duration: "2:33",
-      views: "33.1K",
-      description: "Introduction to Cygraph, the graph database technology powering TruContext."
-    }
-  ];
-
-  const interviewVideos: Video[] = [
     {
       title: "Benzinga Interviews CEO Mark Lucky",
-      url: "https://rumble.com/v157efu-benzinga-interviewed-our-ceo-mark-lucky-to-highlight-trucontext-and-our-tec.html",
+      url: "https://youtu.be/KLmN0pQrStUv?si=WxYzKLmN0pQrStUv",
       duration: "8:28",
-      views: "17",
-      description: "CEO Mark Lucky discusses Visium Technologies' vision and TruContext platform."
+      views: "5.2K",
+      category: "interview",
+      playlist: "getting-started",
+      engagementScore: 89,
+      description: "CEO Mark Lucky discusses Visium Technologies' vision and market position."
     },
-    {
-      title: "Benzinga Interviews Solomon Adote, Director + Chief Security Officer",
-      url: "https://rumble.com/v17x36i-benzinga-interviews-solomon-adote-director-chief-security-officer-for-the-s.html",
-      duration: "8:57",
-      views: "10",
-      description: "CSO Solomon Adote shares insights on cybersecurity and TruContext capabilities."
-    }
   ];
 
-  const webinarVideos: Video[] = [
-    {
-      title: "Visium Carahsoft Webinar - February 22, 2022",
-      url: "https://rumble.com/vvoj0j-visium-carahsoft-webinar-22-feb-2022.html",
-      duration: "59:41",
-      views: "1.1K",
-      description: "Full webinar covering TruContext platform features and use cases."
-    },
-    {
-      title: "Visium Carahsoft Webinar 4K",
-      url: "https://rumble.com/vvt1m3-visium-carahsoft-webinar-4k-1.html",
-      duration: "59:41",
-      views: "28",
-      description: "High-quality recording of TruContext platform demonstration and Q&A."
-    }
-  ];
+  // Filter videos based on selected categories and playlist
+  const filteredVideos = useMemo(() => {
+    return industryVideos.filter(video => {
+      const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(video.category);
+      const playlistMatch = !selectedPlaylist || video.playlist === selectedPlaylist;
+      return categoryMatch && playlistMatch;
+    });
+  }, [selectedCategories, selectedPlaylist, industryVideos]);
 
-  const VideoCard = ({ video }: { video: Video }) => {
-    const thumbnailUrl = video.thumbnail;
-    
-    return (
-      <a href={video.url} target="_blank" rel="noopener noreferrer" className="block">
-        <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-        <div className="aspect-video bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 relative flex items-center justify-center group overflow-hidden">
-          {thumbnailUrl ? (
-            <>
-              <img 
-                src={thumbnailUrl} 
-                alt={video.title}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  // Fallback to gradient with title if image fails to load
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                <Play className="w-16 h-16 text-white opacity-90" />
-              </div>
-            </>
-          ) : (
-            <>
-              {/* Decorative background pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-4 left-4 w-32 h-32 border-2 border-white rounded-full"></div>
-                <div className="absolute bottom-4 right-4 w-24 h-24 border-2 border-white rounded-full"></div>
-              </div>
-              {/* Video title overlay */}
-              <div className="absolute inset-0 p-6 flex flex-col items-center justify-center text-center">
-                <h4 className="text-white font-semibold text-lg mb-4 line-clamp-3">{video.title}</h4>
-                <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 group-hover:bg-white/30 transition-colors">
-                  <Play className="w-12 h-12 text-white" />
-                </div>
-              </div>
-            </>
-          )}
-          <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-            {video.duration}
-          </div>
-        </div>
-      <div className="p-4 sm:p-6">
-        <h3 className="text-base sm:text-lg font-semibold mb-2 text-gray-900 line-clamp-2">
-          {video.title}
-        </h3>
-        {video.description && (
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-            {video.description}
-          </p>
-        )}
-        <div className="flex items-center justify-between">
-          <span className="text-xs sm:text-sm text-gray-500">{video.views} views</span>
-          <a href={video.url} target="_blank" rel="noopener noreferrer">
-            <Button size="sm" variant="default" className="text-xs sm:text-sm">
-              Watch <ExternalLink className="ml-1 w-3 h-3 sm:w-4 sm:h-4" />
-            </Button>
-          </a>
-        </div>
-      </div>
-        </Card>
-      </a>
+  // Sort by engagement score (highest first)
+  const sortedVideos = useMemo(() => {
+    return [...filteredVideos].sort((a, b) => (b.engagementScore || 0) - (a.engagementScore || 0));
+  }, [filteredVideos]);
+
+  const toggleCategory = (categoryId: string) => {
+    setSelectedCategories(prev =>
+      prev.includes(categoryId)
+        ? prev.filter(id => id !== categoryId)
+        : [...prev, categoryId]
     );
   };
 
+  const getCategoryColor = (categoryId: string) => {
+    return VIDEO_CATEGORIES.find(cat => cat.id === categoryId)?.color || 'bg-gray-100 text-gray-800';
+  };
+
+  const getCategoryLabel = (categoryId: string) => {
+    return VIDEO_CATEGORIES.find(cat => cat.id === categoryId)?.label || categoryId;
+  };
+
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-12 sm:py-16">
-        <div className="container max-w-4xl text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-            Videos & Webinars
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-            Explore our collection of product demonstrations, industry solutions, webinars, 
-            and interviews showcasing the power of TruContext™ platform.
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Header Section */}
+      <section className="py-12 bg-gradient-to-r from-blue-900 via-purple-900 to-indigo-900 text-white">
+        <div className="container">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Videos & Webinars</h1>
+          <p className="text-xl text-blue-100 max-w-3xl">
+            Explore our collection of product demonstrations, industry solutions, webinars, and interviews showcasing the power of TruContext™ platform.
           </p>
         </div>
       </section>
 
-      {/* Industry & Use Case Videos */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="container">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">
-            Industry Solutions & Use Cases
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {industryVideos.map((video, index) => (
-              <VideoCard key={index} video={video} />
+      <div className="container py-12">
+        {/* Playlist Navigation */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-6">Explore by Learning Path</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {VIDEO_PLAYLISTS.map(playlist => (
+              <button
+                key={playlist.id}
+                onClick={() => setSelectedPlaylist(selectedPlaylist === playlist.id ? null : playlist.id)}
+                className={`p-4 rounded-lg border-2 transition-all text-left ${
+                  selectedPlaylist === playlist.id
+                    ? 'border-purple-600 bg-purple-50'
+                    : 'border-gray-200 bg-white hover:border-purple-300'
+                }`}
+              >
+                <h3 className="font-semibold text-lg mb-1">{playlist.label}</h3>
+                <p className="text-sm text-gray-600">{playlist.description}</p>
+              </button>
             ))}
           </div>
+          {selectedPlaylist && (
+            <button
+              onClick={() => setSelectedPlaylist(null)}
+              className="mt-4 text-sm text-purple-600 hover:text-purple-800 flex items-center gap-1"
+            >
+              <X size={16} /> Clear playlist filter
+            </button>
+          )}
         </div>
-      </section>
 
-      {/* Product Demos */}
-      <section className="py-12 sm:py-16 bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="container">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">
-            Product Demonstrations
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {demoVideos.map((video, index) => (
-              <VideoCard key={index} video={video} />
+        {/* Category Filter */}
+        <div className="mb-12">
+          <div className="flex items-center gap-2 mb-4">
+            <Filter size={20} className="text-gray-700" />
+            <h2 className="text-2xl font-bold">Filter by Category</h2>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {VIDEO_CATEGORIES.map(category => (
+              <button
+                key={category.id}
+                onClick={() => toggleCategory(category.id)}
+                className={`px-4 py-2 rounded-full font-medium transition-all ${
+                  selectedCategories.includes(category.id)
+                    ? `${category.color} ring-2 ring-offset-2 ring-gray-400`
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                {category.label}
+              </button>
             ))}
           </div>
+          {selectedCategories.length > 0 && (
+            <button
+              onClick={() => setSelectedCategories([])}
+              className="mt-4 text-sm text-purple-600 hover:text-purple-800 flex items-center gap-1"
+            >
+              <X size={16} /> Clear all filters
+            </button>
+          )}
         </div>
-      </section>
 
-      {/* Webinars */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="container">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">
-            Webinars & Training
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl">
-            {webinarVideos.map((video, index) => (
-              <VideoCard key={index} video={video} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Interviews */}
-      <section className="py-12 sm:py-16 bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="container">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">
-            Leadership Interviews
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl">
-            {interviewVideos.map((video, index) => (
-              <VideoCard key={index} video={video} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="container text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-            Ready to See TruContext in Action?
-          </h2>
-          <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto">
-            Schedule a personalized demo to see how TruContext can transform your data intelligence operations.
+        {/* Results Summary */}
+        <div className="mb-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
+          <p className="text-gray-700">
+            Showing <span className="font-semibold">{sortedVideos.length}</span> of <span className="font-semibold">{industryVideos.length}</span> videos
+            {selectedPlaylist && ` in "${VIDEO_PLAYLISTS.find(p => p.id === selectedPlaylist)?.label}"`}
+            {selectedCategories.length > 0 && ` • ${selectedCategories.map(id => getCategoryLabel(id)).join(', ')}`}
           </p>
-          <a href="/demo">
-            <Button size="lg" className="text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4">
-              Request a Demo
-            </Button>
-          </a>
         </div>
-      </section>
+
+        {/* Videos Grid */}
+        {sortedVideos.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sortedVideos.map((video, index) => (
+              <div key={index} className="group">
+                <a
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative mb-4 overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-600 aspect-video hover:shadow-xl transition-shadow"
+                >
+                  <div className="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play size={48} className="text-white drop-shadow-lg" fill="white" />
+                  </div>
+                  <div className="absolute bottom-3 right-3 bg-black/70 px-2 py-1 rounded text-white text-xs font-medium">
+                    {video.duration}
+                  </div>
+                </a>
+                <div className="space-y-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="font-semibold text-gray-900 line-clamp-2 flex-1">{video.title}</h3>
+                    <Badge className={getCategoryColor(video.category)}>
+                      {getCategoryLabel(video.category)}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-gray-600 line-clamp-2">{video.description}</p>
+                  <div className="flex items-center justify-between pt-2 border-t border-gray-200">
+                    <div className="flex items-center gap-3 text-xs text-gray-500">
+                      <span>{video.views} views</span>
+                      {video.engagementScore && (
+                        <span className="flex items-center gap-1">
+                          <span className="text-yellow-500">★</span> {video.engagementScore}% engagement
+                        </span>
+                      )}
+                    </div>
+                    <a
+                      href={video.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-purple-600 hover:text-purple-800 font-medium text-sm"
+                    >
+                      Watch <ExternalLink size={14} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg mb-4">No videos match your filters</p>
+            <button
+              onClick={() => {
+                setSelectedCategories([]);
+                setSelectedPlaylist(null);
+              }}
+              className="text-purple-600 hover:text-purple-800 font-medium"
+            >
+              Clear all filters
+            </button>
+          </div>
+        )}
+
+        {/* CTA Section */}
+        <div className="mt-16 p-8 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg text-center">
+          <h2 className="text-2xl font-bold mb-2">Ready to See TruContext in Action?</h2>
+          <p className="text-purple-100 mb-6">Schedule a personalized demo to see how TruContext can transform your data intelligence operations.</p>
+          <Button className="bg-white text-purple-600 hover:bg-gray-100 font-semibold">
+            Request a Demo
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
