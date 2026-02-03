@@ -28,6 +28,13 @@ const getRumbleThumbnail = (url: string): string => {
 export default function Videos() {
   const industryVideos: Video[] = [
     {
+      title: "TruContext Agentic AI for NOC and SOC operations",
+      url: "https://youtu.be/I8gPwg23iqQ",
+      duration: "0:00",
+      views: "0",
+      description: "Explore how TruContext's agentic AI transforms Network Operations Centers (NOC) and Security Operations Centers (SOC) with autonomous threat detection and response capabilities."
+    },
+    {
       title: "TruContext Agentic AI for Cyber Defense",
       url: "https://youtu.be/GmVOss9m2aU",
       duration: "0:00",
