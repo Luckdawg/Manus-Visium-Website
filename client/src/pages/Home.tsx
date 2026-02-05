@@ -11,7 +11,6 @@ import { Link } from "wouter";
 import { StructuredData } from "@/components/StructuredData";
 import { SEOHead } from "@/components/SEOHead";
 import ComplianceBadgeCarousel from "@/components/ComplianceBadgeCarousel";
-import WebinarBanner from "@/components/WebinarBanner";
 import { 
   Shield, 
   Eye, 
@@ -95,8 +94,6 @@ export default function Home() {
       {/* <Tour steps={tourSteps} tourId="homepage" /> */}
       {/* <TourButton tourId="homepage" label="Take Tour" /> */}
       
-      {/* Webinar Banner */}
-      <WebinarBanner />
       
       {/* Hero Section */}
       <section className="hero-section relative overflow-hidden py-12 lg:py-20">
