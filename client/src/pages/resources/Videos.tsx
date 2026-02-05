@@ -49,6 +49,16 @@ export default function Videos() {
 
   const industryVideos: Video[] = [
     {
+      title: "A discussion about the major deployment of ELI (Ethical Layered Intelligence) AI Platform in Peru and the implications in Latin America and beyond",
+      url: "https://youtu.be/hSAS7rM9pl8",
+      duration: "0:00",
+      views: "0",
+      category: "interview",
+      playlist: "industry-solutions",
+      engagementScore: 89,
+      description: "CEOs Calvin Yadav and Mark Lucky discuss the landmark 54,000-camera AI surveillance network deployment in Peru and its strategic implications for Latin American security and regional expansion."
+    },
+    {
       title: "TruContext Agentic AI for NOC and SOC operations",
       url: "https://youtu.be/I8gPwg23iqQ",
       duration: "0:00",

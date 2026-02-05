@@ -9,19 +9,19 @@ interface ComplianceBadgeProps {
 
 const badgeConfig = {
   hipaa: {
-    image: '/badges/hipaa-badge.png',
+    image: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028236186/AJlatYezjLxzMSgU.png',
     label: 'HIPAA Compliant',
     description: 'Healthcare data protection and patient privacy compliance',
     alt: 'HIPAA Compliance Badge'
   },
   'pci-dss': {
-    image: '/badges/pci-dss-badge.png',
+    image: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028236186/pCVIJxqlXrAWVfEr.png',
     label: 'PCI-DSS Certified',
     description: 'Payment card data security and fraud prevention',
     alt: 'PCI-DSS Compliance Badge'
   },
   fedramp: {
-    image: '/badges/fedramp-badge.png',
+    image: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028236186/YoaQSTKbXeePmKyi.png',
     label: 'FedRAMP Authorized',
     description: 'Government security standards and federal compliance',
     alt: 'FedRAMP Compliance Badge'
