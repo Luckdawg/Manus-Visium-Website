@@ -1028,3 +1028,12 @@
 - [ ] Create email template customization guide
 - [ ] Document notification delivery guarantees
 - [ ] Create troubleshooting guide for failed emails
+
+
+## Partner Portal Access Button (Feb 9, 2026)
+- [x] Add prominent "Access Partner Portal" button to /partners page
+- [x] Implement authentication check for button
+- [x] Add redirect to partner dashboard when authenticated
+- [x] Add login redirect when not authenticated
+- [x] Style button to match brand and stand out visually
+- [x] Test button functionality on Partners page

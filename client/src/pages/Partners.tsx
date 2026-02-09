@@ -1,9 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { Handshake, Users, TrendingUp, CheckCircle2, Shield } from "lucide-react";
+import { Handshake, Users, TrendingUp, CheckCircle2, Shield, LogIn, ArrowRight } from "lucide-react";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { getLoginUrl } from "@/const";
 
 export default function Partners() {
+  const { isAuthenticated, user } = useAuth();
+
+  const handlePartnerPortalClick = () => {
+    if (isAuthenticated && user?.role === "partner") {
+      window.location.href = "/partners/dashboard";
+    } else {
+      window.location.href = getLoginUrl();
+    }
+  };
+
   const technologyPartners = [
     {
       name: "Datadog",
@@ -62,9 +74,18 @@ export default function Partners() {
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
               Partner <span className="text-primary">Ecosystem</span>
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 mb-8">
               Visium works with partners to promote cybersecurity on all scales, delivering innovative solutions through strategic alliances and technology integrations
             </p>
+            
+            <button
+              onClick={handlePartnerPortalClick}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-bold text-lg rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-white/20"
+            >
+              <LogIn className="h-6 w-6" />
+              {isAuthenticated && user?.role === "partner" ? "Access Your Partner Portal" : "Partner Portal Login"}
+              <ArrowRight className="h-6 w-6" />
+            </button>
           </div>
         </div>
       </section>
