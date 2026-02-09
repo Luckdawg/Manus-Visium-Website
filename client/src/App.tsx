@@ -62,6 +62,9 @@ import PartnerMDF from "./pages/partner/MDF";
 import PartnerAnalytics from "./pages/partner/Analytics";
 import PartnerLogin from "./pages/partner/Login";
 import OnboardingWizard from "./pages/partner/OnboardingWizard";
+import RegisterDeal from "./pages/partner/RegisterDeal";
+import DealsList from "./pages/partner/DealsList";
+import ResourcesLibrary from "./pages/partner/ResourcesLibrary";
 
 function Router() {
   const [location] = useLocation();
@@ -117,13 +120,12 @@ function Router() {
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin/users" component={AdminUsers} />
       <Route path="/admin/security" component={AdminSecurity} />
-      <Route path="/partners/dashboard" component={PartnerDashboard} />
-      <Route path="/partners/deals" component={PartnerDeals} />
-      <Route path="/partners/resources" component={PartnerResources} />
       <Route path="/partners/login" component={PartnerLogin} />
-      <Route path="/partners/mdf" component={PartnerMDF} />
-      <Route path="/partners/analytics" component={PartnerAnalytics} />
       <Route path="/partners/onboarding" component={OnboardingWizard} />
+      <Route path="/partners/dashboard" component={PartnerDashboard} />
+      <Route path="/partners/register-deal" component={RegisterDeal} />
+      <Route path="/partners/deals" component={DealsList} />
+      <Route path="/partners/resources" component={ResourcesLibrary} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

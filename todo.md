@@ -1077,3 +1077,118 @@
 - [ ] Test data persistence
 - [ ] Test email sending
 - [ ] Test error handling
+
+
+## Complete Deal Registration & Partner Resources System (Feb 9, 2026)
+
+### Database Schema Enhancement
+- [ ] Enhance partner_deals table with fields: customer_name, customer_industry, deal_size, timeline, probability, notes
+- [ ] Create partner_resources table (id, title, category, description, file_url, file_size, downloads_count)
+- [ ] Create partner_resource_downloads table for tracking downloads
+- [ ] Add indexes for deal filtering and resource queries
+
+### Deal Registration Form & Submission
+- [ ] Build multi-step deal registration form (customer info, deal details, timeline, attachments)
+- [ ] Implement form validation with error messages
+- [ ] Add deal size calculator/estimator
+- [ ] Create deal timeline selector (30/60/90 days)
+- [ ] Add customer industry and vertical selection dropdown
+- [ ] Implement file upload for deal attachments (RFP, LOI, etc.)
+- [ ] Create tRPC procedure for deal submission
+- [ ] Add email notification on deal submission
+
+### Deal Tracking & Management Dashboard
+- [ ] Create deals list view with filtering (status, date range, deal size)
+- [ ] Add sorting options (date, deal size, customer name)
+- [ ] Build deal detail page with full information display
+- [ ] Add deal status timeline visualization
+- [ ] Implement deal edit functionality for partners
+- [ ] Create deal cancellation workflow
+- [ ] Add deal notes and comments section
+- [ ] Display deal history and status changes
+
+### Partner Resources Library
+- [ ] Create comprehensive resources page with categories
+- [ ] Add Sales Collateral resources (datasheets, case studies, ROI calculators, competitive positioning)
+- [ ] Add Product Documentation resources (API docs, integration guides, deployment guides)
+- [ ] Add Training & Certification resources (video tutorials, certification exams, webinars)
+- [ ] Add Marketing Materials (co-branding assets, social media templates, email templates)
+- [ ] Implement resource search functionality
+- [ ] Create resource download tracking
+- [ ] Add resource preview/detail pages
+
+### Admin Deal Management Interface
+- [ ] Create admin deal review interface
+- [ ] Build deal approval/rejection workflow
+- [ ] Add deal status update form (Qualified → Proposal → Negotiation → Won/Lost)
+- [ ] Create deal analytics dashboard (total deals, deal pipeline, win rate)
+- [ ] Implement deal forecasting view
+- [ ] Add partner performance metrics (deals submitted, win rate, avg deal size)
+- [ ] Create tRPC procedures for admin deal management
+
+### Email Notifications Integration
+- [ ] Email notification on deal submission (to partner and admin)
+- [ ] Email notification on deal status change (to partner)
+- [ ] Email notification on deal approval (to partner)
+- [ ] Email notification on deal rejection with reason (to partner)
+- [ ] Email notification for resource downloads (optional)
+
+### Testing & Validation
+- [ ] Test deal registration form submission with valid data
+- [ ] Test deal form validation (required fields, email format, file size)
+- [ ] Test deal status transitions and workflows
+- [ ] Test resource download functionality and tracking
+- [ ] Test admin approval/rejection workflow
+- [ ] Test email notifications for all scenarios
+- [ ] Test deal filtering and sorting
+- [ ] Test deal edit and cancellation flows
+- [ ] Write comprehensive vitest tests for all functionality
+
+### UI/UX Components
+- [ ] Create DealRegistrationForm component with multi-step wizard
+- [ ] Create DealsList component with table/card view
+- [ ] Create DealDetail component with full information
+- [ ] Create ResourcesLibrary component with search and categories
+- [ ] Create ResourceCard component for individual resources
+- [ ] Create AdminDealManagement component
+- [ ] Create AdminDealApprovalForm component
+- [ ] Add loading states and error handling throughout
+
+
+## Complete Deal Registration and Resources System (Feb 9, 2026)
+
+### Deal Registration Form
+- [x] Create multi-step deal registration form
+- [x] Add form validation for all fields
+- [x] Implement progress indicator
+- [x] Add back/next navigation
+- [x] Create success confirmation page
+
+### Deal Management
+- [x] Create deals list/dashboard
+- [x] Add deal filtering by stage
+- [x] Add deal search functionality
+- [x] Display deal metrics (total value, win rate, etc)
+- [x] Create deal detail view
+
+### Partner Resources
+- [x] Create resources library page
+- [x] Add resource filtering by type
+- [x] Add resource search
+- [x] Create download functionality
+- [x] Track resource downloads
+
+### Admin Interface
+- [x] Create admin deal management page
+- [x] Add deal status update functionality
+- [x] Add approval notes field
+- [x] Create deal metrics dashboard
+- [x] Add deal search and filtering
+
+### Testing
+- [x] Test deal submission validation
+- [x] Test commission calculations
+- [x] Test deal filtering and search
+- [x] Test resource filtering and search
+- [x] Test deal metrics calculations
+- [x] Test error handling
