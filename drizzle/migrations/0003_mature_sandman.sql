@@ -1,0 +1,1 @@
+ALTER TABLE `partner_onboarding_sessions` MODIFY COLUMN `completedSteps` text NOT NULL DEFAULT ('[]');

@@ -1037,3 +1037,43 @@
 - [x] Add login redirect when not authenticated
 - [x] Style button to match brand and stand out visually
 - [x] Test button functionality on Partners page
+
+
+## Partner Onboarding Wizard (Feb 9, 2026)
+
+### Database & API
+- [x] Create partner_onboarding_sessions table to track wizard progress
+- [x] Add onboarding status to partner_users table
+- [ ] Create tRPC procedures for onboarding steps (simplified approach)
+- [x] Implement onboarding data validation and storage
+
+### Wizard Steps
+- [x] Step 1: Company Information (name, website, phone, address)
+- [x] Step 2: Partner Type Selection (8 partner types)
+- [x] Step 3: Commission Tier Setup (Gold, Silver, Bronze, Standard)
+- [x] Step 4: MDF Budget Configuration (annual allocation)
+- [x] Step 5: Contact Information (primary contact, email, phone)
+- [x] Step 6: Review & Confirmation
+
+### Frontend Components
+- [x] Create OnboardingWizard.tsx main component
+- [x] Build step-by-step form with validation
+- [x] Add progress indicator showing current step
+- [x] Implement back/next navigation
+- [ ] Add form data persistence (localStorage)
+- [x] Create success confirmation page
+
+### Features
+- [ ] Auto-save form data as user progresses
+- [x] Validation feedback on each step
+- [x] Ability to go back and edit previous steps
+- [ ] Email verification after completion
+- [ ] Send welcome email with portal access details
+- [x] Redirect to dashboard after onboarding
+
+### Testing
+- [ ] Test wizard navigation flow
+- [ ] Test form validation on each step
+- [ ] Test data persistence
+- [ ] Test email sending
+- [ ] Test error handling

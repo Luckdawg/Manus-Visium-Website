@@ -118,10 +118,13 @@ function Router() {
       <Route path={"/admin/users"} component={AdminUsers} />
       <Route path={"/admin/security"} component={AdminSecurity} />
       <Route path={"/partners/dashboard"} component={PartnerDashboard} />
-      <Route path={"/partners/deals"} component={PartnerDeals} />
-      <Route path={"/partners/resources"} component={PartnerResources} />
-      <Route path={"/partners/mdf"} component={PartnerMDF} />
-      <Route path={"/partners/analytics"} component={PartnerAnalytics} />
+      <Route path={"/partners/deals"} component={PartnerDeals} />      <Route path={"/ partners/resources"} component={PartnerResources} />
+      <Route path="/partners/mdf" component={PartnerMDF} />
+      <Route path="/partners/analytics" component={PartnerAnalytics} />
+      <Route path="/partners/onboarding" component={() => {
+        const OnboardingWizard = require("@/pages/partner/OnboardingWizard").default;
+        return <OnboardingWizard />;
+      }} />
       <Route path={"/404"} component={NotFound} />  {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>

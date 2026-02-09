@@ -15,6 +15,20 @@
       "when": 1770660151684,
       "tag": "0001_chubby_proteus",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1770660989860,
+      "tag": "0002_oval_blacklash",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1770661195861,
+      "tag": "0003_mature_sandman",
+      "breakpoints": true
     }
   ]
 }

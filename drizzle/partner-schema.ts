@@ -1,4 +1,4 @@
-import { int, varchar, text, timestamp, decimal, mysqlTable, mysqlEnum, boolean, index } from "drizzle-orm/mysql-core";
+import { int, varchar, text, timestamp, decimal, mysqlTable, mysqlEnum, boolean, index, json } from "drizzle-orm/mysql-core";
 
 /**
  * Partner Companies - Registered partner organizations
@@ -472,3 +472,62 @@ export const partnerNotificationPreferences = mysqlTable("partner_notification_p
 
 export type PartnerNotificationPreferences = typeof partnerNotificationPreferences.$inferSelect;
 export type InsertPartnerNotificationPreferences = typeof partnerNotificationPreferences.$inferInsert;
+
+
+/**
+ * Partner Onboarding Sessions - Track wizard progress for new partners
+ */
+export const partnerOnboardingSessions = mysqlTable("partner_onboarding_sessions", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: varchar("userId", { length: 255 }).notNull(),
+  
+  // Onboarding progress
+  currentStep: int("currentStep").default(1).notNull(),
+  completedSteps: text("completedSteps").default(JSON.stringify([])).notNull(),
+  
+  // Step 1: Company Information
+  companyName: varchar("companyName", { length: 255 }),
+  website: varchar("website", { length: 255 }),
+  phone: varchar("phone", { length: 50 }),
+  address: text("address"),
+  city: varchar("city", { length: 100 }),
+  state: varchar("state", { length: 50 }),
+  country: varchar("country", { length: 100 }),
+  zipCode: varchar("zipCode", { length: 20 }),
+  
+  // Step 2: Partner Type
+  partnerType: mysqlEnum("partnerType", [
+    "Reseller",
+    "Technology Partner",
+    "System Integrator",
+    "Managed Service Provider",
+    "Consulting Partner",
+    "Channel Partner",
+    "OEM Partner",
+    "Other"
+  ]),
+  
+  // Step 3: Commission Tier
+  tier: mysqlEnum("tier", [
+    "Gold",
+    "Silver",
+    "Bronze",
+    "Standard"
+  ]),
+  
+  // Step 4: MDF Budget
+  mdfBudgetAnnual: decimal("mdfBudgetAnnual", { precision: 12, scale: 2 }),
+  
+  // Step 5: Contact Information
+  primaryContactName: varchar("primaryContactName", { length: 255 }),
+  primaryContactEmail: varchar("primaryContactEmail", { length: 320 }),
+  primaryContactPhone: varchar("primaryContactPhone", { length: 50 }),
+  
+  // Status
+  status: mysqlEnum("status", ["In Progress", "Completed", "Abandoned"]).default("In Progress").notNull(),
+  completedAt: timestamp("completedAt"),
+  
+  // Timestamps
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow(),
+});
