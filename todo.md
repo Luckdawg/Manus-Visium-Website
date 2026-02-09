@@ -869,3 +869,99 @@
 
 ## YouTube Video Entry Addition (Jan 12, 2026)
 - [x] Add "Visium & IREX Peru AI Security with ELI" video to Resources Videos tab
+
+
+## Partner Portal Integration (Feb 9, 2026)
+- [ ] Analyze Tru-CRM codebase and identify reusable components
+- [ ] Create partner portal foundation with authentication and dashboard
+- [ ] Integrate deal/opportunity management from Tru-CRM
+- [ ] Build resource library and document management
+- [ ] Implement partner analytics and reporting
+- [ ] Test portal functionality and verify integration
+
+
+## Partner Portal Implementation (Feb 9, 2026)
+- [x] Add "partner" role to user role enum in schema
+- [x] Create partner schema with 6 tables (partner_companies, partner_users, partner_deals, partner_resources, partner_analytics, partner_mdf_claims)
+- [x] Create partner router with tRPC procedures for all operations
+- [x] Register partner router in main routers.ts
+- [x] Fix decimal default values in partner schema (10.00 format)
+- [x] Update drizzle config to include partner schema
+- [x] Create database migration for partner tables
+
+### Partner Portal Frontend Pages
+- [x] Create Partner Dashboard page (/partners/dashboard) with KPI cards
+- [x] Create Partner Deals page (/partners/deals) with deal submission form
+- [x] Create Partner Resources page (/partners/resources) with library
+- [x] Create Partner MDF Claims page (/partners/mdf) with budget tracking
+- [x] Create Partner Analytics page (/partners/analytics) with metrics
+- [x] Register all partner routes in App.tsx
+
+### Partner Portal tRPC API Procedures
+- [x] getPartnerProfile - Retrieve partner company and user profile
+- [x] getPartnerDeals - Get deals with filtering by stage
+- [x] submitDeal - Submit new deal with commission calculation
+- [x] getPartnerResources - Access training materials and collateral
+- [x] getDashboardSummary - Get KPIs and recent deals
+- [x] getMdfInfo - Get MDF budget and claims
+- [x] submitMdfClaim - Submit marketing development fund claim
+
+### Partner Portal Testing
+- [x] Create comprehensive test suite with 27 tests
+- [x] Test input validation for deals and MDF claims
+- [x] Test commission calculations with various rates
+- [x] Test deal status workflow (Qualified Lead → Closed Won/Lost)
+- [x] Test MDF claim workflow (Draft → Paid)
+- [x] Test budget management and utilization
+- [x] Test partner tier management and benefits
+- [x] Test resource access control
+- [x] Test analytics metrics (win rate, average deal size, sales velocity)
+- [x] Test data validation for partner companies and users
+- [x] Test error handling for invalid data
+
+### Partner Portal Features Implemented
+- [x] Role-based access control with "partner" role
+- [x] Deal submission and tracking with automatic commission calculations
+- [x] Resource library with download tracking and access control
+- [x] MDF budget management with claim workflow
+- [x] Partner dashboard with KPIs (active deals, commission rate, MDF budget, tier)
+- [x] Analytics and performance metrics dashboard
+- [x] Partner company profile management
+- [x] Multi-stage deal workflow (Qualified Lead → Proposal → Negotiation → Closed Won/Lost)
+- [x] MDF claim status tracking (Draft → Submitted → Under Review → Approved → Paid)
+
+### Partner Portal Database Schema
+- **partner_companies**: 25 columns - Organization profiles with tier, commission rates, MDF budgets
+- **partner_users**: 7 columns - Individual partner users linked to companies with roles
+- **partner_deals**: 23 columns - Deal submissions with commission tracking and status workflow
+- **partner_resources**: 15 columns - Training materials, sales collateral with access control
+- **partner_analytics**: 17 columns - Performance metrics aggregated by period
+- **partner_mdf_claims**: 18 columns - Marketing Development Fund claim tracking and approval
+
+### Partner Portal UI Components
+- [x] KPI cards with icons and metrics
+- [x] Deal submission form with validation
+- [x] Deal list table with filtering by stage
+- [x] Resource cards with download buttons
+- [x] MDF budget summary cards
+- [x] MDF claim submission form
+- [x] MDF claim status tracking with icons
+- [x] Analytics dashboard with placeholder metrics
+- [x] Deal pipeline progress visualization
+
+### Future Enhancements
+- [ ] Email notifications for deal updates
+- [ ] CSV export functionality for reports
+- [ ] Partner login flow via Manus OAuth
+- [ ] Admin panel for partner management
+- [ ] Advanced partner performance analytics
+- [ ] Deal approval workflow with internal notes
+- [ ] Commission payment tracking and history
+- [ ] Partner tier upgrade workflow
+- [ ] Partner support ticket system
+- [ ] Partner training completion tracking
+- [ ] Deal forecasting and pipeline analytics
+- [ ] Commission payout reports and schedules
+- [ ] Partner performance scorecards
+- [ ] Automated deal reminders and follow-ups
+- [ ] Partner marketplace for resource sharing

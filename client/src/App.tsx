@@ -55,6 +55,11 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import AdminUsers from "./pages/admin/Users";
 import AdminSecurity from "./pages/admin/Security";
 import AdminLogin from "./pages/admin/Login";
+import PartnerDashboard from "./pages/partner/Dashboard";
+import PartnerDeals from "./pages/partner/Deals";
+import PartnerResources from "./pages/partner/Resources";
+import PartnerMDF from "./pages/partner/MDF";
+import PartnerAnalytics from "./pages/partner/Analytics";
 
 function Router() {
   const [location] = useLocation();
@@ -112,8 +117,12 @@ function Router() {
       <Route path={"/admin"} component={AdminDashboard} />
       <Route path={"/admin/users"} component={AdminUsers} />
       <Route path={"/admin/security"} component={AdminSecurity} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
+      <Route path={"/partners/dashboard"} component={PartnerDashboard} />
+      <Route path={"/partners/deals"} component={PartnerDeals} />
+      <Route path={"/partners/resources"} component={PartnerResources} />
+      <Route path={"/partners/mdf"} component={PartnerMDF} />
+      <Route path={"/partners/analytics"} component={PartnerAnalytics} />
+      <Route path={"/404"} component={NotFound} />  {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );

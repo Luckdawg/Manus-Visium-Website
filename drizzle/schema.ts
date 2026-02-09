@@ -16,7 +16,7 @@ export const users = mysqlTable("users", {
   name: text("name"),
   email: varchar("email", { length: 320 }),
   loginMethod: varchar("loginMethod", { length: 64 }),
-  role: mysqlEnum("role", ["user", "admin", "super_admin", "editor", "viewer"]).default("user").notNull(),
+  role: mysqlEnum("role", ["user", "admin", "super_admin", "editor", "viewer", "partner"]).default("user").notNull(),
   password: varchar("password", { length: 255 }), // For local admin accounts
   twoFactorSecret: varchar("twoFactorSecret", { length: 64 }), // TOTP secret
   twoFactorEnabled: int("twoFactorEnabled").default(0).notNull(), // 0 = disabled, 1 = enabled
@@ -147,3 +147,24 @@ export type BlogLead = typeof blogLeads.$inferSelect;
 export type NewBlogLead = typeof blogLeads.$inferInsert;
 
 // TODO: Add your tables here
+// Partner Portal Tables
+export {
+  partnerCompanies,
+  partnerUsers,
+  partnerDeals,
+  partnerResources,
+  partnerAnalytics,
+  partnerMdfClaims,
+  type PartnerCompany,
+  type InsertPartnerCompany,
+  type PartnerUser,
+  type InsertPartnerUser,
+  type PartnerDeal,
+  type InsertPartnerDeal,
+  type PartnerResource,
+  type InsertPartnerResource,
+  type PartnerAnalytics,
+  type InsertPartnerAnalytics,
+  type PartnerMdfClaim,
+  type InsertPartnerMdfClaim,
+} from "./partner-schema";
