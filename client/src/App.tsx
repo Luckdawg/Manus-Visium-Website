@@ -110,8 +110,9 @@ function Router() {
       <Route path="/solutions/financial-services-cybersecurity" component={FinancialServicesCybersecurity} />
       <Route path="/solutions/telecom-cybersecurity" component={TelecomCybersecurity} />
       <Route path="/solutions/government-federal" component={GovernmentFederal} />
-      <Route path={"/blog"} component={Blog} />
+      <Route path="/blog" component={Blog} />
       <Route path="/resources" component={Blog} />
+      <Route path="/resources/videos" component={Videos} />
       <Route path="/admin" component={AdminDashboard} />
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin/users" component={AdminUsers} />
