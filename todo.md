@@ -965,3 +965,66 @@
 - [ ] Partner performance scorecards
 - [ ] Automated deal reminders and follow-ups
 - [ ] Partner marketplace for resource sharing
+
+
+## Email Notification System for Partner Portal (Feb 9, 2026)
+
+### Database Schema
+- [x] Create email_notifications table for tracking sent emails
+- [x] Create notification_templates table for email templates
+- [x] Create partner_notification_preferences table for notification settings
+- [x] Create database migration for notification tables
+
+### Email Service
+- [x] Create email notification service with template rendering
+- [x] Implement email template system (deal submitted, deal approved, deal closed, MDF approved, MDF rejected)
+- [x] Create email queue management system
+- [x] Implement retry logic for failed email sends
+- [x] Add email delivery tracking and logging
+
+### Partner Router Updates
+- [x] Add email notification trigger to submitDeal procedure
+- [x] Add email notification trigger to submitMdfClaim procedure
+- [ ] Create updateDealStatus procedure with email notifications
+- [ ] Create updateMdfClaimStatus procedure with email notifications
+- [ ] Add email preference management to partner profile
+
+### Admin Router
+- [ ] Create admin procedure to update deal status and send notification
+- [ ] Create admin procedure to approve/reject MDF claims with notification
+- [ ] Create admin procedure to view notification history
+- [ ] Create admin procedure to resend failed notifications
+- [ ] Create admin procedure to manage email templates
+
+### Email Templates
+- [x] Deal Submitted confirmation email
+- [x] Deal Status Update (Qualified Lead, Proposal, Negotiation)
+- [x] Deal Won notification email
+- [x] Deal Lost notification email
+- [x] MDF Claim Submitted confirmation email
+- [x] MDF Claim Approved notification email
+- [x] MDF Claim Rejected notification email
+- [x] MDF Claim Payment Processed email
+
+### Testing
+- [x] Test email template rendering
+- [x] Test email sending for all notification types
+- [x] Test retry logic for failed sends
+- [x] Test email queue management
+- [x] Test notification tracking and logging
+- [ ] Test admin notification procedures
+- [ ] Test email preference management
+
+### Admin UI
+- [ ] Create notification history page
+- [ ] Create email template management interface
+- [ ] Create deal status update form with email preview
+- [ ] Create MDF claim approval form with email preview
+- [ ] Create email queue monitoring dashboard
+- [ ] Add notification settings to admin panel
+
+### Documentation
+- [ ] Document email notification system architecture
+- [ ] Create email template customization guide
+- [ ] Document notification delivery guarantees
+- [ ] Create troubleshooting guide for failed emails

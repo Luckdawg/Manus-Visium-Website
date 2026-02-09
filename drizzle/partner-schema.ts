@@ -314,3 +314,161 @@ export const partnerMdfClaims = mysqlTable("partner_mdf_claims", {
 
 export type PartnerMdfClaim = typeof partnerMdfClaims.$inferSelect;
 export type InsertPartnerMdfClaim = typeof partnerMdfClaims.$inferInsert;
+
+
+/**
+ * Email Notifications - Track all email notifications sent to partners
+ */
+export const emailNotifications = mysqlTable("email_notifications", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  // Recipient information
+  recipientEmail: varchar("recipientEmail", { length: 320 }).notNull(),
+  recipientName: varchar("recipientName", { length: 255 }),
+  partnerCompanyId: int("partnerCompanyId").notNull(),
+  
+  // Email details
+  subject: varchar("subject", { length: 255 }).notNull(),
+  templateType: mysqlEnum("templateType", [
+    "deal_submitted",
+    "deal_qualified",
+    "deal_proposal",
+    "deal_negotiation",
+    "deal_won",
+    "deal_lost",
+    "mdf_submitted",
+    "mdf_approved",
+    "mdf_rejected",
+    "mdf_paid",
+    "custom"
+  ]).notNull(),
+  
+  // Content
+  htmlContent: text("htmlContent").notNull(),
+  textContent: text("textContent"),
+  
+  // Related entity
+  relatedEntityType: mysqlEnum("relatedEntityType", [
+    "deal",
+    "mdf_claim",
+    "other"
+  ]).notNull(),
+  relatedEntityId: int("relatedEntityId"),
+  
+  // Delivery tracking
+  status: mysqlEnum("status", [
+    "pending",
+    "sent",
+    "failed",
+    "bounced",
+    "opened",
+    "clicked"
+  ]).default("pending").notNull(),
+  
+  sentAt: timestamp("sentAt"),
+  failureReason: text("failureReason"),
+  retryCount: int("retryCount").default(0),
+  maxRetries: int("maxRetries").default(3),
+  
+  // Metadata
+  metadata: text("metadata"), // JSON object for additional tracking data
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  emailIdx: index("email_idx").on(table.recipientEmail),
+  partnerIdx: index("partner_idx").on(table.partnerCompanyId),
+  statusIdx: index("status_idx").on(table.status),
+  templateIdx: index("template_idx").on(table.templateType),
+  entityIdx: index("entity_idx").on(table.relatedEntityId),
+}));
+
+export type EmailNotification = typeof emailNotifications.$inferSelect;
+export type InsertEmailNotification = typeof emailNotifications.$inferInsert;
+
+/**
+ * Email Templates - Customizable email templates for notifications
+ */
+export const emailTemplates = mysqlTable("email_templates", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  templateType: mysqlEnum("templateType", [
+    "deal_submitted",
+    "deal_qualified",
+    "deal_proposal",
+    "deal_negotiation",
+    "deal_won",
+    "deal_lost",
+    "mdf_submitted",
+    "mdf_approved",
+    "mdf_rejected",
+    "mdf_paid",
+    "custom"
+  ]).notNull().unique(),
+  
+  // Template content
+  name: varchar("name", { length: 255 }).notNull(),
+  description: text("description"),
+  subject: varchar("subject", { length: 255 }).notNull(),
+  htmlTemplate: text("htmlTemplate").notNull(),
+  textTemplate: text("textTemplate"),
+  
+  // Variables that can be used in template
+  variables: text("variables"), // JSON array of available variables
+  
+  // Status
+  isActive: boolean("isActive").default(true),
+  isDefault: boolean("isDefault").default(false),
+  
+  // Metadata
+  createdBy: int("createdBy").notNull(), // Visium admin user
+  updatedBy: int("updatedBy"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  typeIdx: index("type_idx").on(table.templateType),
+  activeIdx: index("active_idx").on(table.isActive),
+}));
+
+export type EmailTemplate = typeof emailTemplates.$inferSelect;
+export type InsertEmailTemplate = typeof emailTemplates.$inferInsert;
+
+/**
+ * Partner Notification Preferences - Allow partners to customize notification settings
+ */
+export const partnerNotificationPreferences = mysqlTable("partner_notification_preferences", {
+  id: int("id").autoincrement().primaryKey(),
+  partnerCompanyId: int("partnerCompanyId").notNull().unique(),
+  
+  // Deal notifications
+  notifyOnDealSubmitted: boolean("notifyOnDealSubmitted").default(true),
+  notifyOnDealQualified: boolean("notifyOnDealQualified").default(true),
+  notifyOnDealProposal: boolean("notifyOnDealProposal").default(true),
+  notifyOnDealNegotiation: boolean("notifyOnDealNegotiation").default(true),
+  notifyOnDealWon: boolean("notifyOnDealWon").default(true),
+  notifyOnDealLost: boolean("notifyOnDealLost").default(true),
+  
+  // MDF notifications
+  notifyOnMdfSubmitted: boolean("notifyOnMdfSubmitted").default(true),
+  notifyOnMdfApproved: boolean("notifyOnMdfApproved").default(true),
+  notifyOnMdfRejected: boolean("notifyOnMdfRejected").default(true),
+  notifyOnMdfPaid: boolean("notifyOnMdfPaid").default(true),
+  
+  // Email preferences
+  emailFrequency: mysqlEnum("emailFrequency", [
+    "immediate",
+    "daily_digest",
+    "weekly_digest",
+    "never"
+  ]).default("immediate").notNull(),
+  
+  // Recipient emails (comma-separated or JSON array)
+  notificationEmails: text("notificationEmails").notNull(), // JSON array of email addresses
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  partnerIdx: index("partner_idx").on(table.partnerCompanyId),
+}));
+
+export type PartnerNotificationPreferences = typeof partnerNotificationPreferences.$inferSelect;
+export type InsertPartnerNotificationPreferences = typeof partnerNotificationPreferences.$inferInsert;

@@ -93,7 +93,7 @@ export default function PartnerMDF() {
     );
   }
 
-  const totalBudget = Number(mdfInfo?.company?.mdfBudgetAnnual) || 0;
+  const totalBudget = Number(mdfInfo?.totalBudget) || 0;
   const totalRequested = mdfInfo?.claims?.reduce((sum, claim) => sum + Number(claim.requestedAmount), 0) || 0;
   const totalApproved = mdfInfo?.claims
     ?.filter((c) => c.status === "Approved" || c.status === "Paid")

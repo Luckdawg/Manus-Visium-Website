@@ -37,7 +37,7 @@ export default function PartnerDashboard() {
     <div className="container py-12">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Partner Dashboard</h1>
-        <p className="text-gray-600">Welcome back, {summary?.partnerCompany?.companyName}!</p>
+        <p className="text-gray-600">Welcome back, {summary?.company?.companyName}!</p>
       </div>
 
       {/* KPI Cards */}
@@ -59,7 +59,7 @@ export default function PartnerDashboard() {
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{summary?.partnerCompany?.commissionRate}%</div>
+            <div className="text-2xl font-bold">{summary?.commissionRate}%</div>
             <p className="text-xs text-muted-foreground">Standard rate</p>
           </CardContent>
         </Card>
@@ -70,7 +70,7 @@ export default function PartnerDashboard() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${summary?.partnerCompany?.mdfBudgetAnnual}</div>
+            <div className="text-2xl font-bold">${summary?.mdfBudget}</div>
             <p className="text-xs text-muted-foreground">Annual allocation</p>
           </CardContent>
         </Card>
@@ -81,7 +81,7 @@ export default function PartnerDashboard() {
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{summary?.partnerCompany?.tier || "Standard"}</div>
+            <div className="text-2xl font-bold">{summary?.tier || "Standard"}</div>
             <p className="text-xs text-muted-foreground">Current status</p>
           </CardContent>
         </Card>
