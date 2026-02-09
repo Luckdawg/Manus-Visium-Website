@@ -11,8 +11,12 @@ export default function Partners() {
   const handlePartnerPortalClick = () => {
     if (isAuthenticated && user?.role === "partner") {
       window.location.href = "/partners/dashboard";
+    } else if (isAuthenticated) {
+      // User is logged in but not a partner, show onboarding
+      window.location.href = "/partners/onboarding";
     } else {
-      window.location.href = getLoginUrl();
+      // User is not logged in, go to partner login page
+      window.location.href = "/partners/login";
     }
   };
 

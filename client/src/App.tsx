@@ -88,41 +88,42 @@ function Router() {
       <Route path={"/company/about"} component={About} />
       <Route path={"/company/leadership"} component={Leadership} />
        <Route path="/company/news" component={News} />
-      <Route path="/company/investors" component={InvestorRelations} />
       <Route path="/admin/leads" component={AdminLeadsDashboard} />
       <Route path="/legal/privacy" component={PrivacyPolicy} />
       <Route path="/legal/terms" component={TermsOfService} />
       <Route path="/company/investor-relations" component={InvestorRelations} />
       <Route path="/company/careers" component={Careers} />
       <Route path="/graph-demo" component={GraphDemo} />
-      <Route path={"/company/contact"} component={Contact} />
-      <Route path={"/partners"} component={Partners} />
-      <Route path={"/pricing"} component={Pricing} />
+      <Route path="/company/contact" component={Contact} />
+      <Route path="/partners" component={Partners} />
+      <Route path="/pricing" component={Pricing} />
       <Route path="/why/roi" component={ROICalculator} />
       <Route path="/why/advantages" component={PlatformAdvantages} />
       <Route path="/case-studies/energy-grid" component={EnergyGrid} />
       <Route path="/case-studies/intelligent-transportation" component={IntelligentTransportation} />
-      <Route path="/case-studies/public-safety" component={PublicSafety} />
-      <Route path="/platform/architecture" component={Architecture} />
       <Route path="/why/comparison" component={Comparison} />
       <Route path="/why/comparison-siem" component={ComparisonSIEM} />
+      <Route path="/platform/architecture" component={Architecture} />
       <Route path="/solutions/healthcare-cybersecurity" component={HealthcareCybersecurity} />
       <Route path="/solutions/financial-services-cybersecurity" component={FinancialServicesCybersecurity} />
       <Route path="/solutions/telecom-cybersecurity" component={TelecomCybersecurity} />
       <Route path="/solutions/government-federal" component={GovernmentFederal} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/resources"} component={Blog} />
-      <Route path={"/resources/videos"} component={Videos} />
-      <Route path={"/admin/login"} component={AdminLogin} />
       <Route path={"/admin"} component={AdminDashboard} />
+      <Route path={"/admin/login"} component={AdminLogin} />
       <Route path={"/admin/users"} component={AdminUsers} />
       <Route path={"/admin/security"} component={AdminSecurity} />
       <Route path={"/partners/dashboard"} component={PartnerDashboard} />
-      <Route path={"/partners/deals"} component={PartnerDeals} />      <Route path={"/ partners/resources"} component={PartnerResources} />
+      <Route path={"/partners/deals"} component={PartnerDeals} />
+      <Route path={"/partners/resources"} component={PartnerResources} />
+      <Route path={"/partners/login"} component={() => {
+        const PartnerLogin = require("@/pages/partner/Login").default;
+        return <PartnerLogin />;
+      }} />
       <Route path="/partners/mdf" component={PartnerMDF} />
       <Route path="/partners/analytics" component={PartnerAnalytics} />
-      <Route path="/partners/onboarding" component={() => {
-        const OnboardingWizard = require("@/pages/partner/OnboardingWizard").default;
+      <Route path="/partners/onboarding" component={() => {        const OnboardingWizard = require("@/pages/partner/OnboardingWizard").default;
         return <OnboardingWizard />;
       }} />
       <Route path={"/404"} component={NotFound} />  {/* Final fallback route */}
