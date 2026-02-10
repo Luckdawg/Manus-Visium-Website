@@ -1255,3 +1255,12 @@
 - [ ] Test deal retrieval and display
 - [ ] Test document management
 - [ ] Test error handling and edge cases
+
+
+## Partner Account Login System Fix (Feb 10, 2026)
+- [ ] Diagnose OAuth session persistence issues
+- [ ] Implement partner account recovery mechanism
+- [ ] Build partner login page with account recovery
+- [ ] Add account verification and security checks
+- [ ] Test partner login flow end-to-end
+- [ ] Ensure existing partners can access accounts reliably
