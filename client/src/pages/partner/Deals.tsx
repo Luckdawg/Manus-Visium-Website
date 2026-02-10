@@ -33,7 +33,7 @@ export default function PartnerDeals() {
       setShowForm(false);
       refetch();
     },
-    onError: (error) => {
+    onError: (error: any) => {
       setFormErrors({ submit: error.message });
     },
   });
@@ -191,7 +191,7 @@ export default function PartnerDeals() {
                   </tr>
                 </thead>
                 <tbody>
-                  {deals.map((deal) => (
+                  {deals.map((deal: any) => (
                     <tr key={deal.id} className="border-b hover:bg-gray-50">
                       <td className="py-3 px-4">{deal.dealName}</td>
                       <td className="py-3 px-4">{deal.customerName}</td>

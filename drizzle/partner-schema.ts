@@ -134,12 +134,14 @@ export const partnerDeals = mysqlTable("partner_deals", {
   // Deal details
   dealAmount: decimal("dealAmount", { precision: 15, scale: 2 }).notNull(),
   dealStage: mysqlEnum("dealStage", [
-    "Qualified Lead",
+    "Prospecting",
+    "Qualification",
+    "Needs Analysis",
     "Proposal",
     "Negotiation",
     "Closed Won",
     "Closed Lost"
-  ]).default("Qualified Lead").notNull(),
+  ]).default("Prospecting").notNull(),
   
   expectedCloseDate: timestamp("expectedCloseDate"),
   closedDate: timestamp("closedDate"),

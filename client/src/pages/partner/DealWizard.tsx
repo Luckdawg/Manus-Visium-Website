@@ -29,7 +29,7 @@ export default function DealWizard() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     dealName: "",
-    dealValue: 0,
+    dealAmount: 0,
     dealCurrency: "USD",
     dealStage: "Prospecting",
     expectedCloseDate: "",
@@ -49,7 +49,7 @@ export default function DealWizard() {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "dealValue" || name === "mdfRequested" ? parseFloat(value) || 0 : value,
+      [name]: name === "dealAmount" || name === "mdfRequested" ? parseFloat(value) || 0 : value,
     }));
   };
 
@@ -70,7 +70,7 @@ export default function DealWizard() {
         setStep(1);
         setFormData({
           dealName: "",
-          dealValue: 0,
+          dealAmount: 0,
           dealCurrency: "USD",
           dealStage: "Prospecting",
           expectedCloseDate: "",
@@ -182,8 +182,8 @@ export default function DealWizard() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">Deal Value *</label>
                     <input
                       type="number"
-                      name="dealValue"
-                      value={formData.dealValue}
+                      name="dealAmount"
+                      value={formData.dealAmount}
                       onChange={handleInputChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
                       placeholder="0.00"
@@ -341,7 +341,7 @@ export default function DealWizard() {
                     </div>
                     <div>
                       <p className="text-sm text-gray-600 mb-1">Deal Value</p>
-                      <p className="font-semibold text-gray-900">${formData.dealValue.toLocaleString()} {formData.dealCurrency}</p>
+                      <p className="font-semibold text-gray-900">${formData.dealAmount.toLocaleString()} {formData.dealCurrency}</p>
                     </div>
                     <div>
                       <p className="text-sm text-gray-600 mb-1">Customer</p>

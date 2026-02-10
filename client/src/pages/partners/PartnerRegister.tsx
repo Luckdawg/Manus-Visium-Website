@@ -72,7 +72,7 @@ export default function PartnerRegister() {
 
       // Auto-login after successful registration
       if (result.partnerId) {
-        localStorage.setItem('partnerSessionId', result.partnerId.toString());
+        localStorage.setItem('partnerId', result.partnerId.toString());
         // Force a small delay to ensure localStorage is written
         await new Promise(resolve => setTimeout(resolve, 100));
       }

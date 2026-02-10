@@ -1,0 +1,9 @@
+{
+  "query": "\nALTER TABLE partner_deals \nCHANGE COLUMN customerphone customerPhone VARCHAR(20),\nCHANGE COLUMN dealamount dealAmount DECIMAL(12,2),\nCHANGE COLUMN dealstage dealStage VARCHAR(50),\nCHANGE COLUMN expectedclosedate expectedCloseDate DATE,\nCHANGE COLUMN closeddate closedDate DATE,\nCHANGE COLUMN productinterest productInterest TEXT,\nCHANGE COLUMN commissionpercentage commissionPercentage DECIMAL(5,2),\nCHANGE COLUMN commissionamount commissionAmount DECIMAL(12,2),\nCHANGE COLUMN commissionpaid commissionPaid BOOLEAN,\nCHANGE COLUMN commissionpaiddate commissionPaidDate DATE,\nCHANGE COLUMN submittedby submittedBy INT,\nCHANGE COLUMN internalowner internalOwner VARCHAR(100),\nCHANGE COLUMN partnercompanyid partnerCompanyId INT;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2KQuguC66uRWakj.490d29c7f976 --database d8D2GoF7wZHc9ZPzYZfLpT --execute \nALTER TABLE partner_deals \nCHANGE COLUMN customerphone customerPhone VARCHAR(20),\nCHANGE COLUMN dealamount dealAmount DECIMAL(12,2),\nCHANGE COLUMN dealstage dealStage VARCHAR(50),\nCHANGE COLUMN expectedclosedate expectedCloseDate DATE,\nCHANGE COLUMN closeddate closedDate DATE,\nCHANGE COLUMN productinterest productInterest TEXT,\nCHANGE COLUMN commissionpercentage commissionPercentage DECIMAL(5,2),\nCHANGE COLUMN commissionamount commissionAmount DECIMAL(12,2),\nCHANGE COLUMN commissionpaid commissionPaid BOOLEAN,\nCHANGE COLUMN commissionpaiddate commissionPaidDate DATE,\nCHANGE COLUMN submittedby submittedBy INT,\nCHANGE COLUMN internalowner internalOwner VARCHAR(100),\nCHANGE COLUMN partnercompanyid partnerCompanyId INT;\n",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 4176
+}

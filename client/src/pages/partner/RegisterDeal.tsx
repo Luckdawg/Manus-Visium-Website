@@ -59,12 +59,12 @@ export default function RegisterDeal() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [successMessage, setSuccessMessage] = useState("");
 
-  const submitDealMutation = trpc.partner.submitDeal.useMutation({
+  const submitDealMutation = trpc.partner.createDeal.useMutation({
     onSuccess: () => {
       setSuccessMessage("Deal registered successfully!");
       setTimeout(() => navigate("/partners/deals"), 2000);
     },
-    onError: (error) => {
+    onError: (error: any) => {
       setErrors({ submit: error.message });
     }
   });

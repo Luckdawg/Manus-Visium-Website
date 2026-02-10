@@ -40,7 +40,7 @@ export default function PartnerLoginNew() {
 
       // Store partnerId in localStorage for dashboard access
       if (result.partnerId) {
-        localStorage.setItem('partnerSessionId', result.partnerId.toString());
+        localStorage.setItem('partnerId', result.partnerId.toString());
       }
 
       // Redirect to dashboard

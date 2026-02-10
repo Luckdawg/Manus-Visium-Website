@@ -18,10 +18,8 @@ const resourceTypeIcons: Record<string, React.ReactNode> = {
 
 export default function PartnerResources() {
   const { user, loading: authLoading } = useAuth();
-  const { data: resources, isLoading } = trpc.partner.getPartnerResources.useQuery(
-    { limit: 50 },
-    { enabled: !!user && user.role === "partner" }
-  );
+  const { data: resourcesData, isLoading } = trpc.partner.getResources.useQuery({});
+  const resources = resourcesData?.resources || [];
 
   if (authLoading || isLoading) {
     return (
@@ -66,7 +64,7 @@ export default function PartnerResources() {
       {/* Resources Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {resources && resources.length > 0 ? (
-          resources.map((resource) => (
+          resources.map((resource: any) => (
             <Card key={resource.id} className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-start justify-between">

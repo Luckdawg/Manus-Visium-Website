@@ -22,7 +22,7 @@ interface DealFormData {
   
   // Deal Details
   dealName: string;
-  dealValue: number;
+  dealAmount: number;
   dealCurrency: string;
   dealStage: string;
   expectedCloseDate: string;
@@ -83,7 +83,7 @@ export default function DealRegistrationWizard() {
     productName: "",
     productVersion: "",
     dealName: "",
-    dealValue: 0,
+    dealAmount: 0,
     dealCurrency: "USD",
     dealStage: "Prospect",
     expectedCloseDate: "",
@@ -126,7 +126,7 @@ export default function DealRegistrationWizard() {
       if (!formData.productName) newErrors.productName = "Product name is required";
     } else if (step === "details") {
       if (!formData.dealName) newErrors.dealName = "Deal name is required";
-      if (formData.dealValue <= 0) newErrors.dealValue = "Deal value must be greater than 0";
+      if (formData.dealAmount <= 0) newErrors.dealValue = "Deal value must be greater than 0";
       if (!formData.expectedCloseDate) newErrors.expectedCloseDate = "Expected close date is required";
     }
 
@@ -163,7 +163,7 @@ export default function DealRegistrationWizard() {
       await createDealMutation.mutateAsync({
         partnerId,
         dealName: formData.dealName,
-        dealValue: formData.dealValue,
+        dealAmount: formData.dealAmount,
         dealCurrency: formData.dealCurrency,
         dealStage: formData.dealStage,
         expectedCloseDate: formData.expectedCloseDate,
@@ -221,7 +221,7 @@ export default function DealRegistrationWizard() {
                     productName: "",
                     productVersion: "",
                     dealName: "",
-                    dealValue: 0,
+                    dealAmount: 0,
                     dealCurrency: "USD",
                     dealStage: "Prospect",
                     expectedCloseDate: "",
@@ -446,7 +446,7 @@ export default function DealRegistrationWizard() {
                     <input
                       type="number"
                       name="dealValue"
-                      value={formData.dealValue}
+                      value={formData.dealAmount}
                       onChange={handleChange}
                       className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition ${
                         errors.dealValue ? "border-red-500" : "border-gray-300"
@@ -587,7 +587,7 @@ export default function DealRegistrationWizard() {
                     </div>
                     <div>
                       <p className="text-xs text-gray-600">Deal Value</p>
-                      <p className="font-medium">${formData.dealValue.toLocaleString()} {formData.dealCurrency}</p>
+                      <p className="font-medium">${formData.dealAmount.toLocaleString()} {formData.dealCurrency}</p>
                     </div>
                     <div>
                       <p className="text-xs text-gray-600">Deal Stage</p>

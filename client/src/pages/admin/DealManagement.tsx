@@ -61,7 +61,7 @@ export default function DealManagement() {
     (deal.customerEmail?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false)
   ) || [];
 
-  const totalValue = deals?.reduce((sum, deal) => sum + Number(deal.dealAmount), 0) || 0;
+  const totalValue = deals?.reduce((sum: number, deal: any) => sum + Number(deal.dealAmount), 0) || 0;
   const wonDeals = deals?.filter(d => d.dealStage === "Closed Won").length || 0;
   const pendingDeals = deals?.filter(d => ["Qualified Lead", "Proposal", "Negotiation"].includes(d.dealStage)).length || 0;
 

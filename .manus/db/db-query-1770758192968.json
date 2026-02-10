@@ -1,0 +1,42 @@
+{
+  "query": "SELECT * FROM partner_deals ORDER BY createdAt DESC LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2KQuguC66uRWakj.490d29c7f976 --database d8D2GoF7wZHc9ZPzYZfLpT --execute SELECT * FROM partner_deals ORDER BY createdAt DESC LIMIT 5",
+  "rows": [
+    {
+      "id": "2",
+      "dealName": "Next-Gen Security Operations Center",
+      "partnerCompanyId": "4",
+      "customerName": "Elizabeth Thompson",
+      "customerEmail": "elizabeth.thompson@secureinnovate.com",
+      "dealAmount": "750000",
+      "dealStage": "Prospecting",
+      "expectedCloseDate": "NULL",
+      "description": "NULL",
+      "productInterest": "NULL",
+      "submittedBy": "1",
+      "notes": "NULL",
+      "createdAt": "2026-02-10 21:15:57",
+      "updatedAt": "2026-02-10 21:15:57"
+    },
+    {
+      "id": "1",
+      "dealName": "Advanced Cybersecurity Solutions Deployment",
+      "partnerCompanyId": "4",
+      "customerName": "James Mitchell",
+      "customerEmail": "james.mitchell@innovatecorp.com",
+      "dealAmount": "600000",
+      "dealStage": "Prospecting",
+      "expectedCloseDate": "NULL",
+      "description": "NULL",
+      "productInterest": "NULL",
+      "submittedBy": "1",
+      "notes": "NULL",
+      "createdAt": "2026-02-10 21:13:06",
+      "updatedAt": "2026-02-10 21:13:06"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tdealName\tpartnerCompanyId\tcustomerName\tcustomerEmail\tdealAmount\tdealStage\texpectedCloseDate\tdescription\tproductInterest\tsubmittedBy\tnotes\tcreatedAt\tupdatedAt\n2\tNext-Gen Security Operations Center\t4\tElizabeth Thompson\telizabeth.thompson@secureinnovate.com\t750000\tProspecting\tNULL\tNULL\tNULL\t1\tNULL\t2026-02-10 21:15:57\t2026-02-10 21:15:57\n1\tAdvanced Cybersecurity Solutions Deployment\t4\tJames Mitchell\tjames.mitchell@innovatecorp.com\t600000\tProspecting\tNULL\tNULL\tNULL\t1\tNULL\t2026-02-10 21:13:06\t2026-02-10 21:13:06\n",
+  "stderr": "",
+  "execution_time_ms": 414
+}

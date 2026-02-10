@@ -1,0 +1,1 @@
+ALTER TABLE `partner_deals` MODIFY COLUMN `dealStage` enum('Prospecting','Qualification','Needs Analysis','Proposal','Negotiation','Closed Won','Closed Lost') NOT NULL DEFAULT 'Prospecting';

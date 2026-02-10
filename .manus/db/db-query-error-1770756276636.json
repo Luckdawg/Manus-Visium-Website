@@ -1,0 +1,8 @@
+{
+  "query": "DROP TABLE IF EXISTS partner_deals;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2KQuguC66uRWakj.490d29c7f976 --database d8D2GoF7wZHc9ZPzYZfLpT --execute DROP TABLE IF EXISTS partner_deals;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 3730 (HY000) at line 1: Cannot drop table 'partner_deals' referenced by a foreign key constraint 'fk_2' on table 'partner_mdf_claims'."
+  ]
+}

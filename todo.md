@@ -1354,3 +1354,23 @@
 - [x] Test end-to-end partner registration, login, and deal submission flows
 - [x] Verify all database tables created and populated correctly
 - [x] Test partner dashboard displays correctly after login
+
+
+## Partner Portal - Deal Submission System (Feb 10, 2026)
+- [x] Fixed localStorage key bug: partnerSessionId → partnerId in PartnerLoginNew.tsx and PartnerRegister.tsx
+- [x] Fixed database column mismatches in createDeal procedure (dealValue → dealAmount)
+- [x] Fixed TypeScript errors in DealWizard.tsx (dealValue → dealAmount field names)
+- [x] Fixed dealAmount parsing in form state (added parseFloat for numeric conversion)
+- [x] Fixed database schema enum values for dealStage (added Prospecting, Qualification, Needs Analysis)
+- [x] Rewrote registration procedure to use raw SQL for reliable database inserts
+- [x] Fixed MDF claim insertion to use raw SQL with proper column mapping
+- [x] Dropped and recreated partner tables with correct schema
+- [x] Tested complete deal submission flow end-to-end
+- [x] Verified deals are saved to database successfully
+- [x] Added getPendingDeals procedure to admin router
+- [x] Added approveDeal procedure to admin router
+- [ ] Fix admin dashboard to display pending deals correctly
+- [ ] Create admin dashboard page component to call getPendingDeals
+- [ ] Add direct admin dashboard navigation link for easy access
+- [ ] Test deal approval workflow with commission calculations
+- [ ] Fix remaining TypeScript errors in partner pages

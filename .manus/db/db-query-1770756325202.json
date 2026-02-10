@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE `partner_deals` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `dealName` varchar(255) NOT NULL,\n  `partnerCompanyId` int NOT NULL,\n  `customerName` varchar(255),\n  `customerEmail` varchar(320),\n  `dealAmount` varchar(50),\n  `dealStage` enum('Prospecting','Qualification','Proposal','Negotiation','Closed Won','Closed Lost') DEFAULT 'Prospecting',\n  `expectedCloseDate` date,\n  `description` text,\n  `productInterest` text,\n  `submittedBy` int,\n  `notes` text,\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  CONSTRAINT `partner_deals_id` PRIMARY KEY(`id`),\n  KEY `company_idx` (`partnerCompanyId`),\n  KEY `stage_idx` (`dealStage`)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2KQuguC66uRWakj.490d29c7f976 --database d8D2GoF7wZHc9ZPzYZfLpT --execute CREATE TABLE `partner_deals` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `dealName` varchar(255) NOT NULL,\n  `partnerCompanyId` int NOT NULL,\n  `customerName` varchar(255),\n  `customerEmail` varchar(320),\n  `dealAmount` varchar(50),\n  `dealStage` enum('Prospecting','Qualification','Proposal','Negotiation','Closed Won','Closed Lost') DEFAULT 'Prospecting',\n  `expectedCloseDate` date,\n  `description` text,\n  `productInterest` text,\n  `submittedBy` int,\n  `notes` text,\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  CONSTRAINT `partner_deals_id` PRIMARY KEY(`id`),\n  KEY `company_idx` (`partnerCompanyId`),\n  KEY `stage_idx` (`dealStage`)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 512
+}

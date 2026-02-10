@@ -49,7 +49,7 @@ export default function PartnerMDF() {
       setShowForm(false);
       refetch();
     },
-    onError: (error) => {
+    onError: (error: any) => {
       setFormErrors({ submit: error.message });
     },
   });
@@ -94,10 +94,10 @@ export default function PartnerMDF() {
   }
 
   const totalBudget = Number(mdfInfo?.totalBudget) || 0;
-  const totalRequested = mdfInfo?.claims?.reduce((sum, claim) => sum + Number(claim.requestedAmount), 0) || 0;
+  const totalRequested = mdfInfo?.claims?.reduce((sum: number, claim: any) => sum + Number(claim.requestedAmount), 0) || 0;
   const totalApproved = mdfInfo?.claims
-    ?.filter((c) => c.status === "Approved" || c.status === "Paid")
-    .reduce((sum, claim) => sum + Number(claim.approvedAmount || 0), 0) || 0;
+    ?.filter((c: any) => c.status === "Approved" || c.status === "Paid")
+    .reduce((sum: number, claim: any) => sum + Number(claim.approvedAmount || 0), 0) || 0;
   const remainingBudget = totalBudget - totalApproved;
 
   return (
@@ -231,7 +231,7 @@ export default function PartnerMDF() {
         <CardContent>
           {mdfInfo?.claims && mdfInfo.claims.length > 0 ? (
             <div className="space-y-4">
-              {mdfInfo.claims.map((claim) => (
+              {mdfInfo.claims.map((claim: any) => (
                 <div key={claim.id} className="border rounded-lg p-4 hover:bg-gray-50">
                   <div className="flex items-start justify-between mb-2">
                     <div>

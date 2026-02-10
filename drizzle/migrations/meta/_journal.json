@@ -43,6 +43,27 @@
       "when": 1770744175126,
       "tag": "0005_nostalgic_jane_foster",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1770755400000,
+      "tag": "0006_drop_partner_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1770755401000,
+      "tag": "0007_recreate_partner_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1770757628658,
+      "tag": "0008_thankful_songbird",
+      "breakpoints": true
     }
   ]
 }

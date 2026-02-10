@@ -5,6 +5,7 @@ import { getDb } from "./db";
 import { users, auditLogs } from "../drizzle/schema";
 import { eq, and, ne } from "drizzle-orm";
 import bcrypt from "bcryptjs";
+import { executeRawSQL } from "./db";
 
 // Helper to check if user has admin privileges
 async function requireAdmin(ctx: any) {
@@ -315,5 +316,61 @@ export const adminRouter = router({
         .offset(input.offset);
 
       return logs;
+    }),
+
+  // Get pending partner deals for approval
+  getPendingDeals: publicProcedure.query(async ({ ctx }) => {
+    const { user, db } = await requireAdmin(ctx);
+
+    try {
+      const deals = await executeRawSQL(
+        `SELECT pd.*, pc.companyName, pc.primaryContactName, pc.primaryContactEmail FROM partner_deals pd LEFT JOIN partner_companies pc ON pd.partnerCompanyId = pc.id ORDER BY pd.createdAt DESC`
+      );
+
+      return {
+        deals: deals || [],
+        totalCount: (deals || []).length,
+        pendingCount: (deals || []).filter((d: any) => d.dealStatus !== "Approved").length,
+      };
+    } catch (error) {
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Failed to fetch pending deals: " + (error as any).message,
+      });
+    }
+  }),
+
+  // Approve a partner deal
+  approveDeal: publicProcedure
+    .input(
+      z.object({
+        dealId: z.number(),
+        commissionPercentage: z.number().min(0).max(100),
+        approvalNotes: z.string().optional(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const { user, db } = await requireAdmin(ctx);
+
+      try {
+        // Update deal status to Approved
+        await executeRawSQL(
+          `UPDATE partner_deals SET dealStatus = ?, commissionPercentage = ?, approvedBy = ?, approvedAt = NOW() WHERE id = ?`,
+          ["Approved", input.commissionPercentage, user.id, input.dealId]
+        );
+
+        // Log the approval
+        await logAudit(db, user.id, "DEAL_APPROVED", "partner_deals", input.dealId, {
+          commissionPercentage: input.commissionPercentage,
+          approvalNotes: input.approvalNotes,
+        });
+
+        return { success: true, message: "Deal approved successfully" };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to approve deal: " + (error as any).message,
+        });
+      }
     }),
 });

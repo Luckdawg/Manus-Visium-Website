@@ -31,9 +31,8 @@ export default function ResourcesLibrary() {
   const [selectedType, setSelectedType] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const { data: resources, isLoading, error } = trpc.partner.getPartnerResources.useQuery({
-    limit: 100,
-  });
+  const { data: resourcesData, isLoading, error } = trpc.partner.getResources.useQuery({});
+  const resources = resourcesData?.resources || [];
 
   if (!user) {
     return (
@@ -53,7 +52,7 @@ export default function ResourcesLibrary() {
   }
 
   // Filter resources
-  const filteredResources = resources?.filter(resource => {
+  const filteredResources = resources?.filter((resource: any) => {
     const matchesType = selectedType === "all" || resource.resourceType === selectedType;
     const matchesSearch = resource.resourceName.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          resource.description?.toLowerCase().includes(searchQuery.toLowerCase());
