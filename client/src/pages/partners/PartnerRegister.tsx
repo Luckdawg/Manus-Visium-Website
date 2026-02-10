@@ -73,12 +73,13 @@ export default function PartnerRegister() {
       // Auto-login after successful registration
       if (result.partnerId) {
         localStorage.setItem('partnerSessionId', result.partnerId.toString());
+        // Force a small delay to ensure localStorage is written
+        await new Promise(resolve => setTimeout(resolve, 100));
       }
 
       setStep("success");
-      setTimeout(() => {
-        navigate("/partners/dashboard");
-      }, 2000)
+      // Redirect immediately to dashboard
+      navigate("/partners/dashboard")
     } catch (error: any) {
       setApiError(error.message || "Registration failed. Please try again.");
     }
