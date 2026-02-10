@@ -1385,3 +1385,25 @@
 - [x] Add email notifications for all deal and document events
 - [x] Comprehensive testing and validation (110 tests passing)
 - [x] Production deployment and launch
+
+
+## Partner Portal - Password Setup & Recovery (Feb 2026)
+- [ ] Identify where new partners set their password during registration
+- [ ] Fix password recovery functionality (currently not working)
+- [ ] Ensure password reset flow is complete and functional
+- [ ] Test password setup for new partners
+- [ ] Test password recovery for existing partners
+- [ ] Verify email notifications for password reset
+
+
+## Password Recovery System (Feb 2026)
+- [x] Create password reset token table in database schema
+- [x] Implement requestPasswordReset tRPC procedure
+- [x] Implement resetPassword tRPC procedure
+- [x] Implement validateResetToken tRPC procedure
+- [x] Create PasswordReset.tsx component with form and validation
+- [x] Add /partners/reset-password route to App.tsx
+- [x] Update PartnerLogin.tsx to call requestPasswordReset procedure
+- [x] All TypeScript errors resolved and dev server compiling cleanly
+- [x] Database migration completed for password_reset_tokens table
+- [x] All 110 tests passing

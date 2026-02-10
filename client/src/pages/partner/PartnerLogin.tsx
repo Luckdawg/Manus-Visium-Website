@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import { AlertCircle, CheckCircle2, Mail } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 
 export default function PartnerLogin() {
   const { user, isAuthenticated, loading } = useAuth();
@@ -23,14 +24,17 @@ export default function PartnerLogin() {
     }
 
     try {
-      // In a real implementation, this would call a tRPC procedure
-      // For now, we'll just show a success message
-      setRecoverySubmitted(true);
-      setRecoveryEmail("");
-      setTimeout(() => {
-        setRecoverySubmitted(false);
-        setShowRecovery(false);
-      }, 5000);
+      const recoveryMutation = trpc.partner.requestPasswordReset.useMutation();
+      const result = await recoveryMutation.mutateAsync({ email: recoveryEmail });
+      
+      if (result.success) {
+        setRecoverySubmitted(true);
+        setRecoveryEmail("");
+        setTimeout(() => {
+          setRecoverySubmitted(false);
+          setShowRecovery(false);
+        }, 5000);
+      }
     } catch (error) {
       setRecoveryError("Failed to send recovery email. Please try again.");
     }

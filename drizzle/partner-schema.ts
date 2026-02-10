@@ -639,3 +639,33 @@ export const partnerContacts = mysqlTable("partner_contacts", {
   partnerIdx: index("partner_idx").on(table.partnerCompanyId),
   emailIdx: index("email_idx").on(table.contactEmail),
 }));
+
+
+/**
+ * Partner Password Reset Tokens - For password recovery flow
+ */
+export const partnerPasswordResetTokens = mysqlTable("partner_password_reset_tokens", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  
+  // Secure token for password reset
+  token: varchar("token", { length: 255 }).notNull().unique(),
+  
+  // Token expiration (typically 1 hour)
+  expiresAt: timestamp("expiresAt").notNull(),
+  
+  // Track if token was used
+  usedAt: timestamp("usedAt"),
+  isUsed: boolean("isUsed").default(false).notNull(),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => ({
+  userIdx: index("user_idx").on(table.userId),
+  emailIdx: index("email_idx").on(table.email),
+  tokenIdx: index("token_idx").on(table.token),
+  expiresIdx: index("expires_idx").on(table.expiresAt),
+}));
+
+export type PartnerPasswordResetToken = typeof partnerPasswordResetTokens.$inferSelect;
+export type InsertPartnerPasswordResetToken = typeof partnerPasswordResetTokens.$inferInsert;

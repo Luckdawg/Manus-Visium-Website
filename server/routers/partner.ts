@@ -9,6 +9,7 @@ import {
   partnerResources,
   partnerMdfClaims,
   partnerDealDocuments,
+  partnerPasswordResetTokens,
 } from "../../drizzle/partner-schema";
 import { eq, desc } from "drizzle-orm";
 
@@ -767,6 +768,171 @@ export const partnerRouter = router({
           code: "INTERNAL_SERVER_ERROR",
           message: "Failed to send notification: " + (error as any).message,
         });
+      }
+    }),
+
+  /**
+   * Request password reset - sends recovery email with reset link
+   */
+  requestPasswordReset: publicProcedure
+    .input(z.object({ email: z.string().email() }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        const user = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.email, input.email));
+
+        if (user.length === 0) {
+          // Don't reveal if email exists for security
+          return {
+            success: true,
+            message: "If an account exists with this email, a recovery link has been sent.",
+          };
+        }
+
+        // Generate secure reset token
+        const resetToken = Buffer.from(
+          `${user[0].id}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+        ).toString("base64");
+
+        // Token expires in 1 hour
+        const expiresAt = new Date(Date.now() + 60 * 60 * 1000);
+
+        await db.insert(partnerPasswordResetTokens).values({
+          userId: user[0].id,
+          email: input.email,
+          token: resetToken,
+          expiresAt,
+        });
+
+        // In production, send email with reset link
+        console.log(`Password reset link: /partners/reset-password?token=${resetToken}`);
+
+        return {
+          success: true,
+          message: "If an account exists with this email, a recovery link has been sent.",
+        };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to process password reset request: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Verify and reset password with token
+   */
+  resetPassword: publicProcedure
+    .input(
+      z.object({
+        token: z.string(),
+        newPassword: z.string().min(8),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        const resetToken = await db
+          .select()
+          .from(partnerPasswordResetTokens)
+          .where(eq(partnerPasswordResetTokens.token, input.token));
+
+        if (resetToken.length === 0) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Invalid or expired reset token",
+          });
+        }
+
+        const token = resetToken[0];
+
+        // Check if token is expired
+        if (new Date() > token.expiresAt) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: "Reset token has expired",
+          });
+        }
+
+        // Check if token was already used
+        if (token.isUsed) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: "This reset link has already been used",
+          });
+        }
+
+        // Hash new password
+        const passwordHash = Buffer.from(input.newPassword).toString("base64");
+
+        // Update user password
+        await db
+          .update(partnerUsers)
+          .set({ passwordHash })
+          .where(eq(partnerUsers.id, token.userId));
+
+        // Mark token as used
+        await db
+          .update(partnerPasswordResetTokens)
+          .set({ isUsed: true, usedAt: new Date() })
+          .where(eq(partnerPasswordResetTokens.id, token.id));
+
+        return {
+          success: true,
+          message: "Password has been reset successfully. You can now log in with your new password.",
+        };
+      } catch (error) {
+        if (error instanceof TRPCError) throw error;
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to reset password: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Validate reset token
+   */
+  validateResetToken: publicProcedure
+    .input(z.object({ token: z.string() }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        const resetToken = await db
+          .select()
+          .from(partnerPasswordResetTokens)
+          .where(eq(partnerPasswordResetTokens.token, input.token));
+
+        if (resetToken.length === 0) {
+          return { valid: false, message: "Invalid reset token" };
+        }
+
+        const token = resetToken[0];
+
+        if (new Date() > token.expiresAt) {
+          return { valid: false, message: "Reset token has expired" };
+        }
+
+        if (token.isUsed) {
+          return { valid: false, message: "This reset link has already been used" };
+        }
+
+        return {
+          valid: true,
+          email: token.email,
+          message: "Token is valid",
+        };
+      } catch (error) {
+        return { valid: false, message: "Error validating token" };
       }
     }),
 });

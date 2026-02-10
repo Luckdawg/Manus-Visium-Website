@@ -62,8 +62,8 @@ import AdminDealApproval from "@/pages/admin/AdminDealApproval";
 import DealRegistrationWizard from "./pages/partner/DealRegistrationWizard";
 import PartnerMDF from "./pages/partner/MDF";
 import PartnerAnalytics from "./pages/partner/Analytics";
-import PartnerLogin from "./pages/partner/Login";
-import PartnerLoginNew from "./pages/partners/PartnerLoginNew";
+import PartnerLogin from "./pages/partner/PartnerLogin";
+import PasswordReset from "./pages/partner/PasswordReset";
 import PartnerRegister from "./pages/partners/PartnerRegister";
 import PartnerManagement from "./pages/admin/PartnerManagement";
 import OnboardingWizard from "./pages/partner/OnboardingWizard";
@@ -127,7 +127,8 @@ function Router() {
       <Route path="/admin/security" component={AdminSecurity} />
       <Route path="/admin/partners" component={PartnerManagement} />
 
-      <Route path="/partners/login" component={PartnerLoginNew} />
+      <Route path="/partners/login" component={PartnerLogin} />
+      <Route path="/partners/reset-password" component={PasswordReset} />
       <Route path="/partners/register" component={PartnerRegister} />
       <Route path="/partners/onboarding" component={OnboardingWizard} />
       <Route path="/partners/dashboard" component={PartnerDashboard} />

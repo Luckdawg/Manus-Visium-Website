@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS `partner_password_reset_tokens` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `userId` int NOT NULL,\n  `email` varchar(320) NOT NULL,\n  `token` varchar(255) NOT NULL UNIQUE,\n  `expiresAt` timestamp NOT NULL,\n  `usedAt` timestamp,\n  `isUsed` boolean NOT NULL DEFAULT false,\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  PRIMARY KEY (`id`),\n  KEY `user_idx` (`userId`),\n  KEY `email_idx` (`email`),\n  KEY `token_idx` (`token`),\n  KEY `expires_idx` (`expiresAt`)\n)",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2KQuguC66uRWakj.490d29c7f976 --database d8D2GoF7wZHc9ZPzYZfLpT --execute CREATE TABLE IF NOT EXISTS `partner_password_reset_tokens` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `userId` int NOT NULL,\n  `email` varchar(320) NOT NULL,\n  `token` varchar(255) NOT NULL UNIQUE,\n  `expiresAt` timestamp NOT NULL,\n  `usedAt` timestamp,\n  `isUsed` boolean NOT NULL DEFAULT false,\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  PRIMARY KEY (`id`),\n  KEY `user_idx` (`userId`),\n  KEY `email_idx` (`email`),\n  KEY `token_idx` (`token`),\n  KEY `expires_idx` (`expiresAt`)\n)",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 579
+}
