@@ -8,6 +8,7 @@ import {
   partnerDeals,
   partnerResources,
   partnerMdfClaims,
+  partnerDealDocuments,
 } from "../../drizzle/partner-schema";
 import { eq, desc } from "drizzle-orm";
 
@@ -627,6 +628,144 @@ export const partnerRouter = router({
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
           message: "Failed to create deal: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Get documents for a specific deal
+   */
+  getDealDocuments: publicProcedure
+    .input(z.object({ dealId: z.number() }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        const documents = await db
+          .select()
+          .from(partnerDealDocuments)
+          .where(eq(partnerDealDocuments.dealId, input.dealId))
+          .orderBy(desc(partnerDealDocuments.createdAt));
+
+        return documents;
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to fetch documents: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Upload a document for a deal
+   */
+  uploadDealDocument: publicProcedure
+    .input(
+      z.object({
+        dealId: z.number(),
+        fileName: z.string(),
+        fileData: z.string(),
+        fileMimeType: z.string(),
+        fileSize: z.number(),
+        documentType: z.string(),
+        description: z.string().optional(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        const fileUrl = `data:${input.fileMimeType};base64,${input.fileData.split(",")[1] || input.fileData}`;
+
+        const result = await db.insert(partnerDealDocuments).values({
+          dealId: input.dealId,
+          fileName: input.fileName,
+          fileUrl,
+          fileSize: input.fileSize,
+          fileMimeType: input.fileMimeType,
+          documentType: input.documentType as any,
+          uploadedBy: 1,
+          description: input.description,
+        });
+
+        return {
+          success: true,
+          documentId: (result as any).insertId,
+          message: "Document uploaded successfully",
+        };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to upload document: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Delete a document
+   */
+  deleteDealDocument: publicProcedure
+    .input(z.object({ documentId: z.number() }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        await db
+          .delete(partnerDealDocuments)
+          .where(eq(partnerDealDocuments.id, input.documentId));
+
+        return { success: true, message: "Document deleted successfully" };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to delete document: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Send notification to partner
+   */
+  sendPartnerNotification: publicProcedure
+    .input(
+      z.object({
+        partnerId: z.number(),
+        title: z.string(),
+        message: z.string(),
+        type: z.enum(["deal_approved", "deal_rejected", "document_uploaded", "mdf_approved"]),
+      })
+    )
+    .mutation(async ({ input }) => {
+      try {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        const user = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.id, input.partnerId));
+
+        if (user.length === 0) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Partner user not found",
+          });
+        }
+
+        // In production, integrate with email service
+        console.log(`Notification sent to ${user[0].email}: ${input.title}`);
+
+        return {
+          success: true,
+          message: "Notification sent successfully",
+        };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to send notification: " + (error as any).message,
         });
       }
     }),
