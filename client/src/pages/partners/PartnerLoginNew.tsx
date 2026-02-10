@@ -33,12 +33,17 @@ export default function PartnerLoginNew() {
     if (!validateForm()) return;
 
     try {
-      await loginMutation.mutateAsync({
+      const result = await loginMutation.mutateAsync({
         email,
         password,
       });
 
-      // Redirect to dashboard (token is stored in session cookie automatically)
+      // Store partnerId in localStorage for dashboard access
+      if (result.partnerId) {
+        localStorage.setItem('partnerSessionId', result.partnerId.toString());
+      }
+
+      // Redirect to dashboard
       setTimeout(() => {
         navigate("/partners/dashboard");
       }, 500);

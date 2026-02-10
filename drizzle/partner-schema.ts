@@ -1,4 +1,5 @@
 import { int, varchar, text, timestamp, decimal, mysqlTable, mysqlEnum, boolean, index, json } from "drizzle-orm/mysql-core";
+import { sql } from "drizzle-orm";
 
 /**
  * Partner Companies - Registered partner organizations
@@ -98,8 +99,8 @@ export const partnerUsers = mysqlTable("partner_users", {
   ]).default("Sales Rep").notNull(),
   
   isActive: boolean("isActive").default(true),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow().onUpdateNow(),
 }, (table) => ({
   partnerIdx: index("partner_idx").on(table.partnerCompanyId),
   userIdx: index("user_idx").on(table.userId),

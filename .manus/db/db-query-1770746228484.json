@@ -1,0 +1,64 @@
+{
+  "query": "SHOW CREATE TABLE partner_users\\G",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2KQuguC66uRWakj.490d29c7f976 --database d8D2GoF7wZHc9ZPzYZfLpT --execute SHOW CREATE TABLE partner_users\\G",
+  "rows": [
+    {
+      "*************************** 1. row ***************************": "       Table: partner_users"
+    },
+    {
+      "*************************** 1. row ***************************": "Create Table: CREATE TABLE `partner_users` ("
+    },
+    {
+      "*************************** 1. row ***************************": "  `id` int(11) NOT NULL AUTO_INCREMENT,"
+    },
+    {
+      "*************************** 1. row ***************************": "  `userId` int(11) DEFAULT NULL,"
+    },
+    {
+      "*************************** 1. row ***************************": "  `partnerCompanyId` int(11) NOT NULL,"
+    },
+    {
+      "*************************** 1. row ***************************": "  `email` varchar(320) COLLATE utf8mb4_unicode_ci DEFAULT NULL,"
+    },
+    {
+      "*************************** 1. row ***************************": "  `passwordHash` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,"
+    },
+    {
+      "*************************** 1. row ***************************": "  `emailVerified` tinyint(1) DEFAULT '0',"
+    },
+    {
+      "*************************** 1. row ***************************": "  `contactName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,"
+    },
+    {
+      "*************************** 1. row ***************************": "  `phone` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,"
+    },
+    {
+      "*************************** 1. row ***************************": "  `partnerRole` enum('Admin','Account Manager','Sales Rep','Technical','Finance','Support','Other') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Sales Rep',"
+    },
+    {
+      "*************************** 1. row ***************************": "  `isActive` tinyint(1) DEFAULT '1',"
+    },
+    {
+      "*************************** 1. row ***************************": "  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,"
+    },
+    {
+      "*************************** 1. row ***************************": "  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,"
+    },
+    {
+      "*************************** 1. row ***************************": "  PRIMARY KEY (`id`) /*T![clustered_index] CLUSTERED */,"
+    },
+    {
+      "*************************** 1. row ***************************": "  KEY `email_idx` (`email`),"
+    },
+    {
+      "*************************** 1. row ***************************": "  UNIQUE KEY `email` (`email`)"
+    },
+    {
+      "*************************** 1. row ***************************": ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=30001"
+    }
+  ],
+  "messages": [],
+  "stdout": "*************************** 1. row ***************************\n       Table: partner_users\nCreate Table: CREATE TABLE `partner_users` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `userId` int(11) DEFAULT NULL,\n  `partnerCompanyId` int(11) NOT NULL,\n  `email` varchar(320) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `passwordHash` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `emailVerified` tinyint(1) DEFAULT '0',\n  `contactName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `phone` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `partnerRole` enum('Admin','Account Manager','Sales Rep','Technical','Finance','Support','Other') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Sales Rep',\n  `isActive` tinyint(1) DEFAULT '1',\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`id`) /*T![clustered_index] CLUSTERED */,\n  KEY `email_idx` (`email`),\n  UNIQUE KEY `email` (`email`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=30001\n",
+  "stderr": "",
+  "execution_time_ms": 362
+}

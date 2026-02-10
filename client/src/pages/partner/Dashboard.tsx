@@ -4,14 +4,27 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, TrendingUp, FileText, DollarSign, Users } from "lucide-react";
 import { Link } from "wouter";
+import { useEffect, useState } from "react";
 
 export default function PartnerDashboard() {
-  const { user, loading: authLoading } = useAuth();
-  const { data: summary, isLoading } = trpc.partner.getDashboardSummary.useQuery(undefined, {
-    enabled: !!user && user.role === "partner",
-  });
+  const [partnerId, setPartnerId] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (authLoading || isLoading) {
+  useEffect(() => {
+    // Get partnerId from localStorage
+    const sessionId = localStorage.getItem('partnerSessionId');
+    if (sessionId) {
+      setPartnerId(parseInt(sessionId, 10));
+    }
+    setIsLoading(false);
+  }, []);
+
+  const { data: summary, isLoading: summaryLoading } = trpc.partner.getDashboardSummary.useQuery(
+    { partnerId: partnerId || 0 },
+    { enabled: !!partnerId }
+  );
+
+  if (isLoading || summaryLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -19,7 +32,7 @@ export default function PartnerDashboard() {
     );
   }
 
-  if (!user || user.role !== "partner") {
+  if (!partnerId) {
     return (
       <div className="container py-12">
         <div className="text-center">
@@ -48,73 +61,60 @@ export default function PartnerDashboard() {
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{summary?.recentDeals?.length || 0}</div>
-            <p className="text-xs text-muted-foreground">Deals in pipeline</p>
+            <div className="text-2xl font-bold">{summary?.activeDealCount || 0}</div>
+            <p className="text-xs text-muted-foreground">Deals in progress</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">${summary?.totalRevenue?.toLocaleString() || 0}</div>
+            <p className="text-xs text-muted-foreground">All time</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">MDF Available</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">${summary?.mdfAvailable?.toLocaleString() || 0}</div>
+            <p className="text-xs text-muted-foreground">Marketing Development Funds</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Commission Rate</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{summary?.commissionRate}%</div>
-            <p className="text-xs text-muted-foreground">Standard rate</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">MDF Budget</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">${summary?.mdfBudget}</div>
-            <p className="text-xs text-muted-foreground">Annual allocation</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Partner Tier</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{summary?.tier || "Standard"}</div>
-            <p className="text-xs text-muted-foreground">Current status</p>
+            <div className="text-2xl font-bold">{summary?.commissionRate || 0}%</div>
+            <p className="text-xs text-muted-foreground">Current rate</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Quick Actions */}
-      <div className="mb-8">
-        <h2 className="text-xl font-bold mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Link href="/partners/deals">
-            <Button variant="outline" className="w-full">
-              Submit Deal
-            </Button>
-          </Link>
-          <Link href="/partners/resources">
-            <Button variant="outline" className="w-full">
-              View Resources
-            </Button>
-          </Link>
-          <Link href="/partners/mdf">
-            <Button variant="outline" className="w-full">
-              Submit MDF Claim
-            </Button>
-          </Link>
-          <Link href="/partners/analytics">
-            <Button variant="outline" className="w-full">
-              View Analytics
-            </Button>
-          </Link>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <Link href="/partner/deals/new">
+          <Button className="w-full" size="lg">
+            Submit New Deal
+          </Button>
+        </Link>
+        <Link href="/partner/resources">
+          <Button variant="outline" className="w-full" size="lg">
+            View Resources
+          </Button>
+        </Link>
       </div>
 
-      {/* Recent Deals */}
+      {/* Recent Activity */}
       <Card>
         <CardHeader>
           <CardTitle>Recent Deals</CardTitle>
@@ -122,26 +122,21 @@ export default function PartnerDashboard() {
         <CardContent>
           {summary?.recentDeals && summary.recentDeals.length > 0 ? (
             <div className="space-y-4">
-              {summary.recentDeals.map((deal) => (
-                <div key={deal.id} className="flex items-center justify-between border-b pb-4 last:border-b-0">
+              {summary.recentDeals.map((deal: any) => (
+                <div key={deal.id} className="flex items-center justify-between border-b pb-4">
                   <div>
                     <p className="font-medium">{deal.dealName}</p>
-                    <p className="text-sm text-gray-600">{deal.customerName}</p>
+                    <p className="text-sm text-gray-600">{deal.status}</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-medium">${deal.dealAmount}</p>
-                    <p className="text-sm text-gray-600">{deal.dealStage}</p>
+                    <p className="font-medium">${deal.dealValue?.toLocaleString()}</p>
+                    <p className="text-sm text-gray-600">{deal.submittedDate}</p>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-center py-8">
-              <p className="text-gray-600 mb-4">No deals yet</p>
-              <Link href="/partners/deals">
-                <Button>Submit Your First Deal</Button>
-              </Link>
-            </div>
+            <p className="text-gray-600">No recent deals</p>
           )}
         </CardContent>
       </Card>

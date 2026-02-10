@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO partner_users (partnerCompanyId, email, passwordHash, contactName, phone, partnerRole, isActive) VALUES (1, 'test@example.com', 'hash', 'Test User', '555-1234', 'Admin', true);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2KQuguC66uRWakj.490d29c7f976 --database d8D2GoF7wZHc9ZPzYZfLpT --execute INSERT INTO partner_users (partnerCompanyId, email, passwordHash, contactName, phone, partnerRole, isActive) VALUES (1, 'test@example.com', 'hash', 'Test User', '555-1234', 'Admin', true);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 433
+}

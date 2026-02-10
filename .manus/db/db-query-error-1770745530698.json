@@ -1,0 +1,8 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS __drizzle_migrations__ (\n  id SERIAL PRIMARY KEY,\n  hash text NOT NULL UNIQUE,\n  created_at bigint\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2KQuguC66uRWakj.490d29c7f976 --database d8D2GoF7wZHc9ZPzYZfLpT --execute CREATE TABLE IF NOT EXISTS __drizzle_migrations__ (\n  id SERIAL PRIMARY KEY,\n  hash text NOT NULL UNIQUE,\n  created_at bigint\n);",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1170 (42000) at line 1: BLOB/TEXT column 'hash' used in key specification without a key length"
+  ]
+}

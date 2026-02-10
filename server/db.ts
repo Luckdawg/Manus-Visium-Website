@@ -2,8 +2,10 @@ import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
+import mysql from 'mysql2/promise';
 
 let _db: ReturnType<typeof drizzle> | null = null;
+let _pool: mysql.Pool | null = null;
 
 // Lazily create the drizzle instance so local tooling can run without a DB.
 export async function getDb() {
@@ -16,6 +18,19 @@ export async function getDb() {
     }
   }
   return _db;
+}
+
+// Get the MySQL connection pool for raw SQL queries
+async function getPool() {
+  if (!_pool && process.env.DATABASE_URL) {
+    try {
+      _pool = mysql.createPool(process.env.DATABASE_URL);
+    } catch (error) {
+      console.error("[Database] Failed to create pool:", error);
+      _pool = null;
+    }
+  }
+  return _pool;
 }
 
 export async function upsertUser(user: InsertUser): Promise<void> {
@@ -87,6 +102,26 @@ export async function getUserByOpenId(openId: string) {
   const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
 
   return result.length > 0 ? result[0] : undefined;
+}
+
+// Helper function to execute raw SQL queries
+export async function executeRawSQL(sql: string, params: any[] = []): Promise<any> {
+  const pool = await getPool();
+  if (!pool) {
+    throw new Error("Database pool not available");
+  }
+  try {
+    const connection = await pool.getConnection();
+    try {
+      const [result] = await connection.query(sql, params);
+      return result;
+    } finally {
+      connection.release();
+    }
+  } catch (error) {
+    console.error("[Database] SQL execution error:", error);
+    throw error;
+  }
 }
 
 // TODO: add feature queries here as your schema grows.
