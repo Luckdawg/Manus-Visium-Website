@@ -531,3 +531,98 @@ export const partnerOnboardingSessions = mysqlTable("partner_onboarding_sessions
   createdAt: timestamp("createdAt").defaultNow(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow(),
 });
+
+// Export types for new tables
+export type PartnerDealDocument = typeof partnerDealDocuments.$inferSelect;
+export type InsertPartnerDealDocument = typeof partnerDealDocuments.$inferInsert;
+
+export type PartnerDealQualification = typeof partnerDealQualifications.$inferSelect;
+export type InsertPartnerDealQualification = typeof partnerDealQualifications.$inferInsert;
+
+export type PartnerContact = typeof partnerContacts.$inferSelect;
+export type InsertPartnerContact = typeof partnerContacts.$inferInsert;
+
+
+/**
+ * Partner Deal Documents - Files uploaded for specific deals
+ */
+export const partnerDealDocuments = mysqlTable("partner_deal_documents", {
+  id: int("id").autoincrement().primaryKey(),
+  dealId: int("dealId").notNull(),
+  
+  fileName: varchar("fileName", { length: 255 }).notNull(),
+  fileUrl: varchar("fileUrl", { length: 512 }).notNull(),
+  fileSize: int("fileSize").notNull(),
+  fileMimeType: varchar("fileMimeType", { length: 100 }).notNull(),
+  
+  documentType: mysqlEnum("documentType", [
+    "Proposal",
+    "Contract",
+    "Technical Specifications",
+    "Implementation Plan",
+    "Pricing Quote",
+    "Customer Reference",
+    "Compliance Document",
+    "Other"
+  ]).notNull(),
+  
+  uploadedBy: int("uploadedBy").notNull(),
+  description: text("description"),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  dealIdx: index("deal_idx").on(table.dealId),
+  typeIdx: index("type_idx").on(table.documentType),
+}));
+
+/**
+ * Partner Deal Qualifications - Qualification checklist for deals
+ */
+export const partnerDealQualifications = mysqlTable("partner_deal_qualifications", {
+  id: int("id").autoincrement().primaryKey(),
+  dealId: int("dealId").notNull().unique(),
+  
+  budgetConfirmed: boolean("budgetConfirmed").default(false),
+  decisionMakerIdentified: boolean("decisionMakerIdentified").default(false),
+  competitiveLandscapeAnalyzed: boolean("competitiveLandscapeAnalyzed").default(false),
+  
+  competitiveLandscapeDetails: text("competitiveLandscapeDetails"),
+  qualificationNotes: text("qualificationNotes"),
+  qualificationScore: int("qualificationScore").default(0),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  dealIdx: index("deal_idx").on(table.dealId),
+}));
+
+/**
+ * Partner Contacts - Account Executives and contacts within partner companies
+ */
+export const partnerContacts = mysqlTable("partner_contacts", {
+  id: int("id").autoincrement().primaryKey(),
+  partnerCompanyId: int("partnerCompanyId").notNull(),
+  
+  contactName: varchar("contactName", { length: 255 }).notNull(),
+  contactTitle: varchar("contactTitle", { length: 100 }),
+  contactEmail: varchar("contactEmail", { length: 320 }).notNull(),
+  contactPhone: varchar("contactPhone", { length: 50 }),
+  
+  contactType: mysqlEnum("contactType", [
+    "Account Executive",
+    "Sales Manager",
+    "Technical Lead",
+    "Finance Contact",
+    "Other"
+  ]).notNull(),
+  
+  isPrimary: boolean("isPrimary").default(false),
+  isActive: boolean("isActive").default(true),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  partnerIdx: index("partner_idx").on(table.partnerCompanyId),
+  emailIdx: index("email_idx").on(table.contactEmail),
+}));

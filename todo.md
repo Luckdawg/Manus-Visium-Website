@@ -1192,3 +1192,66 @@
 - [x] Test resource filtering and search
 - [x] Test deal metrics calculations
 - [x] Test error handling
+
+
+## CRITICAL: Partner Account Access Fix (Feb 10, 2026)
+- [ ] Diagnose partner login authentication issue
+- [ ] Fix partner account access and session management
+- [ ] Verify existing partners can log in successfully
+- [ ] Test account recovery workflow
+
+## Enhanced Deal Registration System (Feb 10, 2026)
+
+### Database Schema Enhancements
+- [ ] Add comprehensive deal fields to partner_deals table
+- [ ] Create partner_deal_documents table for file uploads
+- [ ] Add deal_qualifications table for qualification checklist
+- [ ] Add partner_contacts table for partner AE details
+- [ ] Create database migration for all new tables
+
+### Deal Registration Form Enhancements
+- [ ] Customer company information section (name, country, region, city, state, industry)
+- [ ] Customer contact section (name, title, email, phone)
+- [ ] Opportunity details section (name, description, use case)
+- [ ] Products/solutions section (SKU, solution picklist)
+- [ ] Deal value section (total contract value, currency, software vs services breakdown)
+- [ ] Timeline section (estimated close date, contract dates)
+- [ ] Partner contact section (AE name, email, phone)
+- [ ] Qualification checklist (budget confirmed, decision-maker, competitive landscape)
+- [ ] Form validation for all required fields
+- [ ] Progress indicator showing completion status
+
+### Document Upload System
+- [ ] Implement file upload to S3
+- [ ] Support multiple file types (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, images)
+- [ ] File size validation (max 10MB per file)
+- [ ] Multiple file uploads per deal
+- [ ] File management (view, download, delete)
+- [ ] Document categorization (proposal, contract, technical specs, etc)
+- [ ] Document versioning and timestamps
+
+### Deal Qualification
+- [ ] Budget confirmed checkbox
+- [ ] Decision-maker identified checkbox
+- [ ] Competitive landscape checkbox
+- [ ] Additional qualification notes field
+- [ ] Qualification score calculation
+- [ ] Validation feedback on qualification status
+
+### Backend API Enhancements
+- [ ] Create tRPC procedures for enhanced deal submission
+- [ ] Implement file upload handling
+- [ ] Add deal retrieval with all details
+- [ ] Add document management procedures
+- [ ] Add qualification tracking
+- [ ] Email notifications for deal submissions with all details
+
+### Testing
+- [ ] Test partner login and account access
+- [ ] Test deal submission with all fields
+- [ ] Test file uploads (valid and invalid files)
+- [ ] Test form validation
+- [ ] Test qualification checklist
+- [ ] Test deal retrieval and display
+- [ ] Test document management
+- [ ] Test error handling and edge cases
