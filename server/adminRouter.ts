@@ -353,10 +353,26 @@ export const adminRouter = router({
       const { user, db } = await requireAdmin(ctx);
 
       try {
-        // Update deal status to Approved
+        // Calculate commission amount based on deal amount and percentage
+        const deals = await executeRawSQL(
+          `SELECT dealAmount FROM partner_deals WHERE id = ?`,
+          [input.dealId]
+        ) as any[];
+        
+        const deal = deals?.[0];
+        if (!deal) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Deal not found",
+          });
+        }
+        
+        const commissionAmount = (parseFloat(deal.dealAmount) * input.commissionPercentage) / 100;
+        
+        // Update deal with commission details (mark as approved by setting commissionPercentage)
         await executeRawSQL(
-          `UPDATE partner_deals SET dealStatus = ?, commissionPercentage = ?, approvedBy = ?, approvedAt = NOW() WHERE id = ?`,
-          ["Approved", input.commissionPercentage, user.id, input.dealId]
+          `UPDATE partner_deals SET commissionPercentage = ?, commissionAmount = ?, commissionPaid = true WHERE id = ?`,
+          [input.commissionPercentage, commissionAmount.toFixed(2), input.dealId]
         );
 
         // Log the approval

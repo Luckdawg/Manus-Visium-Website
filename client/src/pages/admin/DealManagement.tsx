@@ -24,9 +24,10 @@ export default function DealManagement() {
   const [newStage, setNewStage] = useState("");
   const [approvalNotes, setApprovalNotes] = useState("");
 
-  const { data: deals, isLoading, error, refetch } = trpc.partner.getPartnerDeals.useQuery({
-    limit: 100,
+  const { data, isLoading, error, refetch } = trpc.partner.getPartnerDeals.useQuery({
+    partnerId: user?.id || 0,
   });
+  const deals = data?.deals || [];
 
   // Note: updateDealStatus procedure can be added to partner router for admin deal status updates
   // const updateDealStatusMutation = trpc.partner.updateDealStatus?.useMutation({
@@ -81,7 +82,7 @@ export default function DealManagement() {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-sm text-muted-foreground mb-1">Total Deals</div>
-                  <div className="text-2xl font-bold">{deals?.length || 0}</div>
+                  <div className="text-2xl font-bold">{deals.length || 0}</div>
                 </div>
                 <TrendingUp className="h-8 w-8 text-blue-500 opacity-20" />
               </div>
@@ -155,7 +156,7 @@ export default function DealManagement() {
                   </div>
                 ) : filteredDeals.length > 0 ? (
                   <div className="space-y-3 max-h-[600px] overflow-y-auto">
-                    {filteredDeals.map(deal => (
+                    {filteredDeals.map((deal: any) => (
                       <div
                         key={deal.id}
                         onClick={() => setSelectedDeal(deal)}

@@ -1,0 +1,52 @@
+{
+  "query": "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'partner_deals' ORDER BY ORDINAL_POSITION;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2KQuguC66uRWakj.490d29c7f976 --database d8D2GoF7wZHc9ZPzYZfLpT --execute SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'partner_deals' ORDER BY ORDINAL_POSITION;",
+  "rows": [
+    {
+      "COLUMN_NAME": "id"
+    },
+    {
+      "COLUMN_NAME": "dealName"
+    },
+    {
+      "COLUMN_NAME": "partnerCompanyId"
+    },
+    {
+      "COLUMN_NAME": "customerName"
+    },
+    {
+      "COLUMN_NAME": "customerEmail"
+    },
+    {
+      "COLUMN_NAME": "dealAmount"
+    },
+    {
+      "COLUMN_NAME": "dealStage"
+    },
+    {
+      "COLUMN_NAME": "expectedCloseDate"
+    },
+    {
+      "COLUMN_NAME": "description"
+    },
+    {
+      "COLUMN_NAME": "productInterest"
+    },
+    {
+      "COLUMN_NAME": "submittedBy"
+    },
+    {
+      "COLUMN_NAME": "notes"
+    },
+    {
+      "COLUMN_NAME": "createdAt"
+    },
+    {
+      "COLUMN_NAME": "updatedAt"
+    }
+  ],
+  "messages": [],
+  "stdout": "COLUMN_NAME\nid\ndealName\npartnerCompanyId\ncustomerName\ncustomerEmail\ndealAmount\ndealStage\nexpectedCloseDate\ndescription\nproductInterest\nsubmittedBy\nnotes\ncreatedAt\nupdatedAt\n",
+  "stderr": "",
+  "execution_time_ms": 368
+}

@@ -31,7 +31,7 @@ export default function ResourcesLibrary() {
   const [selectedType, setSelectedType] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const { data: resourcesData, isLoading, error } = trpc.partner.getResources.useQuery({});
+  const { data: resourcesData, isLoading, error } = trpc.partner.getResources.useQuery({ partnerId: user?.id || 0 });
   const resources = resourcesData?.resources || [];
 
   if (!user) {

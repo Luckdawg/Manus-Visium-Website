@@ -20,6 +20,8 @@ interface DealFormData {
   expectedCloseDate: string;
   productInterest: string;
   description: string;
+  partnerNotes: string;
+  mdfRequested: string;
 }
 
 const INDUSTRIES = [
@@ -54,7 +56,9 @@ export default function RegisterDeal() {
     dealStage: "Qualified Lead",
     expectedCloseDate: "",
     productInterest: "",
-    description: ""
+    description: "",
+    partnerNotes: "",
+    mdfRequested: ""
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [successMessage, setSuccessMessage] = useState("");
@@ -126,17 +130,17 @@ export default function RegisterDeal() {
     if (!validateStep(currentStep)) return;
 
     submitDealMutation.mutate({
+      partnerId: user?.id || 0,
       dealName: formData.dealName,
       customerName: formData.customerName,
       customerEmail: formData.customerEmail,
-      customerPhone: formData.customerPhone,
-      customerIndustry: formData.customerIndustry,
-      customerSize: formData.customerSize as any,
       dealAmount: Number(formData.dealAmount),
       dealStage: formData.dealStage as any,
-      expectedCloseDate: new Date(formData.expectedCloseDate),
+      expectedCloseDate: formData.expectedCloseDate ? new Date(formData.expectedCloseDate).toISOString() : undefined,
       productInterest: formData.productInterest,
-      description: formData.description
+      description: formData.description,
+      notes: formData.partnerNotes,
+      mdfRequested: Number(formData.mdfRequested) || undefined
     });
   };
 

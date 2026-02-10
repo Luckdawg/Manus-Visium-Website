@@ -7,10 +7,12 @@ import { useState } from "react";
 import { z } from "zod";
 
 const dealFormSchema = z.object({
+  partnerId: z.number(),
   dealName: z.string().min(1, "Deal name is required"),
   customerName: z.string().min(1, "Customer name is required"),
   customerEmail: z.string().email("Invalid email address"),
   dealAmount: z.coerce.number().positive("Deal amount must be positive"),
+  dealStage: z.string().min(1, "Deal stage is required"),
   description: z.string().min(1, "Description is required"),
 });
 
@@ -22,10 +24,11 @@ export default function PartnerDeals() {
   const [formData, setFormData] = useState<Partial<DealForm>>({});
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
-  const { data: deals, isLoading, refetch } = trpc.partner.getPartnerDeals.useQuery(
-    { limit: 50 },
-    { enabled: !!user && user.role === "partner" }
+  const { data, isLoading, refetch } = trpc.partner.getPartnerDeals.useQuery(
+    { partnerId: user?.id || 0 },
+    { enabled: !!user }
   );
+  const deals = data?.deals || [];
 
   const submitDealMutation = trpc.partner.submitDeal.useMutation({
     onSuccess: () => {
@@ -178,7 +181,7 @@ export default function PartnerDeals() {
           <CardTitle>Your Deals</CardTitle>
         </CardHeader>
         <CardContent>
-          {deals && deals.length > 0 ? (
+          {deals.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>

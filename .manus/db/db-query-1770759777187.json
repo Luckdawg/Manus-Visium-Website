@@ -1,0 +1,17 @@
+{
+  "query": "SELECT id, dealName, commissionPercentage, commissionAmount, commissionPaid FROM partner_deals WHERE dealName = 'Enterprise AI Security Platform'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2KQuguC66uRWakj.490d29c7f976 --database d8D2GoF7wZHc9ZPzYZfLpT --execute SELECT id, dealName, commissionPercentage, commissionAmount, commissionPaid FROM partner_deals WHERE dealName = 'Enterprise AI Security Platform'",
+  "rows": [
+    {
+      "id": "1",
+      "dealName": "Enterprise AI Security Platform",
+      "commissionPercentage": "10.00",
+      "commissionAmount": "85000.00",
+      "commissionPaid": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tdealName\tcommissionPercentage\tcommissionAmount\tcommissionPaid\n1\tEnterprise AI Security Platform\t10.00\t85000.00\t1\n",
+  "stderr": "",
+  "execution_time_ms": 360
+}

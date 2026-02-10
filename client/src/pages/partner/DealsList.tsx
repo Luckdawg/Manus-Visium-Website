@@ -26,10 +26,10 @@ export default function DealsList() {
   const { user } = useAuth();
   const [selectedStage, setSelectedStage] = useState<string | undefined>();
   
-  const { data: deals, isLoading, error } = trpc.partner.getPartnerDeals.useQuery({
-    stage: selectedStage as any,
-    limit: 50,
+  const { data, isLoading, error } = trpc.partner.getPartnerDeals.useQuery({
+    partnerId: user?.id || 0,
   });
+  const deals = data?.deals || [];
 
   if (!user) {
     return (
@@ -133,9 +133,9 @@ export default function DealsList() {
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <p className="text-red-800">Error loading deals: {error.message}</p>
               </div>
-            ) : deals && deals.length > 0 ? (
+            ) : deals.length > 0 ? (
               <div className="space-y-3">
-                {deals.map(deal => {
+                {deals.map((deal: any) => {
                   const StageIcon = STAGE_ICONS[deal.dealStage] || Clock;
                   return (
                     <Link key={deal.id} href={`/partners/deals/${deal.id}`}>

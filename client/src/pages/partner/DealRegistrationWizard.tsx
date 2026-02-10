@@ -23,7 +23,6 @@ interface DealFormData {
   // Deal Details
   dealName: string;
   dealAmount: number;
-  dealCurrency: string;
   dealStage: string;
   expectedCloseDate: string;
   dealDescription: string;
@@ -84,7 +83,7 @@ export default function DealRegistrationWizard() {
     productVersion: "",
     dealName: "",
     dealAmount: 0,
-    dealCurrency: "USD",
+
     dealStage: "Prospect",
     expectedCloseDate: "",
     dealDescription: "",
@@ -164,15 +163,14 @@ export default function DealRegistrationWizard() {
         partnerId,
         dealName: formData.dealName,
         dealAmount: formData.dealAmount,
-        dealCurrency: formData.dealCurrency,
         dealStage: formData.dealStage,
         expectedCloseDate: formData.expectedCloseDate,
-        dealDescription: formData.dealDescription,
+        description: formData.dealDescription,
         customerName: formData.customerName,
         customerEmail: formData.customerEmail,
         customerCompany: formData.customerCompany,
-        productCategory: formData.productCategory,
-        partnerNotes: formData.partnerNotes,
+        productInterest: formData.productCategory,
+        notes: formData.partnerNotes,
         mdfRequested: formData.mdfRequested,
       });
 
@@ -222,7 +220,7 @@ export default function DealRegistrationWizard() {
                     productVersion: "",
                     dealName: "",
                     dealAmount: 0,
-                    dealCurrency: "USD",
+                
                     dealStage: "Prospect",
                     expectedCloseDate: "",
                     dealDescription: "",
@@ -455,36 +453,10 @@ export default function DealRegistrationWizard() {
                     />
                     {errors.dealValue && <p className="text-xs text-red-600 mt-1">{errors.dealValue}</p>}
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Currency</label>
-                    <select
-                      name="dealCurrency"
-                      value={formData.dealCurrency}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
-                    >
-                      <option value="USD">USD</option>
-                      <option value="EUR">EUR</option>
-                      <option value="GBP">GBP</option>
-                      <option value="CAD">CAD</option>
-                    </select>
-                  </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Deal Stage *</label>
-                    <select
-                      name="dealStage"
-                      value={formData.dealStage}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
-                    >
-                      {DEAL_STAGES.map((stage) => (
-                        <option key={stage} value={stage}>{stage}</option>
-                      ))}
-                    </select>
-                  </div>
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Expected Close Date *</label>
                     <input
@@ -587,7 +559,7 @@ export default function DealRegistrationWizard() {
                     </div>
                     <div>
                       <p className="text-xs text-gray-600">Deal Value</p>
-                      <p className="font-medium">${formData.dealAmount.toLocaleString()} {formData.dealCurrency}</p>
+                      <p className="font-medium">${formData.dealAmount.toLocaleString()}</p>
                     </div>
                     <div>
                       <p className="text-xs text-gray-600">Deal Stage</p>

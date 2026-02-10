@@ -18,7 +18,7 @@ const resourceTypeIcons: Record<string, React.ReactNode> = {
 
 export default function PartnerResources() {
   const { user, loading: authLoading } = useAuth();
-  const { data: resourcesData, isLoading } = trpc.partner.getResources.useQuery({});
+  const { data: resourcesData, isLoading } = trpc.partner.getResources.useQuery({ partnerId: user?.id || 0 });
   const resources = resourcesData?.resources || [];
 
   if (authLoading || isLoading) {
