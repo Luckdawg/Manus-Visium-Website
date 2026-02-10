@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { protectedProcedure, router } from "../_core/trpc";
+import { protectedProcedure, publicProcedure, router } from "../_core/trpc";
 import { TRPCError } from "@trpc/server";
 import { getDb } from "../db";
 import {
@@ -11,31 +11,234 @@ import {
 } from "../../drizzle/partner-schema";
 import { eq, and, desc } from "drizzle-orm";
 import { EmailNotificationService } from "../services/emailNotificationService";
+import bcrypt from "bcryptjs";
+import { generateToken } from "../_core/auth";
 
 /**
  * Partner Portal Router
- * Handles all partner-related operations including deals, resources, analytics, and MDF
+ * Handles all partner-related operations including authentication, deals, resources, analytics, and MDF
  */
 export const partnerRouter = router({
+  /**
+   * Partner self-registration
+   */
+  register: publicProcedure
+    .input(
+      z.object({
+        email: z.string().email(),
+        password: z.string().min(8),
+        companyName: z.string().min(1),
+        contactName: z.string().min(1),
+        phone: z.string().optional(),
+        website: z.string().optional(),
+        partnerType: z.enum([
+          "Reseller",
+          "Technology Partner",
+          "System Integrator",
+          "Managed Service Provider",
+          "Consulting Partner",
+          "Channel Partner",
+          "OEM Partner",
+          "Other",
+        ]),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      // Check if email already exists
+      const existingUser = await db
+        .select()
+        .from(partnerUsers)
+        .where(eq(partnerUsers.email, input.email))
+        .limit(1);
+
+      if (existingUser.length > 0) {
+        throw new TRPCError({
+          code: "CONFLICT",
+          message: "Email already registered",
+        });
+      }
+
+      // Hash password
+      const passwordHash = await bcrypt.hash(input.password, 10);
+
+      // Create partner company
+      const companyResult = await db.insert(partnerCompanies).values({
+        companyName: input.companyName,
+        email: input.email,
+        website: input.website,
+        phone: input.phone,
+        partnerType: input.partnerType,
+        primaryContactName: input.contactName,
+        primaryContactEmail: input.email,
+        primaryContactPhone: input.phone,
+        partnerStatus: "Prospect",
+      });
+
+      const companyId = (companyResult as any)[0]?.id || (companyResult as any).insertId;
+
+      // Create partner user
+      const userResult = await db.insert(partnerUsers).values({
+        partnerCompanyId: companyId,
+        email: input.email,
+        passwordHash: passwordHash,
+        contactName: input.contactName,
+        phone: input.phone,
+        partnerRole: "Admin",
+        isActive: true,
+      });
+
+      const userId = (userResult as any)[0]?.id || (userResult as any).insertId;
+
+      // Send welcome email
+      try {
+        await EmailNotificationService.sendNotification(
+          companyId,
+          "deal_submitted",
+          {
+            partnerName: input.companyName,
+            dealName: "Welcome to Partner Portal",
+            customerName: input.contactName,
+            dealAmount: "0.00",
+            dealStage: "Qualified Lead",
+          },
+          "other"
+        );
+      } catch (error) {
+        console.error("Failed to send welcome email:", error);
+      }
+
+      return {
+        success: true,
+        userId,
+        companyId,
+        message: "Registration successful. Please log in.",
+      };
+    }),
+
+  /**
+   * Partner email/password login
+   */
+  login: publicProcedure
+    .input(
+      z.object({
+        email: z.string().email(),
+        password: z.string().min(1),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      // Find partner user by email
+      const partnerUser = await db
+        .select()
+        .from(partnerUsers)
+        .where(eq(partnerUsers.email, input.email))
+        .limit(1);
+
+      if (partnerUser.length === 0) {
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+          message: "Invalid email or password",
+        });
+      }
+
+      const user = partnerUser[0];
+
+      // Check if user is active
+      if (!user.isActive) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Account is inactive",
+        });
+      }
+
+      // Verify password
+      if (!user.passwordHash || !user.email) {
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+          message: "Invalid email or password",
+        });
+      }
+
+      const passwordMatch = await bcrypt.compare(input.password, user.passwordHash);
+
+      if (!passwordMatch) {
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+          message: "Invalid email or password",
+        });
+      }
+
+      // Get partner company
+      const company = await db
+        .select()
+        .from(partnerCompanies)
+        .where(eq(partnerCompanies.id, user.partnerCompanyId))
+        .limit(1);
+
+      // Generate JWT token
+      const token = generateToken({
+        id: user.id,
+        email: user.email,
+        role: "partner",
+        partnerId: user.id,
+        companyId: user.partnerCompanyId,
+      });
+
+      // Set session cookie
+      ctx.res.cookie("session", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      });
+
+      return {
+        success: true,
+        user: {
+          id: user.id,
+          email: user.email,
+          contactName: user.contactName,
+          partnerRole: user.partnerRole,
+          companyId: user.partnerCompanyId,
+          company: company[0] || null,
+        },
+        token,
+      };
+    }),
+
   /**
    * Get partner company profile
    */
   getPartnerProfile: protectedProcedure.query(async ({ ctx }) => {
-    if (!ctx.user || ctx.user.role !== "partner") {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Not a partner user" });
-    }
-
+    // Support both OAuth and email/password authenticated partners
     const db = await getDb();
     if (!db) throw new Error("Database not available");
 
-    // Get partner user record
-    const partnerUser = await db
-      .select()
-      .from(partnerUsers)
-      .where(eq(partnerUsers.userId, ctx.user.id))
-      .limit(1);
+    // Try to find partner user
+    let partnerUser;
 
-    if (partnerUser.length === 0) {
+    if (ctx.user.email) {
+      // Email/password authenticated
+      partnerUser = await db
+        .select()
+        .from(partnerUsers)
+        .where(eq(partnerUsers.email, ctx.user.email))
+        .limit(1);
+    } else if (ctx.user.id) {
+      // OAuth authenticated
+      partnerUser = await db
+        .select()
+        .from(partnerUsers)
+        .where(eq(partnerUsers.userId, ctx.user.id))
+        .limit(1);
+    }
+
+    if (!partnerUser || partnerUser.length === 0) {
       throw new TRPCError({
         code: "NOT_FOUND",
         message: "Partner profile not found",
@@ -75,20 +278,26 @@ export const partnerRouter = router({
       })
     )
     .query(async ({ ctx, input }) => {
-      if (!ctx.user || ctx.user.role !== "partner") {
-        throw new TRPCError({ code: "FORBIDDEN" });
-      }
-
       const db = await getDb();
       if (!db) throw new Error("Database not available");
 
-      const partnerUser = await db
-        .select()
-        .from(partnerUsers)
-        .where(eq(partnerUsers.userId, ctx.user.id))
-        .limit(1);
+      let partnerUser;
 
-      if (partnerUser.length === 0) {
+      if (ctx.user.email) {
+        partnerUser = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.email, ctx.user.email))
+          .limit(1);
+      } else if (ctx.user.id) {
+        partnerUser = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.userId, ctx.user.id))
+          .limit(1);
+      }
+
+      if (!partnerUser || partnerUser.length === 0) {
         throw new TRPCError({ code: "NOT_FOUND" });
       }
 
@@ -128,20 +337,26 @@ export const partnerRouter = router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      if (!ctx.user || ctx.user.role !== "partner") {
-        throw new TRPCError({ code: "FORBIDDEN" });
-      }
-
       const db = await getDb();
       if (!db) throw new Error("Database not available");
 
-      const partnerUser = await db
-        .select()
-        .from(partnerUsers)
-        .where(eq(partnerUsers.userId, ctx.user.id))
-        .limit(1);
+      let partnerUser;
 
-      if (partnerUser.length === 0) {
+      if (ctx.user.email) {
+        partnerUser = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.email, ctx.user.email))
+          .limit(1);
+      } else if (ctx.user.id) {
+        partnerUser = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.userId, ctx.user.id))
+          .limit(1);
+      }
+
+      if (!partnerUser || partnerUser.length === 0) {
         throw new TRPCError({ code: "NOT_FOUND" });
       }
 
@@ -174,7 +389,7 @@ export const partnerRouter = router({
         description: input.description,
         commissionPercentage: commissionRate.toString(),
         commissionAmount: commissionAmount.toString(),
-        submittedBy: ctx.user.id,
+        submittedBy: partnerUser[0].id,
       });
 
       // Send email notification
@@ -209,10 +424,6 @@ export const partnerRouter = router({
       })
     )
     .query(async ({ ctx, input }) => {
-      if (!ctx.user || ctx.user.role !== "partner") {
-        throw new TRPCError({ code: "FORBIDDEN" });
-      }
-
       const db = await getDb();
       if (!db) throw new Error("Database not available");
 
@@ -230,20 +441,26 @@ export const partnerRouter = router({
    * Get dashboard summary
    */
   getDashboardSummary: protectedProcedure.query(async ({ ctx }) => {
-    if (!ctx.user || ctx.user.role !== "partner") {
-      throw new TRPCError({ code: "FORBIDDEN" });
-    }
-
     const db = await getDb();
     if (!db) throw new Error("Database not available");
 
-    const partnerUser = await db
-      .select()
-      .from(partnerUsers)
-      .where(eq(partnerUsers.userId, ctx.user.id))
-      .limit(1);
+    let partnerUser;
 
-    if (partnerUser.length === 0) {
+    if (ctx.user.email) {
+      partnerUser = await db
+        .select()
+        .from(partnerUsers)
+        .where(eq(partnerUsers.email, ctx.user.email))
+        .limit(1);
+    } else if (ctx.user.id) {
+      partnerUser = await db
+        .select()
+        .from(partnerUsers)
+        .where(eq(partnerUsers.userId, ctx.user.id))
+        .limit(1);
+    }
+
+    if (!partnerUser || partnerUser.length === 0) {
       throw new TRPCError({ code: "NOT_FOUND" });
     }
 
@@ -260,12 +477,7 @@ export const partnerRouter = router({
     const activeDeals = await db
       .select()
       .from(partnerDeals)
-      .where(
-        and(
-          eq(partnerDeals.partnerCompanyId, partnerCompanyId),
-          desc(partnerDeals.dealStage)
-        )
-      );
+      .where(eq(partnerDeals.partnerCompanyId, partnerCompanyId));
 
     return {
       company: company[0],
@@ -281,20 +493,26 @@ export const partnerRouter = router({
    * Get MDF information
    */
   getMdfInfo: protectedProcedure.query(async ({ ctx }) => {
-    if (!ctx.user || ctx.user.role !== "partner") {
-      throw new TRPCError({ code: "FORBIDDEN" });
-    }
-
     const db = await getDb();
     if (!db) throw new Error("Database not available");
 
-    const partnerUser = await db
-      .select()
-      .from(partnerUsers)
-      .where(eq(partnerUsers.userId, ctx.user.id))
-      .limit(1);
+    let partnerUser;
 
-    if (partnerUser.length === 0) {
+    if (ctx.user.email) {
+      partnerUser = await db
+        .select()
+        .from(partnerUsers)
+        .where(eq(partnerUsers.email, ctx.user.email))
+        .limit(1);
+    } else if (ctx.user.id) {
+      partnerUser = await db
+        .select()
+        .from(partnerUsers)
+        .where(eq(partnerUsers.userId, ctx.user.id))
+        .limit(1);
+    }
+
+    if (!partnerUser || partnerUser.length === 0) {
       throw new TRPCError({ code: "NOT_FOUND" });
     }
 
@@ -347,20 +565,26 @@ export const partnerRouter = router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      if (!ctx.user || ctx.user.role !== "partner") {
-        throw new TRPCError({ code: "FORBIDDEN" });
-      }
-
       const db = await getDb();
       if (!db) throw new Error("Database not available");
 
-      const partnerUser = await db
-        .select()
-        .from(partnerUsers)
-        .where(eq(partnerUsers.userId, ctx.user.id))
-        .limit(1);
+      let partnerUser;
 
-      if (partnerUser.length === 0) {
+      if (ctx.user.email) {
+        partnerUser = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.email, ctx.user.email))
+          .limit(1);
+      } else if (ctx.user.id) {
+        partnerUser = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.userId, ctx.user.id))
+          .limit(1);
+      }
+
+      if (!partnerUser || partnerUser.length === 0) {
         throw new TRPCError({ code: "NOT_FOUND" });
       }
 
@@ -381,7 +605,7 @@ export const partnerRouter = router({
         requestedAmount: input.requestedAmount.toString(),
         description: input.description,
         status: "Draft",
-        submittedBy: ctx.user.id,
+        submittedBy: partnerUser[0].id,
       });
 
       // Send email notification

@@ -75,8 +75,17 @@ export type InsertPartnerCompany = typeof partnerCompanies.$inferInsert;
  */
 export const partnerUsers = mysqlTable("partner_users", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull(), // Reference to main users table
+  userId: int("userId"), // Reference to main users table (optional for OAuth)
   partnerCompanyId: int("partnerCompanyId").notNull(),
+  
+  // Email/password authentication for self-registration
+  email: varchar("email", { length: 320 }).unique(),
+  passwordHash: varchar("passwordHash", { length: 255 }),
+  emailVerified: boolean("emailVerified").default(false),
+  
+  // User information
+  contactName: varchar("contactName", { length: 255 }),
+  phone: varchar("phone", { length: 50 }),
   
   partnerRole: mysqlEnum("partnerRole", [
     "Admin",
@@ -94,6 +103,7 @@ export const partnerUsers = mysqlTable("partner_users", {
 }, (table) => ({
   partnerIdx: index("partner_idx").on(table.partnerCompanyId),
   userIdx: index("user_idx").on(table.userId),
+  emailIdx: index("email_idx").on(table.email),
 }));
 
 export type PartnerUser = typeof partnerUsers.$inferSelect;
