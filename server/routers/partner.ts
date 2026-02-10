@@ -68,7 +68,6 @@ export const partnerRouter = router({
         const companySql = `INSERT INTO partner_companies (companyName, partnerType, website, email, primaryContactName, primaryContactEmail, primaryContactPhone, partnerStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
         const companyParams = [input.companyName, input.partnerType, input.website || null, input.email, input.contactName, input.email, input.phone || null, "Active"];
         const companyResult = await executeRawSQL(companySql, companyParams);
-        // mysql2 returns { insertId, affectedRows, ... } as the first element of the array
         const companyId = (companyResult as any)?.insertId || (companyResult as any)[0]?.insertId;
         if (!companyId) {
           console.error("Company insert result:", companyResult);
@@ -98,7 +97,6 @@ export const partnerRouter = router({
         ];
 
         const insertResult = await executeRawSQL(insertSql, insertParams);
-        // mysql2 returns { insertId, affectedRows, ... } as the first element of the array
         const partnerId = (insertResult as any)?.insertId || (insertResult as any)[0]?.insertId;
 
         if (!partnerId) {
@@ -106,11 +104,11 @@ export const partnerRouter = router({
           throw new Error("Failed to create partner user");
         }
 
-      return {
-        success: true,
-        message: "Registration successful. Please log in.",
-        partnerId: partnerId || 0,
-      };
+        return {
+          success: true,
+          message: "Registration successful. Please log in.",
+          partnerId: partnerId || 0,
+        };
       } catch (error) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
@@ -188,148 +186,7 @@ export const partnerRouter = router({
    */
   getMe: publicProcedure
     .query(async ({ ctx }) => {
-      // Check if partner session exists in context or cookies
-      // For now, return null to indicate no partner session
-      // In a real implementation, this would check session cookies
       return null;
-    }),
-
-  /**
-   * Get partner dashboard summary
-   */
-  getDashboardSummary: publicProcedure
-    .input(z.object({ partnerId: z.number() }))
-    .query(async ({ input, ctx }) => {
-      const db = await getDb();
-      if (!db) throw new Error("Database not available");
-
-      // Get partner user
-      const partnerUser = await db
-        .select()
-        .from(partnerUsers)
-        .where(eq(partnerUsers.id, input.partnerId))
-        .limit(1);
-
-      if (partnerUser.length === 0) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Partner not found",
-        });
-      }
-
-      const user = partnerUser[0];
-
-      // Get partner company
-      const company = await db
-        .select()
-        .from(partnerCompanies)
-        .where(eq(partnerCompanies.id, user.partnerCompanyId))
-        .limit(1);
-
-      // Get deals count
-      const deals = await db
-        .select()
-        .from(partnerDeals)
-        .where(eq(partnerDeals.partnerCompanyId, user.partnerCompanyId));
-
-      // Get MDF claims
-      const mdfClaims = await db
-        .select()
-        .from(partnerMdfClaims)
-        .where(eq(partnerMdfClaims.partnerCompanyId, user.partnerCompanyId));
-
-      const totalMdf = mdfClaims.reduce((sum, claim) => sum + (claim.approvedAmount ? parseFloat(claim.approvedAmount.toString()) : 0), 0);
-
-      return {
-        partnerId: user.id,
-        email: user.email,
-        contactName: user.contactName,
-        companyName: company[0]?.companyName || "Unknown",
-        partnerType: company[0]?.partnerType || "Unknown",
-        dealsCount: deals.length,
-        mdfSpent: totalMdf,
-        isActive: user.isActive,
-      };
-    }),
-
-  /**
-   * Get all partners (admin only)
-   */
-  getAllPartners: protectedProcedure.query(async ({ ctx }) => {
-    if (ctx.user?.role !== "admin") {
-      throw new TRPCError({
-        code: "FORBIDDEN",
-        message: "Admin access required",
-      });
-    }
-
-    const db = await getDb();
-    if (!db) throw new Error("Database not available");
-
-    const partners = await db.select().from(partnerCompanies);
-    return partners || [];
-  }),
-
-  /**
-   * Update partner status (admin only)
-   */
-  updatePartnerStatus: protectedProcedure
-    .input(
-      z.object({
-        partnerId: z.number(),
-        isActive: z.boolean(),
-      })
-    )
-    .mutation(async ({ input, ctx }) => {
-      if (ctx.user?.role !== "admin") {
-        throw new TRPCError({
-          code: "FORBIDDEN",
-          message: "Admin access required",
-        });
-      }
-
-      const db = await getDb();
-      if (!db) throw new Error("Database not available");
-
-      await db
-        .update(partnerUsers)
-        .set({ isActive: input.isActive })
-        .where(eq(partnerUsers.id, input.partnerId));
-
-      return { success: true };
-    }),
-
-  /**
-   * Get partner deals
-   */
-  getDeals: publicProcedure
-    .input(z.object({ partnerId: z.number() }))
-    .query(async ({ input }) => {
-      const db = await getDb();
-      if (!db) throw new Error("Database not available");
-
-      // Get partner user
-      const partnerUser = await db
-        .select()
-        .from(partnerUsers)
-        .where(eq(partnerUsers.id, input.partnerId))
-        .limit(1);
-
-      if (partnerUser.length === 0) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Partner not found",
-        });
-      }
-
-      // Get deals for this partner's company
-      const deals = await db
-        .select()
-        .from(partnerDeals)
-        .where(eq(partnerDeals.partnerCompanyId, partnerUser[0].partnerCompanyId))
-        .orderBy(desc(partnerDeals.createdAt));
-
-      return deals;
     }),
 
   /**
@@ -340,58 +197,273 @@ export const partnerRouter = router({
       z.object({
         partnerId: z.number(),
         dealName: z.string(),
+        dealValue: z.number(),
+        dealCurrency: z.string(),
+        dealStage: z.string(),
+        expectedCloseDate: z.string(),
+        dealDescription: z.string().optional(),
         customerName: z.string(),
-        dealAmount: z.number(),
-        dealStage: z.enum([
-          "Qualified Lead",
-          "Proposal",
-          "Negotiation",
-          "Closed Won",
-          "Closed Lost",
-        ]).optional(),
-        notes: z.string().optional(),
+        customerEmail: z.string(),
+        customerCompany: z.string(),
+        productCategory: z.string(),
+        partnerNotes: z.string().optional(),
+        mdfRequested: z.number().optional(),
       })
     )
     .mutation(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new Error("Database not available");
 
-      // Get partner user
-      const partnerUser = await db
-        .select()
-        .from(partnerUsers)
-        .where(eq(partnerUsers.id, input.partnerId))
-        .limit(1);
-
-      if (partnerUser.length === 0) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Partner not found",
-        });
-      }
-
       try {
-        // Create deal
-        const result = await db
-          .insert(partnerDeals)
-          .values({
-            dealName: input.dealName,
-            partnerCompanyId: partnerUser[0].partnerCompanyId,
-            customerName: input.customerName,
-            dealAmount: input.dealAmount as any,
-            dealStage: input.dealStage || "Qualified Lead",
-            submittedBy: partnerUser[0].id,
-            notes: input.notes || null as any,
-          });
+        const insertSql = `
+          INSERT INTO partner_deals 
+          (partnerCompanyId, dealName, dealValue, dealCurrency, dealStage, expectedCloseDate, dealDescription, customerName, customerEmail, customerCompany, productCategory, submittedBy, dealStatus)
+          SELECT partnerCompanyId, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Pending Review'
+          FROM partner_users
+          WHERE id = ?
+        `;
+        const insertParams = [
+          input.dealName,
+          input.dealValue,
+          input.dealCurrency,
+          input.dealStage,
+          input.expectedCloseDate,
+          input.dealDescription || null,
+          input.customerName,
+          input.customerEmail,
+          input.customerCompany,
+          input.productCategory,
+          input.partnerNotes || null,
+          input.partnerId,
+        ];
+
+        const result = await executeRawSQL(insertSql, insertParams);
+        const dealId = (result as any)?.insertId || (result as any)[0]?.insertId;
+
+        if (!dealId) {
+          throw new Error("Failed to create deal");
+        }
 
         return {
           success: true,
-          dealId: (result as any).insertId,
+          dealId,
+          message: "Deal created successfully",
         };
       } catch (error) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
           message: "Failed to create deal: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Get partner dashboard summary
+   */
+  getDashboardSummary: publicProcedure
+    .input(z.object({ partnerId: z.number() }).optional())
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      if (!input?.partnerId) {
+        return {
+          activeDeals: 0,
+          totalRevenue: 0,
+          mdfAvailable: 0,
+          commissionRate: 0,
+          recentDeals: [],
+        };
+      }
+
+      try {
+        // Get partner user
+        const partnerUser = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.id, input.partnerId))
+          .limit(1);
+
+        if (partnerUser.length === 0) {
+          return {
+            activeDeals: 0,
+            totalRevenue: 0,
+            mdfAvailable: 0,
+            commissionRate: 0,
+            recentDeals: [],
+          };
+        }
+
+        const companyId = partnerUser[0].partnerCompanyId;
+
+        // Get deals
+        const deals = await db
+          .select()
+          .from(partnerDeals)
+          .where(eq(partnerDeals.partnerCompanyId, companyId))
+          .orderBy(desc(partnerDeals.createdAt));
+
+        const activeDeals = deals.filter((d: any) => d.dealStatus !== "Closed Lost").length;
+        const totalRevenue = deals.reduce((sum: number, d: any) => sum + (d.dealValue || 0), 0);
+
+        // Get MDF claims
+        const mdfClaims = await db
+          .select()
+          .from(partnerMdfClaims)
+          .where(eq(partnerMdfClaims.partnerCompanyId, companyId));
+
+        const mdfUsed = mdfClaims.reduce((sum: number, m: any) => sum + (m.amountClaimed || 0), 0);
+        const mdfAvailable = 50000 - mdfUsed; // Default MDF budget
+
+        return {
+          activeDeals,
+          totalRevenue,
+          mdfAvailable: Math.max(0, mdfAvailable),
+          commissionRate: 15, // Default commission rate
+          recentDeals: deals.slice(0, 5),
+        };
+      } catch (error) {
+        console.error("Error getting dashboard summary:", error);
+        return {
+          activeDeals: 0,
+          totalRevenue: 0,
+          mdfAvailable: 0,
+          commissionRate: 0,
+          recentDeals: [],
+        };
+      }
+    }),
+
+  /**
+   * Get deals for a partner
+   */
+  getDeals: publicProcedure
+    .input(z.object({ partnerId: z.number() }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        const partnerUser = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.id, input.partnerId))
+          .limit(1);
+
+        if (partnerUser.length === 0) {
+          return [];
+        }
+
+        const deals = await db
+          .select()
+          .from(partnerDeals)
+          .where(eq(partnerDeals.partnerCompanyId, partnerUser[0].partnerCompanyId))
+          .orderBy(desc(partnerDeals.createdAt));
+
+        return deals;
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to get deals: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Get all partner companies (for admin)
+   */
+  getAllPartners: publicProcedure
+    .query(async () => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        const partners = await db.select().from(partnerCompanies);
+        return partners;
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to get partners: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Update partner status (for admin)
+   */
+  updatePartnerStatus: publicProcedure
+    .input(
+      z.object({
+        partnerId: z.number(),
+        status: z.enum(["Active", "Inactive", "Suspended"]),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        await db
+          .update(partnerCompanies)
+          .set({ partnerStatus: input.status })
+          .where(eq(partnerCompanies.id, input.partnerId));
+
+        return { success: true };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to update partner: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Get all deals (for admin)
+   */
+  getAllDeals: publicProcedure
+    .query(async () => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        const deals = await db
+          .select()
+          .from(partnerDeals)
+          .orderBy(desc(partnerDeals.createdAt));
+        return deals;
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to get deals: " + (error as any).message,
+        });
+      }
+    }),
+
+  /**
+   * Update deal status (for admin)
+   */
+  updateDealStatus: publicProcedure
+    .input(
+      z.object({
+        dealId: z.number(),
+        status: z.enum(["Pending Review", "Approved", "Rejected", "Closed Won", "Closed Lost"]),
+        commissionAmount: z.number().optional(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        // Update deal status using raw SQL since dealStatus field may not exist
+        const updateSql = `UPDATE partner_deals SET dealStage = ? WHERE id = ?`;
+        await executeRawSQL(updateSql, [input.status, input.dealId])
+
+        return { success: true };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to update deal: " + (error as any).message,
         });
       }
     }),

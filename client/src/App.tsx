@@ -55,9 +55,11 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import AdminUsers from "./pages/admin/Users";
 import AdminSecurity from "./pages/admin/Security";
 import AdminLogin from "./pages/admin/Login";
-import PartnerDashboard from "./pages/partner/Dashboard";
-import PartnerDeals from "./pages/partner/Deals";
-import PartnerResources from "./pages/partner/Resources";
+import PartnerDashboard from "@/pages/partner/Dashboard";
+import PartnerResources from "@/pages/partner/Resources";
+import DealWizard from "@/pages/partner/DealWizard";
+import AdminDealApproval from "@/pages/admin/AdminDealApproval";
+import DealRegistrationWizard from "./pages/partner/DealRegistrationWizard";
 import PartnerMDF from "./pages/partner/MDF";
 import PartnerAnalytics from "./pages/partner/Analytics";
 import PartnerLogin from "./pages/partner/Login";
@@ -129,7 +131,10 @@ function Router() {
       <Route path="/partners/register" component={PartnerRegister} />
       <Route path="/partners/onboarding" component={OnboardingWizard} />
       <Route path="/partners/dashboard" component={PartnerDashboard} />
-      <Route path="/partners/register-deal" component={RegisterDeal} />
+      <Route path="/partners/resources" component={PartnerResources} />
+      <Route path="/partners/deals/new" component={DealWizard} />
+      <Route path="/admin/deals/approval" component={AdminDealApproval} />
+      <Route path="/partner/deals/new" component={DealRegistrationWizard} />
       <Route path="/partners/deals" component={DealsList} />
       <Route path="/partners/resources" component={ResourcesLibrary} />
       <Route path="/404" component={NotFound} />

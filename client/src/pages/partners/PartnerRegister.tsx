@@ -60,7 +60,7 @@ export default function PartnerRegister() {
     if (!validateForm()) return;
 
     try {
-      await registerMutation.mutateAsync({
+      const result = await registerMutation.mutateAsync({
         email: formData.email,
         password: formData.password,
         companyName: formData.companyName,
@@ -70,10 +70,15 @@ export default function PartnerRegister() {
         partnerType: formData.partnerType,
       });
 
+      // Auto-login after successful registration
+      if (result.partnerId) {
+        localStorage.setItem('partnerSessionId', result.partnerId.toString());
+      }
+
       setStep("success");
       setTimeout(() => {
-        navigate("/partners/login");
-      }, 3000);
+        navigate("/partners/dashboard");
+      }, 2000)
     } catch (error: any) {
       setApiError(error.message || "Registration failed. Please try again.");
     }
