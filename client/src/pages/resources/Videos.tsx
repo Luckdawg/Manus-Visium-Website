@@ -70,6 +70,7 @@ export default function Videos() {
     },
     {
       title: "TruContext Agentic AI for Cyber Defense",
+      thumbnail: "https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-4_1770825009000_na1fn_dGh1bWItYWdlbnRpYy1haQ.jpg",
       url: "https://youtu.be/GmVOss9m2aU",
       duration: "0:00",
       views: "0",
@@ -120,6 +121,7 @@ export default function Videos() {
     },
     {
       title: "Smart City",
+      thumbnail: "https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-3_1770825005000_na1fn_dGh1bWItc21hcnQtY2l0eQ.jpg",
       url: "https://youtube.com/shorts/m9YQl1QfhKo?si=5ep5ZeXGI03uttmS",
       duration: "0:58",
       views: "2.1K",
@@ -190,6 +192,7 @@ export default function Videos() {
     },
     {
       title: "TruContext Cyber Security",
+      thumbnail: "https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-2_1770825007000_na1fn_dGh1bWItY3liZXJzZWN1cml0eQ.jpg",
       url: "https://youtu.be/3Rw8qL5mKpN?si=YzKLmN0pQrStUvWx",
       duration: "3:11",
       views: "2.8K",
@@ -200,6 +203,7 @@ export default function Videos() {
     },
     {
       title: "Visium TruContext Intro",
+      thumbnail: "https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-1_1770825014000_na1fn_dGh1bWItdHJ1Y29udGV4dC1pbnRybw.jpg",
       url: "https://youtu.be/pQrStUvWxYzKLmN0?si=N0pQrStUvWxYzKLm",
       duration: "2:33",
       views: "4.1K",
@@ -210,6 +214,7 @@ export default function Videos() {
     },
     {
       title: "Visium Analytics TruContext Dashboard Demo",
+      thumbnail: "https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-5_1770825016000_na1fn_dGh1bWItZGFzaGJvYXJkLWRlbW8.jpg",
       url: "https://youtu.be/WxYzKLmN0pQr?si=StUvWxYzKLmN0pQr",
       duration: "6:58",
       views: "3.5K",
@@ -363,8 +368,17 @@ export default function Videos() {
                   rel="noopener noreferrer"
                   className="block relative mb-4 overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-600 aspect-video hover:shadow-xl transition-shadow"
                 >
-                  <div className="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play size={48} className="text-white drop-shadow-lg" fill="white" />
+                  {video.thumbnail ? (
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : null}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+                    <div className="bg-white/90 rounded-full p-3 group-hover:scale-110 transition-transform">
+                      <Play size={32} className="text-purple-600" fill="currentColor" />
+                    </div>
                   </div>
                   <div className="absolute bottom-3 right-3 bg-black/70 px-2 py-1 rounded text-white text-xs font-medium">
                     {video.duration}

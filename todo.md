@@ -1432,3 +1432,7 @@
 - [x] Add rememberMe parameter to partner login procedure
 - [x] Generate Remember Me token on successful login
 - [x] Add Remember Me checkbox to PartnerLogin component
+
+
+## Website Enhancements (Feb 2026)
+- [x] Add video thumbnails to resources/videos page - Professional thumbnails integrated with hover effects
