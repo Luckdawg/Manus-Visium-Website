@@ -82,14 +82,25 @@ export default function Partners() {
               Visium works with partners to promote cybersecurity on all scales, delivering innovative solutions through strategic alliances and technology integrations
             </p>
             
-            <button
-              onClick={handlePartnerPortalClick}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-bold text-lg rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-white/20"
-            >
-              <LogIn className="h-6 w-6" />
-              {isAuthenticated && user?.role === "partner" ? "Access Your Partner Portal" : "Partner Portal Login"}
-              <ArrowRight className="h-6 w-6" />
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={handlePartnerPortalClick}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-bold text-lg rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-white/20"
+              >
+                <LogIn className="h-6 w-6" />
+                {isAuthenticated && user?.role === "partner" ? "Access Your Partner Portal" : "Partner Portal Login"}
+                <ArrowRight className="h-6 w-6" />
+              </button>
+              
+              <a
+                href="/partners/login"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary font-bold text-lg rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-primary/20"
+              >
+                <LogIn className="h-6 w-6" />
+                Existing Partner Login
+                <ArrowRight className="h-6 w-6" />
+              </a>
+            </div>
           </div>
         </div>
       </section>

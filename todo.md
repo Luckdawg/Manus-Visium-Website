@@ -1423,3 +1423,5 @@
 
 ## Bug Fixes (Feb 2026)
 - [x] Fix "Go to Partner Dashboard" button navigation link - Changed from window.location to wouter navigate hook
+
+- [x] Add direct login button to Partners page for existing partners to skip setup wizard
