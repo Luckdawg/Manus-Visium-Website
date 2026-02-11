@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useMemo } from 'react';
 import { Button } from "@/components/ui/button";
 import { Play, ExternalLink, Filter, X } from "lucide-react";
@@ -43,6 +41,15 @@ const VIDEO_PLAYLISTS = [
   { id: 'advanced-features', label: 'Advanced Features', description: 'Deep dives into platform capabilities' },
 ];
 
+// Professional thumbnail URLs
+const THUMBNAILS = {
+  intro: 'https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-1_1770825014000_na1fn_dGh1bWItdHJ1Y29udGV4dC1pbnRybw.jpg',
+  cybersecurity: 'https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-2_1770825007000_na1fn_dGh1bWItY3liZXJzZWN1cml0eQ.jpg',
+  smartCity: 'https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-3_1770825005000_na1fn_dGh1bWItc21hcnQtY2l0eQ.jpg',
+  agenticAI: 'https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-4_1770825009000_na1fn_dGh1bWItYWdlbnRpYy1haQ.jpg',
+  dashboard: 'https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-5_1770825016000_na1fn_dGh1bWItZGFzaGJvYXJkLWRlbW8.jpg',
+};
+
 export default function Videos() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPlaylist, setSelectedPlaylist] = useState<string | null>(null);
@@ -56,6 +63,7 @@ export default function Videos() {
       category: "interview",
       playlist: "industry-solutions",
       engagementScore: 89,
+      thumbnail: THUMBNAILS.smartCity,
       description: "CEOs Calvin Yadav and Mark Lucky discuss the landmark 54,000-camera AI surveillance network deployment in Peru and its strategic implications for Latin American security and regional expansion."
     },
     {
@@ -66,17 +74,18 @@ export default function Videos() {
       category: "product-demo",
       playlist: "industry-solutions",
       engagementScore: 92,
+      thumbnail: THUMBNAILS.agenticAI,
       description: "Explore how TruContext's agentic AI transforms Network Operations Centers (NOC) and Security Operations Centers (SOC) with autonomous threat detection and response capabilities."
     },
     {
       title: "TruContext Agentic AI for Cyber Defense",
-      thumbnail: "https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-4_1770825009000_na1fn_dGh1bWItYWdlbnRpYy1haQ.jpg",
       url: "https://youtu.be/GmVOss9m2aU",
       duration: "0:00",
       views: "0",
       category: "product-demo",
       playlist: "getting-started",
       engagementScore: 88,
+      thumbnail: THUMBNAILS.cybersecurity,
       description: "Discover how TruContext's agentic AI capabilities deliver autonomous threat detection and response for enterprise cybersecurity operations."
     },
     {
@@ -87,6 +96,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 85,
+      thumbnail: THUMBNAILS.smartCity,
       description: "Visium Technologies and IREX Peru demonstrate AI-powered security solutions using the Ethical Layered Intelligence (ELI) framework."
     },
     {
@@ -97,6 +107,7 @@ export default function Videos() {
       category: "training",
       playlist: "getting-started",
       engagementScore: 90,
+      thumbnail: THUMBNAILS.intro,
       description: "Introduction to Ethical Layered Intelligence (ELI) framework combining TruContext and IREX.AI for advanced threat detection and public safety."
     },
     {
@@ -107,6 +118,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "advanced-features",
       engagementScore: 87,
+      thumbnail: THUMBNAILS.cybersecurity,
       description: "Implement zero trust network access controls with TruContext's real-time threat detection and behavioral analytics."
     },
     {
@@ -117,17 +129,18 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 84,
+      thumbnail: THUMBNAILS.cybersecurity,
       description: "Detect and prevent insider threats with TruContext's advanced behavioral analytics and anomaly detection."
     },
     {
       title: "Smart City",
-      thumbnail: "https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-3_1770825005000_na1fn_dGh1bWItc21hcnQtY2l0eQ.jpg",
       url: "https://youtube.com/shorts/m9YQl1QfhKo?si=5ep5ZeXGI03uttmS",
       duration: "0:58",
       views: "2.1K",
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 91,
+      thumbnail: THUMBNAILS.smartCity,
       description: "Unified intelligence for public safety and urban operations with TruContext."
     },
     {
@@ -138,6 +151,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 86,
+      thumbnail: THUMBNAILS.smartCity,
       description: "Campus Security Initiative with IREX.AI for ethical AI-driven public safety."
     },
     {
@@ -148,6 +162,7 @@ export default function Videos() {
       category: "training",
       playlist: "getting-started",
       engagementScore: 89,
+      thumbnail: THUMBNAILS.dashboard,
       description: "Customized dashboard for your ecosystem - from cyber and law enforcement to logistics and healthcare."
     },
     {
@@ -158,6 +173,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 83,
+      thumbnail: THUMBNAILS.smartCity,
       description: "See how TruContext serves law enforcement and emergency response teams."
     },
     {
@@ -168,6 +184,7 @@ export default function Videos() {
       category: "webinar",
       playlist: "getting-started",
       engagementScore: 94,
+      thumbnail: THUMBNAILS.intro,
       description: "2025 Year End Recap highlighting Visium Technologies' achievements and AI's future in cybersecurity."
     },
     {
@@ -178,6 +195,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 82,
+      thumbnail: THUMBNAILS.agenticAI,
       description: "TruContext solutions for logistics, port operations, and supply chain security."
     },
     {
@@ -188,39 +206,40 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 88,
+      thumbnail: THUMBNAILS.cybersecurity,
       description: "Advanced fraud detection and anti-money laundering capabilities with TruContext."
     },
     {
       title: "TruContext Cyber Security",
-      thumbnail: "https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-2_1770825007000_na1fn_dGh1bWItY3liZXJzZWN1cml0eQ.jpg",
       url: "https://youtu.be/3Rw8qL5mKpN?si=YzKLmN0pQrStUvWx",
       duration: "3:11",
       views: "2.8K",
       category: "product-demo",
       playlist: "advanced-features",
       engagementScore: 93,
+      thumbnail: THUMBNAILS.cybersecurity,
       description: "Comprehensive cybersecurity threat detection and response with TruContext."
     },
     {
       title: "Visium TruContext Intro",
-      thumbnail: "https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-1_1770825014000_na1fn_dGh1bWItdHJ1Y29udGV4dC1pbnRybw.jpg",
       url: "https://youtu.be/pQrStUvWxYzKLmN0?si=N0pQrStUvWxYzKLm",
       duration: "2:33",
       views: "4.1K",
       category: "training",
       playlist: "getting-started",
       engagementScore: 95,
+      thumbnail: THUMBNAILS.intro,
       description: "Introduction to the TruContext platform and its core capabilities."
     },
     {
       title: "Visium Analytics TruContext Dashboard Demo",
-      thumbnail: "https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-5_1770825016000_na1fn_dGh1bWItZGFzaGJvYXJkLWRlbW8.jpg",
       url: "https://youtu.be/WxYzKLmN0pQr?si=StUvWxYzKLmN0pQr",
       duration: "6:58",
       views: "3.5K",
       category: "product-demo",
       playlist: "advanced-features",
       engagementScore: 91,
+      thumbnail: THUMBNAILS.dashboard,
       description: "Comprehensive walkthrough of TruContext's powerful analytics dashboard."
     },
     {
@@ -231,6 +250,7 @@ export default function Videos() {
       category: "product-demo",
       playlist: "advanced-features",
       engagementScore: 87,
+      thumbnail: THUMBNAILS.dashboard,
       description: "Powerful search capabilities across TruContext's data ecosystem."
     },
     {
@@ -241,6 +261,7 @@ export default function Videos() {
       category: "interview",
       playlist: "getting-started",
       engagementScore: 89,
+      thumbnail: THUMBNAILS.intro,
       description: "CEO Mark Lucky discusses Visium Technologies' vision and market position."
     },
   ];
@@ -252,7 +273,7 @@ export default function Videos() {
       const playlistMatch = !selectedPlaylist || video.playlist === selectedPlaylist;
       return categoryMatch && playlistMatch;
     });
-  }, [selectedCategories, selectedPlaylist, industryVideos]);
+  }, [selectedCategories, selectedPlaylist]);
 
   // Sort by engagement score (highest first)
   const sortedVideos = useMemo(() => {
@@ -432,9 +453,9 @@ export default function Videos() {
         {/* CTA Section */}
         <div className="mt-16 p-8 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg text-center">
           <h2 className="text-2xl font-bold mb-2">Ready to See TruContext in Action?</h2>
-          <p className="text-purple-100 mb-6">Schedule a personalized demo to see how TruContext can transform your data intelligence operations.</p>
-          <Button className="bg-white text-purple-600 hover:bg-gray-100 font-semibold">
-            Request a Demo
+          <p className="text-lg text-purple-100 mb-6">Schedule a personalized demo with our team</p>
+          <Button size="lg" variant="secondary" className="bg-white text-purple-600 hover:bg-gray-100">
+            Schedule a Demo
           </Button>
         </div>
       </div>
