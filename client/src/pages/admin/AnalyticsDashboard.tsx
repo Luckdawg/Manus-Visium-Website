@@ -2,6 +2,8 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import ExportModal from "@/components/ExportModal";
+import type { ExportOptions } from "@/components/ExportModal";
 import {
   LineChart,
   Line,
@@ -36,6 +38,10 @@ import {
 export default function AnalyticsDashboard() {
   const [dateRange, setDateRange] = useState<"7d" | "30d" | "90d" | "1y">("30d");
   const [selectedMetric, setSelectedMetric] = useState<"revenue" | "deals" | "health">("revenue");
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
+  const [exportSuccess, setExportSuccess] = useState(false);
 
   // Fetch analytics data
   const { data: kpis, isLoading: kpisLoading } = trpc.analytics.getExecutiveKPIs.useQuery({});
@@ -55,6 +61,63 @@ export default function AnalyticsDashboard() {
     trpc.analytics.getCommissionAnalytics.useQuery({});
 
   const COLORS = ["#3b82f6", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"];
+
+  // Export handler
+  const handleExport = async (options: ExportOptions) => {
+    setIsExporting(true);
+    setExportError(null);
+    setExportSuccess(false);
+
+    try {
+      let result: any;
+      const utils = trpc.useUtils();
+      
+      switch (options.type) {
+        case "kpis":
+          result = await utils.analyticsExport.exportKPIs.fetch();
+          break;
+        case "pipeline":
+          result = await utils.analyticsExport.exportDealPipeline.fetch();
+          break;
+        case "partners":
+          result = await utils.analyticsExport.exportPartnerPerformance.fetch({ limit: 100 });
+          break;
+        case "financial":
+          result = await utils.analyticsExport.exportFinancial.fetch({});
+          break;
+        case "training":
+          result = await utils.analyticsExport.exportTraining.fetch({ limit: 50 });
+          break;
+        case "commissions":
+          result = await utils.analyticsExport.exportCommissions.fetch();
+          break;
+        case "all":
+          result = await utils.analyticsExport.exportAll.fetch({});
+          break;
+        default:
+          throw new Error("Invalid export type");
+      }
+
+      if (result) {
+        const { filename, content } = result;
+        const blob = new Blob([content], { type: "text/csv;charset=utf-8;" });
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", filename);
+        link.style.visibility = "hidden";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        setExportSuccess(true);
+      }
+    } catch (error) {
+      setExportError(error instanceof Error ? error.message : "Failed to export data");
+    } finally {
+      setIsExporting(false);
+    }
+  };
 
   // KPI Cards
   const KPICard = ({
@@ -104,8 +167,13 @@ export default function AnalyticsDashboard() {
               {range === "7d" ? "7 Days" : range === "30d" ? "30 Days" : range === "90d" ? "90 Days" : "1 Year"}
             </Button>
           ))}
-          <Button variant="outline" size="sm">
-            <Download className="w-4 h-4 mr-2" />
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsExportModalOpen(true)}
+            className="gap-2"
+          >
+            <Download className="w-4 h-4" />
             Export
           </Button>
         </div>
@@ -351,6 +419,16 @@ export default function AnalyticsDashboard() {
           )}
         </CardContent>
       </Card>
+
+      {/* Export Modal */}
+      <ExportModal
+        isOpen={isExportModalOpen}
+        onClose={() => setIsExportModalOpen(false)}
+        onExport={handleExport}
+        isLoading={isExporting}
+        error={exportError}
+        exportTypes={["kpis", "pipeline", "partners", "financial", "training", "commissions", "all"]}
+      />
     </div>
   );
 }
