@@ -777,6 +777,7 @@ export const partnerRouter = router({
   requestPasswordReset: publicProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(async ({ input }) => {
+      const { sendPasswordResetEmail } = await import("../_core/sendgrid");
       const db = await getDb();
       if (!db) throw new Error("Database not available");
 
@@ -809,8 +810,9 @@ export const partnerRouter = router({
           expiresAt,
         });
 
-        // In production, send email with reset link
-        console.log(`Password reset link: /partners/reset-password?token=${resetToken}`);
+        // Send email with reset link
+        const resetLink = `${process.env.VITE_FRONTEND_URL || "https://visium-partner.com"}/partners/reset-password?token=${resetToken}`;
+        await sendPasswordResetEmail(input.email, resetToken, resetLink);
 
         return {
           success: true,
@@ -831,7 +833,7 @@ export const partnerRouter = router({
     .input(
       z.object({
         token: z.string(),
-        newPassword: z.string().min(8),
+        newPassword: z.string().min(12).regex(/[A-Z]/).regex(/[a-z]/).regex(/[0-9]/).regex(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/),
       })
     )
     .mutation(async ({ input }) => {
@@ -869,7 +871,18 @@ export const partnerRouter = router({
           });
         }
 
-        // Hash new password
+        // Validate password strength
+        const { validatePasswordStrength } = await import("../../shared/passwordValidator");
+        const passwordValidation = validatePasswordStrength(input.newPassword);
+        
+        if (!passwordValidation.isValid) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: "Password does not meet security requirements: " + passwordValidation.feedback.join(", "),
+          });
+        }
+
+        // Hash new password (in production, use bcrypt)
         const passwordHash = Buffer.from(input.newPassword).toString("base64");
 
         // Update user password
