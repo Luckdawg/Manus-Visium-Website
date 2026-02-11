@@ -1590,3 +1590,44 @@
 - [x] Add system health and performance monitoring
 - [x] Create audit log viewer
 - [x] Build admin user management interface
+
+
+## Testing & QA - Partner Portal
+
+### Test Data & Seeding
+- [x] Create seed script for test partner companies
+- [x] Generate test user accounts with different roles
+- [x] Create sample deals at various stages
+- [x] Populate training courses and certifications
+- [x] Add test workflows and conflict policies
+- [x] Create sample applications for testing approval flows
+
+### API Testing
+- [x] Create Postman/cURL collection for all partner APIs
+- [x] Document API endpoints and request/response examples
+- [ ] Create integration tests for critical workflows
+- [ ] Test error handling and edge cases
+- [ ] Validate authentication and authorization
+
+### UI Testing Checklist
+- [ ] Partner application form submission
+- [ ] Deal registration and pipeline progression
+- [ ] Training enrollment and progress tracking
+- [ ] Admin approval workflows
+- [ ] Conflict detection and resolution
+- [ ] Report generation and analytics
+- [ ] Mobile responsiveness across all pages
+
+### Manual Testing Scenarios
+- [ ] End-to-end partner onboarding flow
+- [ ] Deal approval workflow with multiple stages
+- [ ] Conflict detection and escalation
+- [ ] Training certification completion
+- [ ] Admin configuration changes
+- [ ] Performance under load
+
+### Browser & Compatibility
+- [ ] Test on Chrome, Firefox, Safari, Edge
+- [ ] Verify mobile experience (iOS, Android)
+- [ ] Test accessibility (WCAG 2.1 AA)
+- [ ] Cross-browser form compatibility

@@ -1,0 +1,423 @@
+{
+  "info": {
+    "name": "Visium Partner Portal API",
+    "description": "Complete API collection for testing partner portal functionality",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Partner Onboarding",
+      "item": [
+        {
+          "name": "Submit Partner Application",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/partnerOnboarding.submitApplication",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "partnerOnboarding.submitApplication"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"companyName\": \"Test Partner Inc\",\n  \"contactEmail\": \"test@partner.com\",\n  \"contactPhone\": \"+1-555-0123\",\n  \"partnerType\": \"Reseller\",\n  \"region\": \"North America\",\n  \"specializations\": [\"Cybersecurity\", \"Cloud Security\"]\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Partner Applications (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/partnerOnboarding.getApplications",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "partnerOnboarding.getApplications"]
+            }
+          }
+        },
+        {
+          "name": "Approve Partner Application",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/partnerOnboarding.approveApplication",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "partnerOnboarding.approveApplication"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applicationId\": 1,\n  \"tier\": \"Silver\",\n  \"commissionRate\": 20,\n  \"mdfBudget\": 35000\n}"
+            }
+          }
+        },
+        {
+          "name": "Reject Partner Application",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/partnerOnboarding.rejectApplication",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "partnerOnboarding.rejectApplication"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applicationId\": 1,\n  \"rejectionReason\": \"Does not meet minimum requirements\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Deal Management",
+      "item": [
+        {
+          "name": "Create Deal",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/dealManagement.createDeal",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "dealManagement.createDeal"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dealName\": \"Enterprise Security Implementation\",\n  \"accountName\": \"Fortune 500 Corp\",\n  \"dealValue\": \"250000\",\n  \"dealCurrency\": \"USD\",\n  \"expectedCloseDate\": \"2026-03-31\",\n  \"description\": \"Multi-region threat detection deployment\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Deal Pipeline",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/dealManagement.getDealPipeline",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "dealManagement.getDealPipeline"]
+            }
+          }
+        },
+        {
+          "name": "Get Deal Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/dealManagement.getDealDetails?dealId=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "dealManagement.getDealDetails"],
+              "query": [
+                {
+                  "key": "dealId",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Approve Deal",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/dealManagement.approveDeal",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "dealManagement.approveDeal"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dealId\": 1,\n  \"approverRole\": \"Manager\",\n  \"notes\": \"Approved for processing\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Conflicts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/dealManagement.getConflicts",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "dealManagement.getConflicts"]
+            }
+          }
+        },
+        {
+          "name": "Resolve Conflict",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/dealManagement.resolveConflict",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "dealManagement.resolveConflict"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conflictId\": 1,\n  \"resolutionStrategy\": \"Partner-Tier-Based\",\n  \"notes\": \"Resolved based on partner tier\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Training & Certification",
+      "item": [
+        {
+          "name": "Get Available Courses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/training.getCourses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "training.getCourses"]
+            }
+          }
+        },
+        {
+          "name": "Enroll in Course",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/training.enrollCourse",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "training.enrollCourse"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Course Progress",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/training.updateProgress",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "training.updateProgress"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enrollmentId\": 1,\n  \"progressPercentage\": 75\n}"
+            }
+          }
+        },
+        {
+          "name": "Get User Certifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/training.getUserCertifications",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "training.getUserCertifications"]
+            }
+          }
+        },
+        {
+          "name": "Get Learning Paths",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/training.getLearningPaths",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "training.getLearningPaths"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Workflows",
+      "item": [
+        {
+          "name": "Get Dashboard Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/adminWorkflows.getDashboardMetrics",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "adminWorkflows.getDashboardMetrics"]
+            }
+          }
+        },
+        {
+          "name": "Get All Workflows",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/adminWorkflows.getWorkflows",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "adminWorkflows.getWorkflows"]
+            }
+          }
+        },
+        {
+          "name": "Create Workflow",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/adminWorkflows.createWorkflow",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "adminWorkflows.createWorkflow"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workflowName\": \"Custom Approval Process\",\n  \"workflowCode\": \"WF-CUSTOM\",\n  \"template\": \"Custom\",\n  \"minDealValue\": 100000\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Conflict Policies",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/adminWorkflows.getConflictPolicies",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "adminWorkflows.getConflictPolicies"]
+            }
+          }
+        },
+        {
+          "name": "Create Conflict Policy",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/adminWorkflows.createConflictPolicy",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "adminWorkflows.createConflictPolicy"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"policyName\": \"Pricing Conflict Resolution\",\n  \"policyCode\": \"CP-PRICING\",\n  \"conflictType\": \"Pricing\",\n  \"defaultSeverity\": \"Medium\",\n  \"autoResolve\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Scoring Rules",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/adminWorkflows.getScoringRules",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "adminWorkflows.getScoringRules"]
+            }
+          }
+        },
+        {
+          "name": "Create Scoring Rule",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/adminWorkflows.createScoringRule",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "adminWorkflows.createScoringRule"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ruleName\": \"Deal Size Scoring\",\n  \"ruleCode\": \"SR-SIZE\",\n  \"category\": \"Deal Size\",\n  \"weight\": 30,\n  \"qualificationThreshold\": 50\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Audit Log",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trpc/adminWorkflows.getAuditLog?limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trpc", "adminWorkflows.getAuditLog"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
