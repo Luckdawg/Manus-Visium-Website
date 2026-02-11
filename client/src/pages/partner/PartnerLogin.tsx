@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,7 @@ import { AlertCircle, CheckCircle2, Mail } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 
 export default function PartnerLogin() {
+  const [, navigate] = useLocation();
   const { user, isAuthenticated, loading } = useAuth();
   const [recoveryEmail, setRecoveryEmail] = useState("");
   const [recoverySubmitted, setRecoverySubmitted] = useState(false);
@@ -80,7 +82,7 @@ export default function PartnerLogin() {
             </div>
 
             <Button
-              onClick={() => (window.location.href = "/partners/dashboard")}
+              onClick={() => navigate("/partners/dashboard")}
               className="w-full bg-primary hover:bg-primary/90"
             >
               Go to Partner Dashboard

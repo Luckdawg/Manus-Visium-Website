@@ -1419,3 +1419,7 @@
 - [x] Update PartnerLogin recovery with strength indicator
 - [x] Add password validation tests
 - [x] End-to-end testing and final deployment checkpoint
+
+
+## Bug Fixes (Feb 2026)
+- [x] Fix "Go to Partner Dashboard" button navigation link - Changed from window.location to wouter navigate hook
