@@ -70,6 +70,8 @@ import OnboardingWizard from "./pages/partner/OnboardingWizard";
 import RegisterDeal from "./pages/partner/RegisterDeal";
 import DealsList from "./pages/partner/DealsList";
 import ResourcesLibrary from "./pages/partner/ResourcesLibrary";
+import PartnerApplicationForm from "./pages/partner/PartnerApplicationForm";
+import PartnerApplications from "./pages/admin/PartnerApplications";
 
 function Router() {
   const [location] = useLocation();
@@ -138,6 +140,8 @@ function Router() {
       <Route path="/partner/deals/new" component={DealRegistrationWizard} />
       <Route path="/partners/deals" component={DealsList} />
       <Route path="/partners/resources" component={ResourcesLibrary} />
+      <Route path="/partners/apply" component={PartnerApplicationForm} />
+      <Route path="/admin/partner-applications" component={PartnerApplications} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
