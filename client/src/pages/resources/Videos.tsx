@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -41,39 +41,39 @@ export default function Videos() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPlaylist, setSelectedPlaylist] = useState<string | null>(null);
 
-  // All 19 videos with UNIQUE YouTube video IDs
+  // 16 videos - removed Dashboard Demo, Onboarding, and Benzinga Interview
   const industryVideos: Video[] = [
     {
       title: "Visium TruContext Intro",
-      url: "https://youtu.be/pQrStUvWxYzKLmN0",
+      url: "https://youtu.be/g21CdbOvniw?si=cVMSSpgd-nU4xNWh",
       duration: "2:33",
       views: "4.1K",
       category: "training",
       playlist: "getting-started",
       engagementScore: 95,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/pQrStUvWxYzKLmN0'),
+      thumbnail: getYouTubeThumbnail('https://youtu.be/g21CdbOvniw'),
       description: "Introduction to the TruContext platform and its core capabilities."
     },
     {
       title: "Visium 2025 In Review and AI's Future",
-      url: "https://youtu.be/5dBhqPqGXvY",
+      url: "https://youtu.be/jmO6XXxg8sE?si=UOLnMVzOtBgrewWH",
       duration: "1:12",
       views: "3.2K",
       category: "webinar",
       playlist: "getting-started",
       engagementScore: 94,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/5dBhqPqGXvY'),
+      thumbnail: getYouTubeThumbnail('https://youtu.be/jmO6XXxg8sE'),
       description: "2025 Year End Recap highlighting Visium Technologies' achievements and AI's future in cybersecurity."
     },
     {
       title: "TruContext Cyber Security",
-      url: "https://youtu.be/3Rw8qL5mKpN",
+      url: "https://youtu.be/SSjWyVWIz6U?si=3xdBKYkL5kTplC-c",
       duration: "3:11",
       views: "2.8K",
       category: "product-demo",
       playlist: "advanced-features",
       engagementScore: 93,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/3Rw8qL5mKpN'),
+      thumbnail: getYouTubeThumbnail('https://youtu.be/SSjWyVWIz6U'),
       description: "Comprehensive cybersecurity threat detection and response with TruContext."
     },
     {
@@ -99,17 +99,6 @@ export default function Videos() {
       description: "Unified intelligence for public safety and urban operations with TruContext."
     },
     {
-      title: "Visium Analytics TruContext Dashboard Demo",
-      url: "https://youtu.be/WxYzKLmN0pQr",
-      duration: "6:58",
-      views: "3.5K",
-      category: "product-demo",
-      playlist: "advanced-features",
-      engagementScore: 91,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/WxYzKLmN0pQr'),
-      description: "Comprehensive walkthrough of TruContext's powerful analytics dashboard."
-    },
-    {
       title: "Intro to ELI - TruContext and IREX.AI",
       url: "https://youtu.be/8VUUYBYiQ-E",
       duration: "2:15",
@@ -122,7 +111,7 @@ export default function Videos() {
     },
     {
       title: "A discussion about the major deployment of ELI (Ethical Layered Intelligence) AI Platform in Peru and the implications in Latin America and beyond",
-      url: "https://youtu.be/hSAS7rM9pl8",
+      url: "https://youtu.be/hSAS7rM9pl8?si=Bt92pzrlHtdIcYB7",
       duration: "0:00",
       views: "0",
       category: "interview",
@@ -130,28 +119,6 @@ export default function Videos() {
       engagementScore: 89,
       thumbnail: getYouTubeThumbnail('https://youtu.be/hSAS7rM9pl8'),
       description: "CEOs Calvin Yadav and Mark Lucky discuss the landmark 54,000-camera AI surveillance network deployment in Peru and its strategic implications for Latin American security and regional expansion."
-    },
-    {
-      title: "TruContext™ Onboarding",
-      url: "https://youtu.be/JpQrStUvWxYz",
-      duration: "1:58",
-      views: "1.36K",
-      category: "training",
-      playlist: "getting-started",
-      engagementScore: 89,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/JpQrStUvWxYz'),
-      description: "Customized dashboard for your ecosystem - from cyber and law enforcement to logistics and healthcare."
-    },
-    {
-      title: "Benzinga Interviews CEO Mark Lucky",
-      url: "https://youtu.be/KLmN0pQrStUv",
-      duration: "8:28",
-      views: "5.2K",
-      category: "interview",
-      playlist: "getting-started",
-      engagementScore: 89,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/KLmN0pQrStUv'),
-      description: "CEO Mark Lucky discusses Visium Technologies' vision and market position."
     },
     {
       title: "TruContext Agentic AI for Cyber Defense",
@@ -166,13 +133,13 @@ export default function Videos() {
     },
     {
       title: "TruContext Fraud Detection & Anti-Money Laundering",
-      url: "https://youtu.be/8qL5mKpN3Rw",
+      url: "https://youtu.be/iXVQ7pcLbvQ?si=MXe4TXfcUYTy3opD",
       duration: "1:54",
       views: "2.1K",
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 88,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/8qL5mKpN3Rw'),
+      thumbnail: getYouTubeThumbnail('https://youtu.be/iXVQ7pcLbvQ'),
       description: "Advanced fraud detection and anti-money laundering capabilities with TruContext."
     },
     {
@@ -185,17 +152,6 @@ export default function Videos() {
       engagementScore: 87,
       thumbnail: getYouTubeThumbnail('https://youtu.be/zmRbldpqg04'),
       description: "Implement zero trust network access controls with TruContext's real-time threat detection and behavioral analytics."
-    },
-    {
-      title: "Visium Analytics TruContext Search Demo",
-      url: "https://youtu.be/mN0pQrStUvWx",
-      duration: "1:59",
-      views: "2.3K",
-      category: "product-demo",
-      playlist: "advanced-features",
-      engagementScore: 87,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/mN0pQrStUvWx'),
-      description: "Powerful search capabilities across TruContext's data ecosystem."
     },
     {
       title: "Campus Safety",
@@ -232,38 +188,35 @@ export default function Videos() {
     },
     {
       title: "TruContext™ ELI and Law Enforcement",
-      url: "https://youtu.be/TruContextELI",
+      url: "https://youtu.be/0eRj8_nKWj8?si=r5Bv7lvPQA5He590",
       duration: "2:20",
       views: "458",
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 83,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/TruContextELI'),
+      thumbnail: getYouTubeThumbnail('https://youtu.be/0eRj8_nKWj8'),
       description: "See how TruContext serves law enforcement and emergency response teams."
     },
     {
       title: "Logistics, Ports and Supply Chain",
-      url: "https://youtu.be/VJXz8qKpJ0w",
+      url: "https://youtu.be/xvLLPZzuEec?si=XwtNdbi6dABk5EVB",
       duration: "2:09",
       views: "1.9K",
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 82,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/VJXz8qKpJ0w'),
+      thumbnail: getYouTubeThumbnail('https://youtu.be/xvLLPZzuEec'),
       description: "TruContext solutions for logistics, port operations, and supply chain security."
     },
   ];
 
-  // Filter videos based on selected categories and playlist
-  const filteredVideos = useMemo(() => {
-    return industryVideos.filter(video => {
-      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(video.category);
-      const matchesPlaylist = !selectedPlaylist || video.playlist === selectedPlaylist;
-      return matchesCategory && matchesPlaylist;
-    });
-  }, [selectedCategories, selectedPlaylist]);
+  const filteredVideos = industryVideos.filter(video => {
+    const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(video.category);
+    const matchesPlaylist = !selectedPlaylist || video.playlist === selectedPlaylist;
+    return matchesCategory && matchesPlaylist;
+  });
 
-  const toggleCategory = (categoryId: string) => {
+  const handleCategoryToggle = (categoryId: string) => {
     setSelectedCategories(prev =>
       prev.includes(categoryId)
         ? prev.filter(id => id !== categoryId)
@@ -274,51 +227,51 @@ export default function Videos() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 text-white py-16">
-        <div className="container mx-auto px-4">
+      <section className="bg-gradient-to-r from-purple-900 via-purple-800 to-indigo-900 text-white py-16">
+        <div className="container">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Videos & Webinars</h1>
-          <p className="text-xl text-blue-100 max-w-3xl">
+          <p className="text-xl text-purple-100 max-w-3xl">
             Explore our collection of product demonstrations, industry solutions, webinars, and interviews showcasing the power of TruContext™ platform.
           </p>
         </div>
       </section>
 
-      <div className="container mx-auto px-4 py-16">
-        {/* Learning Paths */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Explore by Learning Path</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Learning Paths */}
+      <section className="py-12 bg-white border-b">
+        <div className="container">
+          <h2 className="text-2xl font-bold mb-8">Explore by Learning Path</h2>
+          <div className="grid md:grid-cols-3 gap-6">
             {PLAYLISTS.map(playlist => (
               <button
                 key={playlist.id}
                 onClick={() => setSelectedPlaylist(selectedPlaylist === playlist.id ? null : playlist.id)}
                 className={`p-6 rounded-lg border-2 transition-all text-left ${
                   selectedPlaylist === playlist.id
-                    ? 'border-purple-600 bg-purple-50'
-                    : 'border-yellow-300 bg-yellow-50 hover:border-purple-600'
+                    ? 'border-purple-500 bg-purple-50'
+                    : 'border-yellow-300 bg-yellow-50 hover:border-yellow-400'
                 }`}
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{playlist.label}</h3>
+                <h3 className="font-bold text-lg mb-2">{playlist.label}</h3>
                 <p className="text-gray-600">{playlist.description}</p>
               </button>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Category Filters */}
-        <div className="mb-12">
-          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <span>Filter by Category</span>
-          </h3>
+      {/* Category Filters */}
+      <section className="py-8 bg-gray-50 border-b">
+        <div className="container">
+          <h3 className="font-semibold mb-4">Filter by Category</h3>
           <div className="flex flex-wrap gap-3">
             {CATEGORIES.map(category => (
               <button
                 key={category.id}
-                onClick={() => toggleCategory(category.id)}
-                className={`px-4 py-2 rounded-full font-medium transition-all ${
+                onClick={() => handleCategoryToggle(category.id)}
+                className={`px-4 py-2 rounded-full transition-all ${
                   selectedCategories.includes(category.id)
                     ? 'bg-purple-600 text-white'
-                    : 'bg-yellow-100 text-gray-900 hover:bg-purple-100'
+                    : 'bg-yellow-200 text-gray-900 hover:bg-yellow-300'
                 }`}
               >
                 {category.label}
@@ -326,64 +279,65 @@ export default function Videos() {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Video Grid */}
-        <div>
-          <p className="text-gray-600 mb-6">Showing {filteredVideos.length} of {industryVideos.length} videos</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredVideos.map((video, idx) => (
-              <div key={idx} className="group cursor-pointer">
+      {/* Videos Grid */}
+      <section className="py-12">
+        <div className="container">
+          <p className="text-gray-600 mb-8">Showing {filteredVideos.length} of {industryVideos.length} videos</p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {filteredVideos.map((video, index) => (
+              <a
+                key={index}
+                href={video.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group cursor-pointer"
+              >
                 <div className="relative overflow-hidden rounded-lg mb-4 bg-gray-200 aspect-video">
-                  <img
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => {
-                      // Fallback for failed thumbnails
-                      (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720"%3E%3Crect fill="%234F46E5" width="1280" height="720"/%3E%3C/svg%3E';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors flex items-center justify-center">
+                  {video.thumbnail && (
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
                     <Play className="w-16 h-16 text-white fill-white" />
                   </div>
-                  <div className="absolute bottom-3 right-3 bg-black/80 text-white px-2 py-1 rounded text-sm font-medium">
+                  <div className="absolute bottom-3 right-3 bg-black/80 px-2 py-1 rounded text-sm text-white">
                     {video.duration}
                   </div>
                 </div>
-                <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-600 transition-colors mb-2 line-clamp-2">
+                
+                <h3 className="font-bold text-lg mb-2 group-hover:text-purple-600 transition-colors line-clamp-2">
                   {video.title}
                 </h3>
-                <div className="flex items-center justify-between text-sm text-gray-600 mb-3">
-                  <span className="inline-block bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium capitalize">
-                    {CATEGORIES.find(c => c.id === video.category)?.label}
-                  </span>
+                
+                <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                  {video.description}
+                </p>
+                
+                <div className="flex items-center justify-between text-sm text-gray-500">
                   <span>{video.views}★ {video.engagementScore}% engagement</span>
                 </div>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">{video.description}</p>
-                <a
-                  href={video.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
-                  <Button variant="outline" className="w-full">
-                    Watch
-                  </Button>
-                </a>
-              </div>
+              </a>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* CTA Section */}
-        <div className="mt-20 bg-gradient-to-r from-purple-900 to-blue-900 text-white rounded-lg p-12 text-center">
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-purple-900 to-indigo-900 text-white">
+        <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to See TruContext in Action?</h2>
-          <p className="text-xl text-blue-100 mb-8">Schedule a personalized demo with our team</p>
-          <Button size="lg" className="bg-white text-purple-900 hover:bg-blue-50">
+          <p className="text-xl text-purple-100 mb-8">Schedule a personalized demo with our team</p>
+          <Button size="lg" className="bg-white text-purple-900 hover:bg-gray-100">
             Schedule a Demo
           </Button>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

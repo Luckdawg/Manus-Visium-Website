@@ -1436,3 +1436,8 @@
 
 ## Website Enhancements (Feb 2026)
 - [x] Add video thumbnails to resources/videos page - Professional thumbnails integrated with hover effects
+
+- [x] Remove 3 videos: Dashboard Demo, Onboarding, Benzinga Interview
+- [x] Update YouTube links for 7 videos with exact URLs provided
+- [x] Verify no duplicate numbering or layout gaps (16 videos remaining, properly ordered)
+- [x] Test all video links work correctly (all links verified)
