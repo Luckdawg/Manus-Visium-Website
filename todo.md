@@ -1631,3 +1631,63 @@
 - [ ] Verify mobile experience (iOS, Android)
 - [ ] Test accessibility (WCAG 2.1 AA)
 - [ ] Cross-browser form compatibility
+
+
+## Integration Tests - Critical Workflows
+
+### Deal Approval Workflow Tests
+- [x] Test deal submission and status progression
+- [x] Test multi-stage approval workflow
+- [x] Test deal rejection and resubmission
+- [x] Test commission calculation on approval
+- [x] Test deal scoring and qualification
+
+### Conflict Detection Tests
+- [x] Test channel conflict detection
+- [x] Test territory conflict detection
+- [x] Test customer conflict detection
+- [x] Test auto-resolution workflows
+- [x] Test escalation to admin
+
+### Training & Certification Tests
+- [x] Test course enrollment
+- [x] Test progress tracking
+- [x] Test certification eligibility
+- [x] Test certification expiration
+- [x] Test learning path completion
+
+### Partner Onboarding Tests
+- [x] Test application submission
+- [x] Test approval workflow
+- [x] Test tier assignment
+- [x] Test user account creation
+- [x] Test onboarding milestone tracking
+
+## Performance Optimization - Caching
+
+### Query Caching Layer
+- [x] Implement Redis/in-memory cache for course catalog
+- [x] Cache deal pipeline queries
+- [x] Cache partner dashboard data
+- [x] Implement cache invalidation strategy
+- [x] Add cache metrics monitoring
+
+### Database Query Optimization
+- [x] Add indexes for frequently queried fields
+- [x] Optimize deal pipeline query
+- [x] Optimize training course queries
+- [x] Optimize partner company queries
+- [x] Profile slow queries
+
+### Frontend Performance
+- [x] Implement React query caching
+- [x] Add request deduplication
+- [x] Optimize bundle size
+- [x] Lazy load dashboard components
+- [x] Monitor Core Web Vitals
+
+### Performance Benchmarks
+- [x] Dashboard load time < 500ms
+- [x] API response time < 200ms
+- [x] Course catalog load < 300ms
+- [x] Deal pipeline render < 400ms
