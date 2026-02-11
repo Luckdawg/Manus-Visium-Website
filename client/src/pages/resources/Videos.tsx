@@ -21,11 +21,10 @@ const PLAYLISTS = [
 ];
 
 const CATEGORIES = [
-  { id: 'product-demo', label: 'Product Demo' },
-  { id: 'use-case', label: 'Use Case' },
-  { id: 'interview', label: 'Interview' },
-  { id: 'webinar', label: 'Webinar' },
   { id: 'training', label: 'Training' },
+  { id: 'interview', label: 'Interview' },
+  { id: 'use-case', label: 'Use Case' },
+  { id: 'webinar', label: 'Webinar' },
 ];
 
 // Helper function to get YouTube thumbnail from video URL
@@ -41,7 +40,7 @@ export default function Videos() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPlaylist, setSelectedPlaylist] = useState<string | null>(null);
 
-  // 16 videos - removed Dashboard Demo, Onboarding, and Benzinga Interview
+  // 15 videos with correct category assignments from user's table
   const industryVideos: Video[] = [
     {
       title: "Visium TruContext Intro",
@@ -59,7 +58,7 @@ export default function Videos() {
       url: "https://youtu.be/jmO6XXxg8sE?si=UOLnMVzOtBgrewWH",
       duration: "1:12",
       views: "3.2K",
-      category: "webinar",
+      category: "interview",
       playlist: "getting-started",
       engagementScore: 94,
       thumbnail: getYouTubeThumbnail('https://youtu.be/jmO6XXxg8sE'),
@@ -70,8 +69,8 @@ export default function Videos() {
       url: "https://youtu.be/SSjWyVWIz6U?si=3xdBKYkL5kTplC-c",
       duration: "3:11",
       views: "2.8K",
-      category: "product-demo",
-      playlist: "advanced-features",
+      category: "use-case",
+      playlist: "industry-solutions",
       engagementScore: 93,
       thumbnail: getYouTubeThumbnail('https://youtu.be/SSjWyVWIz6U'),
       description: "Comprehensive cybersecurity threat detection and response with TruContext."
@@ -81,7 +80,7 @@ export default function Videos() {
       url: "https://youtu.be/I8gPwg23iqQ",
       duration: "0:00",
       views: "0",
-      category: "product-demo",
+      category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 92,
       thumbnail: getYouTubeThumbnail('https://youtu.be/I8gPwg23iqQ'),
@@ -110,23 +109,23 @@ export default function Videos() {
       description: "Introduction to Ethical Layered Intelligence (ELI) framework combining TruContext and IREX.AI for advanced threat detection and public safety."
     },
     {
-      title: "A discussion about the major deployment of ELI (Ethical Layered Intelligence) AI Platform in Peru and the implications in Latin America and beyond",
+      title: "A discussion about the major deployment of ELI (Ethical Layered Intelligence) AI Platform",
       url: "https://youtu.be/hSAS7rM9pl8?si=Bt92pzrlHtdIcYB7",
       duration: "0:00",
       views: "0",
-      category: "interview",
+      category: "webinar",
       playlist: "industry-solutions",
       engagementScore: 89,
       thumbnail: getYouTubeThumbnail('https://youtu.be/hSAS7rM9pl8'),
-      description: "CEOs Calvin Yadav and Mark Lucky discuss the landmark 54,000-camera AI surveillance network deployment in Peru and its strategic implications for Latin American security and regional expansion."
+      description: "CEOs Calvin Yadav and Mark Lucky discuss the landmark 54,000-camera AI surveillance network deployment in Peru and its strategic implications for Latin American security."
     },
     {
       title: "TruContext Agentic AI for Cyber Defense",
       url: "https://youtu.be/GmVOss9m2aU",
       duration: "0:00",
       views: "0",
-      category: "product-demo",
-      playlist: "getting-started",
+      category: "use-case",
+      playlist: "advanced-features",
       engagementScore: 88,
       thumbnail: getYouTubeThumbnail('https://youtu.be/GmVOss9m2aU'),
       description: "Discover how TruContext's agentic AI capabilities deliver autonomous threat detection and response for enterprise cybersecurity operations."
@@ -248,11 +247,11 @@ export default function Videos() {
                 className={`p-6 rounded-lg border-2 transition-all text-left ${
                   selectedPlaylist === playlist.id
                     ? 'border-purple-500 bg-purple-50'
-                    : 'border-yellow-300 bg-yellow-50 hover:border-yellow-400'
+                    : 'border-gray-200 hover:border-purple-300'
                 }`}
               >
-                <h3 className="font-bold text-lg mb-2">{playlist.label}</h3>
-                <p className="text-gray-600">{playlist.description}</p>
+                <h3 className="text-lg font-bold mb-2">{playlist.label}</h3>
+                <p className="text-sm text-gray-600">{playlist.description}</p>
               </button>
             ))}
           </div>
@@ -260,82 +259,108 @@ export default function Videos() {
       </section>
 
       {/* Category Filters */}
-      <section className="py-8 bg-gray-50 border-b">
+      <section className="py-12 bg-gray-50 border-b">
         <div className="container">
-          <h3 className="font-semibold mb-4">Filter by Category</h3>
+          <h2 className="text-2xl font-bold mb-6">Filter by Category</h2>
           <div className="flex flex-wrap gap-3">
             {CATEGORIES.map(category => (
               <button
                 key={category.id}
                 onClick={() => handleCategoryToggle(category.id)}
-                className={`px-4 py-2 rounded-full transition-all ${
+                className={`px-4 py-2 rounded-full font-medium transition-all ${
                   selectedCategories.includes(category.id)
                     ? 'bg-purple-600 text-white'
-                    : 'bg-yellow-200 text-gray-900 hover:bg-yellow-300'
+                    : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-purple-400'
                 }`}
               >
                 {category.label}
               </button>
             ))}
+            {selectedCategories.length > 0 && (
+              <button
+                onClick={() => setSelectedCategories([])}
+                className="px-4 py-2 rounded-full font-medium text-gray-600 hover:text-gray-900"
+              >
+                Clear Filters
+              </button>
+            )}
           </div>
         </div>
       </section>
 
       {/* Videos Grid */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="container">
-          <p className="text-gray-600 mb-8">Showing {filteredVideos.length} of {industryVideos.length} videos</p>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {filteredVideos.map((video, index) => (
-              <a
-                key={index}
-                href={video.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group cursor-pointer"
-              >
-                <div className="relative overflow-hidden rounded-lg mb-4 bg-gray-200 aspect-video">
-                  {video.thumbnail && (
-                    <img
-                      src={video.thumbnail}
-                      alt={video.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-                    <Play className="w-16 h-16 text-white fill-white" />
-                  </div>
-                  <div className="absolute bottom-3 right-3 bg-black/80 px-2 py-1 rounded text-sm text-white">
-                    {video.duration}
-                  </div>
-                </div>
-                
-                <h3 className="font-bold text-lg mb-2 group-hover:text-purple-600 transition-colors line-clamp-2">
-                  {video.title}
-                </h3>
-                
-                <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-                  {video.description}
-                </p>
-                
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <span>{video.views}★ {video.engagementScore}% engagement</span>
-                </div>
-              </a>
-            ))}
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold">
+              {selectedPlaylist 
+                ? `${PLAYLISTS.find(p => p.id === selectedPlaylist)?.label} (${filteredVideos.length} videos)`
+                : `All Videos (${filteredVideos.length} videos)`
+              }
+            </h2>
           </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-purple-900 to-indigo-900 text-white">
-        <div className="container text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to See TruContext in Action?</h2>
-          <p className="text-xl text-purple-100 mb-8">Schedule a personalized demo with our team</p>
-          <Button size="lg" className="bg-white text-purple-900 hover:bg-gray-100">
-            Schedule a Demo
-          </Button>
+          {filteredVideos.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-xl text-gray-600">No videos match your filters. Try adjusting your selection.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredVideos.map((video, index) => (
+                <a
+                  key={index}
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-lg overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all"
+                >
+                  {/* Thumbnail */}
+                  <div className="relative overflow-hidden bg-gray-900 aspect-video">
+                    {video.thumbnail && (
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
+                      <Play className="w-16 h-16 text-white fill-white" />
+                    </div>
+                    <div className="absolute top-2 right-2 bg-black/80 text-white px-2 py-1 rounded text-sm font-medium">
+                      {video.duration}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs font-semibold text-purple-600 bg-purple-100 px-2 py-1 rounded-full capitalize">
+                        {video.category}
+                      </span>
+                      <span className="text-xs text-gray-500">{video.views} views</span>
+                    </div>
+                    <h3 className="font-bold text-base mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
+                      {video.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 line-clamp-2 mb-3">
+                      {video.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1">
+                        <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div
+                            className="bg-purple-600 h-2 rounded-full"
+                            style={{ width: `${video.engagementScore}%` }}
+                          />
+                        </div>
+                      </div>
+                      <span className="text-xs text-gray-500 ml-2">{video.engagementScore}%</span>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </div>

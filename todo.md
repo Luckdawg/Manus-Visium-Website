@@ -1441,3 +1441,9 @@
 - [x] Update YouTube links for 7 videos with exact URLs provided
 - [x] Verify no duplicate numbering or layout gaps (16 videos remaining, properly ordered)
 - [x] Test all video links work correctly (all links verified)
+
+
+## Videos Page Category Filtering (Feb 2026)
+- [x] Update all 15 videos with exact category assignments (Training, Interview, Use Case, Webinar)
+- [x] Implement category filter buttons on Videos page (Training, Interview, Use Case, Webinar)
+- [x] Test filtering functionality for all categories (all filters working correctly)
