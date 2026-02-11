@@ -16,6 +16,7 @@ import { partnerRouter } from "./routers/partner";
 import { partnerOnboardingRouter } from "./routers/partner-onboarding";
 import { trainingRouter } from "./routers/training";
 import { dealManagementRouter } from "./routers/deal-management";
+import { adminWorkflowsRouter } from "./routers/admin-workflows";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -70,6 +71,9 @@ export const appRouter = router({
 
   // Deal Management API (approvals, conflicts, scoring, pipeline)
   dealManagement: dealManagementRouter,
+
+  // Admin Workflows API (workflow builder, conflict policies, scoring config)
+  adminWorkflows: adminWorkflowsRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({

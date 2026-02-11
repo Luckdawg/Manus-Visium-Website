@@ -1551,3 +1551,42 @@
 - [ ] Add bulk partner operations (import, export, updates)
 - [ ] Implement full activity logging and audit compliance
 - [ ] Create system health and monitoring dashboard
+
+
+## Admin Console - Deal Management
+
+### Approval Workflow Management
+- [x] Create approval workflow builder interface
+- [x] Add workflow stage configuration (name, order, approver role)
+- [x] Implement workflow templates (Standard, Executive, Custom)
+- [x] Add approval rule configuration (deal value thresholds, risk levels)
+- [x] Build workflow preview and testing interface
+- [x] Create workflow versioning and rollback capability
+- [x] Add workflow activation/deactivation controls
+
+### Conflict Resolution Policies
+- [x] Create conflict policy management interface
+- [x] Add conflict type definitions (Channel, Territory, Customer, Pricing)
+- [x] Implement conflict detection rules configuration
+- [x] Build conflict escalation policy editor
+- [x] Add conflict resolution templates
+- [x] Create conflict severity level configuration
+- [x] Implement auto-resolution rules
+
+### Deal Scoring Configuration
+- [x] Create scoring rule builder interface
+- [x] Add scoring criteria configuration (deal value, timeline, industry)
+- [x] Implement scoring weight management
+- [x] Build scoring preview and testing
+- [x] Add scoring rule templates
+- [x] Create scoring result visualization
+- [x] Implement scoring rule versioning
+
+### Admin Dashboard
+- [x] Create admin home dashboard
+- [x] Add workflow statistics and usage metrics
+- [x] Build conflict resolution metrics
+- [x] Implement deal approval metrics
+- [x] Add system health and performance monitoring
+- [x] Create audit log viewer
+- [x] Build admin user management interface
