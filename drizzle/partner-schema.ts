@@ -99,6 +99,8 @@ export const partnerUsers = mysqlTable("partner_users", {
   ]).default("Sales Rep").notNull(),
   
   isActive: boolean("isActive").default(true),
+  rememberMeToken: varchar("rememberMeToken", { length: 512 }),
+  rememberMeExpires: timestamp("rememberMeExpires"),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
   updatedAt: timestamp("updatedAt").notNull().defaultNow().onUpdateNow(),
 }, (table) => ({

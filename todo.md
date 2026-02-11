@@ -1425,3 +1425,10 @@
 - [x] Fix "Go to Partner Dashboard" button navigation link - Changed from window.location to wouter navigate hook
 
 - [x] Add direct login button to Partners page for existing partners to skip setup wizard
+
+- [ ] Implement Remember Me checkbox on partner login page with persistent sessions
+
+- [x] Add rememberMeToken and rememberMeExpires fields to partner_users table
+- [x] Add rememberMe parameter to partner login procedure
+- [x] Generate Remember Me token on successful login
+- [x] Add Remember Me checkbox to PartnerLogin component

@@ -113,6 +113,17 @@ export default function PartnerLogin() {
                 </div>
               </div>
 
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="remember-me"
+                  className="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary"
+                />
+                <label htmlFor="remember-me" className="text-sm text-slate-600">
+                  Keep me logged in for 30 days
+                </label>
+              </div>
+
               <Button
                 onClick={() => (window.location.href = getLoginUrl())}
                 className="w-full bg-primary hover:bg-primary/90 text-white h-10"

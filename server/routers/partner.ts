@@ -96,6 +96,7 @@ export const partnerRouter = router({
       z.object({
         email: z.string().email(),
         password: z.string(),
+        rememberMe: z.boolean().optional().default(false),
       })
     )
     .mutation(async ({ input }) => {
@@ -125,6 +126,24 @@ export const partnerRouter = router({
           });
         }
 
+        // Generate Remember Me token if requested
+        let rememberMeToken = null;
+        if (input.rememberMe) {
+          rememberMeToken = Buffer.from(
+            `${partnerUser.id}-${Date.now()}-${Math.random()}`
+          ).toString("base64");
+          const expiresAt = new Date();
+          expiresAt.setDate(expiresAt.getDate() + 30);
+
+          await db
+            .update(partnerUsers)
+            .set({
+              rememberMeToken,
+              rememberMeExpires: expiresAt,
+            })
+            .where(eq(partnerUsers.id, partnerUser.id));
+        }
+
         // Get company info
         const company = await db
           .select()
@@ -142,6 +161,7 @@ export const partnerRouter = router({
           },
           partnerId: partnerUser.id,
           company: company[0],
+          rememberMeToken,
         };
       } catch (error) {
         throw new TRPCError({
