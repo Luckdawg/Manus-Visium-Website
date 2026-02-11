@@ -75,6 +75,7 @@ import PartnerApplications from "./pages/admin/PartnerApplications";
 import TrainingDashboard from "./pages/partner/TrainingDashboard";
 import DealManagement from "./pages/partner/DealManagement";
 import AdminConsole from "./pages/admin/AdminConsole";
+import AnalyticsDashboard from "./pages/admin/AnalyticsDashboard";
 
 function Router() {
   const [location] = useLocation();
@@ -148,6 +149,7 @@ function Router() {
       <Route path="/partners/training" component={TrainingDashboard} />
       <Route path="/partners/deals-management" component={DealManagement} />
       <Route path="/admin/console" component={AdminConsole} />
+      <Route path="/admin/analytics" component={AnalyticsDashboard} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
