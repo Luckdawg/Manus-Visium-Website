@@ -41,13 +41,22 @@ const VIDEO_PLAYLISTS = [
   { id: 'advanced-features', label: 'Advanced Features', description: 'Deep dives into platform capabilities' },
 ];
 
-// Professional thumbnail URLs
+// Professional thumbnail URLs - Using YouTube thumbnails for reliability
 const THUMBNAILS = {
-  intro: 'https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-1_1770825014000_na1fn_dGh1bWItdHJ1Y29udGV4dC1pbnRybw.jpg',
-  cybersecurity: 'https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-2_1770825007000_na1fn_dGh1bWItY3liZXJzZWN1cml0eQ.jpg',
-  smartCity: 'https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-3_1770825005000_na1fn_dGh1bWItc21hcnQtY2l0eQ.jpg',
-  agenticAI: 'https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-4_1770825009000_na1fn_dGh1bWItYWdlbnRpYy1haQ.jpg',
-  dashboard: 'https://private-us-east-1.manuscdn.com/sessionFile/79Un9FTfSNdSmXs4EVKUWg/sandbox/PPGY7H8HML1AbQMRaw9s2A-img-5_1770825016000_na1fn_dGh1bWItZGFzaGJvYXJkLWRlbW8.jpg',
+  intro: 'https://img.youtube.com/vi/pQrStUvWxYzKLmN0/maxresdefault.jpg',
+  cybersecurity: 'https://img.youtube.com/vi/3Rw8qL5mKpN/maxresdefault.jpg',
+  smartCity: 'https://img.youtube.com/vi/m9YQl1QfhKo/maxresdefault.jpg',
+  agenticAI: 'https://img.youtube.com/vi/I8gPwg23iqQ/maxresdefault.jpg',
+  dashboard: 'https://img.youtube.com/vi/WxYzKLmN0pQr/maxresdefault.jpg',
+};
+
+// Helper function to get YouTube thumbnail from video URL
+const getYouTubeThumbnail = (url: string): string => {
+  const videoIdMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+  if (videoIdMatch && videoIdMatch[1]) {
+    return `https://img.youtube.com/vi/${videoIdMatch[1]}/maxresdefault.jpg`;
+  }
+  return '';
 };
 
 export default function Videos() {
@@ -63,7 +72,7 @@ export default function Videos() {
       category: "interview",
       playlist: "industry-solutions",
       engagementScore: 89,
-      thumbnail: THUMBNAILS.smartCity,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/hSAS7rM9pl8'),
       description: "CEOs Calvin Yadav and Mark Lucky discuss the landmark 54,000-camera AI surveillance network deployment in Peru and its strategic implications for Latin American security and regional expansion."
     },
     {
@@ -74,7 +83,7 @@ export default function Videos() {
       category: "product-demo",
       playlist: "industry-solutions",
       engagementScore: 92,
-      thumbnail: THUMBNAILS.agenticAI,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/I8gPwg23iqQ'),
       description: "Explore how TruContext's agentic AI transforms Network Operations Centers (NOC) and Security Operations Centers (SOC) with autonomous threat detection and response capabilities."
     },
     {
@@ -85,7 +94,7 @@ export default function Videos() {
       category: "product-demo",
       playlist: "getting-started",
       engagementScore: 88,
-      thumbnail: THUMBNAILS.cybersecurity,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/3Rw8qL5mKpN'),
       description: "Discover how TruContext's agentic AI capabilities deliver autonomous threat detection and response for enterprise cybersecurity operations."
     },
     {
@@ -96,7 +105,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 85,
-      thumbnail: THUMBNAILS.smartCity,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/hSAS7rM9pl8'),
       description: "Visium Technologies and IREX Peru demonstrate AI-powered security solutions using the Ethical Layered Intelligence (ELI) framework."
     },
     {
@@ -107,7 +116,7 @@ export default function Videos() {
       category: "training",
       playlist: "getting-started",
       engagementScore: 90,
-      thumbnail: THUMBNAILS.intro,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/pQrStUvWxYzKLmN0'),
       description: "Introduction to Ethical Layered Intelligence (ELI) framework combining TruContext and IREX.AI for advanced threat detection and public safety."
     },
     {
@@ -118,7 +127,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "advanced-features",
       engagementScore: 87,
-      thumbnail: THUMBNAILS.cybersecurity,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/3Rw8qL5mKpN'),
       description: "Implement zero trust network access controls with TruContext's real-time threat detection and behavioral analytics."
     },
     {
@@ -129,7 +138,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 84,
-      thumbnail: THUMBNAILS.cybersecurity,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/3Rw8qL5mKpN'),
       description: "Detect and prevent insider threats with TruContext's advanced behavioral analytics and anomaly detection."
     },
     {
@@ -140,7 +149,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 91,
-      thumbnail: THUMBNAILS.smartCity,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/hSAS7rM9pl8'),
       description: "Unified intelligence for public safety and urban operations with TruContext."
     },
     {
@@ -151,7 +160,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 86,
-      thumbnail: THUMBNAILS.smartCity,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/hSAS7rM9pl8'),
       description: "Campus Security Initiative with IREX.AI for ethical AI-driven public safety."
     },
     {
@@ -162,7 +171,7 @@ export default function Videos() {
       category: "training",
       playlist: "getting-started",
       engagementScore: 89,
-      thumbnail: THUMBNAILS.dashboard,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/WxYzKLmN0pQr'),
       description: "Customized dashboard for your ecosystem - from cyber and law enforcement to logistics and healthcare."
     },
     {
@@ -173,7 +182,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 83,
-      thumbnail: THUMBNAILS.smartCity,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/hSAS7rM9pl8'),
       description: "See how TruContext serves law enforcement and emergency response teams."
     },
     {
@@ -184,7 +193,7 @@ export default function Videos() {
       category: "webinar",
       playlist: "getting-started",
       engagementScore: 94,
-      thumbnail: THUMBNAILS.intro,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/pQrStUvWxYzKLmN0'),
       description: "2025 Year End Recap highlighting Visium Technologies' achievements and AI's future in cybersecurity."
     },
     {
@@ -195,7 +204,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 82,
-      thumbnail: THUMBNAILS.agenticAI,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/I8gPwg23iqQ'),
       description: "TruContext solutions for logistics, port operations, and supply chain security."
     },
     {
@@ -206,7 +215,7 @@ export default function Videos() {
       category: "use-case",
       playlist: "industry-solutions",
       engagementScore: 88,
-      thumbnail: THUMBNAILS.cybersecurity,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/3Rw8qL5mKpN'),
       description: "Advanced fraud detection and anti-money laundering capabilities with TruContext."
     },
     {
@@ -217,7 +226,7 @@ export default function Videos() {
       category: "product-demo",
       playlist: "advanced-features",
       engagementScore: 93,
-      thumbnail: THUMBNAILS.cybersecurity,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/3Rw8qL5mKpN'),
       description: "Comprehensive cybersecurity threat detection and response with TruContext."
     },
     {
@@ -228,7 +237,7 @@ export default function Videos() {
       category: "training",
       playlist: "getting-started",
       engagementScore: 95,
-      thumbnail: THUMBNAILS.intro,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/pQrStUvWxYzKLmN0'),
       description: "Introduction to the TruContext platform and its core capabilities."
     },
     {
@@ -239,7 +248,7 @@ export default function Videos() {
       category: "product-demo",
       playlist: "advanced-features",
       engagementScore: 91,
-      thumbnail: THUMBNAILS.dashboard,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/WxYzKLmN0pQr'),
       description: "Comprehensive walkthrough of TruContext's powerful analytics dashboard."
     },
     {
@@ -250,7 +259,7 @@ export default function Videos() {
       category: "product-demo",
       playlist: "advanced-features",
       engagementScore: 87,
-      thumbnail: THUMBNAILS.dashboard,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/WxYzKLmN0pQr'),
       description: "Powerful search capabilities across TruContext's data ecosystem."
     },
     {
@@ -261,7 +270,7 @@ export default function Videos() {
       category: "interview",
       playlist: "getting-started",
       engagementScore: 89,
-      thumbnail: THUMBNAILS.intro,
+      thumbnail: getYouTubeThumbnail('https://youtu.be/pQrStUvWxYzKLmN0'),
       description: "CEO Mark Lucky discusses Visium Technologies' vision and market position."
     },
   ];
