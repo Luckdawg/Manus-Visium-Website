@@ -1462,14 +1462,14 @@
 - [x] Add partner type support (Resellers, Distributors, MSPs, ISVs, Referral Partners)
 
 ### Phase 2: Training & Enablement Module
-- [ ] Create LMS (Learning Management System) with course catalog
-- [ ] Build role-based learning paths (Sales, Technical, Executive)
-- [ ] Implement certification tracking and expiration
-- [ ] Create content library (sales collateral, technical docs, marketing assets)
-- [ ] Add event/webinar management system
-- [ ] Build training progress tracking dashboard
-- [ ] Create assessment/quiz system for certifications
-- [ ] Implement training completion reporting
+- [x] Create LMS (Learning Management System) with course catalog
+- [x] Build role-based learning paths (Sales, Technical, Executive)
+- [x] Implement certification tracking and expiration
+- [x] Create content library (sales collateral, technical docs, marketing assets)
+- [x] Add event/webinar management system
+- [x] Build training progress tracking dashboard
+- [x] Create assessment/quiz system for certifications
+- [x] Implement training completion reporting
 
 ### Phase 3: Enhanced Deal Registration & Pipeline
 - [ ] Add multi-stage approval process (Submitted → Qualified → Approved → Won/Lost)
