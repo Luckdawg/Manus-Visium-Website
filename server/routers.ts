@@ -15,6 +15,7 @@ import { blogRouter } from "./blogRouter";
 import { partnerRouter } from "./routers/partner";
 import { partnerOnboardingRouter } from "./routers/partner-onboarding";
 import { trainingRouter } from "./routers/training";
+import { dealManagementRouter } from "./routers/deal-management";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -66,6 +67,9 @@ export const appRouter = router({
 
   // Training & Enablement API (LMS, courses, certifications)
   training: trainingRouter,
+
+  // Deal Management API (approvals, conflicts, scoring, pipeline)
+  dealManagement: dealManagementRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({

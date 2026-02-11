@@ -73,6 +73,7 @@ import ResourcesLibrary from "./pages/partner/ResourcesLibrary";
 import PartnerApplicationForm from "./pages/partner/PartnerApplicationForm";
 import PartnerApplications from "./pages/admin/PartnerApplications";
 import TrainingDashboard from "./pages/partner/TrainingDashboard";
+import DealManagement from "./pages/partner/DealManagement";
 
 function Router() {
   const [location] = useLocation();
@@ -144,6 +145,7 @@ function Router() {
       <Route path="/partners/apply" component={PartnerApplicationForm} />
       <Route path="/admin/partner-applications" component={PartnerApplications} />
       <Route path="/partners/training" component={TrainingDashboard} />
+      <Route path="/partners/deals-management" component={DealManagement} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
