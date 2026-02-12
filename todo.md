@@ -1777,3 +1777,13 @@
 - [x] Add timestamp to exported files
 - [x] Create export options modal (date range, metrics selection)
 - [x] Add export button to individual metric cards
+
+
+## Website Updates - Resources Page
+
+### Video Replacement
+- [x] Replace Zero Trust Architecture video with new YouTube video (8wkYqfqpBgo)
+- [x] Add YouTube thumbnail image
+- [x] Maintain consistent formatting with existing videos
+- [x] Update video metadata (title, description, duration)
+- [x] Test video playback and page layout

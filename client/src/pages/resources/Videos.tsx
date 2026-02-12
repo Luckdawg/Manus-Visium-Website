@@ -142,15 +142,15 @@ export default function Videos() {
       description: "Advanced fraud detection and anti-money laundering capabilities with TruContext."
     },
     {
-      title: "Zero Trust",
-      url: "https://youtu.be/zmRbldpqg04",
-      duration: "1:05",
+      title: "Zero Trust Network Architecture v2",
+      url: "https://youtu.be/8wkYqfqpBgo",
+      duration: "3:42",
       views: "1.2K",
       category: "use-case",
       playlist: "advanced-features",
       engagementScore: 87,
-      thumbnail: getYouTubeThumbnail('https://youtu.be/zmRbldpqg04'),
-      description: "Implement zero trust network access controls with TruContext's real-time threat detection and behavioral analytics."
+      thumbnail: getYouTubeThumbnail('https://youtu.be/8wkYqfqpBgo'),
+      description: "An explainer on how Visium's TruContext delivers a Zero Trust Network Architecture (ZTNA) for modern distributed networks and security operations."
     },
     {
       title: "Campus Safety",
