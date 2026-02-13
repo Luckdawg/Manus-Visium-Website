@@ -34,71 +34,62 @@ export const partnerRouter = router({
       if (!db) throw new Error("Database not available");
 
       try {
-        // Check if email already exists
-        const existingUser = await db
+        // Check if company already exists
+        const existing = await db
           .select()
-          .from(partnerUsers)
-          .where(eq(partnerUsers.email, input.email));
+          .from(partnerCompanies)
+          .where(eq(partnerCompanies.email, input.email))
+          .limit(1);
 
-        if (existingUser.length > 0) {
+        if (existing.length > 0) {
           throw new TRPCError({
             code: "CONFLICT",
-            message: "Email already registered",
+            message: "Partner company already exists with this email",
           });
         }
-
-        // Hash password (simple example - use bcrypt in production)
-        const passwordHash = Buffer.from(input.password).toString("base64");
 
         // Create partner company
         const companyResult = await db
           .insert(partnerCompanies)
           .values({
             companyName: input.companyName,
-            partnerType: input.partnerType as any,
-            website: input.website,
-            phone: input.phone,
+            partnerType: input.partnerType,
             email: input.email,
+            password: input.password,
             primaryContactName: input.contactName,
             primaryContactEmail: input.email,
             primaryContactPhone: input.phone,
+            website: input.website,
             partnerStatus: "Prospect",
             tier: "Standard",
-          });
-
-        const companyId = (companyResult as any).insertId;
-
-        // Create partner user
-        await db
-          .insert(partnerUsers)
-          .values({
-            partnerCompanyId: companyId,
-            email: input.email,
-            passwordHash,
-            contactName: input.contactName,
-            phone: input.phone,
-            partnerRole: "Admin",
-            emailVerified: false,
+            commissionRate: 0,
+            mdfBudget: 0,
+            createdAt: new Date(),
+            updatedAt: new Date(),
           });
 
         // Send welcome email
         try {
-          const loginUrl = `${process.env.VITE_FRONTEND_URL || 'http://localhost:3000'}/partners/login`;
-          await sendWelcomeEmail(input.email, input.companyName, loginUrl);
+          await sendWelcomeEmail({
+            email: input.email,
+            companyName: input.companyName,
+            contactName: input.contactName,
+          });
         } catch (emailError) {
           console.error("Failed to send welcome email:", emailError);
+          // Don't throw - registration should succeed even if email fails
         }
 
         return {
           success: true,
-          message: "Registration successful. Please check your email for verification.",
-          companyId,
+          partnerId: companyResult.insertId,
+          message: "Partner registered successfully",
         };
       } catch (error) {
         if (error instanceof TRPCError) throw error;
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "Registration failed: " + (error as any).message,
+          message: "Failed to register partner: " + (error as any).message,
         });
       }
     }),
@@ -118,31 +109,32 @@ export const partnerRouter = router({
       if (!db) throw new Error("Database not available");
 
       try {
-        const user = await db
+        const partner = await db
           .select()
-          .from(partnerUsers)
-          .where(eq(partnerUsers.email, input.email));
+          .from(partnerCompanies)
+          .where(eq(partnerCompanies.email, input.email))
+          .limit(1);
 
-        if (user.length === 0) {
+        if (partner.length === 0) {
           throw new TRPCError({
-            code: "UNAUTHORIZED",
-            message: "Invalid email or password",
+            code: "NOT_FOUND",
+            message: "Partner not found",
           });
         }
 
-        const passwordHash = Buffer.from(input.password).toString("base64");
-        if (user[0].passwordHash !== passwordHash) {
+        const company = partner[0];
+        if (company.password !== input.password) {
           throw new TRPCError({
             code: "UNAUTHORIZED",
-            message: "Invalid email or password",
+            message: "Invalid password",
           });
         }
 
         return {
           success: true,
-          userId: user[0].id,
-          companyId: user[0].partnerCompanyId,
-          email: user[0].email,
+          partnerId: company.id,
+          companyName: company.companyName,
+          email: company.email,
         };
       } catch (error) {
         if (error instanceof TRPCError) throw error;
@@ -154,7 +146,7 @@ export const partnerRouter = router({
     }),
 
   /**
-   * Get all partner companies
+   * Get all partners (admin)
    */
   getAllPartners: publicProcedure.query(async () => {
     const db = await getDb();
@@ -162,7 +154,7 @@ export const partnerRouter = router({
 
     try {
       const partners = await db.select().from(partnerCompanies);
-      return { partners };
+      return { success: true, partners };
     } catch (error) {
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
@@ -184,7 +176,8 @@ export const partnerRouter = router({
         const partner = await db
           .select()
           .from(partnerCompanies)
-          .where(eq(partnerCompanies.id, input.partnerId));
+          .where(eq(partnerCompanies.id, input.partnerId))
+          .limit(1);
 
         if (partner.length === 0) {
           throw new TRPCError({
@@ -193,7 +186,7 @@ export const partnerRouter = router({
           });
         }
 
-        return { partner: partner[0] };
+        return { success: true, partner: partner[0] };
       } catch (error) {
         if (error instanceof TRPCError) throw error;
         throw new TRPCError({
@@ -219,25 +212,29 @@ export const partnerRouter = router({
           .where(eq(partnerDeals.partnerCompanyId, input.partnerId))
           .orderBy(desc(partnerDeals.createdAt));
 
-        return { deals };
+        return { success: true, deals };
       } catch (error) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "Failed to fetch partner deals: " + (error as any).message,
+          message: "Failed to fetch deals: " + (error as any).message,
         });
       }
     }),
 
   /**
-   * Get all deals
+   * Get all deals (admin)
    */
   getAllDeals: publicProcedure.query(async () => {
     const db = await getDb();
     if (!db) throw new Error("Database not available");
 
     try {
-      const deals = await db.select().from(partnerDeals).orderBy(desc(partnerDeals.createdAt));
-      return { deals };
+      const deals = await db
+        .select()
+        .from(partnerDeals)
+        .orderBy(desc(partnerDeals.createdAt));
+
+      return { success: true, deals };
     } catch (error) {
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
@@ -268,7 +265,6 @@ export const partnerRouter = router({
     .mutation(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new Error("Database not available");
-
       try {
         const result = await db
           .insert(partnerDeals)
@@ -280,18 +276,15 @@ export const partnerRouter = router({
             customerPhone: input.customerPhone,
             customerIndustry: input.customerIndustry,
             customerSize: input.customerSize as any,
-            dealAmount: input.dealAmount as any,
-            expectedCloseDate: input.expectedCloseDate,
-            description: input.description,
+            dealAmount: input.dealAmount,
             dealStage: "Prospecting",
-            submittedBy: input.submittedBy,
+            status: "Pending",
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            description: input.description,
           });
 
-        return {
-          success: true,
-          message: "Deal registered successfully",
-          dealId: (result as any).insertId,
-        };
+        return { success: true, dealId: (result as any).insertId };
       } catch (error) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
@@ -329,16 +322,14 @@ export const partnerRouter = router({
             fileUrl: input.fileUrl,
             fileSize: input.fileSize,
             fileMimeType: input.fileMimeType,
-            documentType: input.documentType as any,
+            documentType: input.documentType,
             uploadedBy: input.uploadedBy,
             description: input.description,
+            createdAt: new Date(),
+            updatedAt: new Date(),
           });
 
-        return {
-          success: true,
-          message: "Document uploaded successfully",
-          documentId: (result as any).insertId,
-        };
+        return { success: true, documentId: (result as any).insertId };
       } catch (error) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
@@ -357,35 +348,40 @@ export const partnerRouter = router({
       if (!db) throw new Error("Database not available");
 
       try {
-        const user = await db
+        const partner = await db
           .select()
-          .from(partnerUsers)
-          .where(eq(partnerUsers.email, input.email));
+          .from(partnerCompanies)
+          .where(eq(partnerCompanies.email, input.email))
+          .limit(1);
 
-        if (user.length === 0) {
+        if (partner.length === 0) {
+          // Don't reveal if email exists
           return { success: true, message: "If email exists, reset link sent" };
         }
 
-        const token = Buffer.from(Math.random().toString()).toString("base64").slice(0, 32);
+        const token = Math.random().toString(36).substring(2, 15);
         const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
-        await db
-          .insert(partnerPasswordResetTokens)
-          .values({
-            userId: user[0].id,
-            email: input.email,
-            token,
-            expiresAt,
-            isUsed: false,
-          });
+        await db.insert(partnerPasswordResetTokens).values({
+          partnerId: partner[0].id,
+          token,
+          expiresAt,
+          createdAt: new Date(),
+        });
 
+        // Send reset email
         try {
-          await sendWelcomeEmail(input.email, "Password Reset", `Reset link: ${token}`);
+          await sendWelcomeEmail({
+            email: input.email,
+            companyName: partner[0].companyName,
+            contactName: partner[0].primaryContactName || "Partner",
+            resetToken: token,
+          });
         } catch (emailError) {
           console.error("Failed to send reset email:", emailError);
         }
 
-        return { success: true, message: "If email exists, reset link sent" };
+        return { success: true, message: "Reset link sent to email" };
       } catch (error) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
@@ -395,7 +391,7 @@ export const partnerRouter = router({
     }),
 
   /**
-   * Reset password with token
+   * Reset password
    */
   resetPassword: publicProcedure
     .input(
@@ -412,32 +408,33 @@ export const partnerRouter = router({
         const resetToken = await db
           .select()
           .from(partnerPasswordResetTokens)
-          .where(eq(partnerPasswordResetTokens.token, input.token));
+          .where(eq(partnerPasswordResetTokens.token, input.token))
+          .limit(1);
 
         if (resetToken.length === 0) {
           throw new TRPCError({
-            code: "UNAUTHORIZED",
-            message: "Invalid or expired reset token",
+            code: "NOT_FOUND",
+            message: "Invalid reset token",
           });
         }
 
         const token = resetToken[0];
-        if (token.isUsed || new Date() > token.expiresAt) {
+        if (token.expiresAt < new Date()) {
           throw new TRPCError({
             code: "UNAUTHORIZED",
-            message: "Reset token has expired",
+            message: "Reset token expired",
           });
         }
 
-        const passwordHash = Buffer.from(input.newPassword).toString("base64");
+        // Update password
         await db
-          .update(partnerUsers)
-          .set({ passwordHash })
-          .where(eq(partnerUsers.email, token.email));
+          .update(partnerCompanies)
+          .set({ password: input.newPassword, updatedAt: new Date() })
+          .where(eq(partnerCompanies.id, token.partnerId));
 
+        // Delete used token
         await db
-          .update(partnerPasswordResetTokens)
-          .set({ isUsed: true })
+          .delete(partnerPasswordResetTokens)
           .where(eq(partnerPasswordResetTokens.id, token.id));
 
         return { success: true, message: "Password reset successfully" };
@@ -451,7 +448,7 @@ export const partnerRouter = router({
     }),
 
   /**
-   * Validate password reset token
+   * Validate reset token
    */
   validateResetToken: publicProcedure
     .input(z.object({ token: z.string() }))
@@ -460,35 +457,32 @@ export const partnerRouter = router({
       if (!db) throw new Error("Database not available");
 
       try {
-        const token = await db
+        const resetToken = await db
           .select()
           .from(partnerPasswordResetTokens)
-          .where(eq(partnerPasswordResetTokens.token, input.token));
+          .where(eq(partnerPasswordResetTokens.token, input.token))
+          .limit(1);
 
-        if (token.length === 0) {
-          return { valid: false, message: "Token not found" };
+        if (resetToken.length === 0) {
+          return { valid: false, message: "Invalid token" };
         }
 
-        if (new Date() > token[0].expiresAt) {
-          return { valid: false, message: "This reset link has expired" };
+        const token = resetToken[0];
+        if (token.expiresAt < new Date()) {
+          return { valid: false, message: "Token expired" };
         }
 
-        if (token[0].isUsed) {
-          return { valid: false, message: "This reset link has already been used" };
-        }
-
-        return {
-          valid: true,
-          email: token[0].email,
-          message: "Token is valid",
-        };
+        return { valid: true, message: "Token is valid" };
       } catch (error) {
-        return { valid: false, message: "Error validating token" };
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to validate token: " + (error as any).message,
+        });
       }
     }),
 
   /**
-   * Update partner company information
+   * Update partner
    */
   updatePartner: publicProcedure
     .input(
@@ -498,6 +492,9 @@ export const partnerRouter = router({
           companyName: z.string().optional(),
           primaryContactEmail: z.string().email().optional(),
           primaryContactPhone: z.string().optional(),
+          tier: z.enum(["Gold", "Silver", "Bronze", "Standard"]).optional(),
+          commissionRate: z.number().optional(),
+          mdfBudget: z.number().optional(),
         }),
       })
     )
@@ -506,14 +503,12 @@ export const partnerRouter = router({
       if (!db) throw new Error("Database not available");
 
       try {
-        const updateData: any = {};
-        if (input.data.companyName) updateData.companyName = input.data.companyName;
-        if (input.data.primaryContactEmail) updateData.primaryContactEmail = input.data.primaryContactEmail;
-        if (input.data.primaryContactPhone) updateData.primaryContactPhone = input.data.primaryContactPhone;
-
         await db
           .update(partnerCompanies)
-          .set(updateData)
+          .set({
+            ...input.data,
+            updatedAt: new Date(),
+          })
           .where(eq(partnerCompanies.id, input.partnerId));
 
         return { success: true, message: "Partner updated successfully" };
@@ -526,7 +521,7 @@ export const partnerRouter = router({
     }),
 
   /**
-   * Delete partner company
+   * Delete partner
    */
   deletePartner: publicProcedure
     .input(z.object({ partnerId: z.number() }))
@@ -535,18 +530,11 @@ export const partnerRouter = router({
       if (!db) throw new Error("Database not available");
 
       try {
-        // Get all deals for this partner to delete their documents
-        const dealsToDelete = await db
-          .select({ id: partnerDeals.id })
-          .from(partnerDeals)
-          .where(eq(partnerDeals.partnerCompanyId, input.partnerId));
-
-        // Delete documents for each deal
-        for (const deal of dealsToDelete) {
-          await db
-            .delete(partnerDealDocuments)
-            .where(eq(partnerDealDocuments.dealId, deal.id));
-        }
+        // Delete related data first (cascade delete)
+        // Delete deal documents
+        await db
+          .delete(partnerDealDocuments)
+          .where(eq(partnerDealDocuments.dealId, input.partnerId));
 
         // Delete deals
         await db

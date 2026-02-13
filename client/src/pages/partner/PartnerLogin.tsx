@@ -82,7 +82,7 @@ export default function PartnerLogin() {
             </div>
 
             <Button
-              onClick={() => navigate("/partners/dashboard")}
+              onClick={() => (window.location.href = "/partners/dashboard")}
               className="w-full bg-primary hover:bg-primary/90"
             >
               Go to Partner Dashboard

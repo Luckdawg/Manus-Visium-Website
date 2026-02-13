@@ -130,17 +130,14 @@ export default function RegisterDeal() {
     if (!validateStep(currentStep)) return;
 
     submitDealMutation.mutate({
-      partnerId: user?.id || 0,
+      partnerCompanyId: user?.id || 0,
       dealName: formData.dealName,
       customerName: formData.customerName,
       customerEmail: formData.customerEmail,
-      dealAmount: Number(formData.dealAmount),
-      dealStage: formData.dealStage as any,
-      expectedCloseDate: formData.expectedCloseDate ? new Date(formData.expectedCloseDate).toISOString() : undefined,
-      productInterest: formData.productInterest,
+      dealAmount: formData.dealAmount,
+      expectedCloseDate: formData.expectedCloseDate ? new Date(formData.expectedCloseDate) : undefined,
       description: formData.description,
-      notes: formData.partnerNotes,
-      mdfRequested: Number(formData.mdfRequested) || undefined
+      submittedBy: user?.id || 0
     });
   };
 

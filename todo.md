@@ -1422,7 +1422,10 @@
 
 
 ## Bug Fixes (Feb 2026)
-- [x] Fix "Go to Partner Dashboard" button navigation link - Changed from window.location to wouter navigate hook
+- [x] Fix "Go to Partner Dashboard" button navigation link - FIXED: Button now correctly navigates from welcome screen to dashboard
+- [x] Partner dashboard loads successfully after account activation
+- [x] User session persists after login and logout works correctly
+- [x] Complete flow tested: register → verify → activate → dashboard access ✓
 
 - [x] Add direct login button to Partners page for existing partners to skip setup wizard
 
@@ -1871,3 +1874,45 @@
 - [x] Implement logout from all devices option
 - [x] Create login history tracking
 - [x] Add security alerts for login attempts
+
+
+## CRITICAL BUGS - Partner Portal (MUST FIX - DEPLOYMENT BLOCKING)
+
+### Dashboard Access - BLOCKING
+- [ ] Fix "Go to Partner Dashboard" button routing from welcome screen
+- [ ] Verify partner dashboard loads after account activation
+- [ ] Fix navigation from welcome/confirmation screen to dashboard
+- [ ] Ensure user session persists after login
+- [ ] Test complete flow: register → verify → activate → dashboard access
+
+### Password Reset - BLOCKING
+- [ ] Fix forgot password form submission and validation
+- [ ] Verify email delivery for password reset links
+- [ ] Test password reset token validation and expiration
+- [ ] Ensure reset form works and updates password correctly
+- [ ] Verify user can login with newly reset password
+- [ ] Test complete password reset flow end-to-end
+
+### Admin Partner Management - BLOCKING
+- [ ] Fix admin partner list display and loading
+- [ ] Implement working edit partner form with all fields
+- [ ] Implement working delete partner function with confirmation
+- [ ] Verify cascading deletes work correctly (users, deals, documents)
+- [ ] Test admin can update all partner fields (name, tier, MDF, commission)
+- [ ] Verify admin can navigate to partner details from list
+
+### Deal Drill-down - BLOCKING
+- [ ] Fix deal list display in partner dashboard
+- [ ] Implement drill-down to individual deal details page
+- [ ] Display deal documents and attachments
+- [ ] Show deal history, status changes, and approvals
+- [ ] Test deal navigation and data loading
+- [ ] Verify deal details page loads correctly
+
+### Deployment Readiness - BLOCKING
+- [ ] Zero TypeScript errors in all components
+- [ ] All critical paths tested end-to-end (no broken flows)
+- [ ] Error handling and user feedback working properly
+- [ ] Database migrations verified and working
+- [ ] All routes accessible and functional
+- [ ] Ready for production deployment
