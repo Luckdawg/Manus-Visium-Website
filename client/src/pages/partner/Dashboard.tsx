@@ -8,7 +8,7 @@ import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function PartnerDashboard() {
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
   const [, navigate] = useLocation();
   const [partnerId, setPartnerId] = useState<number | null>(null);
 
@@ -16,10 +16,15 @@ export default function PartnerDashboard() {
     const sessionId = localStorage.getItem("partnerId");
     if (sessionId) {
       setPartnerId(parseInt(sessionId, 10));
-    } else if (!user) {
+    }
+  }, []);
+
+  // Only redirect if we're sure user is not authenticated (after loading is complete)
+  useEffect(() => {
+    if (!loading && user === null && partnerId === null) {
       navigate("/partners/login");
     }
-  }, [navigate, user]);
+  }, [user, partnerId, navigate, loading]);
 
   const { data: dealsData, isLoading: dealsLoading } = trpc.partner.getPartnerDeals.useQuery(
     { partnerId: partnerId || 0 },

@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -78,6 +79,7 @@ const mockPartners: Partner[] = [
 ];
 
 export default function PartnerManagement() {
+  const [, navigate] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [tierFilter, setTierFilter] = useState<string>("all");
@@ -327,7 +329,10 @@ export default function PartnerManagement() {
                         <button className="p-2 hover:bg-gray-200 rounded-lg transition">
                           <Eye className="w-4 h-4 text-gray-600" />
                         </button>
-                        <button className="p-2 hover:bg-gray-200 rounded-lg transition">
+                        <button
+                          onClick={() => navigate(`/admin/partners/${partner.id}`)}
+                          className="p-2 hover:bg-blue-100 rounded-lg transition"
+                        >
                           <Edit2 className="w-4 h-4 text-gray-600" />
                         </button>
                         <button className="p-2 hover:bg-red-100 rounded-lg transition">
