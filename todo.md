@@ -1801,3 +1801,73 @@
 - [x] Add error logging for email failures
 - [x] Verify email reaches inbox (not spam folder)
 - [x] Document email configuration requirements
+
+
+## New Features - Partner Portal Enhancements
+
+### Password Reset Functionality
+- [ ] Create password reset request endpoint
+- [ ] Generate secure password reset tokens
+- [ ] Send password reset email with reset link
+- [ ] Create password reset form component
+- [ ] Validate reset token and update password
+- [ ] Add expiration to reset tokens (24 hours)
+- [ ] Test password reset flow end-to-end
+
+### Admin Partner Drill-down Interface
+- [ ] Create admin partner details page
+- [ ] Display partner company information
+- [ ] Show partner user accounts and roles
+- [ ] Display all deals associated with partner
+- [ ] Show deal documents and attachments
+- [ ] Display deal approval history and comments
+- [ ] Show partner training progress
+- [ ] Display partner financial metrics (MDF, commissions)
+- [ ] Add search and filter capabilities
+- [ ] Create partner activity timeline
+
+### Logout and Login Functionality
+- [ ] Add logout button to partner dashboard
+- [ ] Implement session termination
+- [ ] Clear authentication cookies/tokens
+- [ ] Redirect to login page after logout
+- [ ] Create login form with email/password
+- [ ] Implement "Remember Me" functionality
+- [ ] Add forgot password link on login page
+- [ ] Test logout and re-login flow
+
+
+## Partner Portal - Advanced Features (Phase 4-5)
+
+### Password Reset Functionality
+- [x] Create forgot password form component
+- [x] Implement password reset request API
+- [x] Create password reset email template
+- [x] Build password reset token validation
+- [x] Implement password reset form
+- [x] Add password strength validation
+- [x] Test email delivery for password reset
+
+### Admin Partner Drill-down
+- [x] Create admin partner details page
+- [x] Display partner company information
+- [x] Show partner deal list with details
+- [x] Display partner user accounts
+- [x] Show training progress and certifications
+- [x] Display financial metrics (commissions, MDF usage)
+- [x] Add drill-down to individual deal details
+- [x] Show partner documents and attachments
+- [x] Create partner analytics dashboard
+- [x] Add partner health score and metrics
+
+### Logout and Login Functionality
+- [x] Implement logout button in partner dashboard
+- [x] Create logout confirmation dialog
+- [x] Build account settings page
+- [x] Add password reset option in account settings
+- [x] Implement login redirect after logout
+- [x] Create re-login functionality
+- [x] Add session management
+- [x] Implement logout from all devices option
+- [x] Create login history tracking
+- [x] Add security alerts for login attempts
