@@ -12,6 +12,7 @@ import {
   partnerPasswordResetTokens,
 } from "../../drizzle/partner-schema";
 import { eq, desc } from "drizzle-orm";
+import { sendWelcomeEmail } from "../_core/sendgrid";
 
 export const partnerRouter = router({
   /**
@@ -74,12 +75,26 @@ export const partnerRouter = router({
           throw new Error("Failed to get user ID from insert result");
         }
 
+        // Send welcome email to the new partner
+        const loginUrl = "https://visium-partner.com/partners/login";
+        const emailSent = await sendWelcomeEmail(
+          input.email,
+          input.companyName,
+          loginUrl
+        );
+
+        if (!emailSent) {
+          console.warn(`Warning: Welcome email failed to send to ${input.email}`);
+          // Don't fail the registration if email fails, but log it
+        }
+
         return {
           success: true,
           partnerId: userId,
           companyId,
-          message: "Registration successful",
-        };
+          message: "Registration successful. A welcome email has been sent to your email address.",
+          emailSent,
+        }
       } catch (error) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
