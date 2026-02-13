@@ -38,9 +38,9 @@ export default function PartnerLoginNew() {
         password,
       });
 
-      // Store partnerId in localStorage for dashboard access
-      if (result.partnerId) {
-        localStorage.setItem('partnerId', result.partnerId.toString());
+      // Store companyId in localStorage for dashboard access
+      if (result.companyId) {
+        localStorage.setItem('companyId', result.companyId.toString());
       }
 
       // Redirect to dashboard
