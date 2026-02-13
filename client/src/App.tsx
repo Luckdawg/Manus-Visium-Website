@@ -78,6 +78,7 @@ import AdminConsole from "./pages/admin/AdminConsole";
 import AnalyticsDashboard from "./pages/admin/AnalyticsDashboard";
 import AccountSettings from "./pages/partner/AccountSettings";
 import PartnerDetails from "./pages/admin/PartnerDetails";
+import DealRegistration from "./pages/partner/DealRegistration";
 
 function Router() {
   const [location] = useLocation();
@@ -141,6 +142,7 @@ function Router() {
       <Route path="/partners/onboarding" component={OnboardingWizard} />
       <Route path="/partners/dashboard" component={PartnerDashboard} />
       <Route path="/partners/resources" component={PartnerResources} />
+      <Route path="/partners/deals/register" component={DealRegistration} />
       <Route path="/partners/deals/new" component={DealWizard} />
       <Route path="/admin/deals/approval" component={AdminDealApproval} />
       <Route path="/partner/deals/new" component={DealRegistrationWizard} />

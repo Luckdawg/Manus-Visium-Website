@@ -143,7 +143,10 @@ export default function PartnerDashboard() {
                 <CardTitle>Your Deals</CardTitle>
                 <CardDescription>Manage and track your sales pipeline</CardDescription>
               </div>
-              <Button className="flex items-center gap-2">
+              <Button 
+                className="flex items-center gap-2"
+                onClick={() => navigate("/partners/deals/register")}
+              >
                 <Plus className="h-4 w-4" />
                 Register New Deal
               </Button>
@@ -154,7 +157,12 @@ export default function PartnerDashboard() {
               <div className="text-center py-12">
                 <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                 <p className="text-muted-foreground">No deals registered yet</p>
-                <Button className="mt-4">Register Your First Deal</Button>
+                <Button 
+                  className="mt-4"
+                  onClick={() => navigate("/partners/deals/register")}
+                >
+                  Register Your First Deal
+                </Button>
               </div>
             ) : (
               <div className="space-y-3">
