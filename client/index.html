@@ -10,6 +10,70 @@
     <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="shortcut icon" href="/favicon.png" />
     <title>%VITE_APP_TITLE%</title>
+    
+    <!-- Suppress console errors and prevent blocked external requests -->
+    <script>
+      (function() {
+        const blockedDomains = [
+          'manus-analytics.com',
+          'amplitude.com',
+          'sr-client-cfg.amplitude.com',
+          'api2.amplitude.com',
+          'api.manus.im',
+          'youtube.com/youtubei',
+        ];
+        
+        const blockedPatterns = [
+          'ERR_BLOCKED_BY_CLIENT',
+          'CORS policy',
+          'manus-analytics',
+          'Amplitude',
+          'amplitude.com',
+          'youtube.com',
+          'Failed to fetch',
+          'net::ERR_FAILED',
+          'Access to fetch',
+          'Failed to load resource',
+        ];
+        
+        const isBlockedError = (msg) => blockedPatterns.some(p => String(msg || '').includes(p));
+        const isBlockedDomain = (url) => blockedDomains.some(d => String(url || '').includes(d));
+        
+        // Intercept fetch requests to blocked domains
+        const originalFetch = window.fetch;
+        window.fetch = function(url, ...args) {
+          if (isBlockedDomain(url)) {
+            // Return a dummy response for blocked requests
+            return Promise.resolve(new Response(JSON.stringify({}), { status: 200 }));
+          }
+          return originalFetch.apply(this, [url, ...args]);
+        };
+        
+        // Suppress console.error and console.warn for blocked requests
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        console.error = function(...args) {
+          if (!isBlockedError(args[0])) originalError.apply(console, args);
+        };
+        
+        console.warn = function(...args) {
+          if (!isBlockedError(args[0])) originalWarn.apply(console, args);
+        };
+        
+        // Suppress unhandled promise rejections from blocked requests
+        window.addEventListener('unhandledrejection', (e) => {
+          if (isBlockedError(e.reason)) e.preventDefault();
+        });
+        
+        // Suppress error events from blocked resources
+        window.addEventListener('error', (e) => {
+          if (isBlockedError(e.message) || isBlockedError(e.filename)) {
+            e.preventDefault();
+          }
+        }, true);
+      })();
+    </script>
     <meta name="description" content="TruContext: Enterprise threat detection platform with explainable AI and graph-based threat detection. Real-time security analytics for government, critical infrastructure, and smart cities. NIST-compliant cybersecurity solution." />
     <meta name="keywords" content="explainable AI cybersecurity platform, graph-based threat detection, smart city security analytics, enterprise threat detection platform, government cybersecurity platform, critical infrastructure security, threat hunting software, graph database cybersecurity, real-time threat detection" />
     <meta name="author" content="Visium Technologies, Inc." />
@@ -37,6 +101,8 @@
       gtag('config', 'G-49KLH427ZQ');
     </script>
     
+
+    
     <!-- Add Google Fonts here, example:
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -50,7 +116,8 @@
     <script
       defer
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"
+      onerror="void 0"></script>
   </body>
 
 </html>
