@@ -486,14 +486,23 @@ export const adminRouter = router({
       const { user, db } = await requireAdmin(ctx);
 
       try {
-        const updates = Object.entries(input)
-          .filter(([key, value]) => key !== "dealId" && value !== undefined)
-          .map(([key, value]) => `${key} = '${value}'`)
-          .join(", ");
+        const updateData: any = {};
+        if (input.dealName !== undefined) updateData.dealName = input.dealName;
+        if (input.customerName !== undefined) updateData.customerName = input.customerName;
+        if (input.dealAmount !== undefined) updateData.dealAmount = input.dealAmount;
+        if (input.dealStage !== undefined) updateData.dealStage = input.dealStage;
+        if (input.dealStatus !== undefined) updateData.dealStatus = input.dealStatus;
+        if (input.expectedCloseDate !== undefined) updateData.expectedCloseDate = input.expectedCloseDate;
+        if (input.description !== undefined) updateData.description = input.description;
 
-        await executeRawSQL(`UPDATE partner_deals SET ${updates}, updatedAt = NOW() WHERE id = ?`, [input.dealId]);
+        const setClauses = Object.keys(updateData).map(key => `${key} = ?`).join(", ");
+        const values = [...Object.values(updateData), input.dealId];
 
-        await logAudit(db, user.id, "DEAL_UPDATED", "partner_deals", input.dealId, input);
+        if (Object.keys(updateData).length > 0) {
+          await executeRawSQL(`UPDATE partner_deals SET ${setClauses}, updatedAt = NOW() WHERE id = ?`, values);
+        }
+
+        await logAudit(db, user.id, "DEAL_UPDATED", "partner_deals", input.dealId, updateData);
 
         return { success: true };
       } catch (error) {

@@ -373,7 +373,13 @@ export default function AdminDealsManagement() {
                   </Select>
                   <div className="flex gap-2">
                     <Button
-                      onClick={() => updateDealMutation.mutate({ dealId: selectedDeal.id, ...selectedDeal })}
+                      onClick={() => updateDealMutation.mutate({
+                        dealId: selectedDeal.id,
+                        dealName: selectedDeal.dealName,
+                        customerName: selectedDeal.customerName,
+                        dealAmount: selectedDeal.dealAmount,
+                        dealStatus: selectedDeal.dealStatus,
+                      })}
                       className="bg-green-600 text-white"
                     >
                       Save Changes
