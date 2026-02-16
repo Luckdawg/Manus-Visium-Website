@@ -6,38 +6,33 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Upload, X } from "lucide-react";
+import { ArrowLeft, Upload, X, AlertCircle } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export default function DealRegistration() {
   const [, navigate] = useLocation();
   const [activeTab, setActiveTab] = useState("customer");
   const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Customer & Account Info
   const [customerCompanyName, setCustomerCompanyName] = useState("");
-  const [legalEntity, setLegalEntity] = useState("");
-  const [country, setCountry] = useState("");
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
-  const [industry, setIndustry] = useState("");
-  const [companySize, setCompanySize] = useState("");
-  const [accountType, setAccountType] = useState("existing");
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [customerIndustry, setCustomerIndustry] = useState("");
+  const [customerSize, setCustomerSize] = useState("");
 
   // Opportunity/Deal Details
   const [dealName, setDealName] = useState("");
   const [dealDescription, setDealDescription] = useState("");
-  const [productFamily, setProductFamily] = useState("");
   const [dealValue, setDealValue] = useState("");
-  const [currency, setCurrency] = useState("USD");
   const [estimatedCloseDate, setEstimatedCloseDate] = useState("");
-  const [dealProbability, setDealProbability] = useState("");
-  const [salesStage, setSalesStage] = useState("");
+  const [salesStage, setSalesStage] = useState("Prospecting");
   const [dealType, setDealType] = useState("");
-  const [contractStartDate, setContractStartDate] = useState("");
-  const [contractEndDate, setContractEndDate] = useState("");
+  const [productInterest, setProductInterest] = useState<string[]>([]);
 
   // Customer Contact Details
   const [primaryContactName, setPrimaryContactName] = useState("");
@@ -46,22 +41,13 @@ export default function DealRegistration() {
   const [primaryContactPhone, setPrimaryContactPhone] = useState("");
 
   // Partner & Seller Information
-  const [partnerCompanyName, setPartnerCompanyName] = useState("");
   const [partnerSalesRepName, setPartnerSalesRepName] = useState("");
   const [partnerSalesRepEmail, setPartnerSalesRepEmail] = useState("");
   const [partnerSalesRepPhone, setPartnerSalesRepPhone] = useState("");
-  const [internalOwner, setInternalOwner] = useState("");
 
   // Qualification & Program Fields
   const [qualificationNotes, setQualificationNotes] = useState("");
   const [opportunitySource, setOpportunitySource] = useState("");
-  const [partnerRole, setPartnerRole] = useState("");
-  const [territory, setTerritory] = useState("");
-
-  // Custom Fields
-  const [verticalFocus, setVerticalFocus] = useState("");
-  const [competitiveVendor, setCompetitiveVendor] = useState("");
-  const [mdfLinkage, setMdfLinkage] = useState("");
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -73,31 +59,66 @@ export default function DealRegistration() {
     setFiles(files.filter((_, i) => i !== index));
   };
 
+  const toggleProductInterest = (product: string) => {
+    setProductInterest((prev) =>
+      prev.includes(product) ? prev.filter((p) => p !== product) : [...prev, product]
+    );
+  };
+
   const submitDealMutation = trpc.partner.submitDeal.useMutation();
 
   const handleSubmit = async () => {
+    // Validation
     if (!dealName || !customerCompanyName || !dealValue || !estimatedCloseDate) {
-      alert("Please fill in all required fields");
+      setErrorMessage("Please fill in all required fields (marked with *)");
+      return;
+    }
+
+    if (isNaN(parseFloat(dealValue)) || parseFloat(dealValue) <= 0) {
+      setErrorMessage("Deal value must be a positive number");
+      return;
+    }
+
+    // Validate date format
+    const dateObj = new Date(estimatedCloseDate);
+    if (isNaN(dateObj.getTime())) {
+      setErrorMessage("Please enter a valid close date");
       return;
     }
 
     setIsSubmitting(true);
+    setErrorMessage("");
+    setSuccessMessage("");
+
     try {
       const dealData = {
         customerCompanyName,
         dealName,
         dealValue: parseFloat(dealValue),
         estimatedCloseDate,
-        salesStage,
+        customerEmail: customerEmail || primaryContactEmail,
+        customerPhone,
+        customerIndustry,
+        customerSize: customerSize as "Startup" | "SMB" | "Mid-Market" | "Enterprise" | "Government" | undefined,
+        salesStage: salesStage as "Prospecting" | "Qualification" | "Needs Analysis" | "Proposal" | "Negotiation" | "Closed Won" | "Closed Lost" | undefined,
         dealType,
         primaryContactEmail,
+        description: dealDescription,
+        productInterest: productInterest.length > 0 ? productInterest : undefined,
       };
-      await submitDealMutation.mutateAsync(dealData);
-      alert("Deal registration submitted successfully! Your deal is now pending admin approval.");
-      navigate("/partners/dashboard");
-    } catch (error) {
-      alert("Error submitting deal registration");
-      console.error(error);
+
+      const result = await submitDealMutation.mutateAsync(dealData);
+      
+      setSuccessMessage("✓ Deal registration submitted successfully! Your deal is now pending admin approval.");
+      
+      // Clear form
+      setTimeout(() => {
+        navigate("/partners/dashboard");
+      }, 2000);
+    } catch (error: any) {
+      const errorMsg = error?.message || "Error submitting deal registration";
+      setErrorMessage(errorMsg);
+      console.error("Deal submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -120,6 +141,21 @@ export default function DealRegistration() {
             <p className="text-muted-foreground mt-1">Complete all sections to register your opportunity</p>
           </div>
         </div>
+
+        {/* Error/Success Messages */}
+        {errorMessage && (
+          <Alert variant="destructive" className="mb-6">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>{errorMessage}</AlertDescription>
+          </Alert>
+        )}
+
+        {successMessage && (
+          <Alert className="mb-6 bg-green-50 border-green-200">
+            <AlertCircle className="h-4 w-4 text-green-600" />
+            <AlertDescription className="text-green-800">{successMessage}</AlertDescription>
+          </Alert>
+        )}
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -149,98 +185,60 @@ export default function DealRegistration() {
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium">Legal Entity</label>
+                    <label className="text-sm font-medium">Customer Email</label>
                     <Input
-                      value={legalEntity}
-                      onChange={(e) => setLegalEntity(e.target.value)}
-                      placeholder="Enter legal entity name"
+                      type="email"
+                      value={customerEmail}
+                      onChange={(e) => setCustomerEmail(e.target.value)}
+                      placeholder="customer@company.com"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium">Country/Region</label>
+                    <label className="text-sm font-medium">Customer Phone</label>
                     <Input
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
-                      placeholder="Enter country or region"
+                      value={customerPhone}
+                      onChange={(e) => setCustomerPhone(e.target.value)}
+                      placeholder="Enter phone number"
                     />
                   </div>
-                  <div>
-                    <label className="text-sm font-medium">State/Province</label>
-                    <Input
-                      value={state}
-                      onChange={(e) => setState(e.target.value)}
-                      placeholder="Enter state or province"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium">City</label>
-                    <Input
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      placeholder="Enter city"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Address</label>
-                    <Input
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      placeholder="Enter street address"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="text-sm font-medium">Industry</label>
-                    <Select value={industry} onValueChange={setIndustry}>
+                    <Select value={customerIndustry} onValueChange={setCustomerIndustry}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select industry" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="cybersecurity">Cybersecurity</SelectItem>
-                        <SelectItem value="healthcare">Healthcare</SelectItem>
-                        <SelectItem value="finance">Financial Services</SelectItem>
-                        <SelectItem value="retail">Retail</SelectItem>
-                        <SelectItem value="manufacturing">Manufacturing</SelectItem>
-                        <SelectItem value="government">Government</SelectItem>
-                        <SelectItem value="education">Education</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Company Size</label>
-                    <Select value={companySize} onValueChange={setCompanySize}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select company size" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="1-50">1-50 employees</SelectItem>
-                        <SelectItem value="51-200">51-200 employees</SelectItem>
-                        <SelectItem value="201-1000">201-1,000 employees</SelectItem>
-                        <SelectItem value="1001-5000">1,001-5,000 employees</SelectItem>
-                        <SelectItem value="5000+">5,000+ employees</SelectItem>
+                        <SelectItem value="Cybersecurity">Cybersecurity</SelectItem>
+                        <SelectItem value="Healthcare">Healthcare</SelectItem>
+                        <SelectItem value="Financial Services">Financial Services</SelectItem>
+                        <SelectItem value="Retail">Retail</SelectItem>
+                        <SelectItem value="Manufacturing">Manufacturing</SelectItem>
+                        <SelectItem value="Government">Government</SelectItem>
+                        <SelectItem value="Education">Education</SelectItem>
+                        <SelectItem value="Smart Cities">Smart Cities</SelectItem>
+                        <SelectItem value="Supply Chain">Supply Chain</SelectItem>
+                        <SelectItem value="Telecommunications">Telecommunications</SelectItem>
+                        <SelectItem value="Other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium">Account Type</label>
-                  <Select value={accountType} onValueChange={setAccountType}>
+                  <label className="text-sm font-medium">Company Size</label>
+                  <Select value={customerSize} onValueChange={setCustomerSize}>
                     <SelectTrigger>
-                      <SelectValue />
+                      <SelectValue placeholder="Select company size" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="existing">Existing Account</SelectItem>
-                      <SelectItem value="new">Create New Account</SelectItem>
+                      <SelectItem value="Startup">Startup</SelectItem>
+                      <SelectItem value="SMB">SMB (50-500 employees)</SelectItem>
+                      <SelectItem value="Mid-Market">Mid-Market (500-5,000 employees)</SelectItem>
+                      <SelectItem value="Enterprise">Enterprise (5,000+ employees)</SelectItem>
+                      <SelectItem value="Government">Government</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -253,7 +251,7 @@ export default function DealRegistration() {
             <Card>
               <CardHeader>
                 <CardTitle>Opportunity & Deal Details</CardTitle>
-                <CardDescription>Information about the sales opportunity</CardDescription>
+                <CardDescription>Specify the deal information and expected value</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -266,53 +264,35 @@ export default function DealRegistration() {
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium">Product Family</label>
-                    <Input
-                      value={productFamily}
-                      onChange={(e) => setProductFamily(e.target.value)}
-                      placeholder="e.g., TruContext Platform"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-sm font-medium">Deal Description</label>
-                  <Textarea
-                    value={dealDescription}
-                    onChange={(e) => setDealDescription(e.target.value)}
-                    placeholder="Describe the opportunity and customer needs"
-                    rows={4}
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium">Deal Value *</label>
-                    <Input
-                      type="number"
-                      value={dealValue}
-                      onChange={(e) => setDealValue(e.target.value)}
-                      placeholder="Enter deal value"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Currency</label>
-                    <Select value={currency} onValueChange={setCurrency}>
+                    <label className="text-sm font-medium">Deal Type</label>
+                    <Select value={dealType} onValueChange={setDealType}>
                       <SelectTrigger>
-                        <SelectValue />
+                        <SelectValue placeholder="Select deal type" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="USD">USD</SelectItem>
-                        <SelectItem value="EUR">EUR</SelectItem>
-                        <SelectItem value="GBP">GBP</SelectItem>
-                        <SelectItem value="CAD">CAD</SelectItem>
-                        <SelectItem value="AUD">AUD</SelectItem>
+                        <SelectItem value="New Business">New Business</SelectItem>
+                        <SelectItem value="Expansion">Expansion</SelectItem>
+                        <SelectItem value="Renewal">Renewal</SelectItem>
+                        <SelectItem value="Upgrade">Upgrade</SelectItem>
+                        <SelectItem value="Cross-sell">Cross-sell</SelectItem>
+                        <SelectItem value="Other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium">Deal Value (USD) *</label>
+                    <Input
+                      type="number"
+                      value={dealValue}
+                      onChange={(e) => setDealValue(e.target.value)}
+                      placeholder="0.00"
+                      step="0.01"
+                      min="0"
+                    />
+                  </div>
                   <div>
                     <label className="text-sm font-medium">Estimated Close Date *</label>
                     <Input
@@ -321,68 +301,54 @@ export default function DealRegistration() {
                       onChange={(e) => setEstimatedCloseDate(e.target.value)}
                     />
                   </div>
-                  <div>
-                    <label className="text-sm font-medium">Deal Probability (%)</label>
-                    <Input
-                      type="number"
-                      min="0"
-                      max="100"
-                      value={dealProbability}
-                      onChange={(e) => setDealProbability(e.target.value)}
-                      placeholder="0-100"
-                    />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium">Sales Stage</label>
+                  <Select value={salesStage} onValueChange={setSalesStage}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Prospecting">Prospecting</SelectItem>
+                      <SelectItem value="Qualification">Qualification</SelectItem>
+                      <SelectItem value="Needs Analysis">Needs Analysis</SelectItem>
+                      <SelectItem value="Proposal">Proposal</SelectItem>
+                      <SelectItem value="Negotiation">Negotiation</SelectItem>
+                      <SelectItem value="Closed Won">Closed Won</SelectItem>
+                      <SelectItem value="Closed Lost">Closed Lost</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium">Product Interest</label>
+                  <div className="space-y-2 mt-2">
+                    {["TruContext", "Tru-InSight", "Video Intelligence", "Graph Analytics", "Threat Detection"].map((product) => (
+                      <div key={product} className="flex items-center">
+                        <input
+                          type="checkbox"
+                          id={product}
+                          checked={productInterest.includes(product)}
+                          onChange={() => toggleProductInterest(product)}
+                          className="w-4 h-4 rounded border-gray-300"
+                        />
+                        <label htmlFor={product} className="ml-2 text-sm">
+                          {product}
+                        </label>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium">Sales Stage</label>
-                    <Select value={salesStage} onValueChange={setSalesStage}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select sales stage" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="prospecting">Prospecting</SelectItem>
-                        <SelectItem value="qualification">Qualification</SelectItem>
-                        <SelectItem value="proposal">Proposal</SelectItem>
-                        <SelectItem value="negotiation">Negotiation</SelectItem>
-                        <SelectItem value="closed-won">Closed Won</SelectItem>
-                        <SelectItem value="closed-lost">Closed Lost</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Deal Type</label>
-                    <Select value={dealType} onValueChange={setDealType}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select deal type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="new-business">New Business</SelectItem>
-                        <SelectItem value="expansion">Expansion</SelectItem>
-                        <SelectItem value="renewal">Renewal</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium">Contract Start Date</label>
-                    <Input
-                      type="date"
-                      value={contractStartDate}
-                      onChange={(e) => setContractStartDate(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Contract End Date</label>
-                    <Input
-                      type="date"
-                      value={contractEndDate}
-                      onChange={(e) => setContractEndDate(e.target.value)}
-                    />
-                  </div>
+                <div>
+                  <label className="text-sm font-medium">Deal Description</label>
+                  <Textarea
+                    value={dealDescription}
+                    onChange={(e) => setDealDescription(e.target.value)}
+                    placeholder="Describe the opportunity, customer needs, and solution"
+                    rows={4}
+                  />
                 </div>
               </CardContent>
             </Card>
@@ -392,8 +358,8 @@ export default function DealRegistration() {
           <TabsContent value="contact" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Customer Contact Information</CardTitle>
-                <CardDescription>Primary customer contact details</CardDescription>
+                <CardTitle>Customer Contact Details</CardTitle>
+                <CardDescription>Primary contact information for this opportunity</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -406,27 +372,27 @@ export default function DealRegistration() {
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium">Contact Title</label>
+                    <label className="text-sm font-medium">Title/Role</label>
                     <Input
                       value={primaryContactTitle}
                       onChange={(e) => setPrimaryContactTitle(e.target.value)}
-                      placeholder="e.g., CIO, Security Director"
+                      placeholder="e.g., CTO, Security Director"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium">Contact Email</label>
+                    <label className="text-sm font-medium">Email</label>
                     <Input
                       type="email"
                       value={primaryContactEmail}
                       onChange={(e) => setPrimaryContactEmail(e.target.value)}
-                      placeholder="Enter email address"
+                      placeholder="contact@company.com"
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium">Contact Phone</label>
+                    <label className="text-sm font-medium">Phone</label>
                     <Input
                       value={primaryContactPhone}
                       onChange={(e) => setPrimaryContactPhone(e.target.value)}
@@ -443,21 +409,12 @@ export default function DealRegistration() {
             <Card>
               <CardHeader>
                 <CardTitle>Partner & Seller Information</CardTitle>
-                <CardDescription>Partner company and sales representative details</CardDescription>
+                <CardDescription>Your company and sales representative details</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div>
-                  <label className="text-sm font-medium">Partner Company Name</label>
-                  <Input
-                    value={partnerCompanyName}
-                    onChange={(e) => setPartnerCompanyName(e.target.value)}
-                    placeholder="Enter partner company name"
-                  />
-                </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium">Partner Sales Rep Name</label>
+                    <label className="text-sm font-medium">Sales Rep Name</label>
                     <Input
                       value={partnerSalesRepName}
                       onChange={(e) => setPartnerSalesRepName(e.target.value)}
@@ -465,32 +422,22 @@ export default function DealRegistration() {
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium">Partner Sales Rep Email</label>
+                    <label className="text-sm font-medium">Sales Rep Email</label>
                     <Input
                       type="email"
                       value={partnerSalesRepEmail}
                       onChange={(e) => setPartnerSalesRepEmail(e.target.value)}
-                      placeholder="Enter email address"
+                      placeholder="salesrep@yourcompany.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium">Partner Sales Rep Phone</label>
+                  <label className="text-sm font-medium">Sales Rep Phone</label>
                   <Input
                     value={partnerSalesRepPhone}
                     onChange={(e) => setPartnerSalesRepPhone(e.target.value)}
                     placeholder="Enter phone number"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm font-medium">Internal Owner (Visium)</label>
-                  <Input
-                    value={internalOwner}
-                    onChange={(e) => setInternalOwner(e.target.value)}
-                    placeholder="Auto-assigned channel manager or account owner"
-                    disabled
                   />
                 </div>
               </CardContent>
@@ -502,141 +449,78 @@ export default function DealRegistration() {
             <Card>
               <CardHeader>
                 <CardTitle>Qualification & Program Information</CardTitle>
-                <CardDescription>Qualification details and program classification</CardDescription>
+                <CardDescription>Additional details for deal qualification</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
+                <div>
+                  <label className="text-sm font-medium">Opportunity Source</label>
+                  <Select value={opportunitySource} onValueChange={setOpportunitySource}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select source" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Inbound">Inbound</SelectItem>
+                      <SelectItem value="Outbound">Outbound</SelectItem>
+                      <SelectItem value="Referral">Referral</SelectItem>
+                      <SelectItem value="Event">Event</SelectItem>
+                      <SelectItem value="Marketing">Marketing</SelectItem>
+                      <SelectItem value="Other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
                 <div>
                   <label className="text-sm font-medium">Qualification Notes</label>
                   <Textarea
                     value={qualificationNotes}
                     onChange={(e) => setQualificationNotes(e.target.value)}
-                    placeholder="Budget, authority, need, timeline notes or qualification summary"
+                    placeholder="Add any additional notes about this deal"
                     rows={4}
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium">Opportunity Source</label>
-                    <Select value={opportunitySource} onValueChange={setOpportunitySource}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select source" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="campaign">Campaign</SelectItem>
-                        <SelectItem value="event">Event</SelectItem>
-                        <SelectItem value="mdf">MDF Activity</SelectItem>
-                        <SelectItem value="inbound">Inbound Lead</SelectItem>
-                        <SelectItem value="referral">Referral</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Partner Role</label>
-                    <Select value={partnerRole} onValueChange={setPartnerRole}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select partner role" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="prime-reseller">Prime Reseller</SelectItem>
-                        <SelectItem value="co-sell">Co-Sell Partner</SelectItem>
-                        <SelectItem value="referral">Referral</SelectItem>
-                        <SelectItem value="isv">ISV</SelectItem>
-                        <SelectItem value="si">System Integrator</SelectItem>
-                        <SelectItem value="msp">Managed Service Provider</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium">Territory/Region</label>
-                    <Input
-                      value={territory}
-                      onChange={(e) => setTerritory(e.target.value)}
-                      placeholder="Enter territory or region"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Vertical Focus</label>
-                    <Input
-                      value={verticalFocus}
-                      onChange={(e) => setVerticalFocus(e.target.value)}
-                      placeholder="e.g., Healthcare, Finance, Government"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium">Competitive Vendor</label>
-                    <Input
-                      value={competitiveVendor}
-                      onChange={(e) => setCompetitiveVendor(e.target.value)}
-                      placeholder="If applicable, enter competitor name"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">MDF Linkage</label>
-                    <Input
-                      value={mdfLinkage}
-                      onChange={(e) => setMdfLinkage(e.target.value)}
-                      placeholder="Link to MDF claim if applicable"
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Attachments */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Attachments & Documents</CardTitle>
-                <CardDescription>Upload RFPs, quotes, SOWs, or other supporting documents</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
-                  <label className="cursor-pointer">
-                    <div className="flex flex-col items-center gap-2">
-                      <Upload className="h-8 w-8 text-muted-foreground" />
-                      <span className="text-sm font-medium">Click to upload or drag and drop</span>
-                      <span className="text-xs text-muted-foreground">PDF, DOC, DOCX, XLS, XLSX up to 10MB</span>
-                    </div>
+                <div>
+                  <label className="text-sm font-medium">Attachments</label>
+                  <div className="border-2 border-dashed rounded-lg p-6 text-center">
+                    <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                    <p className="text-sm text-muted-foreground mb-2">Drag and drop files here or click to browse</p>
                     <input
                       type="file"
                       multiple
                       onChange={handleFileUpload}
                       className="hidden"
-                      accept=".pdf,.doc,.docx,.xls,.xlsx"
+                      id="file-upload"
                     />
-                  </label>
-                </div>
-
-                {files.length > 0 && (
-                  <div className="space-y-2">
-                    <p className="text-sm font-medium">Uploaded Files:</p>
-                    {files.map((file, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 bg-accent rounded-lg">
-                        <span className="text-sm">{file.name}</span>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleRemoveFile(index)}
-                        >
-                          <X className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    ))}
+                    <label htmlFor="file-upload">
+                      <Button variant="outline" size="sm" asChild>
+                        <span>Browse Files</span>
+                      </Button>
+                    </label>
                   </div>
-                )}
+
+                  {files.length > 0 && (
+                    <div className="mt-4 space-y-2">
+                      <h4 className="text-sm font-medium">Attached Files:</h4>
+                      {files.map((file, index) => (
+                        <div key={index} className="flex items-center justify-between bg-muted p-2 rounded">
+                          <span className="text-sm">{file.name}</span>
+                          <button
+                            onClick={() => handleRemoveFile(index)}
+                            className="text-destructive hover:text-destructive/80"
+                          >
+                            <X className="h-4 w-4" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
         </Tabs>
 
-        {/* Action Buttons */}
+        {/* Submit Button */}
         <div className="flex gap-4 mt-8">
           <Button
             variant="outline"
@@ -647,7 +531,7 @@ export default function DealRegistration() {
           <Button
             onClick={handleSubmit}
             disabled={isSubmitting}
-            className="ml-auto"
+            className="flex-1"
           >
             {isSubmitting ? "Submitting..." : "Submit Deal Registration"}
           </Button>

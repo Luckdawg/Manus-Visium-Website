@@ -569,19 +569,26 @@ export const partnerRouter = router({
   submitDeal: protectedProcedure
     .input(
       z.object({
-        customerCompanyName: z.string(),
-        dealName: z.string(),
-        dealValue: z.number(),
-        estimatedCloseDate: z.string(),
-        salesStage: z.string().optional(),
+        customerCompanyName: z.string().min(1, "Customer company name is required"),
+        dealName: z.string().min(1, "Deal name is required"),
+        dealValue: z.number().positive("Deal value must be positive"),
+        estimatedCloseDate: z.string().min(1, "Estimated close date is required"),
+        customerEmail: z.string().email().optional(),
+        customerPhone: z.string().optional(),
+        customerIndustry: z.string().optional(),
+        customerSize: z.enum(["Startup", "SMB", "Mid-Market", "Enterprise", "Government"]).optional(),
+        salesStage: z.enum(["Prospecting", "Qualification", "Needs Analysis", "Proposal", "Negotiation", "Closed Won", "Closed Lost"]).optional(),
         dealType: z.string().optional(),
-        primaryContactEmail: z.string().optional(),
+        primaryContactEmail: z.string().email().optional(),
+        description: z.string().optional(),
+        productInterest: z.array(z.string()).optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
       try {
         const db = await getDb();
         if (!db) throw new Error("Database not available");
+        
         // Get the partner company for the current user
         const userPartner = await db
           .select()
@@ -598,17 +605,29 @@ export const partnerRouter = router({
 
         const partnerId = userPartner[0].partnerCompanyId;
 
+        // Validate deal stage enum
+        const validStages = ["Prospecting", "Qualification", "Needs Analysis", "Proposal", "Negotiation", "Closed Won", "Closed Lost"];
+        const dealStage = input.salesStage && validStages.includes(input.salesStage) ? input.salesStage : "Prospecting";
+
         // Create the deal in pending status
-        await db.insert(partnerDeals).values({
+        // Convert dealAmount to string for decimal field (Drizzle requires string for decimal)
+        const dealAmountStr = input.dealValue.toFixed(2);
+        
+        const result = await db.insert(partnerDeals).values({
           partnerCompanyId: partnerId,
-          customerName: input.customerCompanyName,
           dealName: input.dealName,
-          dealAmount: String(input.dealValue),
-          estimatedCloseDate: new Date(input.estimatedCloseDate),
-          dealStage: (input.salesStage || "Prospecting") as any,
-          status: "pending",
-          createdAt: new Date(),
-          updatedAt: new Date(),
+          customerName: input.customerCompanyName,
+          customerEmail: input.customerEmail || input.primaryContactEmail,
+          customerPhone: input.customerPhone,
+          customerIndustry: input.customerIndustry,
+          customerSize: input.customerSize,
+          dealAmount: dealAmountStr as any, // Drizzle decimal requires string
+          dealStage: dealStage as any,
+          expectedCloseDate: new Date(input.estimatedCloseDate),
+          productInterest: input.productInterest ? JSON.stringify(input.productInterest) : null,
+          description: input.description || input.dealType || "",
+          submittedBy: ctx.user.id,
+          notes: "Deal submitted via partner portal",
         });
 
         return {
@@ -616,6 +635,7 @@ export const partnerRouter = router({
           message: "Deal submitted successfully and is pending admin approval",
         };
       } catch (error) {
+        console.error("submitDeal error:", error);
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
           message: "Failed to submit deal: " + (error as any).message,
