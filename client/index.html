@@ -19,9 +19,10 @@
           'amplitude.com',
           'sr-client-cfg.amplitude.com',
           'api2.amplitude.com',
-          'api.manus.im',
           'youtube.com/youtubei',
         ];
+        
+        // Note: api.manus.im is NOT blocked as it's needed for internal functionality
         
         const blockedPatterns = [
           'ERR_BLOCKED_BY_CLIENT',
@@ -42,11 +43,16 @@
         // Intercept fetch requests to blocked domains
         const originalFetch = window.fetch;
         window.fetch = function(url, ...args) {
-          if (isBlockedDomain(url)) {
-            // Return a dummy response for blocked requests
+          try {
+            if (isBlockedDomain(url)) {
+              // Return a dummy response for blocked requests
+              return Promise.resolve(new Response(JSON.stringify({}), { status: 200 }));
+            }
+            return originalFetch.apply(this, [url, ...args]);
+          } catch (e) {
+            // If fetch fails, return a dummy response
             return Promise.resolve(new Response(JSON.stringify({}), { status: 200 }));
           }
-          return originalFetch.apply(this, [url, ...args]);
         };
         
         // Suppress console.error and console.warn for blocked requests
