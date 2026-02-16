@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { publicProcedure, router } from "../_core/trpc";
+import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
 import {
   partnerCompanies,
@@ -561,6 +561,64 @@ export const partnerRouter = router({
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
           message: "Failed to delete partner: " + (error as any).message,
+        });
+      }
+    }),
+
+  // Submit a deal for admin approval
+  submitDeal: protectedProcedure
+    .input(
+      z.object({
+        customerCompanyName: z.string(),
+        dealName: z.string(),
+        dealValue: z.number(),
+        estimatedCloseDate: z.string(),
+        salesStage: z.string().optional(),
+        dealType: z.string().optional(),
+        primaryContactEmail: z.string().optional(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      try {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+        // Get the partner company for the current user
+        const userPartner = await db
+          .select()
+          .from(partnerUsers)
+          .where(eq(partnerUsers.userId, ctx.user.id))
+          .limit(1);
+
+        if (!userPartner || userPartner.length === 0) {
+          throw new TRPCError({
+            code: "FORBIDDEN",
+            message: "You are not associated with a partner company",
+          });
+        }
+
+        const partnerId = userPartner[0].partnerCompanyId;
+
+        // Create the deal in pending status
+        await db.insert(partnerDeals).values({
+          partnerCompanyId: partnerId,
+          customerName: input.customerCompanyName,
+          dealName: input.dealName,
+          dealAmount: String(input.dealValue),
+          estimatedCloseDate: new Date(input.estimatedCloseDate),
+          dealStage: (input.salesStage || "Prospecting") as any,
+          status: "pending",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        });
+
+        return {
+          success: true,
+          message: "Deal submitted successfully and is pending admin approval",
+        };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to submit deal: " + (error as any).message,
         });
       }
     }),

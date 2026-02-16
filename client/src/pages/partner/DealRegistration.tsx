@@ -73,6 +73,8 @@ export default function DealRegistration() {
     setFiles(files.filter((_, i) => i !== index));
   };
 
+  const submitDealMutation = trpc.partner.submitDeal.useMutation();
+
   const handleSubmit = async () => {
     if (!dealName || !customerCompanyName || !dealValue || !estimatedCloseDate) {
       alert("Please fill in all required fields");
@@ -81,8 +83,17 @@ export default function DealRegistration() {
 
     setIsSubmitting(true);
     try {
-      // TODO: Implement deal submission via tRPC
-      alert("Deal registration submitted successfully!");
+      const dealData = {
+        customerCompanyName,
+        dealName,
+        dealValue: parseFloat(dealValue),
+        estimatedCloseDate,
+        salesStage,
+        dealType,
+        primaryContactEmail,
+      };
+      await submitDealMutation.mutateAsync(dealData);
+      alert("Deal registration submitted successfully! Your deal is now pending admin approval.");
       navigate("/partners/dashboard");
     } catch (error) {
       alert("Error submitting deal registration");

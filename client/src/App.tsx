@@ -57,27 +57,13 @@ import AdminSecurity from "./pages/admin/Security";
 import AdminLogin from "./pages/admin/Login";
 import PartnerDashboard from "@/pages/partner/Dashboard";
 import PartnerResources from "@/pages/partner/Resources";
-import DealWizard from "@/pages/partner/DealWizard";
-import AdminDealApproval from "@/pages/admin/AdminDealApproval";
 import AdminDealsManagement from "@/pages/admin/AdminDealsManagement";
-import DealRegistrationWizard from "./pages/partner/DealRegistrationWizard";
-import PartnerMDF from "./pages/partner/MDF";
-import PartnerAnalytics from "./pages/partner/Analytics";
 import PartnerLogin from "./pages/partner/PartnerLogin";
 import PasswordReset from "./pages/partner/PasswordReset";
 import PartnerRegister from "./pages/partners/PartnerRegister";
 import PartnerManagement from "./pages/admin/PartnerManagement";
 import OnboardingWizard from "./pages/partner/OnboardingWizard";
-import RegisterDeal from "./pages/partner/RegisterDeal";
-import DealsList from "./pages/partner/DealsList";
-import ResourcesLibrary from "./pages/partner/ResourcesLibrary";
-import PartnerApplicationForm from "./pages/partner/PartnerApplicationForm";
 import PartnerApplications from "./pages/admin/PartnerApplications";
-import TrainingDashboard from "./pages/partner/TrainingDashboard";
-import DealManagement from "./pages/partner/DealManagement";
-import AdminConsole from "./pages/admin/AdminConsole";
-import AnalyticsDashboard from "./pages/admin/AnalyticsDashboard";
-import AccountSettings from "./pages/partner/AccountSettings";
 import PartnerDetails from "./pages/admin/PartnerDetails";
 import DealRegistration from "./pages/partner/DealRegistration";
 
@@ -144,20 +130,10 @@ function Router() {
       <Route path="/partners/dashboard" component={PartnerDashboard} />
       <Route path="/partners/resources" component={PartnerResources} />
       <Route path="/partners/deals/register" component={DealRegistration} />
-      <Route path="/partners/deals/new" component={DealWizard} />
       <Route path="/admin/deals/approval" component={AdminDealsManagement} />
       <Route path="/admin/deals/management" component={AdminDealsManagement} />
-      <Route path="/partner/deals/new" component={DealRegistrationWizard} />
-      <Route path="/partners/deals" component={DealsList} />
-      <Route path="/partners/resources" component={ResourcesLibrary} />
-      <Route path="/partners/apply" component={PartnerApplicationForm} />
-      <Route path="/partners/account-settings" component={AccountSettings} />
       <Route path="/admin/partner-applications" component={PartnerApplications} />
       <Route path="/admin/partners/:id" component={PartnerDetails} />
-      <Route path="/partners/training" component={TrainingDashboard} />
-      <Route path="/partners/deals-management" component={DealManagement} />
-      <Route path="/admin/console" component={AdminConsole} />
-      <Route path="/admin/analytics" component={AnalyticsDashboard} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
