@@ -145,7 +145,7 @@ function Router() {
       <Route path="/partners/resources" component={PartnerResources} />
       <Route path="/partners/deals/register" component={DealRegistration} />
       <Route path="/partners/deals/new" component={DealWizard} />
-      <Route path="/admin/deals/approval" component={AdminDealApproval} />
+      <Route path="/admin/deals/approval" component={AdminDealsManagement} />
       <Route path="/admin/deals/management" component={AdminDealsManagement} />
       <Route path="/partner/deals/new" component={DealRegistrationWizard} />
       <Route path="/partners/deals" component={DealsList} />
