@@ -389,4 +389,314 @@ export const adminRouter = router({
         });
       }
     }),
-});
+
+  // Get ALL deals (not just pending) with partner and company info
+  getAllDeals: publicProcedure
+    .input(
+      z.object({
+        status: z.enum(["all", "pending", "approved", "rejected"]).default("all"),
+        limit: z.number().default(100),
+        offset: z.number().default(0),
+      })
+    )
+    .query(async ({ input, ctx }) => {
+      const { user, db } = await requireAdmin(ctx);
+
+      try {
+        let query = `SELECT pd.*, pc.companyName, pc.primaryContactName, pc.primaryContactEmail, pc.tier FROM partner_deals pd LEFT JOIN partner_companies pc ON pd.partnerCompanyId = pc.id`;
+        
+        if (input.status !== "all") {
+          const statusMap: any = {
+            pending: "Pending",
+            approved: "Approved",
+            rejected: "Rejected"
+          };
+          query += ` WHERE pd.dealStatus = '${statusMap[input.status]}'`;
+        }
+        
+        query += ` ORDER BY pd.createdAt DESC LIMIT ${input.limit} OFFSET ${input.offset}`;
+        
+        const deals = await executeRawSQL(query);
+        const countResult = await executeRawSQL(
+          `SELECT COUNT(*) as total FROM partner_deals ${input.status !== "all" ? `WHERE dealStatus = '${input.status === "pending" ? "Pending" : input.status === "approved" ? "Approved" : "Rejected"}'` : ""}`
+        ) as any[];
+
+        return {
+          deals: deals || [],
+          total: countResult?.[0]?.total || 0,
+          limit: input.limit,
+          offset: input.offset,
+        };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to fetch deals: " + (error as any).message,
+        });
+      }
+    }),
+
+  // Create new deal
+  createDeal: publicProcedure
+    .input(
+      z.object({
+        partnerCompanyId: z.number(),
+        dealName: z.string(),
+        customerName: z.string(),
+        dealAmount: z.number(),
+        dealStage: z.string().default("Prospecting"),
+        expectedCloseDate: z.string().optional(),
+        description: z.string().optional(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const { user, db } = await requireAdmin(ctx);
+
+      try {
+        const result = await executeRawSQL(
+          `INSERT INTO partner_deals (partnerCompanyId, dealName, customerName, dealAmount, dealStage, expectedCloseDate, description, dealStatus, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, 'Pending', NOW())`,
+          [input.partnerCompanyId, input.dealName, input.customerName, input.dealAmount, input.dealStage, input.expectedCloseDate, input.description]
+        );
+
+        await logAudit(db, user.id, "DEAL_CREATED", "partner_deals", (result as any).insertId, input);
+
+        return { success: true, dealId: (result as any).insertId };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to create deal: " + (error as any).message,
+        });
+      }
+    }),
+
+  // Update deal
+  updateDeal: publicProcedure
+    .input(
+      z.object({
+        dealId: z.number(),
+        dealName: z.string().optional(),
+        customerName: z.string().optional(),
+        dealAmount: z.number().optional(),
+        dealStage: z.string().optional(),
+        dealStatus: z.string().optional(),
+        expectedCloseDate: z.string().optional(),
+        description: z.string().optional(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const { user, db } = await requireAdmin(ctx);
+
+      try {
+        const updates = Object.entries(input)
+          .filter(([key, value]) => key !== "dealId" && value !== undefined)
+          .map(([key, value]) => `${key} = '${value}'`)
+          .join(", ");
+
+        await executeRawSQL(`UPDATE partner_deals SET ${updates}, updatedAt = NOW() WHERE id = ?`, [input.dealId]);
+
+        await logAudit(db, user.id, "DEAL_UPDATED", "partner_deals", input.dealId, input);
+
+        return { success: true };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to update deal: " + (error as any).message,
+        });
+      }
+    }),
+
+  // Delete deal
+  deleteDeal: publicProcedure
+    .input(z.object({ dealId: z.number() }))
+    .mutation(async ({ input, ctx }) => {
+      const { user, db } = await requireAdmin(ctx);
+
+      try {
+        // Get deal info before deletion
+        const deals = await executeRawSQL(`SELECT * FROM partner_deals WHERE id = ?`, [input.dealId]) as any[];
+        const deal = deals?.[0];
+
+        if (!deal) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Deal not found",
+          });
+        }
+
+        // Delete deal attachments
+        await executeRawSQL(`DELETE FROM deal_attachments WHERE dealId = ?`, [input.dealId]);
+
+        // Delete deal
+        await executeRawSQL(`DELETE FROM partner_deals WHERE id = ?`, [input.dealId]);
+
+        await logAudit(db, user.id, "DEAL_DELETED", "partner_deals", input.dealId, deal);
+
+        return { success: true };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to delete deal: " + (error as any).message,
+        });
+      }
+    }),
+
+  // Upload deal attachment
+  uploadDealAttachment: publicProcedure
+    .input(
+      z.object({
+        dealId: z.number(),
+        fileName: z.string(),
+        fileUrl: z.string(),
+        fileType: z.string(),
+        fileSize: z.number(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const { user, db } = await requireAdmin(ctx);
+
+      try {
+        const result = await executeRawSQL(
+          `INSERT INTO deal_attachments (dealId, fileName, fileUrl, fileType, fileSize, uploadedBy, uploadedAt) VALUES (?, ?, ?, ?, ?, ?, NOW())`,
+          [input.dealId, input.fileName, input.fileUrl, input.fileType, input.fileSize, user.id]
+        );
+
+        await logAudit(db, user.id, "ATTACHMENT_UPLOADED", "deal_attachments", (result as any).insertId, input);
+
+        return { success: true, attachmentId: (result as any).insertId };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to upload attachment: " + (error as any).message,
+        });
+      }
+    }),
+
+  // Get deal attachments
+  getDealAttachments: publicProcedure
+    .input(z.object({ dealId: z.number() }))
+    .query(async ({ input, ctx }) => {
+      const { user, db } = await requireAdmin(ctx);
+
+      try {
+        const attachments = await executeRawSQL(
+          `SELECT * FROM deal_attachments WHERE dealId = ? ORDER BY uploadedAt DESC`,
+          [input.dealId]
+        );
+
+        return attachments || [];
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to fetch attachments: " + (error as any).message,
+        });
+      }
+    }),
+
+  // Delete attachment
+  deleteAttachment: publicProcedure
+    .input(z.object({ attachmentId: z.number() }))
+    .mutation(async ({ input, ctx }) => {
+      const { user, db } = await requireAdmin(ctx);
+
+      try {
+        await executeRawSQL(`DELETE FROM deal_attachments WHERE id = ?`, [input.attachmentId]);
+
+        await logAudit(db, user.id, "ATTACHMENT_DELETED", "deal_attachments", input.attachmentId);
+
+        return { success: true };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to delete attachment: " + (error as any).message,
+        });
+      }
+    }),
+
+  // Get all partners
+  getAllPartners: publicProcedure.query(async ({ ctx }) => {
+    const { user, db } = await requireAdmin(ctx);
+
+    try {
+      const partners = await executeRawSQL(
+        `SELECT * FROM partner_companies ORDER BY companyName ASC`
+      );
+
+      return partners || [];
+    } catch (error) {
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Failed to fetch partners: " + (error as any).message,
+      });
+    }
+  }),
+
+  // Update partner
+  updatePartner: publicProcedure
+    .input(
+      z.object({
+        partnerId: z.number(),
+        companyName: z.string().optional(),
+        primaryContactName: z.string().optional(),
+        primaryContactEmail: z.string().optional(),
+        primaryContactPhone: z.string().optional(),
+        tier: z.string().optional(),
+        mdfBudget: z.number().optional(),
+        commissionRate: z.number().optional(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const { user, db } = await requireAdmin(ctx);
+
+      try {
+        const updates = Object.entries(input)
+          .filter(([key, value]) => key !== "partnerId" && value !== undefined)
+          .map(([key, value]) => `${key} = '${value}'`)
+          .join(", ");
+
+        await executeRawSQL(`UPDATE partner_companies SET ${updates}, updatedAt = NOW() WHERE id = ?`, [input.partnerId]);
+
+        await logAudit(db, user.id, "PARTNER_UPDATED", "partner_companies", input.partnerId, input);
+
+        return { success: true };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to update partner: " + (error as any).message,
+        });
+      }
+    }),
+
+  // Delete partner
+  deletePartner: publicProcedure
+    .input(z.object({ partnerId: z.number() }))
+    .mutation(async ({ input, ctx }) => {
+      const { user, db } = await requireAdmin(ctx);
+
+      try {
+        // Get partner info before deletion
+        const partners = await executeRawSQL(`SELECT * FROM partner_companies WHERE id = ?`, [input.partnerId]) as any[];
+        const partner = partners?.[0];
+
+        if (!partner) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Partner not found",
+          });
+        }
+
+        // Delete partner deals
+        await executeRawSQL(`DELETE FROM partner_deals WHERE partnerCompanyId = ?`, [input.partnerId]);
+
+        // Delete partner
+        await executeRawSQL(`DELETE FROM partner_companies WHERE id = ?`, [input.partnerId]);
+
+        await logAudit(db, user.id, "PARTNER_DELETED", "partner_companies", input.partnerId, partner);
+
+        return { success: true };
+      } catch (error) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to delete partner: " + (error as any).message,
+        });
+      }
+    }),
+})

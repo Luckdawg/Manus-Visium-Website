@@ -59,6 +59,7 @@ import PartnerDashboard from "@/pages/partner/Dashboard";
 import PartnerResources from "@/pages/partner/Resources";
 import DealWizard from "@/pages/partner/DealWizard";
 import AdminDealApproval from "@/pages/admin/AdminDealApproval";
+import AdminDealsManagement from "@/pages/admin/AdminDealsManagement";
 import DealRegistrationWizard from "./pages/partner/DealRegistrationWizard";
 import PartnerMDF from "./pages/partner/MDF";
 import PartnerAnalytics from "./pages/partner/Analytics";
@@ -145,6 +146,7 @@ function Router() {
       <Route path="/partners/deals/register" component={DealRegistration} />
       <Route path="/partners/deals/new" component={DealWizard} />
       <Route path="/admin/deals/approval" component={AdminDealApproval} />
+      <Route path="/admin/deals/management" component={AdminDealsManagement} />
       <Route path="/partner/deals/new" component={DealRegistrationWizard} />
       <Route path="/partners/deals" component={DealsList} />
       <Route path="/partners/resources" component={ResourcesLibrary} />
