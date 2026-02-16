@@ -100,9 +100,7 @@ export default function DealRegistration() {
         customerPhone,
         customerIndustry,
         customerSize: customerSize as "Startup" | "SMB" | "Mid-Market" | "Enterprise" | "Government" | undefined,
-        salesStage: salesStage as "Prospecting" | "Qualification" | "Needs Analysis" | "Proposal" | "Negotiation" | "Closed Won" | "Closed Lost" | undefined,
-        dealType,
-        primaryContactEmail,
+        dealStage: salesStage as "Prospecting" | "Qualification" | "Needs Analysis" | "Proposal" | "Negotiation" | "Closed Won" | "Closed Lost" | undefined,
         description: dealDescription,
         productInterest: productInterest.length > 0 ? productInterest : undefined,
       };

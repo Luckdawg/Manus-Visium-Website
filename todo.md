@@ -1974,3 +1974,52 @@
 - [ ] Implement deal approval workflow with status tracking and notifications
 - [ ] Complete password reset email integration with Sendgrid
 - [ ] Deploy to production and verify all functionality
+
+
+## CRITICAL FIX - Complete System Overhaul (Feb 16, 2026 - FINAL)
+
+### PHASE 1: Fix All TypeScript Errors (27 errors)
+- [ ] Fix DealDocuments.tsx - fileData property error
+- [ ] Fix DealRegistrationWizard.tsx - createDeal doesn't exist
+- [ ] Fix DealWizard.tsx - createDeal doesn't exist  
+- [ ] Fix Deals.tsx - submitDeal parameter mismatch
+- [ ] Fix partner.ts - commissionRate type mismatch (line 508)
+- [ ] Fix all admin component errors
+- [ ] Verify zero TypeScript errors before proceeding
+
+### PHASE 2: Implement Complete File Attachment System
+- [ ] Implement partner.getDealDocuments procedure
+- [ ] Implement partner.deleteDealDocument procedure
+- [ ] Implement admin.deleteDealAttachment procedure
+- [ ] Add file upload UI to DealRegistration form
+- [ ] Add file management UI to admin interface
+- [ ] Implement S3 file upload integration
+- [ ] Test file upload/download/delete end-to-end
+
+### PHASE 3: Fix Partner Edit Button
+- [ ] Verify updatePartnerMutation exists in admin router
+- [ ] Test partner edit form submission
+- [ ] Verify changes persist in database
+- [ ] Test edit button navigation and form rendering
+
+### PHASE 4: Fix Deal Submission
+- [ ] Verify submitDeal procedure works with correct parameters
+- [ ] Test deal submission from partner portal
+- [ ] Verify deals appear in admin interface
+- [ ] Test deal status updates
+
+### PHASE 5: Comprehensive Testing
+- [ ] Test partner registration flow
+- [ ] Test deal registration with file attachments
+- [ ] Test admin partner management
+- [ ] Test admin deal management
+- [ ] Test file upload/download/delete
+- [ ] Test partner edit functionality
+- [ ] Test end-to-end deal approval workflow
+
+### PHASE 6: Deployment Readiness
+- [ ] Zero TypeScript errors
+- [ ] All critical paths tested
+- [ ] All features working end-to-end
+- [ ] Create final checkpoint
+- [ ] Ready for production deployment
