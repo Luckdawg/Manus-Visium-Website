@@ -106,6 +106,7 @@ export default function DealRegistration() {
       };
 
       const result = await submitDealMutation.mutateAsync(dealData);
+      const dealId = result.dealId;
       
       setSuccessMessage("✓ Deal registration submitted successfully! Your deal is now pending admin approval.");
       

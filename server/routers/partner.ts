@@ -391,4 +391,80 @@ export const partnerRouter = router({
       });
     }
   }),
+
+  /**
+   * Get partner company details
+   */
+  getPartnerInfo: protectedProcedure.query(async ({ ctx }) => {
+    const db = await getDb();
+    if (!db) throw new Error("Database not available");
+
+    try {
+      let userPartner = await db
+        .select()
+        .from(partnerUsers)
+        .where(eq(partnerUsers.userId, ctx.user.id))
+        .limit(1);
+
+      if (!userPartner || userPartner.length === 0) {
+        if (ctx.user.email) {
+          userPartner = await db
+            .select()
+            .from(partnerUsers)
+            .where(eq(partnerUsers.email, ctx.user.email))
+            .limit(1);
+        }
+      }
+
+      if (!userPartner || userPartner.length === 0) {
+        return null;
+      }
+
+      const company = await db
+        .select()
+        .from(partnerCompanies)
+        .where(eq(partnerCompanies.id, userPartner[0].partnerCompanyId))
+        .limit(1);
+
+      return company.length > 0 ? company[0] : null;
+    } catch (error) {
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Failed to fetch partner info: " + (error as any).message,
+      });
+    }
+  }),
+
+  /**
+   * Get deal status and approval details
+   */
+  getDealStatus: protectedProcedure
+    .input(z.object({ dealId: z.number() }))
+    .query(async ({ input, ctx }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      try {
+        const deal = await db
+          .select()
+          .from(partnerDeals)
+          .where(eq(partnerDeals.id, input.dealId))
+          .limit(1);
+
+        if (!deal || deal.length === 0) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Deal not found",
+          });
+        }
+
+        return deal[0];
+      } catch (error) {
+        if (error instanceof TRPCError) throw error;
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to fetch deal status: " + (error as any).message,
+        });
+      }
+    }),
 });
