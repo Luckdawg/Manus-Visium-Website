@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useLocation } from "wouter";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -7,30 +6,7 @@ import { getLoginUrl, APP_TITLE, APP_LOGO } from "@/const";
 import { LogIn, ArrowRight } from "lucide-react";
 
 export default function PartnerLogin() {
-  const [, navigate] = useLocation();
-  const { user, isAuthenticated, loading } = useAuth();
-
-  useEffect(() => {
-    // If already authenticated, redirect to partner dashboard
-    if (isAuthenticated && !loading) {
-      navigate("/partners/dashboard");
-    }
-  }, [isAuthenticated, loading, navigate]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-4">
-        <div className="text-white text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p>Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (isAuthenticated) {
-    return null; // Will redirect via useEffect
-  }
+  const { user } = useAuth();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-4">
