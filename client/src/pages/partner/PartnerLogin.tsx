@@ -44,7 +44,7 @@ export default function PartnerLogin() {
           </div>
 
           <Button
-            onClick={() => (window.location.href = getLoginUrl())}
+            onClick={() => (window.location.href = getLoginUrl('/partners/dashboard'))}
             size="lg"
             className="w-full bg-primary hover:bg-primary/90 text-white"
           >
