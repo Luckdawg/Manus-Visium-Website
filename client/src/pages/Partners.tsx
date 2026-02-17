@@ -1,16 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Handshake, Users, TrendingUp, CheckCircle2, Shield, LogIn, ArrowRight } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 
 export default function Partners() {
   const { isAuthenticated, user } = useAuth();
+  const [, setLocation] = useLocation();
 
   const handlePartnerPortalClick = () => {
     // All users go to partner login page
-    window.location.href = "/partners/login";
+    setLocation("/partners/login");
   };
 
   const technologyPartners = [
