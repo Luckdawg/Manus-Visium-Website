@@ -9,15 +9,8 @@ export default function Partners() {
   const { isAuthenticated, user } = useAuth();
 
   const handlePartnerPortalClick = () => {
-    if (isAuthenticated && user?.role === "partner") {
-      window.location.href = "/partners/dashboard";
-    } else if (isAuthenticated) {
-      // User is logged in but not a partner, show onboarding
-      window.location.href = "/partners/onboarding";
-    } else {
-      // User is not logged in, go to partner login page
-      window.location.href = "/partners/login";
-    }
+    // All users go to partner login page
+    window.location.href = "/partners/login";
   };
 
   const technologyPartners = [
