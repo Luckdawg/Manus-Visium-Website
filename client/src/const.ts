@@ -11,13 +11,13 @@ export const APP_LOGO =
 export const getLoginUrl = (redirectPath?: string) => {
   const oauthPortalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL;
   const appId = import.meta.env.VITE_APP_ID;
-  const redirectUri = `${window.location.origin}/api/oauth/callback`;
-  // Encode both callback URI and intended redirect path in state
-  const stateData = JSON.stringify({
-    redirectUri,
-    redirectPath: redirectPath || '/'
-  });
-  const state = btoa(stateData);
+  // Encode redirect path as query parameter in the callback URL
+  const callbackUrl = new URL(`${window.location.origin}/api/oauth/callback`);
+  if (redirectPath) {
+    callbackUrl.searchParams.set('next', redirectPath);
+  }
+  const redirectUri = callbackUrl.toString();
+  const state = btoa(redirectUri);
 
   const url = new URL(`${oauthPortalUrl}/app-auth`);
   url.searchParams.set("appId", appId);
