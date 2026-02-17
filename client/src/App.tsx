@@ -58,7 +58,7 @@ import AdminLogin from "./pages/admin/Login";
 // import PartnerDashboard from "@/pages/partner/Dashboard"; // TODO: Fix TypeScript errors
 // import PartnerResources from "@/pages/partner/Resources"; // TODO: Fix TypeScript errors
 import AdminDealsManagement from "@/pages/admin/AdminDealsManagement";
-// import PartnerLogin from "./pages/partner/PartnerLogin"; // TODO: Fix TypeScript errors
+import PartnerLogin from "./pages/partner/PartnerLogin";
 // import PasswordReset from "./pages/partner/PasswordReset"; // TODO: Fix TypeScript errors
 // import PartnerRegister from "./pages/partners/PartnerRegister"; // TODO: Fix TypeScript errors
 // import PartnerManagement from "./pages/admin/PartnerManagement"; // TODO: Fix TypeScript errors
@@ -129,7 +129,7 @@ function Router() {
       <Route path="/admin/deals/management" component={AdminDealsManagement} />
       
       {/* Disabled Partner Routes - TODO: Fix TypeScript errors */}
-      {/* <Route path="/partners/login" component={PartnerLogin} /> */}
+      <Route path="/partners/login" component={PartnerLogin} />
       {/* <Route path="/partners/reset-password" component={PasswordReset} /> */}
       {/* <Route path="/partners/register" component={PartnerRegister} /> */}
       {/* <Route path="/partners/onboarding" component={OnboardingWizard} /> */}
