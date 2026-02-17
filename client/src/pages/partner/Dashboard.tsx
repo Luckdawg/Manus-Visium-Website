@@ -1,11 +1,12 @@
-import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
+import { useLocation } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TrendingUp, DollarSign, CheckCircle2, Clock, AlertCircle, FileText, Plus, LogOut } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
+
 
 export default function PartnerDashboard() {
   const { user, logout, loading } = useAuth();
@@ -26,12 +27,8 @@ export default function PartnerDashboard() {
     }
   }, [user, partnerId, navigate, loading]);
 
-  const { data: dealsData, isLoading: dealsLoading } = trpc.partner.getPartnerDeals.useQuery(
-    { partnerId: partnerId || 0 },
-    { enabled: !!partnerId }
-  );
+  const { data: deals = [], isLoading: dealsLoading } = trpc.partner.getPartnerDeals.useQuery();
 
-  const deals = dealsData?.deals || [];
 
   const handleLogout = async () => {
     localStorage.removeItem("partnerId");

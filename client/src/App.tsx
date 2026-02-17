@@ -55,7 +55,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import AdminUsers from "./pages/admin/Users";
 import AdminSecurity from "./pages/admin/Security";
 import AdminLogin from "./pages/admin/Login";
-// import PartnerDashboard from "@/pages/partner/Dashboard"; // TODO: Fix TypeScript errors
+import PartnerDashboard from "@/pages/partner/Dashboard";
 // import PartnerResources from "@/pages/partner/Resources"; // TODO: Fix TypeScript errors
 import AdminDealsManagement from "@/pages/admin/AdminDealsManagement";
 import PartnerLogin from "./pages/partner/PartnerLogin";
@@ -133,7 +133,7 @@ function Router() {
       {/* <Route path="/partners/reset-password" component={PasswordReset} /> */}
       {/* <Route path="/partners/register" component={PartnerRegister} /> */}
       {/* <Route path="/partners/onboarding" component={OnboardingWizard} /> */}
-      {/* <Route path="/partners/dashboard" component={PartnerDashboard} /> */}
+      <Route path="/partners/dashboard" component={PartnerDashboard} />
       {/* <Route path="/partners/resources" component={PartnerResources} /> */}
       {/* <Route path="/admin/partner-applications" component={PartnerApplications} /> */}
       {/* <Route path="/admin/partners/:id" component={PartnerDetails} /> */}
