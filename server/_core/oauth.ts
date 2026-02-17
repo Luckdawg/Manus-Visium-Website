@@ -44,8 +44,17 @@ export function registerOAuthRoutes(app: Express) {
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
-      // Get redirect path from query parameter (set during login)
-      const redirectPath = getQueryParam(req, 'next') || "/";
+      // Decode state to extract redirect path
+      // State contains base64-encoded redirect URI with 'next' parameter
+      let redirectPath = "/";
+      try {
+        const decodedState = Buffer.from(state, 'base64').toString('utf-8');
+        const redirectUrl = new URL(decodedState);
+        redirectPath = redirectUrl.searchParams.get('next') || "/";
+      } catch (error) {
+        console.error("[OAuth] Failed to decode state for redirect path:", error);
+        // Fall back to homepage if state decoding fails
+      }
       
       res.redirect(302, redirectPath);
     } catch (error) {
